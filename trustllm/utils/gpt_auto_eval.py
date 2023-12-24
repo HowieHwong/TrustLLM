@@ -42,6 +42,7 @@ def get_res(string):
 logging.basicConfig(filename='autoevaluator.log', level=logging.INFO,
                     format='%(asctime)s:%(levelname)s:%(message)s')
 
+
 class AutoEvaluator:
     def __init__(self, save_dir='saved_evaluations'):
         """
@@ -93,11 +94,9 @@ class AutoEvaluator:
 
         assert isinstance(data, list), "Data must be a list."
         assert task is not None, "Task must be specified for evaluation."
-
         # Load the task prompts for evaluation
         task_prompt_dict = file_process.load_json('../prompt/task_prompt.json')
         prompt = task_prompt_dict.get(task, '')
-
         print('Evaluating...')
         for item in tqdm(data):
             try:
@@ -112,7 +111,6 @@ class AutoEvaluator:
                 logging.error("Error evaluating item %s: %s", item, str(e))
                 self.save_progress(data, filename=progress_filename)
                 raise  # Re-raise the exception to notify the caller
-
         # Save the final progress after evaluation completion
         self.save_progress(data, filename=progress_filename)
         return data
