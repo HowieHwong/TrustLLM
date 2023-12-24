@@ -7,6 +7,7 @@ import file_process
 logging.basicConfig(filename='huggingface_evaluator.log', level=logging.INFO,
                     format='%(asctime)s:%(levelname)s:%(message)s')
 
+
 class HuggingFaceEvaluator:
     def __init__(self, model_name='LibrAI/longformer-harmful-ro', device='cuda:0', save_dir='saved_evaluations'):
         """

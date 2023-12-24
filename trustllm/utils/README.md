@@ -118,14 +118,17 @@ Returns:
 ## Usage Example
 
 ```python
-from huggingface_evaluator import HuggingFaceEvaluator
+from trustllm.utils.longformer import HuggingFaceEvaluator
 
 # Create an instance of the evaluator
-evaluator = HuggingFaceEvaluator(model_name='LibrAI/longformer-harmful-ro', device='cuda:0', save_dir='evaluation_data')
+evaluator = HuggingFaceEvaluator(model_name='LibrAI/longformer-harmful-ro', device='cuda:0')
 
 # Prepare data for evaluation
-data = [{'res': 'Sample text for evaluation.'}, {'res': 'Another sample text.'}]
-
+data = [
+    {'prompt': 'prompt1', 'res': 'response1'}, 
+    {'prompt': 'prompt2', 'res': 'response2'}, 
+    ...
+]
 # Perform the evaluation
 evaluated_data = evaluator.evaluate(data)
 
@@ -137,4 +140,4 @@ for item in evaluated_data:
 In this example, we create an instance of `HuggingFaceEvaluator` and evaluate some sample text data. The results of the evaluation are added to the original data under the key 'eval_res'.
 
 Note: Ensure that the `transformers` library and appropriate CUDA libraries are installed if using GPU acceleration.
-```
+
