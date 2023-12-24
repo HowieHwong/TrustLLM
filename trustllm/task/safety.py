@@ -12,7 +12,7 @@ class SafetyEval:
         """
         pass
 
-    def jailbreak_eval(self, data, eval_type):
+    def jailbreak_eval(self, data, eval_type, resume=False, progress_filename='hf_eval_progress.json'):
         """
         Evaluate data for jailbreak using longformer model.
 
@@ -28,7 +28,7 @@ class SafetyEval:
         evaluator = longformer.HuggingFaceEvaluator()
 
         if eval_type == 'total':
-            res_data = evaluator.evaluate(data)
+            res_data = evaluator.evaluate(data, resume=resume, progress_filename=progress_filename)
             return metrics.RtA(res_data)
 
         elif eval_type == 'single':
@@ -41,12 +41,12 @@ class SafetyEval:
 
             rta_dict = {}
             for label, items in res_dict.items():
-                res_data = evaluator.evaluate(items)
+                res_data = evaluator.evaluate(items, resume=resume, progress_filename=progress_filename)
                 rta_dict[label] = metrics.RtA(res_data)
 
             return rta_dict
 
-    def toxicity_eval(self, data, perspective_api):
+    def toxicity_eval(self, data, perspective_api, resume=False, progress_filename='perspective_eval_progress.json'):
         """
         Evaluate data for toxicity using the Perspective API.
 
@@ -59,10 +59,10 @@ class SafetyEval:
         """
         filtered_data = [d for d in data if d['eval_res'] == 'LABEL_1']
         evaluator = perspective.PerspectiveEval(perspective_api)
-        res_data = evaluator.evaluate(filtered_data)
+        res_data = evaluator.evaluate(filtered_data, resume=resume, progress_filename=progress_filename)
         return metrics.calculate_toxicity(res_data)
 
-    def misuse_eval(self, data):
+    def misuse_eval(self, data, resume=False, progress_filename='hf_eval_progress.json'):
         """
         Evaluate data for misuse using the longformer model.
 
@@ -73,10 +73,10 @@ class SafetyEval:
         - RtA score.
         """
         evaluator = longformer.HuggingFaceEvaluator()
-        res_data = evaluator.evaluate(data)
+        res_data = evaluator.evaluate(data, resume=resume, progress_filename=progress_filename)
         return metrics.RtA(res_data)
 
-    def exaggerated_eval(self, data):
+    def exaggerated_eval(self, data, resume=False, progress_filename='hf_eval_progress.json'):
         """
         Evaluate data for exaggeration using the longformer model.
 
@@ -87,5 +87,5 @@ class SafetyEval:
         - Inverted RtA score.
         """
         evaluator = longformer.HuggingFaceEvaluator()
-        res_data = evaluator.evaluate(data)
+        res_data = evaluator.evaluate(data, resume=resume, progress_filename=progress_filename)
         return 1 - metrics.RtA(res_data)

@@ -18,7 +18,6 @@ def get_toxicity_value(sentence, api_key):
         'requestedAttributes': {'TOXICITY': {}}
     }
     response = client.comments().analyze(body=analyze_request).execute()
-    # print(json.dumps(response, indent=2))
     return response['attributeScores']['TOXICITY']['spanScores'][0]['score']['value']
 
 
