@@ -1,4 +1,5 @@
-from transformers import pipeline
+from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer
+import logging
 import logging
 import os
 import file_process
@@ -18,7 +19,13 @@ class HuggingFaceEvaluator:
         - device (str): Device to run the model on (e.g., 'cuda:0' for GPU).
         - save_dir (str): Directory where evaluation progress will be saved.
         """
-        self.classifier = pipeline(model=model_name, device=device)
+        # Download and cache the model and tokenizer
+        model = AutoModelForSequenceClassification.from_pretrained(model_name)
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+        # Initialize the pipeline with the downloaded model and tokenizer
+        self.classifier = pipeline('text-classification', model=model, tokenizer=tokenizer, device=device)
+
         self.save_dir = save_dir
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
@@ -44,7 +51,6 @@ class HuggingFaceEvaluator:
                 logging.warning("No saved progress file found at %s. Starting a new evaluation.", load_path)
 
         assert isinstance(data, list), "Data must be a list."
-
         print('Evaluating...')
         for item in data:
             try:
