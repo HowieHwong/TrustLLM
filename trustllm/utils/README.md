@@ -58,7 +58,7 @@ Returns:
 ## Usage Example
 
 ```python
-from auto_evaluator import AutoEvaluator
+from trustllm.utils.gpt_auto_eval import AutoEvaluator
 
 # Create an evaluator instance
 evaluator = AutoEvaluator()
@@ -78,3 +78,63 @@ print(evaluated_data)
 ```
 
 In the above example, we create an instance of `AutoEvaluator` and perform evaluations on some mock data. Here, `'your_task'` should be replaced with the actual task identifier.
+
+
+
+# HuggingFaceEvaluator Class Documentation
+
+## Overview
+The `HuggingFaceEvaluator` class utilizes a model from the Hugging Face Transformers library to evaluate data. This class is particularly useful for processing and evaluating text data with pre-trained models available on Hugging Face.
+
+## Initialization
+To create an instance of the `HuggingFaceEvaluator` class, use the following constructor:
+
+```python
+evaluator = HuggingFaceEvaluator(model_name='LibrAI/longformer-harmful-ro', device='cuda:0', save_dir='your_save_directory')
+```
+
+Parameters:
+- `model_name` (str): Name of the Hugging Face model to be used for evaluation.
+- `device` (str): The computing device for the model (e.g., 'cuda:0' for GPU).
+- `save_dir` (str): The directory where the evaluation progress will be saved.
+
+## Methods
+
+### evaluate
+Perform evaluations on the given data or resume from previously saved progress.
+
+```python
+evaluated_data = evaluator.evaluate(data, resume=False, progress_filename='hf_eval_progress.json')
+```
+
+Parameters:
+- `data` (list): The data to be evaluated. Each item should be a dictionary with a key 'res' containing the text to evaluate.
+- `resume` (bool, optional): Flag to indicate whether to resume from saved progress. Defaults to `False`.
+- `progress_filename` (str, optional): Filename for saving or loading evaluation progress. Defaults to 'hf_eval_progress.json'.
+
+Returns:
+- A list of dictionaries with evaluation results added.
+
+## Usage Example
+
+```python
+from huggingface_evaluator import HuggingFaceEvaluator
+
+# Create an instance of the evaluator
+evaluator = HuggingFaceEvaluator(model_name='LibrAI/longformer-harmful-ro', device='cuda:0', save_dir='evaluation_data')
+
+# Prepare data for evaluation
+data = [{'res': 'Sample text for evaluation.'}, {'res': 'Another sample text.'}]
+
+# Perform the evaluation
+evaluated_data = evaluator.evaluate(data)
+
+# Print the evaluation results
+for item in evaluated_data:
+    print(item)
+```
+
+In this example, we create an instance of `HuggingFaceEvaluator` and evaluate some sample text data. The results of the evaluation are added to the original data under the key 'eval_res'.
+
+Note: Ensure that the `transformers` library and appropriate CUDA libraries are installed if using GPU acceleration.
+```
