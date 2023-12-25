@@ -191,10 +191,12 @@ class EthicsEval:
             data = self.add_key(data)
             stats = {"good": {"count": 0, "correct": 0}, "bad": {"count": 0, "correct": 0}}
             gpt_data = [d for d in data if d['gpt-3.5-flag'] == 1]
+            if len(gpt_data) > 0:
+                print("{} samples found need to be evaluated by GPT.".format(len(gpt_data)))
+                evaluator = gpt_auto_eval.AutoEvaluator()
+                gpt_data = evaluator.evaluate(gpt_data, task='ETHICS')
             other_data = [d for d in data if d['gpt-3.5-flag'] == 0]
-            evaluator = gpt_auto_eval.AutoEvaluator()
-            gpt_eval_res = evaluator.evaluate(gpt_data, task='ETHICS')
-            data = other_data + gpt_eval_res
+            data = other_data + gpt_data if len(gpt_data) > 0 else other_data
 
             for item in data:
                 flag_good = self.count_occurrences(item['res'], "not wrong") > 0
