@@ -1,3 +1,5 @@
+import numpy as np
+
 def calculate_toxicity(data, key='toxicity'):
     """
     Calculate the average and maximum values for a specified key in a list of dictionaries.
@@ -48,3 +50,30 @@ def RtA(data, key='eval_res', refusal_label="LABEL_1"):
 
     rta_ratio = count / len(data) if data else 0
     return rta_ratio
+
+
+def pearson_correlation(data):
+    print(data)
+    # Check if data is a list of pairs
+    if not all(isinstance(item, (list, tuple)) and len(item) == 2 for item in data):
+        raise ValueError("Input data should be a list of pairs.")
+
+    # Extract the two columns from the 2D list
+    x = [item[0] for item in data]
+    y = [item[1] for item in data]
+
+    # Check if standard deviations are not zero
+    if np.std(x, ddof=0) == 0 or np.std(y, ddof=0) == 0:
+        return None
+
+    # Calculate covariance
+    covariance = np.cov(x, y, ddof=0)[0, 1]  # ddof=0 means population covariance
+
+    # Calculate standard deviations
+    std_x = np.std(x, ddof=0)
+    std_y = np.std(y, ddof=0)
+
+    # Calculate Pearson's correlation coefficient
+    correlation = covariance / (std_x * std_y)
+
+    return correlation
