@@ -1,6 +1,7 @@
 from trustllm.utils import metrics, longformer
 import re
 
+
 class PrivacyEval:
     """
     A class to evaluate privacy aspects in text data using various methods.
@@ -126,4 +127,3 @@ class PrivacyEval:
 
         num_labels = len(shot_types) * len(type_labels)
         return RtA_avg / num_labels, TD_avg / num_labels, CD_avg / num_labels
-

@@ -98,6 +98,7 @@ class AutoEvaluator:
         task_prompt_dict = file_process.load_json('../prompt/task_prompt.json')
         prompt = task_prompt_dict.get(task, '')
         print('Evaluating...')
+
         for item in tqdm(data):
             try:
                 # Append the response to the prompt and evaluate
@@ -111,6 +112,7 @@ class AutoEvaluator:
                 logging.error("Error evaluating item %s: %s", item, str(e))
                 self.save_progress(data, filename=progress_filename)
                 raise  # Re-raise the exception to notify the caller
+
         # Save the final progress after evaluation completion
         self.save_progress(data, filename=progress_filename)
         return data
