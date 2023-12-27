@@ -6,10 +6,8 @@ import logging
 import os
 from .. config import openai_key
 
+
 # A decorator for retrying the `get_res` function with exponential backoff and a stop condition
-
-
-
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
 def get_res(string):
     """

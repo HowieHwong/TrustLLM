@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.stats import chi2_contingency
 import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 
 def calculate_toxicity(data, key='toxicity'):
@@ -160,3 +162,42 @@ def p_value(data, attribute, res_column='res'):
     contingency_table = pd.crosstab(df[attribute], df[res_column])
     chi2, p, _, _ = chi2_contingency(contingency_table)
     return p
+
+
+def calculate_cosine_similarity(embeddings):
+    """
+    Calculate cosine similarity between pairs of embeddings.
+
+    Args:
+    - embeddings (list): A list of dictionaries containing 'index' and 'embedding'.
+
+    Returns:
+    - A list of cosine similarities for each pair.
+    """
+    # Creating a dictionary based on index
+    indexed_embeddings = {}
+    for item in embeddings:
+        indexed_embeddings[item['index']] = np.array(item['embedding'])
+
+    # Calculate cosine similarity
+    similarities = []
+    for index, embedding in indexed_embeddings.items():
+        if index % 2 == 0 and (index + 1) in indexed_embeddings:
+            similarity = cosine_similarity([embedding], [indexed_embeddings[index + 1]])[0][0]
+            similarities.append(similarity)
+
+    return similarities
+
+
+def average_cosine_similarity(embeddings):
+    """
+    Calculate the average cosine similarity of all paired embeddings.
+
+    Args:
+    - embeddings (list): A list of dictionaries containing 'index' and 'embedding'.
+
+    Returns:
+    - The average cosine similarity.
+    """
+    similarities = calculate_cosine_similarity(embeddings)
+    return np.mean(similarities) if similarities else 0

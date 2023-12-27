@@ -2,6 +2,7 @@ from googleapiclient import discovery
 import logging
 import os
 import file_process
+from trustllm.config import perspective_key
 
 
 def get_toxicity_value(sentence, api_key):
@@ -35,7 +36,7 @@ class PerspectiveEval:
         - api_key (str): API key for accessing the Perspective API.
         - save_dir (str): Directory where evaluation progress will be saved.
         """
-        self.api_key = api_key
+        self.api_key = perspective_key
         self.save_dir = save_dir
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
