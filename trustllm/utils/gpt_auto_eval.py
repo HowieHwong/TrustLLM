@@ -1,12 +1,15 @@
 import openai
 from tenacity import retry, wait_random_exponential, stop_after_attempt
-import file_process
+from trustllm.utils import file_process
 from tqdm import tqdm
 import logging
 import os
-
+from trustllm.__int__ import openai_key
 
 # A decorator for retrying the `get_res` function with exponential backoff and a stop condition
+
+
+
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
 def get_res(string):
     """
@@ -55,6 +58,7 @@ class AutoEvaluator:
         # Create the directory if it does not exist
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
+        openai.api_key = openai_key
 
     def save_progress(self, data, filename='eval_progress.json'):
         """
