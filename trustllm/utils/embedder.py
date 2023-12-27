@@ -19,10 +19,10 @@ def get_embeddings(string):
     - Embeddings response from the API.
     """
     response = openai.Embedding.create(
-        model='text-similarity-babbage-001',  # Example model
+        model='text-embedding-ada-002',  # Example model
         input=string
     )
-    return response['data']
+    return response["data"][0]["embedding"]
 
 
 class DataEmbedder:
