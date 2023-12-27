@@ -8,7 +8,7 @@
 
 ## **Getting Start**
 
-### Installation
+### **Installation**
 
 Installation can be done using pypi:
 
@@ -16,7 +16,7 @@ Installation can be done using pypi:
 pip install trustllm
 ```
 
-### Before Evaluation
+### **Before Evaluation**
 
 Download TrustLLM dataset:
 
@@ -27,18 +27,16 @@ download_huggingface_dataset(save_path='save_path')
 ```
 
 
+
 !!! note
 
-    The datasets are uniformly structured in JSON format, where each JSON file consists of a collection of dictionaries. Within each dictionary, there is a consistent key named `prompt`. Your task is to utilize the value of `prompt` key as the input for processing. After processing, you should store the result under a newly created key named `res` within the same dictionary.
+    Please note that the LLM you use for evaluation should have a certain level of utility. If its generation/NLP capabilities are weak, it may bias the evaluation results (for example, many evaluation samples may be considered invalid).
 
 
 
 
 
-
-
-
-Here is an example to generate answer from your LLM:
+The datasets are uniformly structured in JSON format, where each JSON file consists of a collection of dictionaries. Within each dictionary, there is a consistent key named `prompt`. Your task is to utilize the value of `prompt` key as the input for processing. After processing, you should store the result under a newly created key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
 
 ```python
 import json
@@ -61,7 +59,7 @@ with open(filename, 'w') as file:
 
 ## **Leaderboard**
 
-
+If you want to view the performance of all models or upload the performance of your LLM, please refer to [this link](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
 
 
 ## **Citation**
