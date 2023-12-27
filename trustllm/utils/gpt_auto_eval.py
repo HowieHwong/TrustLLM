@@ -4,7 +4,7 @@ from trustllm.utils import file_process
 from tqdm import tqdm
 import logging
 import os
-from trustllm.__int__ import openai_key
+from .. config import openai_key
 
 # A decorator for retrying the `get_res` function with exponential backoff and a stop condition
 
