@@ -1,4 +1,4 @@
-# **TustLLM: Trustworthiness in Large Language Models**
+# **TrustLLM: Trustworthiness in Large Language Models**
 
 <img src="../images/logo.png" width="100%">
 
@@ -36,7 +36,7 @@ download_huggingface_dataset(save_path='save_path')
 
 
 
-The datasets are uniformly structured in JSON format, where each JSON file consists of a collection of dictionaries. Within each dictionary, there is a consistent key named `prompt`. Your task is to utilize the value of `prompt` key as the input for processing. After processing, you should store the result under a newly created key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
+The datasets are uniformly structured in JSON format, where each JSON file consists of a collection of dictionaries. Within each dictionary, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
 
 ```python
 import json

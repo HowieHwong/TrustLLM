@@ -22,7 +22,7 @@ def get_res(string):
     Raises:
     - ValueError: If the API returns a null or empty response.
     """
-    # Creating a chat completion request to OpenAI's GPT-4 API
+
     completion = openai.ChatCompletion.create(
         model='gpt-4-1106-preview',
         messages=[

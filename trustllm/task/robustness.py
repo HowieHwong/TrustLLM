@@ -98,14 +98,13 @@ class RobustnessEval:
                                     # If not found, ask the user to classify
                                     print(f"Response: {res}")
                                     print(f"Label: {label}")
+                                    prompt = file_process.load_json('../prompt/task_prompt.json')['ood_generalization']
+                                    prompt = prompt.replace('[res]', res).replace('[label]', label)
+                                    ans = gpt_auto_eval.get_res(prompt)
+                                    if 'wrong' in ans.lower():
+                                        return "incorrect"
+                                    return "correct"
 
-                                    # gpt_auto_eval.get_res(res, label)
-
-                                    user_input = input("Is the classification correct? (c/n): ").strip().lower()
-                                    while user_input not in ['c', 'n']:
-                                        user_input = input(
-                                            "Invalid input. Please enter 'c' for correct or 'n' for incorrect: ").strip().lower()
-                                    return "correct" if user_input == 'c' else "incorrect"  # Return the user's response
         elif source == "flipkart":
             target = res
         if target is None:
