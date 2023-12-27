@@ -1,5 +1,11 @@
 site_name: TrustLLM
+site_description: Trustworthiness in Large Language Models
+use_directory_urls: false
+extra_css:
+  - stylesheets/extra.css
 theme:
+  custom_dir: images/
+  logo: img.png
   name: material
   font:
     text: Ubuntu
@@ -7,12 +13,21 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: black
+      primary: custom
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
+      primary: custom
       toggle:
         icon: material/weather-night
         name: Switch to light mode
+  markdown_extensions:
+    - admonition
+    - pymdownx.details
+    - pymdownx.highlight
+    - pymdownx.superfences
+    - pymdownx.snippets
+    - toc:
+        permalink: true
