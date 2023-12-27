@@ -29,25 +29,38 @@ download_huggingface_dataset(save_path='save_path')
 
 !!! note
 
-    The datasets are all in `JSON` format, with each JSON file containing a list of many dictionaries. Each dictionary has a fixed key `prompt`. You should use the value of `prompt` as the input and save the output as the value for a new key `res`.
+    The datasets are uniformly structured in JSON format, where each JSON file consists of a collection of dictionaries. Within each dictionary, there is a consistent key named `prompt`. Your task is to utilize the value of `prompt` key as the input for processing. After processing, you should store the result under a newly created key named `res` within the same dictionary.
+
+
+
+
+
+
+
 
 Here is an example to generate answer from your LLM:
 
 ```python
 import json
 
-filename = 'dataset_path'
+filename = 'dataset_path.json'
 
-with open(filename, 'r') as f:
-    data = json.load(f)
+# Load the data from the file
+with open(filename, 'r') as file:
+    data = json.load(file)
 
-for el in data:
-    output = generation(el['prompt']) # generate answer
-    el['res'] = output # save output as a new key 'res'
+# Process each dictionary and add the 'res' key with the generated output
+for element in data:
+    element['res'] = generation(element['prompt'])  # Replace 'generation' with your function
 
-with open(filename, 'w') as f:
-    json.dumps(data, f, indent=4)
+# Write the modified data back to the file
+with open(filename, 'w') as file:
+    json.dump(data, file, indent=4)
 ```
+
+
+## **Leaderboard**
+
 
 
 
