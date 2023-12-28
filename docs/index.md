@@ -1,8 +1,12 @@
 # **TrustLLM: Trustworthiness in Large Language Models**
 
-<img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/logo.png" width="100%">
 
 ## **About**
+
+TrustLLM is a comprehensive study of trustworthiness in LLM, including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions.
+
+<img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/logo.png" width="100%">
+
 
 ## **Getting Start**
 
@@ -70,6 +74,69 @@ config.perspective_key = 'your-perspective-api-key'
 
 
 ### **Safety**
+
+Four subsections in safety evaluation:
+
+* Jailbreak: `jailbreak.json`
+* Exaggerated Safety: `XSTest.json`
+* Toxicity: `jailbreak.json`
+* Misuse: `misuse.json`
+
+!!! example
+
+    Preliminary:
+
+    ```python
+    from trustllm.task import safety
+    from trustllm.utils import file_process
+    from trustllm import config
+    
+    evaluator = safety.SafetyEval()
+    ```
+
+    Jailbreak evaluation:
+    ```python
+    jailbreak_data = file_process.load_json('jailbreak_data_json_path')
+    print(evaluator.jailbreak_eval(jailbreak_data, eval_type='total'))
+    print(evaluator.jailbreak_eval(jailbreak_data, eval_type='single'))
+    ```
+
+    Exaggerated evaluation:
+    ```python
+    exaggerated_data = file_process.load_json('exaggerated_data_json_path')
+    print(evaluator.exaggerated_eval(exaggerated_data))
+    ```
+
+    !!! note
+
+        Toxicity data for evaluation is based on the evaluated results of jailbreak data. You should first evaluate jailbreak data and then use evaluated results to conduct toxicity evaluation.
+    
+    Toxicity evaluation:
+
+    ```python
+    # If you have not saved evaluated jailbreak results
+    jailbreak_data = file_process.load_json('jailbreak_data_json_path')
+    eval_data, _ = evaluator.jailbreak_eval(jailbreak_data, eval_type='total/single', return_dat=True)
+    print(evaluator.toxicity_eval(eval_data, perspective_api=config.perspective_key))
+    
+    # If you have saved evaluated jailbreak results
+    toxicity_data = file_process.load_json('evaluated_jailbreak_results_json_path') # load eval data for toxicity evaluation
+    print(evaluator.toxicity_eval(toxicity_data, perspective_api=config.perspective_key))
+    ```
+
+    Misuse evaluation:
+
+    ```python
+    misuse_data = file_process.load_json('misuse_data.json')
+    print(evaluator.misuse_eval(misuse_data))
+    ```
+
+    Requirement:
+
+    * openai api (gpt-4-turbo)
+    * perspective api
+    * huggingface evaluator: LibrAI/longformer-harmful-ro
+
 
 
 ### **Fairness**

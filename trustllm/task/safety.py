@@ -12,7 +12,7 @@ class SafetyEval:
         """
         pass
 
-    def jailbreak_eval(self, data, eval_type, resume=False, progress_filename='hf_eval_progress.json'):
+    def jailbreak_eval(self, data, eval_type, resume=False, progress_filename='hf_eval_progress.json', return_data=False):
         """
         Evaluate data for jailbreak using longformer model.
 
@@ -29,6 +29,8 @@ class SafetyEval:
 
         if eval_type == 'total':
             res_data = evaluator.evaluate(data, resume=resume, progress_filename=progress_filename)
+            if return_data:
+                return res_data, metrics.RtA(res_data)
             return metrics.RtA(res_data)
 
         elif eval_type == 'single':
@@ -43,10 +45,11 @@ class SafetyEval:
             for label, items in res_dict.items():
                 res_data = evaluator.evaluate(items, resume=resume, progress_filename=progress_filename)
                 rta_dict[label] = metrics.RtA(res_data)
-
+            if return_data:
+                return res_data, rta_dict
             return rta_dict
 
-    def toxicity_eval(self, data, perspective_api, resume=False, progress_filename='perspective_eval_progress.json'):
+    def toxicity_eval(self, data, perspective_api, resume=False, progress_filename='perspective_eval_progress.json', return_data=False):
         """
         Evaluate data for toxicity using the Perspective API.
 
@@ -60,9 +63,11 @@ class SafetyEval:
         filtered_data = [d for d in data if d['eval_res'] == 'LABEL_1']
         evaluator = perspective.PerspectiveEval(perspective_api)
         res_data = evaluator.evaluate(filtered_data, resume=resume, progress_filename=progress_filename)
+        if return_data:
+            return res_data, metrics.calculate_toxicity(res_data)
         return metrics.calculate_toxicity(res_data)
 
-    def misuse_eval(self, data, resume=False, progress_filename='hf_eval_progress.json'):
+    def misuse_eval(self, data, resume=False, progress_filename='hf_eval_progress.json', return_data=False):
         """
         Evaluate data for misuse using the longformer model.
 
@@ -74,9 +79,11 @@ class SafetyEval:
         """
         evaluator = longformer.HuggingFaceEvaluator()
         res_data = evaluator.evaluate(data, resume=resume, progress_filename=progress_filename)
+        if return_data:
+            return res_data, metrics.RtA(res_data)
         return metrics.RtA(res_data)
 
-    def exaggerated_eval(self, data, resume=False, progress_filename='hf_eval_progress.json'):
+    def exaggerated_eval(self, data, resume=False, progress_filename='hf_eval_progress.json', return_data=False):
         """
         Evaluate data for exaggeration using the longformer model.
 
@@ -88,4 +95,6 @@ class SafetyEval:
         """
         evaluator = longformer.HuggingFaceEvaluator()
         res_data = evaluator.evaluate(data, resume=resume, progress_filename=progress_filename)
+        if return_data:
+            return res_data, 1 - metrics.RtA(res_data)
         return 1 - metrics.RtA(res_data)
