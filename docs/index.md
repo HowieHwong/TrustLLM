@@ -55,6 +55,37 @@ with open(filename, 'w') as file:
 ```
 
 
+### **API Setting**
+
+```python
+from trustllm import config
+
+config.openai_key = 'your-openai-api-key'
+
+config.perspective_key = 'your-perspective-api-key'
+```
+
+
+
+
+
+
+### **Truthfulness**
+
+
+### **Safety**
+
+
+### **Fairness**
+
+
+### **Robustness**
+
+### **Privacy**
+
+### **Machine Ethics**
+
+
 ## **Leaderboard**
 
 If you want to view the performance of all models or upload the performance of your LLM, please refer to [this link](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
