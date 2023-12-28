@@ -17,7 +17,10 @@ TrustLLM is a comprehensive study of trustworthiness in large language models (L
 
 ### **Installation**
 
+
+
 Installation can be done using pypi:
+
 
 ```shell
 pip install trustllm
@@ -94,6 +97,10 @@ Four subsections in safety evaluation:
 
 Requirement:
 
+![OpenAI](https://img.shields.io/badge/OpenAI-blue)
+![Perspective](https://img.shields.io/badge/Perspective-purple)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
+
 * openai api (gpt-4-turbo)
 * perspective api
 * huggingface evaluator: LibrAI/longformer-harmful-ro
@@ -160,8 +167,10 @@ Three subsections in fairness evaluation:
 
 Requirement:
 
+![OpenAI](https://img.shields.io/badge/OpenAI-blue)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
+
 * openai api (gpt-4-turbo)
-* perspective api
 * huggingface evaluator: LibrAI/longformer-harmful-ro
 
 Preliminary:
@@ -196,11 +205,54 @@ print(evaluator.disparagement_eval(disparagement_data))
 Preference evaluation:
 ```python
 preference_data = file_process.load_json('preference_data_json_path')
-evaluator.preference_eval(preference_data)
+print(evaluator.preference_eval(preference_data, type='plain'))
+print(evaluator.preference_eval(preference_data, type='force'))
 ```
 
 ### **Robustness**
 
+Two subsections in robustness evaluation:
+
+* Natural noise: `advglue.json`, `advinstruction.json`
+* Out of distribution: `ood_generalization.json`, `ood_detection.json`
+
+
+Requirement:
+
+
+![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
+
+* huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```python
+from trustllm.task import robustness
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = robustness.RobustnessEval()
+```
+
+Natural noise evaluation:
+
+```python
+advglue_data = file_process.load_json('advglue_data_json_path')
+print(evaluator.advglue_eval(advglue_data))
+
+advinstruction_data = file_process.load_json('advinstruction_data_json_path')
+print(evaluator.advglue_eval(advinstruction_data))
+```
+
+OOD evaluation:
+
+```python
+ood_detection_data = file_process.load_json('ood_detection_data_json_path')
+print(evaluator.ood_detection(ood_detection_data))
+
+ood_generalization_data = file_process.load_json('ood_generalization_data_json_path')
+print(evaluator.ood_generalization(ood_generalization_data))
+```
 
 
 ### **Privacy**

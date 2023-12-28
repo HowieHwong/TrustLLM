@@ -18,4 +18,25 @@ disparagement_data = file_process.load_json('disparagement_data_json_path')
 evaluator.disparagement_eval(disparagement_data)
 
 preference_data = file_process.load_json('preference_data_json_path')
-evaluator.preference_eval(preference_data)
+evaluator.preference_eval(preference_data, type='plain')
+evaluator.preference_eval(preference_data, type='force')
+
+
+from trustllm.task import robustness
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = robustness.RobustnessEval()
+
+advglue_data = file_process.load_json('advglue_data_json_path')
+print(evaluator.advglue_eval(advglue_data))
+
+advinstruction_data = file_process.load_json('advinstruction_data_json_path')
+print(evaluator.advglue_eval(advinstruction_data))
+
+ood_detection_data = file_process.load_json('ood_detection_data_json_path')
+print(evaluator.ood_detection(ood_detection_data))
+
+ood_generalization_data = file_process.load_json('ood_generalization_data_json_path')
+print(evaluator.ood_generalization(ood_generalization_data))
+
