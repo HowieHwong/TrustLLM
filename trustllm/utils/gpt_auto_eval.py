@@ -9,7 +9,7 @@ from .. config import openai_key
 
 # A decorator for retrying the `get_res` function with exponential backoff and a stop condition
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
-def get_res(string):
+def get_res(string, model='gpt-4-1106-preview', temp=0):
     """
     Function to get response from OpenAI's ChatCompletion API.
 
@@ -24,11 +24,11 @@ def get_res(string):
     """
 
     completion = openai.ChatCompletion.create(
-        model='gpt-4-1106-preview',
+        model=model,
         messages=[
             {"role": "user", "content": string}
         ],
-        temperature=0,  # Setting the temperature to 0 for deterministic output
+        temperature=temp,  # Setting the temperature to 0 for deterministic output
     )
 
     # Checking if the response is empty
