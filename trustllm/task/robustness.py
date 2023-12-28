@@ -12,6 +12,9 @@ class RobustnessEval:
         assert isinstance(data, list)
             
         def judge(text, task):
+
+            assert task in ['qqp', 'qnli', 'mnli', 'sst2']
+
             def match_kw(text, keyword_list):
                 pattern = r'\b(?:' + '|'.join(keyword_list) + r')\b'
                 match = re.search(pattern, text, re.IGNORECASE)

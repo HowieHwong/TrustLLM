@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+---
+
+
 # **TrustLLM: Trustworthiness in Large Language Models**
 
 
@@ -78,68 +84,76 @@ config.perspective_key = 'your-perspective-api-key'
 Four subsections in safety evaluation:
 
 * Jailbreak: `jailbreak.json`
-* Exaggerated Safety: `XSTest.json`
+* Exaggerated Safety: `exaggerated_safety.json`
 * Toxicity: `jailbreak.json`
 * Misuse: `misuse.json`
 
-!!! example
+Requirement:
 
-    Preliminary:
+* openai api (gpt-4-turbo)
+* perspective api
+* huggingface evaluator: LibrAI/longformer-harmful-ro
 
-    ```python
-    from trustllm.task import safety
-    from trustllm.utils import file_process
-    from trustllm import config
+Preliminary:
+
+
+
+```python
+from trustllm.task import safety
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = safety.SafetyEval()
+```
+
+Jailbreak evaluation (`eval_type`: type of evaluation, either `total` or `single`):
+
+```python
+jailbreak_data = file_process.load_json('jailbreak_data_json_path')
+print(evaluator.jailbreak_eval(jailbreak_data, eval_type='total')) # return overall RtA
+print(evaluator.jailbreak_eval(jailbreak_data, eval_type='single')) # return RtA dict for each kind of jailbreak ways
+```
+
+Exaggerated evaluation:
+
+```python
+exaggerated_data = file_process.load_json('exaggerated_data_json_path')
+print(evaluator.exaggerated_eval(exaggerated_data))
+```
+
+Toxicity evaluation:
+
+!!! note
+
+    Toxicity data for evaluation is based on the evaluated results of jailbreak data. You should first evaluate jailbreak data and then use evaluated results to conduct toxicity evaluation.
     
-    evaluator = safety.SafetyEval()
-    ```
 
-    Jailbreak evaluation:
-    ```python
-    jailbreak_data = file_process.load_json('jailbreak_data_json_path')
-    print(evaluator.jailbreak_eval(jailbreak_data, eval_type='total'))
-    print(evaluator.jailbreak_eval(jailbreak_data, eval_type='single'))
-    ```
+```python
+# If you have not saved evaluated jailbreak results
+jailbreak_data = file_process.load_json('jailbreak_data_json_path')
+eval_data, _ = evaluator.jailbreak_eval(jailbreak_data, eval_type='total/single', return_dat=True)
+print(evaluator.toxicity_eval(eval_data, perspective_api=config.perspective_key))
 
-    Exaggerated evaluation:
-    ```python
-    exaggerated_data = file_process.load_json('exaggerated_data_json_path')
-    print(evaluator.exaggerated_eval(exaggerated_data))
-    ```
+# If you have saved evaluated jailbreak results
+toxicity_data = file_process.load_json('evaluated_jailbreak_results_json_path') # load eval data for toxicity evaluation
+print(evaluator.toxicity_eval(toxicity_data, perspective_api=config.perspective_key))
+```
 
-    !!! note
+Misuse evaluation:
 
-        Toxicity data for evaluation is based on the evaluated results of jailbreak data. You should first evaluate jailbreak data and then use evaluated results to conduct toxicity evaluation.
-    
-    Toxicity evaluation:
-
-    ```python
-    # If you have not saved evaluated jailbreak results
-    jailbreak_data = file_process.load_json('jailbreak_data_json_path')
-    eval_data, _ = evaluator.jailbreak_eval(jailbreak_data, eval_type='total/single', return_dat=True)
-    print(evaluator.toxicity_eval(eval_data, perspective_api=config.perspective_key))
-    
-    # If you have saved evaluated jailbreak results
-    toxicity_data = file_process.load_json('evaluated_jailbreak_results_json_path') # load eval data for toxicity evaluation
-    print(evaluator.toxicity_eval(toxicity_data, perspective_api=config.perspective_key))
-    ```
-
-    Misuse evaluation:
-
-    ```python
-    misuse_data = file_process.load_json('misuse_data.json')
-    print(evaluator.misuse_eval(misuse_data))
-    ```
-
-    Requirement:
-
-    * openai api (gpt-4-turbo)
-    * perspective api
-    * huggingface evaluator: LibrAI/longformer-harmful-ro
-
-
+```python
+misuse_data = file_process.load_json('misuse_data.json')
+print(evaluator.misuse_eval(misuse_data))
+```
 
 ### **Fairness**
+
+Three subsections in fairness evaluation:
+
+* Stereotype: `stereotype_agreement.json`, `stereotype_recognition.json`, `stereotype_query_test.json`
+* Disparagement: `disparagement.json`
+* Preference: `preference_force.json`
+
 
 
 ### **Robustness**

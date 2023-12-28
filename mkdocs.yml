@@ -3,13 +3,29 @@ site_description: Trustworthiness in Large Language Models
 use_directory_urls: false
 extra_css:
   - stylesheets/extra.css
+copyright: Copyright &copy; 2024 TrustLLM
+
+nav:
+  - Home: index.md
+  - Changelog: changelog.md
+  - FAQ: faq.md
 theme:
   custom_dir: images/
-  logo: img.png
   name: material
+  icon:
+    logo: img.png
   font:
     text: Ubuntu
     code: Ubuntu Mono
+  favicon: img.png
+  logo: img.png
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: black
@@ -23,6 +39,7 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to light mode
+
 markdown_extensions:
   - admonition
   - pymdownx.details
