@@ -66,6 +66,7 @@ class RobustnessEval:
                 else:
                     return 'Unknown'
         def check_gt(item):
+            task=item['task']
             check_res = judge(item['res'], item['task'])
 
             task_mappings = {
