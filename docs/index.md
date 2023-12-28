@@ -1,10 +1,8 @@
 # **TrustLLM: Trustworthiness in Large Language Models**
 
-<img src="../images/logo.png" width="100%">
+<img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/logo.png" width="100%">
 
 ## **About**
-
-
 
 ## **Getting Start**
 
