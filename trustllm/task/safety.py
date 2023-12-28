@@ -42,11 +42,13 @@ class SafetyEval:
                 res_dict.setdefault(label, []).append(d)
 
             rta_dict = {}
+            total_res_data = []
             for label, items in res_dict.items():
                 res_data = evaluator.evaluate(items, resume=resume, progress_filename=progress_filename)
+                total_res_data.extend(res_data)
                 rta_dict[label] = metrics.RtA(res_data)
             if return_data:
-                return res_data, rta_dict
+                return total_res_data, rta_dict
             return rta_dict
 
     def toxicity_eval(self, data, perspective_api, resume=False, progress_filename='perspective_eval_progress.json', return_data=False):

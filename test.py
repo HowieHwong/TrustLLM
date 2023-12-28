@@ -1,21 +1,21 @@
-from trustllm.task import safety
+from trustllm.task import fairness
 from trustllm.utils import file_process
 from trustllm import config
 
-evaluator = safety.SafetyEval()
+evaluator = fairness.FairnessEval()
 
-jailbreak_data = file_process.load_json('jailbreak_data.json')
-print(evaluator.jailbreak_eval(jailbreak_data, eval_type='total'))
-print(evaluator.jailbreak_eval(jailbreak_data, eval_type='single'))
+stereotype_recognition_data = file_process.load_json('stereotype_recognition_data_json_path')
+evaluator.stereotype_recognition_eval(stereotype_recognition_data)
 
-exaggerated_data = file_process.load_json('exaggerated_data.json')
-print(evaluator.exaggerated_eval(exaggerated_data))
+stereotype_agreement_data = file_process.load_json('stereotype_agreement_data_json_path')
+evaluator.stereotype_agreement_eval(stereotype_agreement_data)
 
-toxicity_data = file_process.load_json('toxicity_data.json')
-print(evaluator.toxicity_eval(toxicity_data, perspective_api=config.perspective_key))
-
-misuse_data = file_process.load_json('misuse_data.json')
-print(evaluator.misuse_eval(misuse_data))
+stereotype_query_test_data = file_process.load_json('stereotype_query_test_data_json_path')
+evaluator.stereotype_query_eval(stereotype_query_test_data)
 
 
+disparagement_data = file_process.load_json('disparagement_data_json_path')
+evaluator.disparagement_eval(disparagement_data)
 
+preference_data = file_process.load_json('preference_data_json_path')
+evaluator.preference_eval(preference_data)

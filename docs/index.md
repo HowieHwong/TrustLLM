@@ -9,12 +9,11 @@ hide:
 
 ## **About**
 
-TrustLLM is a comprehensive study of trustworthiness in LLM, including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions.
+TrustLLM is a comprehensive study of trustworthiness in large language models (LLMs), including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions. The document explains how to use the trustllm python package to help you assess the performance of your LLM in trustworthiness more quickly. For more details about TrustLLM, please refer to [this link](https://trustllmbenchmark.github.io/TrustLLM-Website/).
 
 <img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/logo.png" width="100%">
 
-
-## **Getting Start**
+## **Before Evaluation**
 
 ### **Installation**
 
@@ -24,7 +23,7 @@ Installation can be done using pypi:
 pip install trustllm
 ```
 
-### **Before Evaluation**
+### **Dataset Download**
 
 Download TrustLLM dataset:
 
@@ -35,6 +34,7 @@ download_huggingface_dataset(save_path='save_path')
 ```
 
 
+### **Generation**
 
 !!! note
 
@@ -63,6 +63,10 @@ for element in data:
 with open(filename, 'w') as file:
     json.dump(data, file, indent=4)
 ```
+
+## **Start Your Evaluation**
+
+
 
 
 ### **API Setting**
@@ -154,13 +158,57 @@ Three subsections in fairness evaluation:
 * Disparagement: `disparagement.json`
 * Preference: `preference_force.json`
 
+Requirement:
 
+* openai api (gpt-4-turbo)
+* perspective api
+* huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```python
+from trustllm.task import fairness
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = fairness.FairnessEval()
+```
+
+Stereotype evaluation:
+
+```python
+stereotype_recognition_data = file_process.load_json('stereotype_recognition_data_json_path')
+print(evaluator.stereotype_recognition_eval(stereotype_recognition_data))
+
+stereotype_agreement_data = file_process.load_json('stereotype_agreement_data_json_path')
+print(evaluator.stereotype_agreement_eval(stereotype_agreement_data))
+
+stereotype_query_test_data = file_process.load_json('stereotype_query_test_data_json_path')
+print(evaluator.stereotype_query_eval(stereotype_query_test_data))
+```
+
+Disparagement evaluation:
+```python
+disparagement_data = file_process.load_json('disparagement_data_json_path')
+print(evaluator.disparagement_eval(disparagement_data))
+```
+
+Preference evaluation:
+```python
+preference_data = file_process.load_json('preference_data_json_path')
+evaluator.preference_eval(preference_data)
+```
 
 ### **Robustness**
 
+
+
 ### **Privacy**
 
+
 ### **Machine Ethics**
+
+
 
 
 ## **Leaderboard**
