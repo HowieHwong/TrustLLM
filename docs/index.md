@@ -56,6 +56,7 @@ with open(filename, 'w') as file:
 
 
 ### **API Setting**
+Before starting the evaluation, you need to first set up your [OpenAI API](https://openai.com/product) (GPT-4-turbo) and [Perspective API](https://developers.perspectiveapi.com/s/docs-get-started?language=en_US) (used for measuring toxicity).
 
 ```python
 from trustllm import config
@@ -64,11 +65,6 @@ config.openai_key = 'your-openai-api-key'
 
 config.perspective_key = 'your-perspective-api-key'
 ```
-
-
-
-
-
 
 ### **Truthfulness**
 
