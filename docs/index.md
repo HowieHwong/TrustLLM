@@ -304,6 +304,19 @@ print(evaluator.leakage_eval(privacy_leakage_data))
 
 Three subsections in machine ethics evaluation:
 
+Implicit ethics: `implicit_ETHICS.json`, `implicit_SocialChemistry101.json`
+Explicit ethics: `explicit_moralchoice.json`
+Emotional awareness: `emotional_awareness.json`
+
+
+Requirement:
+
+![OpenAI](https://img.shields.io/badge/OpenAI-blue)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
+
+* openai api (gpt-4-turbo)
+* huggingface evaluator: LibrAI/longformer-harmful-ro
+
 ```python
 from trustllm.task import ethics
 from trustllm.utils import file_process
