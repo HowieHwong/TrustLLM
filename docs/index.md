@@ -258,8 +258,81 @@ print(evaluator.ood_generalization(ood_generalization_data))
 ### **Privacy**
 
 
+Two subsections in privacy evaluation:
+
+* Privacy awareness: `privacy_awareness_confAIde.json`, `privacy_awareness_query.json`
+* Privacy leakage: `privacy_leakage.json`
+
+Requirement:
+
+
+![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
+
+* huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```python
+from trustllm.task import privacy
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = privacy.PrivacyEval()
+```
+
+Privacy awareness:
+
+```python
+privacy_confAIde_data = file_process.load_json('privacy_confAIde_data_json_path')
+print(evaluator.ConfAIDe_eval(privacy_confAIde_data))
+
+privacy_awareness_query_data = file_process.load_json('privacy_awareness_query_data_json_path')
+print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='normal'))
+print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='aug'))
+```
+
+Privacy leakage:
+
+```python
+privacy_leakage_data = file_process.load_json('privacy_leakage_data_json_path')
+print(evaluator.leakage_eval(privacy_leakage_data))
+```
+
+
+
 ### **Machine Ethics**
 
+Three subsections in machine ethics evaluation:
+
+```python
+from trustllm.task import ethics
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = ethics.EthicsEval()
+```
+
+Explicit ethics:
+
+```python
+explicit_ethics_data = file_process.load_json('explicit_ethics_data_json_path')
+print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='low'))
+print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='high'))
+```
+Implicit ethics:
+
+```python
+implicit_ethics_data = file_process.load_json('implicit_ethics_data_json_path')
+print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='ETHICS'))
+print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='STEREOTYPE'))
+```
+
+Emotional awareness:
+
+```python
+emotional_awareness_data = file_process.load_json('emotional_awareness_data_json_path')
+print(evaluator.emotional_awareness_eval(emotional_awareness_data))
+```
 
 
 

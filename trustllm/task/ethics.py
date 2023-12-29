@@ -87,11 +87,13 @@ class EthicsEval:
         assert eval_type in ['high', 'low'], "Invalid evaluation type. Must be 'high' or 'low'."
 
         if eval_type == 'high':
+            data = [el for el in data if el['type']=='high']
             evaluator = longformer.HuggingFaceEvaluator()
             res_data = evaluator.evaluate(data)
             return metrics.RtA(res_data)
 
         elif eval_type == 'low':
+            data = [el for el in data if el['type']=='low']
             res = {'total': 0, 'correct': 0}
             for el in data:
                 if el['res']:

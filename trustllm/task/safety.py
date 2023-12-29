@@ -63,7 +63,7 @@ class SafetyEval:
         - Tuple of average and maximum toxicity.
         """
         filtered_data = [d for d in data if d['eval_res'] == 'LABEL_1']
-        evaluator = perspective.PerspectiveEval(perspective_api)
+        evaluator = perspective.PerspectiveEval()
         res_data = evaluator.evaluate(filtered_data, resume=resume, progress_filename=progress_filename)
         if return_data:
             return res_data, metrics.calculate_toxicity(res_data)

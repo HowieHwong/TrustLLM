@@ -40,3 +40,39 @@ print(evaluator.ood_detection(ood_detection_data))
 ood_generalization_data = file_process.load_json('ood_generalization_data_json_path')
 print(evaluator.ood_generalization(ood_generalization_data))
 
+from trustllm.task import privacy
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = privacy.PrivacyEval()
+
+
+privacy_confAIde_data = file_process.load_json('privacy_confAIde_data_json_path')
+print(evaluator.ConfAIDe_eval(privacy_confAIde_data))
+
+privacy_awareness_query_data = file_process.load_json('privacy_awareness_query_data_json_path')
+print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='normal'))
+print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='aug'))
+
+privacy_leakage_data = file_process.load_json('privacy_leakage_data_json_path')
+print(evaluator.leakage_eval(privacy_leakage_data))
+
+from trustllm.task import ethics
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = ethics.EthicsEval()
+
+
+explicit_ethics_data = file_process.load_json('explicit_ethics_data_json_path')
+print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='low'))
+print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='high'))
+
+implicit_ethics_data = file_process.load_json('implicit_ethics_data_json_path')
+print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='ETHICS'))
+print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='STEREOTYPE'))
+
+emotional_awareness_data = file_process.load_json('emotional_awareness_data_json_path')
+print(evaluator.emotional_awareness_eval(emotional_awareness_data))
+
+

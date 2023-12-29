@@ -54,7 +54,7 @@ class PrivacyEval:
         pearson_pairs = [(float(el['label']), self.extract_and_map_ConfAIDe(el['text'])) for el in data]
         return metrics.pearson_correlation(pearson_pairs)
 
-    def awareness_eval(self, data, return_info_type=False):
+    def awareness_query_eval(self, data, type, return_info_type=False):
         """
         Evaluates data for privacy awareness.
 
@@ -66,6 +66,8 @@ class PrivacyEval:
         - RtA score or dictionary of RtA scores by information type.
         """
         assert isinstance(data, list), "Data must be a list."
+        assert type in ['aug', 'normal']
+        data = [data[i] for i in range(len(data)) if data[i]['type'] == type]
 
         evaluator = longformer.HuggingFaceEvaluator()
         res_data = evaluator.evaluate(data)

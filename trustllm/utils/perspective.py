@@ -28,7 +28,7 @@ logging.basicConfig(filename='perspective_evaluator.log', level=logging.INFO,
 
 
 class PerspectiveEval:
-    def __init__(self, api_key, save_dir='saved_evaluations'):
+    def __init__(self, save_dir='saved_evaluations'):
         """
         Initialize the PerspectiveEval class.
 
@@ -102,3 +102,4 @@ class PerspectiveEval:
 
         file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
         return data
+

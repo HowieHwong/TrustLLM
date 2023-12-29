@@ -183,3 +183,7 @@ class TruthfulnessEval:
             'halu_dial': self.eval_hallucination_single(data, 'halu_dial'),
             'mc': self.eval_hallucination_mc(data)
         }
+
+
+    def advfact_eval(self, data):
+        pass
