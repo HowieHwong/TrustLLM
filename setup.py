@@ -4,11 +4,11 @@ setup(
     name='TrustLLM',  
     version='0.1.0', 
     description='TrustLLM',  
-    author='Yue Huang', 
-    author_email='your.email@example.com',  
+    author='Yue Huang & Siyuan Wu & Haoran Wang',
+    author_email='trustllm.benchmark@gmail.com',
     url='https://github.com/HowieHwong/TrustLLM',  
     packages=find_packages(),  
-install_requires=[
+    install_requires=[
     'transformers',
     'numpy>=1.18.1',
     'scipy',

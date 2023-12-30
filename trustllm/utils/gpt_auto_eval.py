@@ -71,7 +71,7 @@ class AutoEvaluator:
         file_process.save_json(data, save_path)
         logging.info("Progress saved to %s", save_path)
 
-    def evaluate(self, data, task, resume=False, progress_filename='eval_progress.json'):
+    def evaluate(self, data, task, resume=False, progress_filename='eval_progress.json', concat=True):
         """
         Evaluate the given data or resume evaluation from saved progress.
 
@@ -85,6 +85,19 @@ class AutoEvaluator:
         - list: The evaluated data with results.
         """
         # If resume is True, load saved progress; otherwise, use provided data
+        task_prompt_dict = file_process.load_json('../prompt/task_prompt.json')
+        if not concat:
+            replace_dict = task_prompt_dict.get(task, '').get('mapping', '')
+            prompt = task_prompt_dict.get(task, '').get('prompt', '')
+            prompt_data = []
+            for el in data:
+                for k, v in replace_dict.items():
+                    prompt = prompt.replace(k, el[v])
+                prompt_data.append(prompt)
+        else:
+            prompt = task_prompt_dict.get(task, '').get('prompt', '')
+            prompt_data = [prompt + item['res'] for item in data]
+
         if resume:
             load_path = os.path.join(self.save_dir, progress_filename)
             try:
@@ -97,17 +110,14 @@ class AutoEvaluator:
         assert isinstance(data, list), "Data must be a list."
         assert task is not None, "Task must be specified for evaluation."
         # Load the task prompts for evaluation
-        task_prompt_dict = file_process.load_json('../prompt/task_prompt.json')
-        prompt = task_prompt_dict.get(task, '')
-        print('Evaluating...')
 
-        for item in tqdm(data):
+        print('Evaluating...')
+        for item, el in tqdm(zip(prompt_data, data)):
             try:
                 # Append the response to the prompt and evaluate
                 if 'eval_res' not in item:
-                    prompt += item.get('res', '')
-                    eval_res = get_res(prompt)
-                    item['eval_res'] = eval_res
+                    eval_res = get_res(item)
+                    el['eval_res'] = eval_res
                     logging.info("Evaluated item: %s", item)
             except Exception as e:
                 # Log the error and save the current progress
