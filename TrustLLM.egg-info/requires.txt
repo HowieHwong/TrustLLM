@@ -1,0 +1,8 @@
+transformers
+numpy>=1.18.1
+scipy
+pandas>=1.0.3
+scikit-learn
+openai
+tqdm
+tenacity
