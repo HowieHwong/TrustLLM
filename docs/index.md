@@ -317,6 +317,8 @@ Requirement:
 * openai api (gpt-4-turbo)
 * huggingface evaluator: LibrAI/longformer-harmful-ro
 
+Preliminary:
+
 ```python
 from trustllm.task import ethics
 from trustllm.utils import file_process
