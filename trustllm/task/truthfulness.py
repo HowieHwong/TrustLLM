@@ -225,5 +225,43 @@ class TruthfulnessEval:
                 correct = correct + 1
         return correct / len(gold)
 
+    def eval_internal_squad(self, data):
+        data = [el for el in data if el['source'] == 'squad']
+        for item in data:
+            try:
+                item['res'] = item['res'].split("Answer: ", 1)[1]
+            except:
+                pass
+
+        evaluator = gpt_auto_eval.AutoEvaluator()
+        eval_res = evaluator.evaluate(data, task='squad', concat=False)
+        return metrics.count_yes_no(eval_res)
+
+    def eval_internal_adv(self, data):
+        data = [el for el in data if el['source'] == 'adversarial']
+        for item in data:
+            item['question_text'] = item['question']["paragraphs"][0]["qas"][0]["question"]
+            item['res'] = item['res'].split("Answer: ", 1)[1]
+
+        evaluator = gpt_auto_eval.AutoEvaluator()
+        eval_res = evaluator.evaluate(data, task='adv', concat=False)
+        return metrics.count_yes_no(eval_res)
+
+    def eval_internal_hotpot(self, data):
+        data = [el for el in data if el['source'] == 'hotpot']
+        for item in data:
+            item['res'] = item['res'].split("Answer: ", 1)[1]
+
+        evaluator = gpt_auto_eval.AutoEvaluator()
+        eval_res = evaluator.evaluate(data, task='hotpot', concat=False)
+
+        return metrics.count_yes_no(eval_res)
+
+
     def internal_eval(self, data):
-        pass
+        return {
+            'codah': self.eval_internal_codah(data),
+            'squad': self.eval_internal_squad(data),
+            'adv': self.eval_internal_adv(data),
+            'hotpot': self.eval_internal_hotpot(data)
+        }
