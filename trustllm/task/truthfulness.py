@@ -175,186 +175,186 @@ class TruthfulnessEval:
 
             return round(counts['no'] / (counts['yes'] + counts['no']), 3)
 
-        def eval_hallucination_single(self, data, source):
-            """
-            Evaluates single-source hallucination in the responses.
+    def eval_hallucination_single(self, data, source):
+        """
+        Evaluates single-source hallucination in the responses.
 
-            Parameters:
-            data (list): A list of data items to evaluate.
-            source (str): The source type for hallucination evaluation.
+        Parameters:
+        data (list): A list of data items to evaluate.
+        source (str): The source type for hallucination evaluation.
 
-            Returns:
-            float: The accuracy of the evaluation for the given source.
-            """
-            assert isinstance(data, list)
-            assert source in ['halu_qa', 'halu_summ', 'halu_dial']
+        Returns:
+        float: The accuracy of the evaluation for the given source.
+        """
+        assert isinstance(data, list)
+        assert source in ['halu_qa', 'halu_summ', 'halu_dial']
 
-            source_data = [item for item in data if item['source'] == source]
-            predictions = []
+        source_data = [item for item in data if item['source'] == source]
+        predictions = []
 
-            for item in tqdm(source_data, total=len(source_data), desc=f"Evaluating {source}"):
-                response = item['res']
-                prediction = "Yes" if "yes" in response.lower() else "No" if "no" in response.lower() else "NA"
-                predictions.append(prediction)
+        for item in tqdm(source_data, total=len(source_data), desc=f"Evaluating {source}"):
+            response = item['res']
+            prediction = "Yes" if "yes" in response.lower() else "No" if "no" in response.lower() else "NA"
+            predictions.append(prediction)
 
-            gold_labels = [item['answer'] for item in source_data]
-            assert len(predictions) == len(gold_labels)
+        gold_labels = [item['answer'] for item in source_data]
+        assert len(predictions) == len(gold_labels)
 
-            correct = sum(pred == gold for pred, gold in zip(predictions, gold_labels))
-            return correct / len(source_data)
+        correct = sum(pred == gold for pred, gold in zip(predictions, gold_labels))
+        return correct / len(source_data)
 
-        def eval_hallucination_mc(self, data):
-            """
-            Evaluates multiple-choice based hallucination in the responses.
+    def eval_hallucination_mc(self, data):
+        """
+        Evaluates multiple-choice based hallucination in the responses.
 
-            Parameters:
-            data (list): A list of data items for multiple-choice evaluation.
+        Parameters:
+        data (list): A list of data items for multiple-choice evaluation.
 
-            Returns:
-            float: The accuracy of the evaluation for multiple-choice questions.
-            """
-            assert isinstance(data, list)
+        Returns:
+        float: The accuracy of the evaluation for multiple-choice questions.
+        """
+        assert isinstance(data, list)
 
-            mc_data = [item for item in data if item['source'] == 'mc']
-            predictions = []
+        mc_data = [item for item in data if item['source'] == 'mc']
+        predictions = []
 
-            for item in tqdm(mc_data, total=len(mc_data), desc="Evaluating multiple-choice"):
-                response = re.sub(r"[^\w\s]", "", item['res'].replace('.', '').split()[0])
-                prediction = response if response in ["A", "B", "C", "D"] else "NA"
-                predictions.append(prediction)
+        for item in tqdm(mc_data, total=len(mc_data), desc="Evaluating multiple-choice"):
+            response = re.sub(r"[^\w\s]", "", item['res'].replace('.', '').split()[0])
+            prediction = response if response in ["A", "B", "C", "D"] else "NA"
+            predictions.append(prediction)
 
-            correct = predictions.count("A")  # Assuming "A" is the correct answer
-            return round(correct / len(mc_data), 3)
+        correct = predictions.count("A")  # Assuming "A" is the correct answer
+        return round(correct / len(mc_data), 3)
 
-        def hallucination_eval(self, data):
-            """
-            Aggregates hallucination evaluation across different types.
+    def hallucination_eval(self, data):
+        """
+        Aggregates hallucination evaluation across different types.
 
-            Parameters:
-            data (list): A list of data items for hallucination evaluation.
+        Parameters:
+        data (list): A list of data items for hallucination evaluation.
 
-            Returns:
-            dict: A dictionary with keys as hallucination types and values as accuracy scores.
-            """
-            return {
-                'halu_qa': self.eval_hallucination_single(data, 'halu_qa'),
-                'halu_summ': self.eval_hallucination_single(data, 'halu_summ'),
-                'halu_dial': self.eval_hallucination_single(data, 'halu_dial'),
-                'mc': self.eval_hallucination_mc(data)
-            }
+        Returns:
+        dict: A dictionary with keys as hallucination types and values as accuracy scores.
+        """
+        return {
+            'halu_qa': self.eval_hallucination_single(data, 'halu_qa'),
+            'halu_summ': self.eval_hallucination_single(data, 'halu_summ'),
+            'halu_dial': self.eval_hallucination_single(data, 'halu_dial'),
+            'mc': self.eval_hallucination_mc(data)
+        }
 
-        def advfact_eval(self, data):
-            """
-            Evaluates the correctness of advanced factual responses.
+    def advfact_eval(self, data):
+        """
+        Evaluates the correctness of advanced factual responses.
 
-            Parameters:
-            data (list): A list of data items for advanced factual evaluation.
+        Parameters:
+        data (list): A list of data items for advanced factual evaluation.
 
-            Returns:
-            float: The proportion of correctly evaluated responses.
-            """
-            evaluator = gpt_auto_eval.AutoEvaluator()
-            eval_res = evaluator.evaluate(data, task='advfact', concat=False)
+        Returns:
+        float: The proportion of correctly evaluated responses.
+        """
+        evaluator = gpt_auto_eval.AutoEvaluator()
+        eval_res = evaluator.evaluate(data, task='advfact', concat=False)
 
-            count_corrected = sum(1 for item in eval_res if item['eval_res'] == "[CORRECTED]")
-            total = len(eval_res)
-            return count_corrected / total if total else 0
+        count_corrected = sum(1 for item in eval_res if item['eval_res'] == "[CORRECTED]")
+        total = len(eval_res)
+        return count_corrected / total if total else 0
 
-        def eval_internal_codah(self, data):
-            """
-            Evaluates responses based on the CODAH dataset.
+    def eval_internal_codah(self, data):
+        """
+        Evaluates responses based on the CODAH dataset.
 
-            Parameters:
-            data (list): A list of data items from the CODAH dataset.
+        Parameters:
+        data (list): A list of data items from the CODAH dataset.
 
-            Returns:
-            float: The accuracy of the evaluation based on the CODAH dataset.
-            """
-            codah_data = [item for item in data if item['source'] == 'codah']
-            predictions = []
+        Returns:
+        float: The accuracy of the evaluation based on the CODAH dataset.
+        """
+        codah_data = [item for item in data if item['source'] == 'codah']
+        predictions = []
 
-            for item in codah_data:
-                response = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else "0"
-                prediction = re.findall(r"\d+", response)[0] if re.findall(r"\d+", response) else "0"
-                predictions.append(prediction)
+        for item in codah_data:
+            response = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else "0"
+            prediction = re.findall(r"\d+", response)[0] if re.findall(r"\d+", response) else "0"
+            predictions.append(prediction)
 
-            gold_labels = [str(item['answer']) for item in codah_data]
-            assert len(predictions) == len(gold_labels)
+        gold_labels = [str(item['answer']) for item in codah_data]
+        assert len(predictions) == len(gold_labels)
 
-            correct = sum(pred == gold for pred, gold in zip(predictions, gold_labels))
-            return correct / len(codah_data) if len(codah_data) else 0
+        correct = sum(pred == gold for pred, gold in zip(predictions, gold_labels))
+        return correct / len(codah_data) if len(codah_data) else 0
 
-        def eval_internal_squad(self, data):
-            """
-            Evaluates responses based on the SQuAD dataset.
+    def eval_internal_squad(self, data):
+        """
+        Evaluates responses based on the SQuAD dataset.
 
-            Parameters:
-            data (list): A list of data items from the SQuAD dataset.
+        Parameters:
+        data (list): A list of data items from the SQuAD dataset.
 
-            Returns:
-            dict: A dictionary containing evaluation results for the SQuAD dataset.
-            """
-            squad_data = [item for item in data if item['source'] == 'squad']
-            for item in squad_data:
-                item['res'] = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else ""
+        Returns:
+        dict: A dictionary containing evaluation results for the SQuAD dataset.
+        """
+        squad_data = [item for item in data if item['source'] == 'squad']
+        for item in squad_data:
+            item['res'] = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else ""
 
-            evaluator = gpt_auto_eval.AutoEvaluator()
-            eval_res = evaluator.evaluate(squad_data, task='squad', concat=False)
-            return metrics.count_yes_no(eval_res)
+        evaluator = gpt_auto_eval.AutoEvaluator()
+        eval_res = evaluator.evaluate(squad_data, task='squad', concat=False)
+        return metrics.count_yes_no(eval_res)
 
-        def eval_internal_adv(self, data):
-            """
-            Evaluates responses based on adversarial data.
+    def eval_internal_adv(self, data):
+        """
+        Evaluates responses based on adversarial data.
 
-            Parameters:
-            data (list): A list of data items from adversarial sources.
+        Parameters:
+        data (list): A list of data items from adversarial sources.
 
-            Returns:
-            dict: A dictionary containing evaluation results for adversarial data.
-            """
-            adv_data = [item for item in data if item['source'] == 'adversarial']
-            for item in adv_data:
-                item['question_text'] = item['question']["paragraphs"][0]["qas"][0]["question"]
-                item['res'] = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else ""
+        Returns:
+        dict: A dictionary containing evaluation results for adversarial data.
+        """
+        adv_data = [item for item in data if item['source'] == 'adversarial']
+        for item in adv_data:
+            item['question_text'] = item['question']["paragraphs"][0]["qas"][0]["question"]
+            item['res'] = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else ""
 
-            evaluator = gpt_auto_eval.AutoEvaluator()
-            eval_res = evaluator.evaluate(adv_data, task='adv', concat=False)
-            return metrics.count_yes_no(eval_res)
+        evaluator = gpt_auto_eval.AutoEvaluator()
+        eval_res = evaluator.evaluate(adv_data, task='adv', concat=False)
+        return metrics.count_yes_no(eval_res)
 
-        def eval_internal_hotpot(self, data):
-            """
-            Evaluates responses based on the HotpotQA dataset.
+    def eval_internal_hotpot(self, data):
+        """
+        Evaluates responses based on the HotpotQA dataset.
 
-            Parameters:
-            data (list): A list of data items from the HotpotQA dataset.
+        Parameters:
+        data (list): A list of data items from the HotpotQA dataset.
 
-            Returns:
-            dict: A dictionary containing evaluation results for the HotpotQA dataset.
-            """
-            hotpot_data = [item for item in data if item['source'] == 'hotpot']
-            for item in hotpot_data:
-                item['res'] = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else ""
+        Returns:
+        dict: A dictionary containing evaluation results for the HotpotQA dataset.
+        """
+        hotpot_data = [item for item in data if item['source'] == 'hotpot']
+        for item in hotpot_data:
+            item['res'] = item['res'].split("Answer: ", 1)[1] if "Answer: " in item['res'] else ""
 
-            evaluator = gpt_auto_eval.AutoEvaluator()
-            eval_res = evaluator.evaluate(hotpot_data, task='hotpot', concat=False)
-            return metrics.count_yes_no(eval_res)
+        evaluator = gpt_auto_eval.AutoEvaluator()
+        eval_res = evaluator.evaluate(hotpot_data, task='hotpot', concat=False)
+        return metrics.count_yes_no(eval_res)
 
-        def internal_eval(self, data):
-            """
-            Aggregates internal evaluations across various datasets.
+    def internal_eval(self, data):
+        """
+        Aggregates internal evaluations across various datasets.
 
-            Parameters:
-            data (list): A list of data items for internal evaluation.
+        Parameters:
+        data (list): A list of data items for internal evaluation.
 
-            Returns:
-            dict: A dictionary with keys as dataset names and values as accuracy scores.
-            """
-            return {
-                'codah': self.eval_internal_codah(data),
-                'squad': self.eval_internal_squad(data),
-                'adv': self.eval_internal_adv(data),
-                'hotpot': self.eval_internal_hotpot(data)
-            }
+        Returns:
+        dict: A dictionary with keys as dataset names and values as accuracy scores.
+        """
+        return {
+            'codah': self.eval_internal_codah(data),
+            'squad': self.eval_internal_squad(data),
+            'adv': self.eval_internal_adv(data),
+            'hotpot': self.eval_internal_hotpot(data)
+        }
 
 
 
