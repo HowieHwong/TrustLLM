@@ -2,9 +2,8 @@ import re
 from statistics import mean
 from sklearn.metrics import classification_report
 from tqdm import tqdm
-
-# Custom utility imports for processing, evaluation, and embedding
 from trustllm.utils import gpt_auto_eval, metrics, file_process, embedder
+
 
 class TruthfulnessEval:
     def __init__(self):
@@ -236,12 +235,14 @@ class TruthfulnessEval:
         Returns:
         dict: A dictionary with keys as hallucination types and values as accuracy scores.
         """
-        return {
+        performance = {
             'halu_qa': self.eval_hallucination_single(data, 'halu_qa'),
             'halu_summ': self.eval_hallucination_single(data, 'halu_summ'),
             'halu_dial': self.eval_hallucination_single(data, 'halu_dial'),
             'mc': self.eval_hallucination_mc(data)
         }
+        performance['avg'] = sum(performance.values()) / len(performance)
+        return performance
 
     def advfact_eval(self, data):
         """
@@ -349,12 +350,14 @@ class TruthfulnessEval:
         Returns:
         dict: A dictionary with keys as dataset names and values as accuracy scores.
         """
-        return {
+        performance = {
             'codah': self.eval_internal_codah(data),
             'squad': self.eval_internal_squad(data),
             'adv': self.eval_internal_adv(data),
             'hotpot': self.eval_internal_hotpot(data)
         }
+        performance['avg'] = sum(performance.values()) / len(performance)
+        return performance
 
 
 
