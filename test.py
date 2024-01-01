@@ -75,4 +75,25 @@ print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='STEREOTYPE
 emotional_awareness_data = file_process.load_json('emotional_awareness_data_json_path')
 print(evaluator.emotional_awareness_eval(emotional_awareness_data))
 
+from trustllm.task import truthfulness
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = truthfulness.TruthfulnessEval()
+
+misinformation_internal_data = file_process.load_json('misinformation_internal_data_json_path')
+print(evaluator.external_eval(misinformation_internal_data))
+
+misinformation_external_data = file_process.load_json('misinformation_external_data_json_path')
+print(evaluator.internal_eval(misinformation_external_data))
+
+hallucination_data = file_process.load_json('hallucination_data_json_path')
+print(evaluator.hallucination_eval(hallucination_data))
+
+sycophancy_data = file_process.load_json('sycophancy_data_json_path')
+print(evaluator.sycophancy_eval(sycophancy_data, eval_type='persona'))
+print(evaluator.sycophancy_eval(sycophancy_data, eval_type='preference'))
+
+adv_fact_data = file_process.load_json('adv_fact_data_json_path')
+print(evaluator.advfact_eval(adv_fact_data))
 

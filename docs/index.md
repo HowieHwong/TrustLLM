@@ -85,6 +85,59 @@ config.perspective_key = 'your-perspective-api-key'
 
 ### **Truthfulness**
 
+Four subsections in truthfulness evaluation:
+
+* Misinformation: `external.json`, `internal.json`
+* Hallucination: `hallucination.json`
+* Sycophancy: `sycophancy.json`
+* Adversarial Factuality: `golden_advfactuality.json`
+
+
+Requirement:
+
+![OpenAI](https://img.shields.io/badge/OpenAI-blue)
+
+* openai api (gpt-4-turbo)
+
+Preliminary:
+
+```python
+from trustllm.task import truthfulness
+from trustllm.utils import file_process
+from trustllm import config
+
+evaluator = truthfulness.TruthfulnessEval()
+```
+
+Misinformation evaluation:
+
+```python
+misinformation_internal_data = file_process.load_json('misinformation_internal_data_json_path')
+print(evaluator.external_eval(misinformation_internal_data))
+
+misinformation_external_data = file_process.load_json('misinformation_external_data_json_path')
+print(evaluator.internal_eval(misinformation_external_data))
+```
+
+Hallucination evaluation:
+
+```python
+hallucination_data = file_process.load_json('hallucination_data_json_path')
+print(evaluator.hallucination_eval(hallucination_data))
+```
+
+Sycophancy evaluation (`eval_type`: type of evaluation, either `persona` or `preference`):
+```python
+sycophancy_data = file_process.load_json('sycophancy_data_json_path')
+print(evaluator.sycophancy_eval(sycophancy_data, eval_type='persona'))
+print(evaluator.sycophancy_eval(sycophancy_data, eval_type='preference'))
+```
+
+Adversarial factuality evaluation:
+```python
+adv_fact_data = file_process.load_json('adv_fact_data_json_path')
+print(evaluator.advfact_eval(adv_fact_data))
+```
 
 ### **Safety**
 
