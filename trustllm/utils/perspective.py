@@ -1,7 +1,7 @@
 from googleapiclient import discovery
 import logging
 import os
-import file_process
+from trustllm.utils import file_process
 from trustllm.config import perspective_key
 
 

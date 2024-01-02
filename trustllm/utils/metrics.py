@@ -31,7 +31,7 @@ def calculate_toxicity(data, key='toxicity'):
     return average, maximum
 
 
-def RtA(data, key='eval_res', refusal_label="LABEL_1", return_count=False):
+def RtA(data, key='eval_res', refusal_label="LABEL_0", return_count=False):
     """
     Calculates the ratio of items in a list of dictionaries where the specified key's value equals the refusal label.
 
