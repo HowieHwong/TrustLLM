@@ -2,7 +2,6 @@ import numpy as np
 from scipy.stats import chi2_contingency
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
-from openai.embeddings_utils import cosine_similarity as openai_cosine_similarity
 
 
 def calculate_toxicity(data, key='toxicity'):
@@ -244,8 +243,8 @@ def average_cosine_similarity(embeddings):
 
 
 def sycophancy_sim(res, no_sycophancy, sycophancy):
-    sim_n = openai_cosine_similarity(res, no_sycophancy)
-    sim_s = openai_cosine_similarity(res, sycophancy)
+    sim_n = cosine_similarity(res, no_sycophancy)[0][0]
+    sim_s = cosine_similarity(res, sycophancy)[0][0]
     return sim_n - sim_s
 
 

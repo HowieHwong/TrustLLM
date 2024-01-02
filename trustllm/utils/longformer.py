@@ -1,8 +1,7 @@
 from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer
 import logging
-import logging
 import os
-import file_process
+from trustllm.utils import file_process
 
 # Configure logging
 logging.basicConfig(filename='huggingface_evaluator.log', level=logging.INFO,
