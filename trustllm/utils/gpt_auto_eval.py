@@ -4,7 +4,7 @@ from trustllm.utils import file_process
 from tqdm import tqdm
 import logging
 import os
-from .. config import openai_key
+import trustllm.config
 
 
 # A decorator for retrying the `get_res` function with exponential backoff and a stop condition
@@ -56,7 +56,7 @@ class AutoEvaluator:
         # Create the directory if it does not exist
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
-        openai.api_key = openai_key
+        openai.api_key = trustllm.config.openai_key
 
     def save_progress(self, data, filename='eval_progress.json'):
         """
@@ -85,14 +85,14 @@ class AutoEvaluator:
         - list: The evaluated data with results.
         """
         # If resume is True, load saved progress; otherwise, use provided data
-        task_prompt_dict = file_process.load_json('../prompt/task_prompt.json')
+        task_prompt_dict = file_process.load_json('trustllm/prompt/task_prompt.json')
         if not concat:
             replace_dict = task_prompt_dict.get(task, '').get('mapping', '')
             prompt = task_prompt_dict.get(task, '').get('prompt', '')
             prompt_data = []
             for el in data:
                 for k, v in replace_dict.items():
-                    prompt = prompt.replace(k, el[v])
+                    prompt = prompt.replace(k, str(el[v]))
                 prompt_data.append(prompt)
         else:
             prompt = task_prompt_dict.get(task, '').get('prompt', '')

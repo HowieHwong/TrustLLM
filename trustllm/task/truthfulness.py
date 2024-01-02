@@ -20,9 +20,6 @@ class TruthfulnessEval:
         Returns:
         float: The macro F1 score from the classification report.
         """
-        # Load data from a JSON file
-        data = file_process.load_json(data)
-
         # Filter data for specific source
         filtered_data = [item for item in data if item['source'] == source]
 

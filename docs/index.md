@@ -113,10 +113,10 @@ Misinformation evaluation:
 
 ```python
 misinformation_internal_data = file_process.load_json('misinformation_internal_data_json_path')
-print(evaluator.external_eval(misinformation_internal_data))
+print(evaluator.internal_eval(misinformation_internal_data))
 
 misinformation_external_data = file_process.load_json('misinformation_external_data_json_path')
-print(evaluator.internal_eval(misinformation_external_data))
+print(evaluator.external_eval(misinformation_external_data))
 ```
 
 Hallucination evaluation:
