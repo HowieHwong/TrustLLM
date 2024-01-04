@@ -2,27 +2,9 @@ import openai
 import os
 import logging
 from tqdm import tqdm
-from .. config import openai_key
+import trustllm.config
 from trustllm.utils import file_process
 from tenacity import retry, wait_random_exponential, stop_after_attempt
-
-
-@retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
-def get_embeddings(string):
-    """
-    Function to get embeddings from OpenAI's Embedding API.
-
-    Args:
-    - string (str): The input string for which the embedding is required.
-
-    Returns:
-    - Embeddings response from the API.
-    """
-    response = openai.Embedding.create(
-        model='text-embedding-ada-002',  # Example model
-        input=string
-    )
-    return response["data"][0]["embedding"]
 
 
 class DataEmbedder:
@@ -37,7 +19,24 @@ class DataEmbedder:
         # Create the directory if it does not exist
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
-        openai.api_key = openai_key
+        openai.api_key = trustllm.config.openai_key
+
+    @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
+    def get_embeddings(self, string):
+        """
+        Function to get embeddings from OpenAI's Embedding API.
+
+        Args:
+        - string (str): The input string for which the embedding is required.
+
+        Returns:
+        - Embeddings response from the API.
+        """
+        response = openai.Embedding.create(
+            model='text-embedding-ada-002',  # Example model
+            input=string
+        )
+        return response["data"][0]["embedding"]
 
     def save_embeddings(self, embeddings, filename):
         """
@@ -70,13 +69,10 @@ class DataEmbedder:
             except FileNotFoundError:
                 logging.warning("No saved progress file found. Starting from scratch.")
 
-
-        # Process each item from the last saved index
-        start_index = len(data)
         for el in tqdm(data):
             try:
                 if 'embedding' not in el:
-                    el['embedding'] = get_embeddings(el['res'])
+                    el['embedding'] = self.get_embeddings(el['res'])
                     logging.info("Evaluated item: %s", el.get('res', ''))
             except Exception as e:
                 logging.error("Error embedding item %s: %s", el.get('res', ''), str(e))

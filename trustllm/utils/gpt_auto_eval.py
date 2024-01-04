@@ -58,7 +58,7 @@ class AutoEvaluator:
             os.makedirs(self.save_dir)
         openai.api_key = trustllm.config.openai_key
 
-    def save_progress(self, data, filename='eval_progress.json'):
+    def save_progress(self, data, filename='auto_eval.json'):
         """
         Save the current evaluation progress to a file.
 
@@ -91,13 +91,13 @@ class AutoEvaluator:
             prompt = task_prompt_dict.get(task, '').get('prompt', '')
             prompt_data = []
             for el in data:
+                single = prompt
                 for k, v in replace_dict.items():
-                    prompt = prompt.replace(k, str(el[v]))
-                prompt_data.append(prompt)
+                    single = single.replace(k, str(el[v]))
+                prompt_data.append(single)
         else:
             prompt = task_prompt_dict.get(task, '').get('prompt', '')
             prompt_data = [prompt + item['res'] for item in data]
-
         if resume:
             load_path = os.path.join(self.save_dir, progress_filename)
             try:
@@ -110,15 +110,18 @@ class AutoEvaluator:
         assert isinstance(data, list), "Data must be a list."
         assert task is not None, "Task must be specified for evaluation."
         # Load the task prompts for evaluation
-
+        print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
         for item, el in tqdm(zip(prompt_data, data)):
             try:
                 # Append the response to the prompt and evaluate
                 if 'eval_res' not in item:
+                    print('Prompt: %s', item)
                     eval_res = get_res(item)
+                    print('Response: %s', eval_res)
                     el['eval_res'] = eval_res
                     logging.info("Evaluated item: %s", item)
+                    logging.info("Evaluated result: %s", eval_res)
             except Exception as e:
                 # Log the error and save the current progress
                 logging.error("Error evaluating item %s: %s", item, str(e))
