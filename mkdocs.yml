@@ -7,8 +7,11 @@ copyright: Copyright &copy; 2024 TrustLLM
 
 nav:
   - Home: index.md
+  - Guide:
+    - Generation Details: guides/generation_details.md
   - Changelog: changelog.md
   - FAQ: faq.md
+
 theme:
   custom_dir: images/
   name: material
