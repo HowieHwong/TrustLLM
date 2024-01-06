@@ -9,6 +9,7 @@ nav:
   - Home: index.md
   - Guide:
     - Generation Details: guides/generation_details.md
+    - Start Your Evaluation: guides/evaluation.md
   - Changelog: changelog.md
   - FAQ: faq.md
 

@@ -3,7 +3,12 @@ hide:
   - navigation
 ---
 
-## **⏰ TODO in Version 0.2.0**
+## **⏰ TODO in Coming Versions**
+
+- Dynamic dataset
+- More fine-grained datasets
+- Chinese output evaluation
+- Downstream application evaluation
 
 
 ## **Version 0.1.0**
