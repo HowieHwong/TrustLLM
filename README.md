@@ -1,7 +1,4 @@
 
-<img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/logo.png" width="100%">
-
-# **TrustLLM: Trustworthiness in Large Language Models**
 
 
 
@@ -10,7 +7,12 @@
 
 <div align="center">
 
-:earth_americas: [Website]() | :mortar_board: [Paper]() | :floppy_disk: [Dataset]() | :blue_book: [Document]() | :octocat: [Code]()
+
+<img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/logo.png" width="100%">
+
+# **TrustLLM: Trustworthiness in Large Language Models**
+
+:earth_americas: [Website]() | :mortar_board: [Paper]() | :floppy_disk: [Dataset]() | :rocket: [Leaderboard]() | :blue_book: [Toolkit Document]() | :octocat: [Code]()
 
 <img src="https://img.shields.io/github/last-commit/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="git-last-commit" />
 <img src="https://img.shields.io/github/commit-activity/m/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
