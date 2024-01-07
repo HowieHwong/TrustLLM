@@ -25,8 +25,9 @@
 We introduce TrustLLM, a comprehensive study of trustworthiness in LLMs, including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions. Specifically, we first propose a set of principles for trustworthy LLMs that span eight different dimensions. Based on these principles, we further establish a benchmark across six dimensions including truthfulness, safety, fairness, robustness, privacy, and machine ethics. 
 We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of over 30 datasets.
 
-
-
+<div align="center">
+<img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/benchmark_arch_00.png" width="100%">
+</div>
 
 ## **Dataset & Task**
 

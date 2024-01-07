@@ -70,6 +70,11 @@ with open(filename, 'w') as file:
 More details about generation can be found in [this page](guides/generation_details.md).
 
 
+## **Start Your Evaluation**
+
+See [this page](guides/evaluation.md) for more details.
+
+
 
 ## **Leaderboard**
 
