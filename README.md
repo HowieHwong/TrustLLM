@@ -28,6 +28,7 @@
     - [Generation](#generation)
   - [Evaluation](#evaluation)
   - [Leaderboard](#leaderboard)
+  - [Contribution](#contribution)
   - [Citation](#citation)
   - [License](#license)
 
@@ -175,11 +176,6 @@ See our [docs](https://howiehwong.github.io/TrustLLM/) for more details.
 If you want to view the performance of all models or upload the performance of your LLM, please refer to [this link](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
 
 
-## **Citation**
-```shell
-
-```
-
 ## **Contribution**
 
 We welcome your contributions, including but not limited to the following:
@@ -189,6 +185,11 @@ We welcome your contributions, including but not limited to the following:
 - Improvements to the toolkit
 
 If you intend to make improvements to the toolkit, please fork the repository first, make the relevant modifications to the code, and finally initiate a `pull request`.
+
+## **Citation**
+```shell
+
+```
 
 
 ## **License**
