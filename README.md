@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 <div align="center">
 
 
@@ -18,6 +12,20 @@
 <img src="https://img.shields.io/github/commit-activity/m/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
 <img src="https://img.shields.io/github/languages/top/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub top language" />
 </div>
+
+- [TrustLLM: Trustworthiness in Large Language Models](#trustllm-trustworthiness-in-large-language-models)
+  - [About](#about)
+  - [Dataset & Task](#dataset--task)
+    - [Dataset overview:](#dataset-overview)
+    - [Task overview:](#task-overview)
+  - [Before Evaluation](#before-evaluation)
+    - [Installation](#installation)
+    - [Dataset Download](#dataset-download)
+    - [Generation](#generation)
+  - [Evaluation](#evaluation)
+  - [Leaderboard](#leaderboard)
+  - [Citation](#citation)
+  - [License](#license)
 
 ## **About**
 
@@ -168,4 +176,5 @@ If you want to view the performance of all models or upload the performance of y
 
 ## **License**
 
+The code in this repository is open source under the [Apache-2.0 license](https://github.com/HowieHwong/TrustLLM/blob/main/LICENSE).
 
