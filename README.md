@@ -6,12 +6,16 @@
 
 # **TrustLLM: Trustworthiness in Large Language Models**
 
-:earth_americas: [Website](https://trustllmbenchmark.github.io/TrustLLM-Website/) | :mortar_board: [Paper]() | :floppy_disk: [Dataset]() | :rocket: [Leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html) | :blue_book: [Toolkit Document](https://howiehwong.github.io/TrustLLM/) | :octocat: [Code](https://github.com/HowieHwong/TrustLLM)
+:earth_americas: [Website](https://trustllmbenchmark.github.io/TrustLLM-Website/) | :mortar_board: [Paper]() | :floppy_disk: [Dataset]() | :rice_scene: [Data Map](https://atlas.nomic.ai/map/f64e87d3-c769-4a90-b15d-9dc833acc8ba/8e9d7045-503b-4ba0-bc64-7201cb7aacee?xs=-16.14086&xf=-1.88776&ys=-7.54937&yf=3.88213) | :rocket: [Leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html) | :blue_book: [Toolkit Document](https://howiehwong.github.io/TrustLLM/) | :octocat: [Code](https://github.com/HowieHwong/TrustLLM)
 
 <img src="https://img.shields.io/github/last-commit/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="git-last-commit" />
 <img src="https://img.shields.io/github/commit-activity/m/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
 <img src="https://img.shields.io/github/languages/top/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub top language" />
 </div>
+
+
+
+**Table of Content**
 
 - [TrustLLM: Trustworthiness in Large Language Models](#trustllm-trustworthiness-in-large-language-models)
   - [About](#about)
@@ -139,6 +143,8 @@ download_huggingface_dataset(save_path='save_path')
 
 
 The datasets are structured in JSON format, where each JSON file consists of a collection of `dict()`. Within each `dict()`, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
+
+For each dataset, we have configured the temperature setting during model generation. Please refer to [this page](https://howiehwong.github.io/TrustLLM/guides/generation_details.html#generation-parameters) for the settings.
 
 ```python
 import json

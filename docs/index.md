@@ -49,6 +49,8 @@ download_huggingface_dataset(save_path='save_path')
 
 The datasets are structured in JSON format, where each JSON file consists of a collection of `dict()`. Within each `dict()`, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
 
+For each dataset, we have configured the temperature setting during model generation. Please refer to [this page](guides/generation_details.md#generation-parameters) for the settings.
+
 ```python
 import json
 
@@ -67,7 +69,6 @@ with open(filename, 'w') as file:
     json.dump(data, file, indent=4)
 ```
 
-More details about generation can be found in [this page](guides/generation_details.md).
 
 
 ## **Start Your Evaluation**
