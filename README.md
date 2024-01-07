@@ -12,7 +12,7 @@
 
 # **TrustLLM: Trustworthiness in Large Language Models**
 
-:earth_americas: [Website]() | :mortar_board: [Paper]() | :floppy_disk: [Dataset]() | :rocket: [Leaderboard]() | :blue_book: [Toolkit Document]() | :octocat: [Code]()
+:earth_americas: [Website](https://trustllmbenchmark.github.io/TrustLLM-Website/) | :mortar_board: [Paper]() | :floppy_disk: [Dataset]() | :rocket: [Leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html) | :blue_book: [Toolkit Document](https://howiehwong.github.io/TrustLLM/) | :octocat: [Code](https://github.com/HowieHwong/TrustLLM)
 
 <img src="https://img.shields.io/github/last-commit/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="git-last-commit" />
 <img src="https://img.shields.io/github/commit-activity/m/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
@@ -164,5 +164,7 @@ If you want to view the performance of all models or upload the performance of y
 ```shell
 
 ```
+
+## **License**
 
 

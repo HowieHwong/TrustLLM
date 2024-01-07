@@ -67,7 +67,7 @@ with open(filename, 'w') as file:
     json.dump(data, file, indent=4)
 ```
 
-
+More details about generation can be found in [this page](guides/generation_details.md).
 
 
 
