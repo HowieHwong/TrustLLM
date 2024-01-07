@@ -180,6 +180,17 @@ If you want to view the performance of all models or upload the performance of y
 
 ```
 
+## **Contribution**
+
+We welcome your contributions, including but not limited to the following:
+
+- New evaluation datasets
+- Research on trustworthy issues
+- Improvements to the toolkit
+
+If you intend to make improvements to the toolkit, please fork the repository first, make the relevant modifications to the code, and finally initiate a `pull request`.
+
+
 ## **License**
 
 The code in this repository is open source under the [Apache-2.0 license](https://github.com/HowieHwong/TrustLLM/blob/main/LICENSE).

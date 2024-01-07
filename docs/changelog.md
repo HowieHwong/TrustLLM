@@ -5,6 +5,7 @@ hide:
 
 ## **⏰ TODO in Coming Versions**
 
+- Faster and simpler evaluation pipeline
 - Dynamic dataset
 - More fine-grained datasets
 - Chinese output evaluation
