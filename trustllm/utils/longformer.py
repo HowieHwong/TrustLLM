@@ -52,6 +52,8 @@ class HuggingFaceEvaluator:
 
         assert isinstance(data, list), "Data must be a list."
         print('Total data number: {}'.format(len(data)))
+        data = [el for el in data if el['res'] != None and el != ""]
+        print('Valid data number: {}'.format(len(data)))
         print('Evaluating...')
         for item in tqdm(data):
             try:

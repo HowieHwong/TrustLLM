@@ -6,7 +6,7 @@
 
 # **TrustLLM: Trustworthiness in Large Language Models**
 
-:earth_americas: [Website](https://trustllmbenchmark.github.io/TrustLLM-Website/) | :mortar_board: [Paper]() | :floppy_disk: [Dataset]() | :rice_scene: [Data Map](https://atlas.nomic.ai/map/f64e87d3-c769-4a90-b15d-9dc833acc8ba/8e9d7045-503b-4ba0-bc64-7201cb7aacee?xs=-16.14086&xf=-1.88776&ys=-7.54937&yf=3.88213) | :rocket: [Leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html) | :blue_book: [Toolkit Document](https://howiehwong.github.io/TrustLLM/) | :octocat: [Code](https://github.com/HowieHwong/TrustLLM)
+:earth_americas: [Website](https://trustllmbenchmark.github.io/TrustLLM-Website/) | :mortar_board: [Paper]() | :floppy_disk: [Dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset) | :rice_scene: [Data Map](https://atlas.nomic.ai/map/f64e87d3-c769-4a90-b15d-9dc833acc8ba/8e9d7045-503b-4ba0-bc64-7201cb7aacee?xs=-16.14086&xf=-1.88776&ys=-7.54937&yf=3.88213) | :rocket: [Leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html) | :blue_book: [Toolkit Document](https://howiehwong.github.io/TrustLLM/) | :octocat: [Code](https://github.com/HowieHwong/TrustLLM)
 
 <img src="https://img.shields.io/github/last-commit/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="git-last-commit" />
 <img src="https://img.shields.io/github/commit-activity/m/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
@@ -15,27 +15,26 @@
 
 <div align="center">
 
-<h1 style="color:red;">Our code and toolkit is still being organized, please stay tuned.</h1>
+
 
 
 </div>
 
 **Table of Content**
 
-- [TrustLLM: Trustworthiness in Large Language Models](#trustllm-trustworthiness-in-large-language-models)
-  - [About](#about)
-  - [Dataset & Task](#dataset--task)
-    - [Dataset overview:](#dataset-overview)
-    - [Task overview:](#task-overview)
-  - [Before Evaluation](#before-evaluation)
-    - [Installation](#installation)
-    - [Dataset Download](#dataset-download)
-    - [Generation](#generation)
-  - [Evaluation](#evaluation)
-  - [Leaderboard](#leaderboard)
-  - [Contribution](#contribution)
-  - [Citation](#citation)
-  - [License](#license)
+- [About](#about)
+- [Dataset & Task](#dataset--task)
+  - [Dataset overview:](#dataset-overview)
+  - [Task overview:](#task-overview)
+- [Before Evaluation](#before-evaluation)
+  - [Installation](#installation)
+  - [Dataset Download](#dataset-download)
+  - [Generation](#generation)
+- [Evaluation](#evaluation)
+- [Leaderboard](#leaderboard)
+- [Contribution](#contribution)
+- [Citation](#citation)
+- [License](#license)
 
 ## **About**
 
