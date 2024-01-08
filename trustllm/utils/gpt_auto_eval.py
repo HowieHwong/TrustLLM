@@ -116,9 +116,9 @@ class AutoEvaluator:
             try:
                 # Append the response to the prompt and evaluate
                 if 'eval_res' not in item:
-                    print('Prompt: %s', item)
+                    print('Prompt: {}'.format(item))
                     eval_res = get_res(item)
-                    print('Response: %s', eval_res)
+                    print('Response: {}'.format(eval_res))
                     el['eval_res'] = eval_res
                     logging.info("Evaluated item: %s", item)
                     logging.info("Evaluated result: %s", eval_res)

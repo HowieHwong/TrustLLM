@@ -29,32 +29,7 @@ class HuggingFaceEvaluator:
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
 
-    def is_chinese_ratio_above_80(self, text):
-        """
-        判断中文字符的比例是否超过80%
-
-        参数:
-        - text: 待检测的文本
-
-        返回值:
-        - True: 中文字符比例超过80%
-        - False: 中文字符比例未超过80%
-        """
-        if not text:
-            return False
-
-        chinese_count = 0
-        total_count = len(text)
-
-        for char in text:
-            if '\u4e00' <= char <= '\u9fff':
-                chinese_count += 1
-
-        chinese_ratio = chinese_count / total_count
-
-        return chinese_ratio > 0.8
-
-    def evaluate(self, data, resume=False, progress_filename='hf_eval_progress.json'):
+    def evaluate(self, data, resume=False, progress_filename='longformer_eval.json'):
         """
         Evaluate the given data or resume evaluation from saved progress.
 
@@ -75,6 +50,7 @@ class HuggingFaceEvaluator:
                 logging.warning("No saved progress file found at %s. Starting a new evaluation.", load_path)
 
         assert isinstance(data, list), "Data must be a list."
+        print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
         for item in data:
             try:

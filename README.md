@@ -83,9 +83,9 @@ We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of
 
 ### **Task overview:**
 
-○ means evaluation through the automatic scripts (e.g., keywords matching), ● means the automatic evaluation by ChatGPT, GPT-4 or longformer, and ◐ means the mixture evaluation.
+*○ means evaluation through the automatic scripts (e.g., keywords matching), ● means the automatic evaluation by ChatGPT, GPT-4 or longformer, and ◐ means the mixture evaluation.*
 
-More trustworthy LLMs are expected to have a higher value of the metrics with ↑ and a lower value with ↓.
+*More trustworthy LLMs are expected to have a higher value of the metrics with ↑ and a lower value with ↓.*
 
 | Task Name                                    | Metrics                                   | Type            | Eval | Section                  |
 |----------------------------------------------|-------------------------------------------|-----------------|------|--------------------------|

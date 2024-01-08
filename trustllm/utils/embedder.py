@@ -60,7 +60,7 @@ class DataEmbedder:
         - resume (bool): Flag to indicate whether to resume from saved progress.
         """
         assert isinstance(data, list), "Data must be a list."
-
+        print('Evaluating...')
         # If resume is True, attempt to load previous progress
         if resume:
             try:

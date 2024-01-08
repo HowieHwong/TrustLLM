@@ -2,14 +2,14 @@ from googleapiclient import discovery
 import logging
 import os
 from trustllm.utils import file_process
-from trustllm.config import perspective_key
+import trustllm.config
 
 
 def get_toxicity_value(sentence, api_key):
     client = discovery.build(
         "commentanalyzer",
         "v1alpha1",
-        developerKey=api_key,
+        developerKey=trustllm.config.perspective_key,
         discoveryServiceUrl="https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1",
         static_discovery=False,
     )
@@ -36,7 +36,7 @@ class PerspectiveEval:
         - api_key (str): API key for accessing the Perspective API.
         - save_dir (str): Directory where evaluation progress will be saved.
         """
-        self.api_key = perspective_key
+        self.api_key = trustllm.config.perspective_key
         self.save_dir = save_dir
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
@@ -87,7 +87,7 @@ class PerspectiveEval:
                 logging.warning("No saved progress file found at %s. Starting a new evaluation.", load_path)
 
         assert isinstance(data, list), "Data must be a list."
-
+        print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
         for item in data:
             try:
