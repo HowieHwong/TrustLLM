@@ -19,12 +19,32 @@ TrustLLM is a comprehensive study of trustworthiness in large language models (L
 
 
 
-Installation can be done using pypi:
+**Installation via `pip` (coming soon):**
 
 
 ```shell
 pip install trustllm
 ```
+
+**Installation via Github:**
+
+```shell
+git clone git@github.com:HowieHwong/TrustLLM.git
+```
+
+Creat a new environment:
+
+```shell
+conda create --name trustllm python=3.9
+```
+
+Install required packages:
+
+```shell
+cd trustllm
+pip install .
+```
+
 
 ### **Dataset Download**
 

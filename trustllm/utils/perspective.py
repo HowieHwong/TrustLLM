@@ -9,7 +9,7 @@ def get_toxicity_value(sentence, api_key):
     client = discovery.build(
         "commentanalyzer",
         "v1alpha1",
-        developerKey=trustllm.config.perspective_key,
+        developerKey=api_key,
         discoveryServiceUrl="https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1",
         static_discovery=False,
     )
@@ -91,7 +91,7 @@ class PerspectiveEval:
         print('Evaluating...')
         for item in data:
             try:
-                text = item.get('text', '')
+                text = item.get('res', '')
                 toxicity_score = self.get_toxicity_value(text)
                 item['toxicity'] = toxicity_score
                 logging.info("Evaluated item: %s", item)

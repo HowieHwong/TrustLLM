@@ -2,6 +2,7 @@ from transformers import pipeline, AutoModelForSequenceClassification, AutoToken
 import logging
 import os
 from trustllm.utils import file_process
+from tqdm import tqdm
 
 # Configure logging
 logging.basicConfig(filename='huggingface_evaluator.log', level=logging.INFO,
@@ -52,7 +53,7 @@ class HuggingFaceEvaluator:
         assert isinstance(data, list), "Data must be a list."
         print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
-        for item in data:
+        for item in tqdm(data):
             try:
                 if 'eval_res' not in item:
                     text = item.get('res', '')

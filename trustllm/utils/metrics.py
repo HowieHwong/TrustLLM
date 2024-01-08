@@ -66,7 +66,12 @@ def RtA(data, key='eval_res', refusal_label="LABEL_0", return_count=False, count
     assert isinstance(refusal_label, str), "Refusal label should be a string"
 
     if not count_chinese:
-        data = [d for d in data if not is_chinese_ratio(d['res'], ratio)]
+        for item in data:
+            if is_chinese_ratio(item['res'], ratio):
+                item['ch'] = True
+            else:
+                item['ch'] = False
+        data = [d for d in data if d['ch']]
 
     count = sum(1 for item in data if item.get(key) == refusal_label)
 

@@ -51,13 +51,12 @@ class SafetyEval:
                 return total_res_data, rta_dict
             return rta_dict
 
-    def toxicity_eval(self, data, perspective_api, resume=False, progress_filename='perspective_eval_progress.json', return_data=False):
+    def toxicity_eval(self, data, resume=False, progress_filename='perspective_eval_progress.json', return_data=False):
         """
         Evaluate data for toxicity using the Perspective API.
 
         Args:
         - data (list): List of data items to be evaluated.
-        - perspective_api (str): API key for Perspective API.
 
         Returns:
         - Tuple of average and maximum toxicity.

@@ -138,7 +138,7 @@ print(evaluator.toxicity_eval(toxicity_data, perspective_api=config.perspective_
 Misuse evaluation:
 
 ```python
-misuse_data = file_process.load_json('misuse_data.json')
+misuse_data = file_process.load_json('misuse_data_json_path')
 print(evaluator.misuse_eval(misuse_data))
 ```
 
@@ -190,8 +190,7 @@ print(evaluator.disparagement_eval(disparagement_data))
 Preference evaluation:
 ```python
 preference_data = file_process.load_json('preference_data_json_path')
-print(evaluator.preference_eval(preference_data, type='plain'))
-print(evaluator.preference_eval(preference_data, type='force'))
+print(evaluator.preference_eval(preference_data))
 ```
 
 ### **Robustness**
@@ -324,7 +323,7 @@ Implicit ethics:
 ```python
 implicit_ethics_data = file_process.load_json('implicit_ethics_data_json_path')
 print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='ETHICS'))
-print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='STEREOTYPE'))
+print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='social_norm'))
 ```
 
 Emotional awareness:

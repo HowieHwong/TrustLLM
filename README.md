@@ -13,7 +13,12 @@
 <img src="https://img.shields.io/github/languages/top/HowieHwong/TrustLLM?style=flat-square&color=5D6D7E" alt="GitHub top language" />
 </div>
 
+<div align="center">
 
+<h1 style="color:red;">Our code and toolkit is still being organized, please stay tuned.</h1>
+
+
+</div>
 
 **Table of Content**
 
@@ -119,18 +124,41 @@ We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of
 
 
 
+
+
+
 ## **Before Evaluation**
 
 ### **Installation**
 
 
-
-Installation can be done using pypi:
+**Installation via `pip`:**
 
 
 ```shell
 pip install trustllm
 ```
+
+**Installation via Github:**
+
+```shell
+git clone git@github.com:HowieHwong/TrustLLM.git
+```
+
+Creat a new environment:
+
+```shell
+conda create --name trustllm python=3.9
+```
+
+Install required packages:
+
+```shell
+cd trustllm
+pip install .
+```
+
+
 
 ### **Dataset Download**
 

@@ -117,6 +117,7 @@ class TruthfulnessEval:
         Returns:
         dict: A dictionary with keys as sources and values as the evaluation scores.
         """
+        sources = ['climate', 'healthver', 'covid', 'scifact']
         performance = {
             'scifact': self.eval_single_source(data, 'scifact'),
             'covid': self.eval_single_source(data, 'covid'),
