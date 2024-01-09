@@ -1,0 +1,19 @@
+:root {
+    --md-primary-fg-color:        #6f91ab;
+  }
+
+:root>* {
+--md-typeset-a-color: #6f91ab;
+}
+
+body[data-md-color-primary="black"] .excalidraw  svg  {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+body[data-md-color-primary="black"] .excalidraw svg rect {
+  fill: transparent;
+}
+
+.excalidraw {
+  text-align: center;
+}
