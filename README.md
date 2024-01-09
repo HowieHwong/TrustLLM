@@ -131,7 +131,7 @@ We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of
 ### **Installation**
 
 
-**Installation via `pip`:**
+**Installation via `pip` (coming soon):**
 
 
 ```shell

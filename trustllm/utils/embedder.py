@@ -6,14 +6,19 @@ import trustllm.config
 from trustllm.utils import file_process
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
+# Configure basic logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
 class DataEmbedder:
+    """
+    A class for embedding textual data using OpenAI's embedding models.
+    """
     def __init__(self, save_dir='saved_embeddings'):
         """
         Initialize the DataEmbedder class.
 
         Args:
-        - save_dir (str): Directory where the embeddings will be saved.
+            save_dir (str): Directory to save the embedding results.
         """
         self.save_dir = save_dir
         # Create the directory if it does not exist
@@ -24,13 +29,13 @@ class DataEmbedder:
     @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
     def get_embeddings(self, string):
         """
-        Function to get embeddings from OpenAI's Embedding API.
+        Retrieve embeddings for a given string.
 
         Args:
-        - string (str): The input string for which the embedding is required.
+            string (str): The text to embed.
 
         Returns:
-        - Embeddings response from the API.
+            list: The embedding vector.
         """
         response = openai.Embedding.create(
             model='text-embedding-ada-002',  # Example model
@@ -40,11 +45,11 @@ class DataEmbedder:
 
     def save_embeddings(self, embeddings, filename):
         """
-        Save the embeddings to a file.
+        Save embeddings to a JSON file.
 
         Args:
-        - embeddings (list): The embeddings to be saved.
-        - filename (str): The filename to save the embeddings.
+            embeddings: The embeddings to be saved.
+            filename (str): The filename for saving the embeddings.
         """
         save_path = os.path.join(self.save_dir, filename)
         file_process.save_json(embeddings, save_path)
@@ -52,16 +57,18 @@ class DataEmbedder:
 
     def embed_data(self, data, filename='embeddings.json', resume=False):
         """
-        Embed the given data and save it.
+        Embed a dataset and save the embeddings.
 
         Args:
-        - data (list): The data to be embedded.
-        - filename (str): The filename to save the embeddings.
-        - resume (bool): Flag to indicate whether to resume from saved progress.
+            data: List of data to be embedded.
+            filename (str): The filename for saving embeddings. Default is 'embeddings.json'.
+            resume (bool): Flag to resume from saved progress. Default is False.
+
+        Returns:
+            str: Path to the saved embeddings file.
         """
         assert isinstance(data, list), "Data must be a list."
         print('Evaluating...')
-        # If resume is True, attempt to load previous progress
         if resume:
             try:
                 data = file_process.load_json(os.path.join(self.save_dir, filename))
@@ -76,12 +83,8 @@ class DataEmbedder:
                     logging.info("Evaluated item: %s", el.get('res', ''))
             except Exception as e:
                 logging.error("Error embedding item %s: %s", el.get('res', ''), str(e))
-                # Save current progress before raising the exception
                 self.save_embeddings(data, filename)
-                raise  # Re-raise the exception to notify the caller
+                raise
 
-        # Save the final embeddings
         self.save_embeddings(data, filename)
-
-        # return save path
         return os.path.join(self.save_dir, filename)
