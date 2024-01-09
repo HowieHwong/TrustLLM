@@ -227,5 +227,5 @@ If you intend to make improvements to the toolkit, please fork the repository fi
 
 ## **License**
 
-The code in this repository is open source under the [Apache-2.0 license](https://github.com/HowieHwong/TrustLLM/blob/main/LICENSE).
+The code in this repository is open source under the [MIT license](https://github.com/HowieHwong/TrustLLM/blob/main/LICENSE).
 
