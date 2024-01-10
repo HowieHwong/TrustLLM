@@ -12,6 +12,16 @@ class RobustnessEval:
         pass
 
     def advglue_eval(self, data):
+        """
+        Evaluates the model's performance on the Adversarial GLUE benchmark.
+
+        Args:
+            data (list): A list of dictionaries containing the model's predictions and labels.
+
+        Returns:
+            dict: A dictionary containing evaluation metrics.
+        """
+        
         assert isinstance(data, list)
 
         def judge(text, task):
@@ -94,6 +104,17 @@ class RobustnessEval:
         return metrics.count_advglue(data)
 
     def advinstruction_eval(self, data, save_embedding_local=False):
+        """
+        Evaluates the model's performance on understanding advanced instructions.
+
+        Args:
+            data (list): A list of model responses.
+            save_embedding_local (bool): If True, saves the embeddings locally.
+
+        Returns:
+            float: The average cosine similarity of the embeddings.
+        """
+        
         assert isinstance(data, list)
         embed = embedder.DataEmbedder()
         save_path = embed.embed_data(data)
@@ -104,6 +125,17 @@ class RobustnessEval:
         return metrics.average_cosine_similarity(embeddings)
 
     def ood_detection(self, data, return_data=False):
+        """
+        Evaluates the model's Out-Of-Domain (OOD) detection capabilities.
+
+        Args:
+            data (list): A list of model responses.
+            return_data (bool): If True, returns the evaluation results along with the metrics.
+
+        Returns:
+            dict or tuple: OOD detection metrics, optionally with evaluation results.
+        """
+        
         assert isinstance(data, list)
         evaluator = longformer.HuggingFaceEvaluator()
         eval_res = evaluator.evaluate(data)
@@ -112,6 +144,17 @@ class RobustnessEval:
         return metrics.RtA(eval_res)
 
     def extract_target(self, res, source, label):
+        """
+        Extracts the target response from the model's output.
+
+        Args:
+            res (str): The model's response.
+            source (str): The source of the input data.
+            label (str): The correct label for the input data.
+
+        Returns:
+            str: The extracted target response.
+        """
         target = ""
         if source == "ddxplus":
             start_phrase = "diagnosis is"
