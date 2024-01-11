@@ -4,7 +4,7 @@ from trustllm.utils import file_process
 from tqdm import tqdm
 import logging
 import os
-import trustllm.config
+import trustllm
 
 # Setting up basic logging configuration
 logging.basicConfig(filename='autoevaluator.log', level=logging.INFO,

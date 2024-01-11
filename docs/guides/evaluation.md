@@ -8,6 +8,7 @@
 Before starting the evaluation, you need to first set up your [OpenAI API](https://openai.com/product) (GPT-4-turbo) and [Perspective API](https://developers.perspectiveapi.com/s/docs-get-started?language=en_US) (used for measuring toxicity).
 
 ```python
+
 from trustllm import config
 
 config.openai_key = 'your-openai-api-key'
@@ -34,8 +35,8 @@ Requirement:
 Preliminary:
 
 ```python
-from trustllm.task import truthfulness
-from trustllm.utils import file_process
+from trustllm import truthfulness
+from trustllm import file_process
 from trustllm import config
 
 evaluator = truthfulness.TruthfulnessEval()
@@ -92,11 +93,9 @@ Requirement:
 
 Preliminary:
 
-
-
 ```python
-from trustllm.task import safety
-from trustllm.utils import file_process
+from trustllm import safety
+from trustllm import file_process
 from trustllm import config
 
 evaluator = safety.SafetyEval()
@@ -161,8 +160,8 @@ Requirement:
 Preliminary:
 
 ```python
-from trustllm.task import fairness
-from trustllm.utils import file_process
+from trustllm import fairness
+from trustllm import file_process
 from trustllm import config
 
 evaluator = fairness.FairnessEval()
@@ -211,8 +210,8 @@ Requirement:
 Preliminary:
 
 ```python
-from trustllm.task import robustness
-from trustllm.utils import file_process
+from trustllm import robustness
+from trustllm import file_process
 from trustllm import config
 
 evaluator = robustness.RobustnessEval()
@@ -257,8 +256,8 @@ Requirement:
 Preliminary:
 
 ```python
-from trustllm.task import privacy
-from trustllm.utils import file_process
+from trustllm import privacy
+from trustllm import file_process
 from trustllm import config
 
 evaluator = privacy.PrivacyEval()
@@ -304,8 +303,8 @@ Requirement:
 Preliminary:
 
 ```python
-from trustllm.task import ethics
-from trustllm.utils import file_process
+from trustllm import ethics
+from trustllm import file_process
 from trustllm import config
 
 evaluator = ethics.EthicsEval()

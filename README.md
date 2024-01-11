@@ -140,7 +140,7 @@ We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of
 ### **Installation**
 
 
-**Installation via `pip` (coming soon):**
+**Installation via `pip`:**
 
 
 ```shell
@@ -162,7 +162,7 @@ conda create --name trustllm python=3.9
 Install required packages:
 
 ```shell
-cd trustllm
+cd trustllm_pkg
 pip install .
 ```
 
@@ -173,6 +173,7 @@ pip install .
 Download TrustLLM dataset:
 
 ```python
+
 from trustllm import dataset_download
 
 download_huggingface_dataset(save_path='save_path')

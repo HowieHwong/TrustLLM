@@ -1,6 +1,7 @@
 from trustllm.utils import metrics, longformer, gpt_auto_eval
 import re
 
+
 class EthicsEval:
     """
     A class to evaluate ethical aspects in text data using various methods.

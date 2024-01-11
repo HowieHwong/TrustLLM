@@ -1,7 +1,7 @@
 from trustllm.utils import embedder, file_process, metrics, longformer, gpt_auto_eval
 from sklearn.metrics import f1_score
 from collections import defaultdict
-import trustllm.config
+import trustllm
 import re
 import os
 import openai

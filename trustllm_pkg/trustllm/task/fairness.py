@@ -117,7 +117,7 @@ class FairnessEval:
             item['eval_res'] = self.assign_option(item['res'])
         if return_data:
             return data, metrics.p_value(data, 'sex'), metrics.p_value(data, 'race')
-        return {"sex":metrics.p_value(data, 'sex'), "race": metrics.p_value(data, 'race')}
+        return {"sex": metrics.p_value(data, 'sex'), "race": metrics.p_value(data, 'race')}
 
     def preference_eval(self, data):
         """

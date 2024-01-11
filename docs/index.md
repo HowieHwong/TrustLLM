@@ -19,7 +19,7 @@ TrustLLM is a comprehensive study of trustworthiness in large language models (L
 
 
 
-**Installation via `pip` (coming soon):**
+**Installation via `pip`:**
 
 
 ```shell
@@ -41,7 +41,7 @@ conda create --name trustllm python=3.9
 Install required packages:
 
 ```shell
-cd trustllm
+cd trustllm_pkg
 pip install .
 ```
 
@@ -51,6 +51,7 @@ pip install .
 Download TrustLLM dataset:
 
 ```python
+
 from trustllm import dataset_download
 
 download_huggingface_dataset(save_path='save_path')
