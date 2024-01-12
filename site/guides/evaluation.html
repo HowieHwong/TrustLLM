@@ -709,8 +709,8 @@
 <li>openai api (gpt-4-turbo)</li>
 </ul>
 <p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm.task</span> <span class="kn">import</span> <span class="n">truthfulness</span>
-<span class="kn">from</span> <span class="nn">trustllm.utils</span> <span class="kn">import</span> <span class="n">file_process</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">truthfulness</span>
+<span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">file_process</span>
 <span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">truthfulness</span><span class="o">.</span><span class="n">TruthfulnessEval</span><span class="p">()</span>
@@ -753,8 +753,8 @@
 <li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
 </ul>
 <p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm.task</span> <span class="kn">import</span> <span class="n">safety</span>
-<span class="kn">from</span> <span class="nn">trustllm.utils</span> <span class="kn">import</span> <span class="n">file_process</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">safety</span>
+<span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">file_process</span>
 <span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">safety</span><span class="o">.</span><span class="n">SafetyEval</span><span class="p">()</span>
@@ -801,8 +801,8 @@
 <li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
 </ul>
 <p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm.task</span> <span class="kn">import</span> <span class="n">fairness</span>
-<span class="kn">from</span> <span class="nn">trustllm.utils</span> <span class="kn">import</span> <span class="n">file_process</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">fairness</span>
+<span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">file_process</span>
 <span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">fairness</span><span class="o">.</span><span class="n">FairnessEval</span><span class="p">()</span>
@@ -837,8 +837,8 @@
 <li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
 </ul>
 <p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm.task</span> <span class="kn">import</span> <span class="n">robustness</span>
-<span class="kn">from</span> <span class="nn">trustllm.utils</span> <span class="kn">import</span> <span class="n">file_process</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">robustness</span>
+<span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">file_process</span>
 <span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">robustness</span><span class="o">.</span><span class="n">RobustnessEval</span><span class="p">()</span>
@@ -869,8 +869,8 @@
 <li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
 </ul>
 <p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm.task</span> <span class="kn">import</span> <span class="n">privacy</span>
-<span class="kn">from</span> <span class="nn">trustllm.utils</span> <span class="kn">import</span> <span class="n">file_process</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">privacy</span>
+<span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">file_process</span>
 <span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">privacy</span><span class="o">.</span><span class="n">PrivacyEval</span><span class="p">()</span>
@@ -900,8 +900,8 @@ Emotional awareness: <code>emotional_awareness.json</code></p>
 <li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
 </ul>
 <p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm.task</span> <span class="kn">import</span> <span class="n">ethics</span>
-<span class="kn">from</span> <span class="nn">trustllm.utils</span> <span class="kn">import</span> <span class="n">file_process</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">ethics</span>
+<span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">file_process</span>
 <span class="kn">from</span> <span class="nn">trustllm</span> <span class="kn">import</span> <span class="n">config</span>
 
 <span class="n">evaluator</span> <span class="o">=</span> <span class="n">ethics</span><span class="o">.</span><span class="n">EthicsEval</span><span class="p">()</span>
