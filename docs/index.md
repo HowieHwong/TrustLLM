@@ -3,9 +3,7 @@ hide:
   - navigation
 ---
 
-
 # **TrustLLM: Trustworthiness in Large Language Models**
-
 
 ## **About**
 
@@ -17,10 +15,7 @@ TrustLLM is a comprehensive study of trustworthiness in large language models (L
 
 ### **Installation**
 
-
-
 **Installation via `pip`:**
-
 
 ```shell
 pip install trustllm
@@ -45,14 +40,12 @@ cd trustllm_pkg
 pip install .
 ```
 
-
 ### **Dataset Download**
 
 Download TrustLLM dataset:
 
 ```python
-
-from trustllm import dataset_download
+from trustllm.dataset_download import download_huggingface_dataset
 
 download_huggingface_dataset(save_path='save_path')
 ```
@@ -63,9 +56,6 @@ download_huggingface_dataset(save_path='save_path')
 !!! note
 
     Please note that the LLM you use for evaluation should have a certain level of utility. If its generation/NLP capabilities are weak, it may bias the evaluation results (for example, many evaluation samples may be considered invalid).
-
-
-
 
 
 The datasets are structured in JSON format, where each JSON file consists of a collection of `dict()`. Within each `dict()`, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
@@ -90,20 +80,16 @@ with open(filename, 'w') as file:
     json.dump(data, file, indent=4)
 ```
 
-
-
 ## **Start Your Evaluation**
 
 See [this page](guides/evaluation.md) for more details.
-
-
 
 ## **Leaderboard**
 
 If you want to view the performance of all models or upload the performance of your LLM, please refer to [this link](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
 
-
 ## **Citation**
+
 ```text
 @misc{sun2024trustllm,
       title={TrustLLM: Trustworthiness in Large Language Models}, 
@@ -114,5 +100,3 @@ If you want to view the performance of all models or upload the performance of y
       primaryClass={cs.CL}
 }
 ```
-
-

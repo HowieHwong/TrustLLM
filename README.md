@@ -47,7 +47,6 @@
 
 ## **About**
 
-
 We introduce TrustLLM, a comprehensive study of trustworthiness in LLMs, including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions. Specifically, we first propose a set of principles for trustworthy LLMs that span eight different dimensions. Based on these principles, we further establish a benchmark across six dimensions including truthfulness, safety, fairness, robustness, privacy, and machine ethics. 
 We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of over 30 datasets.
 
@@ -131,17 +130,11 @@ We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of
 | Emotion Classification                       | Accuracy (↑)                              | Classification  | ●    | Emotional Awareness      |
 
 
-
-
-
-
 ## **Before Evaluation**
 
 ### **Installation**
 
-
 **Installation via `pip`:**
-
 
 ```shell
 pip install trustllm
@@ -166,25 +159,17 @@ cd trustllm_pkg
 pip install .
 ```
 
-
-
 ### **Dataset Download**
 
 Download TrustLLM dataset:
 
 ```python
-
-from trustllm import dataset_download
+from trustllm.dataset_download import download_huggingface_dataset
 
 download_huggingface_dataset(save_path='save_path')
 ```
 
-
-
 ### **Generation**
-
-
-
 
 The datasets are structured in JSON format, where each JSON file consists of a collection of `dict()`. Within each `dict()`, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
 
@@ -212,8 +197,6 @@ with open(filename, 'w') as file:
 
 See our [docs](https://howiehwong.github.io/TrustLLM/) for more details.
 
-
-
 ## **Leaderboard**
 
 If you want to view the performance of all models or upload the performance of your LLM, please refer to [this link](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
@@ -230,6 +213,7 @@ We welcome your contributions, including but not limited to the following:
 If you intend to make improvements to the toolkit, please fork the repository first, make the relevant modifications to the code, and finally initiate a `pull request`.
 
 ## **Citation**
+
 ```text
 @misc{sun2024trustllm,
       title={TrustLLM: Trustworthiness in Large Language Models}, 
@@ -241,8 +225,6 @@ If you intend to make improvements to the toolkit, please fork the repository fi
 }
 ```
 
-
 ## **License**
 
 The code in this repository is open source under the [MIT license](https://github.com/HowieHwong/TrustLLM/blob/main/LICENSE).
-
