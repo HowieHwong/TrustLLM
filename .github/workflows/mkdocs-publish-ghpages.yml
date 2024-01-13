@@ -10,9 +10,9 @@ on:
   # to select branches.
   push:
     branches:
-      #- master
-      #- main
-      - add_mkdocs_workflow
+      - master
+      - main
+      #- add_mkdocs_workflow
 
 env:
   PYTHON_VERSION: "3.9"
