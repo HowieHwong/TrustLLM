@@ -31,7 +31,9 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install Python dependencies for MkDocs
-        run: pip install -r requirements/docs.txt
+        run: |
+          # pip install -r requirements/docs.txt
+          pip install mkdocs-material
 
       - name: Deploy documentation
         env:
