@@ -111,6 +111,7 @@ class AutoEvaluator:
 
         print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
+
         for item, el in tqdm(zip(prompt_data, data)):
             try:
                 if 'eval_res' not in el:
@@ -127,3 +128,6 @@ class AutoEvaluator:
 
         self.save_progress(data, filename=progress_filename)
         return data
+
+
+
