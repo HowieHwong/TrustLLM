@@ -17,6 +17,7 @@ setup(
     'openai',
     'tqdm',
     'tenacity',
+    'datasets'
 ],
     classifiers=[
     ],
