@@ -10,8 +10,8 @@ on:
   # to select branches.
   push:
     branches:
-      - master
-      - main
+      #- master
+      #- main
       - add_mkdocs_workflow
 
 env:
