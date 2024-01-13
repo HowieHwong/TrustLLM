@@ -29,6 +29,14 @@
 
 </div>
 
+
+## Updates & News
+
+- [12/01/2024] :surfer: The [dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset), [leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html), [evaluation toolkit](https://howiehwong.github.io/TrustLLM/) are released!
+
+
+
+
 **Table of Content**
 
 - [About](#about)
@@ -48,7 +56,8 @@
 ## **About**
 
 We introduce TrustLLM, a comprehensive study of trustworthiness in LLMs, including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions. Specifically, we first propose a set of principles for trustworthy LLMs that span eight different dimensions. Based on these principles, we further establish a benchmark across six dimensions including truthfulness, safety, fairness, robustness, privacy, and machine ethics. 
-We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of over 30 datasets.
+We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of over 30 datasets. 
+The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use the trustllm python package to help you assess the performance of your LLM in trustworthiness more quickly. For more details about TrustLLM, please refer to [project website](https://trustllmbenchmark.github.io/TrustLLM-Website/).
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/benchmark_arch_00.png" width="100%">
@@ -212,6 +221,15 @@ We welcome your contributions, including but not limited to the following:
 
 If you intend to make improvements to the toolkit, please fork the repository first, make the relevant modifications to the code, and finally initiate a `pull request`.
 
+## **⏰ TODO in Coming Versions**
+
+- [ ] Faster and simpler evaluation pipeline  
+- [ ] Dynamic dataset  
+- [ ] More fine-grained datasets
+- [ ] Chinese output evaluation
+- [ ] Downstream application evaluation
+
+
 ## **Citation**
 
 ```text
@@ -224,6 +242,9 @@ If you intend to make improvements to the toolkit, please fork the repository fi
       primaryClass={cs.CL}
 }
 ```
+
+## **Acknowledgement**
+
 
 ## **License**
 
