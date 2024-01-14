@@ -161,7 +161,7 @@ conda install -c conda-forge trustllm
 git clone git@github.com:HowieHwong/TrustLLM.git
 ```
 
-Creat a new environment:
+Create a new environment:
 
 ```shell
 conda create --name trustllm python=3.9
