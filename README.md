@@ -149,13 +149,19 @@ The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use
 pip install trustllm
 ```
 
+**Installation via `conda`:**
+
+```sh
+conda install -c conda-forge trustllm
+```
+
 **Installation via Github:**
 
 ```shell
 git clone git@github.com:HowieHwong/TrustLLM.git
 ```
 
-Creat a new environment:
+Create a new environment:
 
 ```shell
 conda create --name trustllm python=3.9
