@@ -21,6 +21,12 @@ TrustLLM is a comprehensive study of trustworthiness in large language models (L
 pip install trustllm
 ```
 
+**Installation via `conda`:**
+
+```sh
+conda install -c conda-forge trustllm
+```
+
 **Installation via Github:**
 
 ```shell
