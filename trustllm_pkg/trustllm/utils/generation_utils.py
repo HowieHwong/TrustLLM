@@ -20,7 +20,10 @@ def get_models():
 
 
 def get_access_token():
-    url = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=H4PeMykZWAvZsatz5vxSpLNG&client_secret=twdirokNnADKzeUIpPQ9Zl48OeSz4XpO"
+    url = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id={}&client_secret=".format(
+        trustllm.config.client_id,
+        trustllm.config.client_secret
+    )
 
     payload = json.dumps("")
     headers = {
@@ -57,7 +60,7 @@ def get_ernie_res(string, temperature):
 def get_res_chatgpt(string, gpt_model, temperature):
     if gpt_model == 'gpt-3.5-turbo':
         openai.api_key = trustllm.config.openai_key
-    elif gpt_model == "TODO":
+    elif gpt_model == "gpt-4-1106-preview":
         openai.api_key = trustllm.config.openai_key
     else:
         raise ValueError('No support model!')
@@ -102,29 +105,18 @@ class DeepInfraAPI:
 
 def deepinfra_api(string, model, temperature):
     api_token = trustllm.config.deepinfra_api
-    rev_mapping = {'dolly-12b': 'databricks/dolly-v2-12b', }
-    if model in ['dolly-12b']:
-        api = DeepInfraAPI(api_token)
-        response_content = api.create(
-            model=rev_mapping[model],
-            text=string,
-            max_tokens=4000,
-            temperature=temperature,
-        )
-        return response_content
-    else:
-        openai.api_key = api_token
-        openai.api_base = "https://api.deepinfra.com/v1/openai"
-        top_p = 1 if temperature <= 1e-5 else 0.9
-        print(temperature)
-        chat_completion = openai.ChatCompletion.create(
-            model=rev_model_mapping[model],
-            messages=[{"role": "user", "content": string}],
-            max_tokens=5192,
-            temperature=temperature,
-            top_p=top_p,
-        )
-        return chat_completion.choices[0].message.content
+    openai.api_key = api_token
+    openai.api_base = "https://api.deepinfra.com/v1/openai"
+    top_p = 1 if temperature <= 1e-5 else 0.9
+    print(temperature)
+    chat_completion = openai.ChatCompletion.create(
+        model=rev_model_mapping[model],
+        messages=[{"role": "user", "content": string}],
+        max_tokens=5192,
+        temperature=temperature,
+        top_p=top_p,
+    )
+    return chat_completion.choices[0].message.content
 
 
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
@@ -157,10 +149,7 @@ def palm_api(string, model, temperature):
         temperature=temperature,
         # The maximum length of the response
         max_output_tokens=4000,
-
-
         safety_settings=[
-
             {
                 "category": safety_types.HarmCategory.HARM_CATEGORY_DEROGATORY,
                 "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
@@ -204,7 +193,7 @@ def gen_online(model_name, prompt, temperature):
     elif model_name in deepinfra_model:
         print(model_name)
         res = deepinfra_api(prompt, model=model_name, temperature=temperature)
-    elif model_name in ['claude-2']:
+    elif model_name in ['claude-instant-1.2', 'claude-2.1']:
         res = claude_api(prompt, model=model_name, temperature=temperature)
     elif model_name == 'bison-001':
         res = palm_api(prompt, model=model_name, temperature=temperature)

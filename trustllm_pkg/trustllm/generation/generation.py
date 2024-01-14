@@ -72,7 +72,6 @@ def process_element(el, model, model_name, tokenizer, index, temperature, key_na
             res = generation(model_name=model_name, prompt=el[key_name], tokenizer=tokenizer, model=model,
                              temperature=temperature)
         el['res'] = res
-        print(el['res'])
 
     except Exception as e:
         print(f"Error processing element at index {index}: {e}")
@@ -92,7 +91,6 @@ def process_file(data_path, save_path, model_name, tokenizer, model, file_config
     else:
         saved_data = original_data
 
-    print(len(saved_data))
 
     for i in tqdm(range(0, len(saved_data), GROUP_SIZE), desc=f"Processing {data_path}", leave=False):
         group_data = saved_data[i:i + GROUP_SIZE]
@@ -200,9 +198,8 @@ def run_single_test(args):
     global GROUP_SIZE
     test_type = args.test_type
     model_name = args.model_name
-    print(test_type, args.temperature)
-    print(model_name, model_name, model_name, model_name)
-    print(online_model)
+    print("Generation begin with {} evalution with temperature {}."format(test_type, args.temperature))
+    print("Evaluation target model: {}".format(model_name))
     if model_name in online_model:
         model = None
         tokenizer = None
