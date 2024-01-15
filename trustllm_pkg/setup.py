@@ -20,7 +20,9 @@ setup(
         'datasets',
         'fschat[model_worker]',
         'python-dotenv',
-        'urllib3', 
+        'urllib3',
+        'anthropic',
+        'google-generativeai'
 ],
     classifiers=[
     ],
