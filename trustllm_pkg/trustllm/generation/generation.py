@@ -18,10 +18,19 @@ import traceback
 load_dotenv()
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 model_mapping, online_model = get_models()
-GROUP_SIZE = 1
+
 
 
 def generation_hf(prompt, tokenizer, model, temperature):
+    """
+    Generates a response using a Hugging Face model.
+
+    :param prompt: The input text prompt for the model.
+    :param tokenizer: The tokenizer associated with the model.
+    :param model: The Hugging Face model used for text generation.
+    :param temperature: The temperature setting for text generation.
+    :return: The generated text as a string.
+    """
     msg = prompt
     conv = get_conversation_template(args.model_path)
     conv.set_system_message('')
@@ -48,8 +57,17 @@ def generation_hf(prompt, tokenizer, model, temperature):
 
 
 def generation(model_name, prompt, tokenizer, model, temperature=None):
-    if temperature is None:
-        temperature = args.temperature
+    """
+    Generates a response using either an online or a local model.
+
+    :param model_name: The name of the model.
+    :param prompt: The input text prompt for the model.
+    :param tokenizer: The tokenizer for the model.
+    :param model: The model used for text generation.
+    :param temperature: The temperature setting for text generation. Default is None.
+    :return: The generated text as a string.
+    """
+
     try:
         if model_name in online_model:
             ans = gen_online(model_name, prompt, temperature)
@@ -64,21 +82,41 @@ def generation(model_name, prompt, tokenizer, model, temperature=None):
 
 
 def process_element(el, model, model_name, tokenizer, index, temperature, key_name='prompt'):
-    try:
-        if "res" not in el.keys():
-            res = generation(model_name=model_name, prompt=el[key_name], tokenizer=tokenizer, model=model,
-                             temperature=temperature)
-        elif not el.get('res'):
-            res = generation(model_name=model_name, prompt=el[key_name], tokenizer=tokenizer, model=model,
-                             temperature=temperature)
-        el['res'] = res
+    """
+    Processes a single element (data point) using the specified model.
 
+    :param el: A dictionary containing the data to be processed.
+    :param model: The model to use for processing.
+    :param model_name: The name of the model.
+    :param tokenizer: The tokenizer for the model.
+    :param index: The index of the element in the dataset.
+    :param temperature: The temperature setting for generation.
+    :param key_name: The key in the dictionary where the prompt is located.
+    """
+    
+    try:
+        # If 'res' key doesn't exist or its value is empty, generate a new response
+        if "res" not in el or not el['res']:
+            res = generation(model_name=model_name, prompt=el[key_name], tokenizer=tokenizer, model=model,
+                             temperature=temperature)
+            el['res'] = res  
     except Exception as e:
+        # Print error message if there's an issue during processing
         print(f"Error processing element at index {index}: {e}")
 
 
 def process_file(data_path, save_path, model_name, tokenizer, model, file_config, key_name='prompt'):
-    GROUP_SIZE = 8 if model_name in online_model else 1
+    """
+    Processes a file containing multiple data points for text generation.
+
+    :param data_path: Path to the input data file.
+    :param save_path: Path where the processed data will be saved.
+    :param model_name: The name of the model used for processing.
+    :param tokenizer: The tokenizer for the model.
+    :param model: The model to use for processing.
+    :param file_config: Configuration settings for file processing.
+    :param key_name: The key in the dictionary where the prompt is located.
+    """
     if os.path.basename(data_path) not in file_config:
         return
 
@@ -91,7 +129,7 @@ def process_file(data_path, save_path, model_name, tokenizer, model, file_config
     else:
         saved_data = original_data
 
-
+    GROUP_SIZE = 8 if model_name in online_model else 1
     for i in tqdm(range(0, len(saved_data), GROUP_SIZE), desc=f"Processing {data_path}", leave=False):
         group_data = saved_data[i:i + GROUP_SIZE]
         threads = []
@@ -111,6 +149,16 @@ def process_file(data_path, save_path, model_name, tokenizer, model, file_config
 
 
 def run_task(model_name, model, tokenizer, base_dir, file_config, key_name='prompt'):
+    """
+    Runs a specific evaluation task based on provided parameters.
+
+    :param model_name: The name of the model.
+    :param model: The model used for processing.
+    :param tokenizer: The tokenizer for the model.
+    :param base_dir: Base directory containing test data files.
+    :param file_config: Configuration settings for file processing.
+    :param key_name: The key in the dictionary where the prompt is located.
+    """
 
     test_data_dir = os.path.join(base_dir, 'test_data')
     if not os.path.exists(test_data_dir):
@@ -193,66 +241,73 @@ def run_safety(model_name, tokenizer, model):
     }
     run_task(model_name, model, tokenizer, base_dir, file_config, )
 
-
 def run_single_test(args):
-    global GROUP_SIZE
-    test_type = args.test_type
+    """
+    Executes a single test based on specified parameters.
+
+    :param args: Contains parameters like test type, model name, and other configurations.
+    :return: "OK" if successful, None otherwise.
+    """
     model_name = args.model_name
-    print("Generation begin with {} evalution with temperature {}."format(test_type, args.temperature))
-    print("Evaluation target model: {}".format(model_name))
-    if model_name in online_model:
-        model = None
-        tokenizer = None
-    else:
-        model, tokenizer = load_model(
-            args.model_path,
-            num_gpus=args.num_gpus,
-            max_gpu_memory=args.max_gpu_memory,
-            load_8bit=args.load_8bit,
-            cpu_offloading=args.cpu_offloading,
-            revision=args.revision,
-            debug=args.debug,
-        )
-    if test_type == 'robustness':
-        run_robustness(model_name=model_name, model=model, tokenizer=tokenizer)
-    elif test_type == 'truthfulness':
-        run_truthfulness(model_name=model_name, model=model, tokenizer=tokenizer)
-    elif test_type == 'fairness':
-        run_fairness(model_name=model_name, model=model, tokenizer=tokenizer)
-    elif test_type == 'ethics':
-        run_ethics(model_name=model_name, model=model, tokenizer=tokenizer)
-    elif test_type == 'safety':
-        run_safety(model_name=model_name, model=model, tokenizer=tokenizer)
-    elif test_type == 'privacy':
-        run_privacy(model_name=model_name, model=model, tokenizer=tokenizer, )
+    print(f"Beginning generation with {args.test_type} evaluation at temperature {args.temperature}.")
+    print(f"Evaluation target model: {model_name}")
+
+    model, tokenizer = (None, None) if model_name in online_model else load_model(
+        args.model_path,
+        num_gpus=args.num_gpus,
+        max_gpu_memory=args.max_gpu_memory,
+        load_8bit=args.load_8bit,
+        cpu_offloading=args.cpu_offloading,
+        revision=args.revision,
+        debug=args.debug,
+    )
+
+    test_functions = {
+        'robustness': run_robustness,
+        'truthfulness': run_truthfulness,
+        'fairness': run_fairness,
+        'ethics': run_ethics,
+        'safety': run_safety,
+        'privacy': run_privacy
+    }
+
+    test_func = test_functions.get(args.test_type)
+    if test_func:
+        test_func(model_name=model_name, model=model, tokenizer=tokenizer,)
+        return "OK"
     else:
         print("Invalid test_type. Please provide a valid test_type.")
         return None
-    return "OK"
 
 
 @torch.inference_mode()
-def main(args, max_retries=500, retry_interval=3):
-    assert os.path.exists(args.data_path), f"Dataset path {args.model_path} does not exist."
-    args.model_name = model_mapping[args.model_path]
-    timestamp = time.strftime("%Y%m%d%H%M%S")
-    log_filename = f"logs/log_{args.test_type}_{args.model_name}_test_log_{timestamp}.txt"
-    logging.basicConfig(filename=log_filename, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+def main(args, max_retries=10, retry_interval=3):
+    """
+    Main function to orchestrate the test runs with retries.
+
+    :param args: Command-line arguments for the test run.
+    :param max_retries: Maximum attempts to run the test.
+    :param retry_interval: Time interval between retries in seconds.
+    :return: Final state of the test run.
+    """
+    if not os.path.exists(args.data_path):
+        print(f"Dataset path {args.data_path} does not exist.")
+        return None
+
+    args.model_name = model_mapping.get(args.model_path, "")
 
     for attempt in range(max_retries):
         try:
             state = run_single_test(args)
-            message = f"{args.test_type}_{args.model_name}\nTest function successful on attempt {attempt + 1}"
-            logging.info(message)
-            print(message)
-            return state
+            if state:
+                print(f"Test function successful on attempt {attempt + 1}")
+                return state
         except Exception as e:
-            traceback.print_exc()
-            message = f"Test function failed on attempt {attempt + 1}:{e}"
-            logging.error(message)
-            print(message)
-            print("Retrying in {} seconds...".format(retry_interval))
+            print(f"Test function failed on attempt {attempt + 1}: {e}")
+            print(f"Retrying in {retry_interval} seconds...")
             time.sleep(retry_interval)
+
+    print("Test failed after maximum retries.")
     return None
 
 
