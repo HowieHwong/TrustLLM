@@ -5,6 +5,7 @@ from tqdm import tqdm
 import logging
 import os
 import trustllm
+import concurrent.futures
 
 # Setting up basic logging configuration
 logging.basicConfig(filename='autoevaluator.log', level=logging.INFO,
@@ -69,6 +70,7 @@ class AutoEvaluator:
         file_process.save_json(data, save_path)
         logging.info("Progress saved to %s", save_path)
 
+
     def evaluate(self, data, task, resume=False, progress_filename='eval_progress.json', concat=True):
         """
         Evaluate a given dataset using a specified task.
@@ -83,6 +85,27 @@ class AutoEvaluator:
         Returns:
             The evaluated data.
         """
+
+        def save_progress_callback(future):
+            if future.exception() is not None:
+                logging.error("An error occurred: %s", str(future.exception()))
+                # Save progress in case of an error
+                self.save_progress(data, filename=progress_filename)
+
+        def process_item(item, el):
+            try:
+                if 'eval_res' not in el:
+                    print('Prompt: {}'.format(item))
+                    eval_res = get_res(item)
+                    print('Response: {}'.format(eval_res))
+                    el['eval_res'] = eval_res
+                    logging.info("Evaluated item: %s", item)
+                    logging.info("Evaluated result: %s", eval_res)
+            except Exception as e:
+                logging.error("Error processing item %s: %s", item, str(e))
+                # self.save_progress(data, filename=progress_filename)
+                raise
+
         task_prompt_dict = file_process.load_json('trustllm/prompt/task_prompt.json')
         prompt_data = []
 
@@ -112,22 +135,15 @@ class AutoEvaluator:
         print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
 
-        for item, el in tqdm(zip(prompt_data, data)):
-            try:
-                if 'eval_res' not in el:
-                    print('Prompt: {}'.format(item))
-                    eval_res = get_res(item)
-                    print('Response: {}'.format(eval_res))
-                    el['eval_res'] = eval_res
-                    logging.info("Evaluated item: %s", item)
-                    logging.info("Evaluated result: %s", eval_res)
-            except Exception as e:
-                logging.error("Error evaluating item %s: %s", item, str(e))
-                self.save_progress(data, filename=progress_filename)
-                raise
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = [executor.submit(process_item, item, el) for item, el in zip(prompt_data, data)]
+
+            # Add a callback to handle completion and errors
+            for future in concurrent.futures.as_completed(futures):
+                future.add_done_callback(save_progress_callback)
+
+            # Wait for all futures to complete
+            concurrent.futures.wait(futures)
 
         self.save_progress(data, filename=progress_filename)
         return data
-
-
-
