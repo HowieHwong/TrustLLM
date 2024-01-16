@@ -6,3 +6,4 @@ scikit-learn
 openai
 tqdm
 tenacity
+datasets

@@ -5,11 +5,8 @@ Summary: TrustLLM
 Home-page: https://github.com/HowieHwong/TrustLLM
 Author: Yue Huang & Siyuan Wu & Haoran Wang
 Author-email: trustllm.benchmark@gmail.com
-Requires-Dist: transformers
-Requires-Dist: numpy>=1.18.1
-Requires-Dist: scipy
-Requires-Dist: pandas>=1.0.3
-Requires-Dist: scikit-learn
-Requires-Dist: openai
-Requires-Dist: tqdm
-Requires-Dist: tenacity
+License: UNKNOWN
+Platform: UNKNOWN
+
+UNKNOWN
+

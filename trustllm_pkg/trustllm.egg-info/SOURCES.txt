@@ -7,6 +7,8 @@ trustllm.egg-info/SOURCES.txt
 trustllm.egg-info/dependency_links.txt
 trustllm.egg-info/requires.txt
 trustllm.egg-info/top_level.txt
+trustllm/generation/__init__.py
+trustllm/generation/generation.py
 trustllm/task/__init__.py
 trustllm/task/ethics.py
 trustllm/task/fairness.py
@@ -17,6 +19,7 @@ trustllm/task/truthfulness.py
 trustllm/utils/__init__.py
 trustllm/utils/embedder.py
 trustllm/utils/file_process.py
+trustllm/utils/generation_utils.py
 trustllm/utils/gpt_auto_eval.py
 trustllm/utils/longformer.py
 trustllm/utils/metrics.py
