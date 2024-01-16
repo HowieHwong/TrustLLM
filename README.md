@@ -249,8 +249,6 @@ If you intend to make improvements to the toolkit, please fork the repository fi
 }
 ```
 
-## **Acknowledgement**
-
 
 ## **License**
 
