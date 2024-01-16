@@ -191,7 +191,6 @@ def gen_online(model_name, prompt, temperature):
     elif model_name == 'gpt-4':
         res = get_res_chatgpt(prompt, gpt_model='gpt-4', temperature=temperature)
     elif model_name in deepinfra_model:
-        print(model_name)
         res = deepinfra_api(prompt, model=model_name, temperature=temperature)
     elif model_name in ['claude-instant-1.2', 'claude-2.1']:
         res = claude_api(prompt, model=model_name, temperature=temperature)

@@ -1,5 +1,41 @@
 
 
+## **Generation Results**
+
+
+The trustllm toolkit currently supports the generation of over a dozen models. 
+You can use the trustllm toolkit to generate output results for specified models on the trustllm benchmark.
+
+Supported LLMs:
+
+- `Baichuan-13b`
+- `Baichuan2-13b`
+- `Yi-34b`
+- `ChatGLM2 - 6B`
+- `ChatGLM3 -6B`
+- `Vicuna-13b`
+- `Vicuna-7b`
+- `Vicuna-33b`
+- `Llama2-7b`
+- `Llama2-13b`
+- `Llama2-70b`
+- `Koala-13b`
+- `Oasst-12b`
+- `Wizardlm-13b`
+- `Mixtral-8x7B`
+- `Mistral-7b`
+- `Dolly-12b`
+- `bison-001-text`
+- `ERNIE`
+- `ChatGPT (gpt-3.5-turbo)`
+- `GPT-4`
+- `Claude-2`
+
+### **Start Your Generation**
+
+We offer both ***online*** and ***local LLMs*** generation pipeline. 
+
+
 ## **Generation Parameters**
 
 We categorize the tasks in the benchmark into two main groups: *Generation* and *Classification*. 
