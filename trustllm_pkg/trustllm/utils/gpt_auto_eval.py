@@ -135,7 +135,7 @@ class AutoEvaluator:
         print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
 
-        with concurrent.futures.ThreadPoolExecutor() as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
             futures = [executor.submit(process_item, item, el) for item, el in zip(prompt_data, data)]
 
             # Add a callback to handle completion and errors
