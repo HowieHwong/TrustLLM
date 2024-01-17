@@ -15,10 +15,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 class LLMGeneration:
-    def __init__(self, model_name,
+    def __init__(self,
                  test_type,
-                 model_path='',
-                 data_path='TrustLLM',
+                 data_path,
+                 model_path,
+                 model_name="",
                  online_model=False,
                  temperature=1.0,
                  repetition_penalty=1.0,
@@ -264,10 +265,10 @@ class LLMGeneration:
         model, tokenizer = (None, None) if (self.online_model and model_name in online_model) else load_model(
             self.model_path,
             num_gpus=self.num_gpus,
-            max_gpu_memory=self.max_gpu_memory,
-            load_8bit=self.load_8bit,
-            cpu_offloading=self.cpu_offloading,
-            revision=self.revision,
+            # max_gpu_memory=self.max_gpu_memory,
+            # load_8bit=self.load_8bit,
+            # cpu_offloading=self.cpu_offloading,
+            # revision=self.revision,
             debug=self.debug,
         )
 

@@ -6,7 +6,7 @@
 The trustllm toolkit currently supports the generation of over a dozen models. 
 You can use the trustllm toolkit to generate output results for specified models on the trustllm benchmark.
 
-Supported LLMs:
+### **Supported LLMs**
 
 - `Baichuan-13b`
 - `Baichuan2-13b`
@@ -30,25 +30,44 @@ Supported LLMs:
 - `ChatGPT (gpt-3.5-turbo)`
 - `GPT-4`
 - `Claude-2`
+- ***other LLMs in huggingface***
 
 ### **Start Your Generation**
 
 The `LLMGeneration` class is designed for result generation, supporting the use of both ***local*** and ***online*** models. It is used for evaluating the performance of models in different tasks such as ethics, privacy, fairness, truthfulness, robustness, and safety.
 
+**API setting:**
 
-### **Dataset file path**
+If you need to evaluate an API LLM, please set the following API according to your requirements.
 
+```python
+from trustllm import config
 
+config.deepinfra_api = "deepinfra api"
 
+config.claude_api = "claude api"
 
+config.openai_key = "openai api"
+
+config.palm_api = "palm api"
+
+config.ernie_client_id = "ernie client id"
+
+config.ernie_client_secret = "ernie client secret"
+
+config.ernie_api = "ernie api"
+```
+
+**Generation template:**
 
 ```python
 from trustllm.generation.generation import LLMGeneration
+
 llm_gen = LLMGeneration(
-    model_name="your model name", 
+    model_path="your model name", 
     test_type="test section", 
-    model_path="", 
-    data_path='TrustLLM',
+    data_path="your dataset file path",
+    model_name="", 
     online_model=False, 
     temperature=1.0, 
     repetition_penalty=1.0,
@@ -57,13 +76,42 @@ llm_gen = LLMGeneration(
     debug=False,
     device='cuda:0'
 )
+
+llm_gen.generation_results()
 ```
 
-- `model_name` (`Required`, `str`): Model identifier for evaluation. Model list: `['baichuan-13b', 'baichuan2-13b', 'yi-34b', 'chatglm2', 'chatglm3', 'vicuna-13b', 'vicuna-7b', 'vicuna-33b', 'llama2-7b', 'llama2-13b', 'koala-13b', 'oasst-12b', 'wizardlm-13b', 'mixtral-8x7B', 'llama2-70b', 'mistral-7b', 'dolly-12b', 'bison-001', 'ernie', 'chatgpt', 'gpt-4', 'claude-2']
-`
-- `model_path` (`Optional`, `str`): Path to the local model, default is ''.
+**Args:**
+
+- `model_path` (`Required`, `str`): Path to the local model. LLM list: 
+
+```text
+'baichuan-inc/Baichuan-13B-Chat', 
+'baichuan-inc/Baichuan2-13B-chat', 
+'01-ai/Yi-34B-Chat', 
+'THUDM/chatglm2-6b', 
+'THUDM/chatglm3-6b', 
+'lmsys/vicuna-13b-v1.3', 
+'lmsys/vicuna-7b-v1.3', 
+'lmsys/vicuna-33b-v1.3', 
+'meta-llama/Llama-2-7b-chat-hf', 
+'meta-llama/Llama-2-13b-chat-hf', 
+'TheBloke/koala-13B-HF', 
+'OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5', 
+'WizardLM/WizardLM-13B-V1.2', 
+'mistralai/Mixtral-8x7B-Instruct-v0.1', 
+'meta-llama/Llama-2-70b-chat-hf', 
+'mistralai/Mistral-7B-Instruct-v0.1', 
+'databricks/dolly-v2-12b', 
+'bison-001', 
+'ernie', 
+'chatgpt', 
+'gpt-4', 
+'claude-2'
+... (other LLMs in huggingface)
+```
+
 - `test_type` (`Required`, `str`): Type of evaluation task, including `'robustness'`, `'truthfulness'`, `'fairness'`, `'ethics'`, `'safety'`, `'privacy'`.
-- `data_path` (`Optional`, `str`): Path to the dataset, default is 'TrustLLM'.
+- `data_path` (`Required`, `str`): Path to the dataset, default is 'TrustLLM'.
 - `online_model` (`Optional`, `bool`): Whether to use an online model, default is False.
 - `temperature` (`Optional`, `float`): Temperature setting for text generation, default is 1.0.
 - `repetition_penalty` (`Optional`, `float`): Repetition penalty setting, default is 1.0.
@@ -72,12 +120,25 @@ llm_gen = LLMGeneration(
 - `debug` (`Optional`, `bool`): Enable debug mode, default is False.
 - `device` (`Optional`, `str`): Specify the device to use, default is 'cuda:0'.
 
+Here is a usage example:
+
+```python
+from trustllm.generation.generation import LLMGeneration
+
+llm_gen = LLMGeneration(
+    model_path="meta-llama/Llama-2-7b-chat-hf", 
+    test_type="safety", 
+    data_path="TrustLLM",
+)
+
+llm_gen.generation_results()
+```
 
 
 
 ### **Don't have enough computing resource?**
 
-If you don't have sufficient computing resources to run Hugging Face models locally, we recommend using online models. We provide an online model interface through [deepinfra](https://deepinfra.com/), and currently supported online models include:
+If you don't have sufficient computing resources to run HuggingFace models locally, we recommend using online models. We provide an online model interface through [deepinfra](https://deepinfra.com/), and currently supported online models include:
 
 - `llama2-70b`
 - `mistral-7b`
@@ -128,71 +189,3 @@ file_config = {
 ```
 
 
-## **Dataset & Task**
-
-**Dataset overview:**
-
-| Dataset               | Description                                                                                                           | Num.    | Exist? | Section            |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------------|---------|--------|--------------------|
-| SQuAD2.0              | It combines questions in SQuAD1.1 with over 50,000 unanswerable questions.                                            | 100     | ✓      | Misinformation     |
-| CODAH                 | It contains 28,000 commonsense questions.                                                                             | 100     | ✓      | Misinformation     |
-| HotpotQA              | It contains 113k Wikipedia-based question-answer pairs for complex multi-hop reasoning.                               | 100     | ✓      | Misinformation     |
-| AdversarialQA         | It contains 30,000 adversarial reading comprehension question-answer pairs.                                           | 100     | ✓      | Misinformation     |
-| Climate-FEVER         | It contains 7,675 climate change-related claims manually curated by human fact-checkers.                              | 100     | ✓      | Misinformation     |
-| SciFact               | It contains 1,400 expert-written scientific claims pairs with evidence abstracts.                                     | 100     | ✓      | Misinformation     |
-| COVID-Fact            | It contains 4,086 real-world COVID claims.                                                                            | 100     | ✓      | Misinformation     |
-| HealthVer             | It contains 14,330 health-related claims against scientific articles.                                                 | 100     | ✓      | Misinformation     |
-| TruthfulQA            | The multiple-choice questions to evaluate whether a language model is truthful in generating answers to questions.     | 352     | ✓      | Hallucination      |
-| HaluEval              | It contains 35,000 generated and human-annotated hallucinated samples.                                                | 300     | ✓      | Hallucination      |
-| LM-exp-sycophancy     | A dataset consists of human questions with one sycophancy response example and one non-sycophancy response example.    | 179     | ✓      | Sycophancy         |
-| Opinion pairs         | It contains 120 pairs of opposite opinions.                                                                           | 240     | ✗      | Sycophancy         |
-| WinoBias              | It contains 3,160 sentences, split for development and testing, created by researchers familiar with the project.     | 734     | ✓      | Stereotype         |
-| StereoSet             | It contains the sentences that measure model preferences across gender, race, religion, and profession.                | 734     | ✓      | Stereotype         |
-| Adult                 | The dataset, containing attributes like sex, race, age, education, work hours, and work type, is utilized to predict salary levels for individuals. | 810     | ✓      | Disparagement      |
-| Jailbraek Trigger     | The dataset contains the prompts based on 13 jailbreak attacks.                                                        | 1300    | ✗      | Jailbreak, Toxicity|
-| Misuse (additional)   | This dataset contains prompts crafted to assess how LLMs react when confronted by attackers or malicious users seeking to exploit the model for harmful purposes. | 261     | ✗      | Misuse             |
-| Do-Not-Answer         | It is curated and filtered to consist only of prompts to which responsible LLMs do not answer.                         | 344 + 95| ✓      | Misuse, Stereotype |
-| AdvGLUE               | A multi-task dataset with different adversarial attacks.                                                               | 912     | ✓      | Natural Noise      |
-| AdvInstruction        | 600 instructions generated by 11 perturbation methods.                                                                 | 1200    | ✗      | Natural Noise      |
-| ToolE                 | A dataset with the users' queries which may trigger LLMs to use external tools.                                        | 241     | ✓      | Out of Domain (OOD)|
-| Flipkart              | A product review dataset, collected starting from December 2022.                                                       | 400     | ✓      | Out of Domain (OOD)|
-| DDXPlus               | A 2022 medical diagnosis dataset comprising synthetic data representing about 1.3 million patient cases.               | 100     | ✓      | Out of Domain (OOD)|
-| ETHICS                | It contains numerous morally relevant scenarios descriptions and their moral correctness.                              | 500     | ✓      | Implicit Ethics    |
-| Social Chemistry 101  | It contains various social norms, each consisting of an action and its label.                                          | 500     | ✓      | Implicit Ethics    |
-| MoralChoice           | It consists of different contexts with morally correct and wrong actions.                                             | 668     | ✓      | Explicit Ethics    |
-| ConfAIde              | It contains the description of how information is used.                                                               | 196     | ✓      | Privacy Awareness  |
-| Privacy Awareness     | It includes different privacy information queries about various scenarios.                                            | 280     | ✗      | Privacy Awareness  |
-| Enron Email           | It contains approximately 500,000 emails generated by employees of the Enron Corporation.                              | 400     | ✓      | Privacy Leakage    |
-| Xstest                | It's a test suite for identifying exaggerated safety behaviors in LLMs.                                                | 200     | ✓      | Exaggerated Safety |
-
-**Task overview:**
-
-| Task Name                                    | Metrics                                   | Type            | Eval | Section                  |
-|----------------------------------------------|-------------------------------------------|-----------------|------|--------------------------|
-| Closed-book QA                               | Accuracy (↑)                              | Generation      | ○    | Misinformation(Internal) |
-| Fact-Checking                                | Macro F-1 (↑)                             | Classification  | ●    | Misinformation(External) |
-| Multiple Choice QA                           | Accuracy (↑)                              | Classification  | ●    | Hallucination            |
-| Hallucination Classification                 | Accuracy (↑)                              | Classification  | ●    | Hallucination            |
-| Persona Sycophancy                           | Embedding similarity (↑)                  | Generation      | ◐    | Sycophancy               |
-| Opinion Sycophancy                           | Percentage change (↓)                     | Generation      | ○    | Sycophancy               |
-| Factuality Correction                        | Percentage change (↑)                     | Generation      | ○    | Adversarial Factuality   |
-| Jailbreak Attack Evaluation                  | RtA (↑)                                   | Generation      | ○    | Jailbreak                |
-| Toxicity Measurement                         | Toxicity Value (↓)                        | Generation      | ●    | Toxicity                 |
-| Misuse Evaluation                            | RtA (↑)                                   | Generation      | ○    | Misuse                   |
-| Exaggerated Safety Evaluation                | RtA (↓)                                   | Generation      | ○    | Exaggerated Safety       |
-| Agreement on Stereotypes                     | Accuracy (↑)                              | Generation      | ◐    | Stereotype               |
-| Recognition of Stereotypes                   | Agreement Percentage (↓)                  | Classification  | ◐    | Stereotype               |
-| Stereotype Query Test                        | RtA (↑)                                   | Generation      | ○    | Stereotype               |
-| Preference Selection                         | RtA (↑)                                   | Generation      | ○    | Preference               |
-| Salary Prediction                            | p-value (↑)                               | Generation      | ●    | Disparagement            |
-| Adversarial Perturbation in Downstream Tasks | ASR (↓), RS (↑)                           | Generation      | ◐    | Natural Noise            |
-| Adversarial Perturbation in Open-Ended Tasks | Embedding similarity (↑)                  | Generation      | ◐    | Natural Noise            |
-| OOD Detection                                | RtA (↑)                                   | Generation      | ○    | Out of Domain (OOD)      |
-| OOD Generalization                           | Micro F1 (↑)                              | Classification  | ○    | Out of Domain (OOD)      |
-| Agreement on Privacy Information             | Pearson’s correlation (↑)                 | Classification  | ●    | Privacy Awareness        |
-| Privacy Scenario Test                        | RtA (↑)                                   | Generation      | ○    | Privacy Awareness        |
-| Probing Privacy Information Usage            | RtA (↑), Accuracy (↓)                     | Generation      | ◐    | Privacy Leakage          |
-| Moral Action Judgement                       | Accuracy (↑)                              | Classification  | ◐    | Implicit Ethics          |
-| Moral Reaction Selection (Low-Ambiguity)     | Accuracy (↑)                              | Classification  | ◐    | Explicit Ethics          |
-| Moral Reaction Selection (High-Ambiguity)    | RtA (↑)                                   | Generation      | ○    | Explicit Ethics          |
-| Emotion Classification                       | Accuracy (↑)                              | Classification  | ●    | Emotional Awareness      |
