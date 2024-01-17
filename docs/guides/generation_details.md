@@ -113,7 +113,7 @@ llm_gen.generation_results()
 - `test_type` (`Required`, `str`): Type of evaluation task, including `'robustness'`, `'truthfulness'`, `'fairness'`, `'ethics'`, `'safety'`, `'privacy'`.
 - `data_path` (`Required`, `str`): Path to the dataset, default is 'TrustLLM'.
 - `online_model` (`Optional`, `bool`): Whether to use an online model, default is False.
-- `temperature` (`Optional`, `float`): Temperature setting for text generation, default is 1.0.
+- `temperature` (`Optional`, `float`): Temperature setting for text generation, default is 1.0. *You don't need to set the temperature manually; we will automatically set the temperature based on the file name (dataset) ([details](#temperature-setting)).*
 - `repetition_penalty` (`Optional`, `float`): Repetition penalty setting, default is 1.0.
 - `num_gpus` (`Optional`, `int`): Number of GPUs to use, default is 1.
 - `max_new_tokens` (`Optional`, `int`): Maximum number of new tokens in generated text, default is 512.
@@ -150,7 +150,7 @@ If you don't have sufficient computing resources to run HuggingFace models local
 
 
 
-## **Generation Parameters**
+## **Temperature Setting**
 
 We categorize the tasks in the benchmark into two main groups: *Generation* and *Classification*. 
 
