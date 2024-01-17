@@ -250,6 +250,12 @@ If you intend to make improvements to the toolkit, please fork the repository fi
 ```
 
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=HowieHwong/TrustLLM&type=Date)](https://star-history.com/#HowieHwong/TrustLLM&Date)
+
+
+
 ## **License**
 
 The code in this repository is open source under the [MIT license](https://github.com/HowieHwong/TrustLLM/blob/main/LICENSE).
