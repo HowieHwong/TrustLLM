@@ -1,10 +1,6 @@
 import os, time
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from huggingface_hub import snapshot_download
-from fastchat.model import load_model, get_conversation_template, add_model_args
-import logging
-import argparse
+from fastchat.model import load_model, get_conversation_template
 from trustllm.utils.generation_utils import *
 from dotenv import load_dotenv
 import os
@@ -16,12 +12,21 @@ import traceback
 
 load_dotenv()
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-model_mapping, online_model = get_models()
-
 
 
 class LLMGeneration:
-    def __init__(self, model_name, model_path, test_type, data_path='TrustLLM', online_model=False, temperature=1.0, repetition_penalty=1.0, num_gpus=1, max_new_tokens=512, debug=False):
+    def __init__(self, model_name,
+                 test_type,
+                 model_path='',
+                 data_path='TrustLLM',
+                 online_model=False,
+                 temperature=1.0,
+                 repetition_penalty=1.0,
+                 num_gpus=1,
+                 max_new_tokens=512,
+                 debug=False,
+                 device='cuda:0'
+                 ):
         self.model_name = model_name
         self.model_path = model_path
         self.test_type = test_type
@@ -33,7 +38,8 @@ class LLMGeneration:
         self.max_new_tokens = max_new_tokens
         self.debug = debug
         self.online_model = get_models()[1]
-        self.model_mapping = model_mapping
+        self.model_mapping = get_models()[0]
+        self.device = device
 
     def generation_hf(self, prompt, tokenizer, model, temperature):
         """
@@ -110,7 +116,7 @@ class LLMGeneration:
             # If 'res' key doesn't exist or its value is empty, generate a new response
             if "res" not in el or not el['res']:
                 res = self.generation(model_name=model_name, prompt=el[key_name], tokenizer=tokenizer, model=model,
-                                 temperature=temperature)
+                                      temperature=temperature)
                 el['res'] = res
         except Exception as e:
             # Print error message if there's an issue during processing
@@ -170,18 +176,17 @@ class LLMGeneration:
             :param key_name: The key in the dictionary where the prompt is located.
             """
 
-        test_data_dir = os.path.join(base_dir, 'test_data')
-        if not os.path.exists(test_data_dir):
-            os.makedirs(test_data_dir)
-
         test_res_dir = os.path.join(base_dir, 'test_res', model_name)
         if not os.path.exists(test_res_dir):
             os.makedirs(test_res_dir)
+        section = base_dir.split('/')[-1]
 
-        file_list = os.listdir(os.path.join(base_dir, 'test_data'))
+        os.makedirs(os.path.join('generation_results', model_name, section), exist_ok=True)
+
+        file_list = os.listdir(base_dir)
         for file in tqdm(file_list, desc="Processing files"):
-            data_path = os.path.join(base_dir, 'test_data', file)
-            save_path = os.path.join(base_dir, 'test_res', model_name, file)
+            data_path = os.path.join(base_dir, file)
+            save_path = os.path.join('generation_results', model_name, section, file)
             self.process_file(data_path, save_path, model_name, tokenizer, model, file_config, key_name)
 
     def run_ethics(self, model_name, model, tokenizer):

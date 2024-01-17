@@ -33,7 +33,60 @@ Supported LLMs:
 
 ### **Start Your Generation**
 
-We offer both ***online*** and ***local LLMs*** generation pipeline. 
+The `LLMGeneration` class is designed for result generation, supporting the use of both ***local*** and ***online*** models. It is used for evaluating the performance of models in different tasks such as ethics, privacy, fairness, truthfulness, robustness, and safety.
+
+
+### **Dataset file path**
+
+
+
+
+
+```python
+from trustllm.generation.generation import LLMGeneration
+llm_gen = LLMGeneration(
+    model_name="your model name", 
+    test_type="test section", 
+    model_path="", 
+    data_path='TrustLLM',
+    online_model=False, 
+    temperature=1.0, 
+    repetition_penalty=1.0,
+    num_gpus=1, 
+    max_new_tokens=512, 
+    debug=False,
+    device='cuda:0'
+)
+```
+
+- `model_name` (`Required`, `str`): Model identifier for evaluation. Model list: `['baichuan-13b', 'baichuan2-13b', 'yi-34b', 'chatglm2', 'chatglm3', 'vicuna-13b', 'vicuna-7b', 'vicuna-33b', 'llama2-7b', 'llama2-13b', 'koala-13b', 'oasst-12b', 'wizardlm-13b', 'mixtral-8x7B', 'llama2-70b', 'mistral-7b', 'dolly-12b', 'bison-001', 'ernie', 'chatgpt', 'gpt-4', 'claude-2']
+`
+- `model_path` (`Optional`, `str`): Path to the local model, default is ''.
+- `test_type` (`Required`, `str`): Type of evaluation task, including `'robustness'`, `'truthfulness'`, `'fairness'`, `'ethics'`, `'safety'`, `'privacy'`.
+- `data_path` (`Optional`, `str`): Path to the dataset, default is 'TrustLLM'.
+- `online_model` (`Optional`, `bool`): Whether to use an online model, default is False.
+- `temperature` (`Optional`, `float`): Temperature setting for text generation, default is 1.0.
+- `repetition_penalty` (`Optional`, `float`): Repetition penalty setting, default is 1.0.
+- `num_gpus` (`Optional`, `int`): Number of GPUs to use, default is 1.
+- `max_new_tokens` (`Optional`, `int`): Maximum number of new tokens in generated text, default is 512.
+- `debug` (`Optional`, `bool`): Enable debug mode, default is False.
+- `device` (`Optional`, `str`): Specify the device to use, default is 'cuda:0'.
+
+
+
+
+### **Don't have enough computing resource?**
+
+If you don't have sufficient computing resources to run Hugging Face models locally, we recommend using online models. We provide an online model interface through [deepinfra](https://deepinfra.com/), and currently supported online models include:
+
+- `llama2-70b`
+- `mistral-7b`
+- `dolly-12b`
+- `llama2-13b`
+- `mixtral-8x7B`
+- `yi-34b`
+
+
 
 
 ## **Generation Parameters**
