@@ -38,7 +38,7 @@ def get_res(string, model='gpt-4-1106-preview', temp=0):
     if not completion.choices[0].message['content']:
         raise ValueError("The response from the API is NULL or an empty string!")
 
-    return completion.choices[0].essage['content']
+    return completion.choices[0].message['content']
 
 
 class AutoEvaluator:
