@@ -1,4 +1,6 @@
 setup.py
+dist/trustllm-0.1.0-py3-none-any.whl
+dist/trustllm-0.1.0.tar.gz
 trustllm/__init__.py
 trustllm/config.py
 trustllm/dataset_download.py
@@ -9,6 +11,8 @@ trustllm.egg-info/requires.txt
 trustllm.egg-info/top_level.txt
 trustllm/generation/__init__.py
 trustllm/generation/generation.py
+trustllm/prompt/model_info.json
+trustllm/prompt/task_prompt.json
 trustllm/task/__init__.py
 trustllm/task/ethics.py
 trustllm/task/fairness.py

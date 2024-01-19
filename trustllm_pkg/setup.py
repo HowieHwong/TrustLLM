@@ -10,6 +10,8 @@ setup(
     packages=find_packages(),  
     install_requires=[
         'transformers',
+        'huggingface_hub',
+        'peft',
         'numpy>=1.18.1',
         'scipy',
         'pandas>=1.0.3',
@@ -22,7 +24,9 @@ setup(
         'python-dotenv',
         'urllib3',
         'anthropic',
-        'google-generativeai'
+        'google.generativeai',
+        'google-api-python-client',
+        'google.ai.generativelanguage'
 ],
     classifiers=[
     ],

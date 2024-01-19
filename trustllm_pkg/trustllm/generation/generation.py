@@ -42,7 +42,7 @@ class LLMGeneration:
         self.model_mapping = get_models()[0]
         self.device = device
 
-    def generation_hf(self, prompt, tokenizer, model, temperature):
+    def _generation_hf(self, prompt, tokenizer, model, temperature):
         """
             Generates a response using a Hugging Face model.
 
@@ -92,7 +92,7 @@ class LLMGeneration:
             if model_name in online_model:
                 ans = gen_online(model_name, prompt, temperature)
             else:
-                ans = self.generation_hf(prompt, tokenizer, model, temperature)
+                ans = self._generation_hf(prompt, tokenizer, model, temperature)
             if not ans:
                 raise ValueError("The response is NULL or an empty string!")
             return ans
@@ -265,6 +265,7 @@ class LLMGeneration:
         model, tokenizer = (None, None) if (self.online_model and model_name in online_model) else load_model(
             self.model_path,
             num_gpus=self.num_gpus,
+            device=self.device,
             # max_gpu_memory=self.max_gpu_memory,
             # load_8bit=self.load_8bit,
             # cpu_offloading=self.cpu_offloading,

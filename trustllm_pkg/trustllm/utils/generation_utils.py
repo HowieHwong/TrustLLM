@@ -10,7 +10,7 @@ from trustllm.utils import file_process
 import trustllm
 
 online_model = file_process.load_json('trustllm/prompt/model_info.json')['online_model']
-deepinfra_model = file_process.load_json('trustllm/prompt/model_info.json')['deep_model']
+deepinfra_model = file_process.load_json('trustllm/prompt/model_info.json')['deepinfra_model']
 model_mapping = file_process.load_json('trustllm/prompt/model_info.json')['model_mapping']
 rev_model_mapping = {value: key for key, value in model_mapping.items()}
 

@@ -1,4 +1,6 @@
 transformers
+huggingface_hub
+peft
 numpy>=1.18.1
 scipy
 pandas>=1.0.3
@@ -7,3 +9,10 @@ openai
 tqdm
 tenacity
 datasets
+fschat[model_worker]
+python-dotenv
+urllib3
+anthropic
+google.generativeai
+google-api-python-client
+google.ai.generativelanguage

@@ -5,8 +5,21 @@ Summary: TrustLLM
 Home-page: https://github.com/HowieHwong/TrustLLM
 Author: Yue Huang & Siyuan Wu & Haoran Wang
 Author-email: trustllm.benchmark@gmail.com
-License: UNKNOWN
-Platform: UNKNOWN
-
-UNKNOWN
-
+Requires-Dist: transformers
+Requires-Dist: huggingface_hub
+Requires-Dist: peft
+Requires-Dist: numpy>=1.18.1
+Requires-Dist: scipy
+Requires-Dist: pandas>=1.0.3
+Requires-Dist: scikit-learn
+Requires-Dist: openai
+Requires-Dist: tqdm
+Requires-Dist: tenacity
+Requires-Dist: datasets
+Requires-Dist: fschat[model_worker]
+Requires-Dist: python-dotenv
+Requires-Dist: urllib3
+Requires-Dist: anthropic
+Requires-Dist: google.generativeai
+Requires-Dist: google-api-python-client
+Requires-Dist: google.ai.generativelanguage
