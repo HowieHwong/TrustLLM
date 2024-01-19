@@ -2,9 +2,10 @@
 
 ## **Generation Results**
 
-
 The trustllm toolkit currently supports the generation of over a dozen models. 
 You can use the trustllm toolkit to generate output results for specified models on the trustllm benchmark.
+
+
 
 ### **Supported LLMs**
 
@@ -35,6 +36,25 @@ You can use the trustllm toolkit to generate output results for specified models
 ### **Start Your Generation**
 
 The `LLMGeneration` class is designed for result generation, supporting the use of both ***local*** and ***online*** models. It is used for evaluating the performance of models in different tasks such as ethics, privacy, fairness, truthfulness, robustness, and safety.
+
+**Dataset**
+
+You should firstly download TrustLLM dataset ([details](https://howiehwong.github.io/TrustLLM/index.html#dataset-download)) and the downloaded dataset dict has the following structure:
+
+```text
+|-TrustLLM
+    |-Safety
+        |-Json_File_A
+        |-Json_File_B
+        ...
+    |-Truthfulness
+        |-Json_File_A
+        |-Json_File_B
+        ...
+    ...
+
+```
+
 
 **API setting:**
 
@@ -111,7 +131,7 @@ llm_gen.generation_results()
 ```
 
 - `test_type` (`Required`, `str`): Type of evaluation task, including `'robustness'`, `'truthfulness'`, `'fairness'`, `'ethics'`, `'safety'`, `'privacy'`.
-- `data_path` (`Required`, `str`): Path to the dataset, default is 'TrustLLM'.
+- `data_path` (`Required`, `str`): Path to the root dataset, default is 'TrustLLM'.
 - `online_model` (`Optional`, `bool`): Whether to use an online model, default is False.
 - `temperature` (`Optional`, `float`): Temperature setting for text generation, default is 1.0. *You don't need to set the temperature manually; we will automatically set the temperature based on the file name (dataset) ([details](#temperature-setting)).*
 - `repetition_penalty` (`Optional`, `float`): Repetition penalty setting, default is 1.0.
@@ -128,7 +148,7 @@ from trustllm.generation.generation import LLMGeneration
 llm_gen = LLMGeneration(
     model_path="meta-llama/Llama-2-7b-chat-hf", 
     test_type="safety", 
-    data_path="TrustLLM",
+    data_path="TrustLLM"
 )
 
 llm_gen.generation_results()
@@ -138,7 +158,8 @@ llm_gen.generation_results()
 
 ### **Don't have enough computing resource?**
 
-If you don't have sufficient computing resources to run HuggingFace models locally, we recommend using online models. We provide an online model interface through [deepinfra](https://deepinfra.com/), and currently supported online models include:
+If you don't have sufficient computing resources to run HuggingFace models locally, we recommend using online models. 
+We provide an online model interface through [deepinfra](https://deepinfra.com/), and currently supported online models include:
 
 - `llama2-70b`
 - `mistral-7b`
@@ -146,6 +167,30 @@ If you don't have sufficient computing resources to run HuggingFace models local
 - `llama2-13b`
 - `mixtral-8x7B`
 - `yi-34b`
+
+Before using online model to generate your results, you should set your deepinfra API:
+
+```python
+from trustllm import config
+
+config.deepinfra_api = "deepinfra api"
+```
+
+
+Then, you should set `oneline_model=True`:
+
+```python
+from trustllm.generation.generation import LLMGeneration
+
+llm_gen = LLMGeneration(
+    model_path="meta-llama/Llama-2-7b-chat-hf", 
+    test_type="safety", 
+    data_path="TrustLLM",
+    online_model=True
+)
+
+llm_gen.generation_results()
+```
 
 
 
@@ -187,5 +232,4 @@ file_config = {
         "implicit_SocialChemistry101.json": 0.0
     }
 ```
-
 

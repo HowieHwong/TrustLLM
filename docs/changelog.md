@@ -11,6 +11,12 @@ hide:
 - Chinese output evaluation
 - Downstream application evaluation
 
+## **Version 0.2.0**
+
+*Release Date: 20th Jan, 2024*
+
+- **Add generation section** ([details](https://howiehwong.github.io/TrustLLM/guides/generation_details.html))
+- **Support concurrency when using auto-evaluation**
 
 ## **Version 0.1.0**
 
