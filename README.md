@@ -32,6 +32,7 @@
 
 ## Updates & News
 
+- [20/01/2024] :star: Version 0.2.0 of trustllm toolkit is released! See the [new features](https://howiehwong.github.io/TrustLLM/changelog.html#version-020).
 - [12/01/2024] :surfer: The [dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset), [leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html), and [evaluation toolkit](https://howiehwong.github.io/TrustLLM/) are released!
 
 
@@ -186,27 +187,8 @@ download_huggingface_dataset(save_path='save_path')
 
 ### **Generation**
 
-The datasets are structured in JSON format, where each JSON file consists of a collection of `dict()`. Within each `dict()`, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
+We have added generation section from [version 0.2.0](https://howiehwong.github.io/TrustLLM/changelog.html). Start your generation from [this page](https://howiehwong.github.io/TrustLLM/guides/generation_details.html).
 
-For each dataset, we have configured the temperature setting during model generation. Please refer to [this page](https://howiehwong.github.io/TrustLLM/guides/generation_details.html#generation-parameters) for the settings.
-
-```python
-import json
-
-filename = 'dataset_path.json'
-
-# Load the data from the file
-with open(filename, 'r') as file:
-    data = json.load(file)
-
-# Process each dictionary and add the 'res' key with the generated output
-for element in data:
-    element['res'] = generation(element['prompt'])  # Replace 'generation' with your function
-
-# Write the modified data back to the file
-with open(filename, 'w') as file:
-    json.dump(data, file, indent=4)
-```
 
 ## **Evaluation**
 

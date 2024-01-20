@@ -64,27 +64,43 @@ download_huggingface_dataset(save_path='save_path')
     Please note that the LLM you use for evaluation should have a certain level of utility. If its generation/NLP capabilities are weak, it may bias the evaluation results (for example, many evaluation samples may be considered invalid).
 
 
-The datasets are structured in JSON format, where each JSON file consists of a collection of `dict()`. Within each `dict()`, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:
+We have added generation section from [version 0.2.0](https://howiehwong.github.io/TrustLLM/changelog.html). Start your generation from [this page](https://howiehwong.github.io/TrustLLM/guides/generation_details.html).
 
-For each dataset, we have configured the temperature setting during model generation. Please refer to [this page](guides/generation_details.md#generation-parameters) for the settings.
+[//]: # (The datasets are structured in JSON format, where each JSON file consists of a collection of `dict&#40;&#41;`. Within each `dict&#40;&#41;`, there is a key named `prompt`. Your should utilize the value of `prompt` key as the input for generation. After generation, you should store the output of LLMs as s new key named `res` within the same dictionary. Here is an example to generate answer from your LLM:)
 
-```python
-import json
+[//]: # ()
+[//]: # (For each dataset, we have configured the temperature setting during model generation. Please refer to [this page]&#40;guides/generation_details.md#generation-parameters&#41; for the settings.)
 
-filename = 'dataset_path.json'
+[//]: # ()
+[//]: # (```python)
 
-# Load the data from the file
-with open(filename, 'r') as file:
-    data = json.load(file)
+[//]: # (import json)
 
-# Process each dictionary and add the 'res' key with the generated output
-for element in data:
-    element['res'] = generation(element['prompt'])  # Replace 'generation' with your function
+[//]: # ()
+[//]: # (filename = 'dataset_path.json')
 
-# Write the modified data back to the file
-with open(filename, 'w') as file:
-    json.dump(data, file, indent=4)
-```
+[//]: # ()
+[//]: # (# Load the data from the file)
+
+[//]: # (with open&#40;filename, 'r'&#41; as file:)
+
+[//]: # (    data = json.load&#40;file&#41;)
+
+[//]: # ()
+[//]: # (# Process each dictionary and add the 'res' key with the generated output)
+
+[//]: # (for element in data:)
+
+[//]: # (    element['res'] = generation&#40;element['prompt']&#41;  # Replace 'generation' with your function)
+
+[//]: # ()
+[//]: # (# Write the modified data back to the file)
+
+[//]: # (with open&#40;filename, 'w'&#41; as file:)
+
+[//]: # (    json.dump&#40;data, file, indent=4&#41;)
+
+[//]: # (```)
 
 ## **Start Your Evaluation**
 
