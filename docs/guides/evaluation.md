@@ -127,7 +127,7 @@ Toxicity evaluation:
 # If you have not saved evaluated jailbreak results
 jailbreak_data = file_process.load_json('jailbreak_data_json_path')
 eval_data, _ = evaluator.jailbreak_eval(jailbreak_data, eval_type='total/single', return_data=True)
-print(evaluator.toxicity_eval(eval_data, perspective_api=config.perspective_key))
+print(evaluator.toxicity_eval(eval_data))
 
 # If you have saved evaluated jailbreak results
 toxicity_data = file_process.load_json('evaluated_jailbreak_results_json_path') # load eval data for toxicity evaluation
