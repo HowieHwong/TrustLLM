@@ -71,7 +71,6 @@ def run_safety(jailbreak_path=None,
     }
 
 
-
 def run_robustness():
     pass
 

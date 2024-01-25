@@ -10,3 +10,4 @@ deepinfra_api = None
 ernie_api = None
 claude_api = None
 palm_api = None
+replicate_api = None

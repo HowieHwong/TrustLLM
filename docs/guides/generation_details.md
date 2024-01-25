@@ -89,7 +89,8 @@ llm_gen = LLMGeneration(
     data_path="your dataset file path",
     model_name="", 
     online_model=False, 
-    temperature=1.0, 
+    use_deepinfra=False,
+    use_replicate=False,
     repetition_penalty=1.0,
     num_gpus=1, 
     max_new_tokens=512, 
@@ -102,38 +103,49 @@ llm_gen.generation_results()
 
 **Args:**
 
-- `model_path` (`Required`, `str`): Path to the local model. LLM list: 
+- `model_path` (`Required`, `str`): Path to the local model. LLM list:
 
-```text
-'baichuan-inc/Baichuan-13B-Chat', 
-'baichuan-inc/Baichuan2-13B-chat', 
-'01-ai/Yi-34B-Chat', 
-'THUDM/chatglm2-6b', 
-'THUDM/chatglm3-6b', 
-'lmsys/vicuna-13b-v1.3', 
-'lmsys/vicuna-7b-v1.3', 
-'lmsys/vicuna-33b-v1.3', 
-'meta-llama/Llama-2-7b-chat-hf', 
-'meta-llama/Llama-2-13b-chat-hf', 
-'TheBloke/koala-13B-HF', 
-'OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5', 
-'WizardLM/WizardLM-13B-V1.2', 
-'mistralai/Mixtral-8x7B-Instruct-v0.1', 
-'meta-llama/Llama-2-70b-chat-hf', 
-'mistralai/Mistral-7B-Instruct-v0.1', 
-'databricks/dolly-v2-12b', 
-'bison-001', 
-'ernie', 
-'chatgpt', 
-'gpt-4', 
-'claude-2'
-... (other LLMs in huggingface)
-```
+  - If you're using *locally public model (huggingface) or use [deepinfra](https://deepinfra.com/) online models*:
+  ```text
+  'baichuan-inc/Baichuan-13B-Chat', 
+  'baichuan-inc/Baichuan2-13B-chat', 
+  '01-ai/Yi-34B-Chat', 
+  'THUDM/chatglm2-6b', 
+  'THUDM/chatglm3-6b', 
+  'lmsys/vicuna-13b-v1.3', 
+  'lmsys/vicuna-7b-v1.3', 
+  'lmsys/vicuna-33b-v1.3', 
+  'meta-llama/Llama-2-7b-chat-hf', 
+  'meta-llama/Llama-2-13b-chat-hf', 
+  'TheBloke/koala-13B-HF', 
+  'OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5', 
+  'WizardLM/WizardLM-13B-V1.2', 
+  'mistralai/Mixtral-8x7B-Instruct-v0.1', 
+  'meta-llama/Llama-2-70b-chat-hf', 
+  'mistralai/Mistral-7B-Instruct-v0.1', 
+  'databricks/dolly-v2-12b', 
+  'bison-001', 
+  'ernie', 
+  'chatgpt', 
+  'gpt-4', 
+  'claude-2'
+  ... (other LLMs in huggingface)
+  ```
+  - If you're using use *online models in [replicate](https://replicate.com/)*, You can find model_path in [this link](https://replicate.com/explore):
+  ```text
+  'meta/llama-2-70b-chat',
+  'meta/llama-2-13b-chat',
+  'meta/llama-2-7b-chat',
+  'mistralai/mistral-7b-instruct-v0.1',
+  'replicate/vicuna-13b',
+  ... (other LLMs in replicate)
+  ```
 
 - `test_type` (`Required`, `str`): Type of evaluation task, including `'robustness'`, `'truthfulness'`, `'fairness'`, `'ethics'`, `'safety'`, `'privacy'`.
 - `data_path` (`Required`, `str`): Path to the root dataset, default is 'TrustLLM'.
 - `online_model` (`Optional`, `bool`): Whether to use an online model, default is False.
-- `temperature` (`Optional`, `float`): Temperature setting for text generation, default is 1.0. *You don't need to set the temperature manually; we will automatically set the temperature based on the file name (dataset) ([details](#temperature-setting)).*
+- `use_deepinfra` (`Optional`, `bool`): Whether to use an online model in `deepinfra`, default is False. (Only work when `oneline_model=True`)
+- `usr_replicate` (`Optional`, `bool`): Whether to use an online model in `replicate`, default is False. (Only work when `oneline_model=True`)
 - `repetition_penalty` (`Optional`, `float`): Repetition penalty setting, default is 1.0.
 - `num_gpus` (`Optional`, `int`): Number of GPUs to use, default is 1.
 - `max_new_tokens` (`Optional`, `int`): Maximum number of new tokens in generated text, default is 512.
@@ -159,7 +171,9 @@ llm_gen.generation_results()
 ### **Don't have enough computing resource?**
 
 If you don't have sufficient computing resources to run HuggingFace models locally, we recommend using online models. 
-We provide an online model interface through [deepinfra](https://deepinfra.com/), and currently supported online models include:
+We provide an online model interface through [deepinfra](https://deepinfra.com/) or [replicate](https://replicate.com/).
+
+Currently supported online models in [deepinfra](https://deepinfra.com/) include:
 
 - `llama2-70b`
 - `mistral-7b`
@@ -168,12 +182,16 @@ We provide an online model interface through [deepinfra](https://deepinfra.com/)
 - `mixtral-8x7B`
 - `yi-34b`
 
-Before using online model to generate your results, you should set your deepinfra API:
+Currently supported online models in [replicate](https://replicate.com/) can be found in [this link](https://replicate.com/explore).
+
+Before using online model to generate your results, you should set your `deepinfra` API or `replicate` API:
 
 ```python
 from trustllm import config
 
 config.deepinfra_api = "deepinfra api"
+
+config.replicate_api = "replicate api"
 ```
 
 

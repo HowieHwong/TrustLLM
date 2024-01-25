@@ -19,21 +19,21 @@ class LLMGeneration:
                  test_type,
                  data_path,
                  model_path,
-                 model_name="",
                  online_model=False,
-                 temperature=1.0,
+                 use_deepinfra=False,
+                 use_replicate=False,
                  repetition_penalty=1.0,
                  num_gpus=1,
                  max_new_tokens=512,
                  debug=False,
                  device='cuda:0'
                  ):
-        self.model_name = model_name
+        self.model_name = ""
         self.model_path = model_path
         self.test_type = test_type
         self.data_path = data_path
         self.online_model = online_model
-        self.temperature = temperature
+        self.temperature = 0
         self.repetition_penalty = repetition_penalty
         self.num_gpus = num_gpus
         self.max_new_tokens = max_new_tokens
@@ -41,6 +41,8 @@ class LLMGeneration:
         self.online_model = get_models()[1]
         self.model_mapping = get_models()[0]
         self.device = device
+        self.use_replicate = use_replicate
+        self.use_deepinfra = use_deepinfra
 
     def _generation_hf(self, prompt, tokenizer, model, temperature):
         """
@@ -89,8 +91,8 @@ class LLMGeneration:
             """
 
         try:
-            if model_name in online_model:
-                ans = gen_online(model_name, prompt, temperature)
+            if (model_name in online_model) or (self.online_model and self.use_replicate):
+                ans = gen_online(model_name, prompt, temperature, replicate=self.use_replicate)
             else:
                 ans = self._generation_hf(prompt, tokenizer, model, temperature)
             if not ans:
@@ -147,7 +149,7 @@ class LLMGeneration:
         else:
             saved_data = original_data
 
-        GROUP_SIZE = 8 if model_name in online_model else 1
+        GROUP_SIZE = 8 if self.online_model else 1
         for i in tqdm(range(0, len(saved_data), GROUP_SIZE), desc=f"Processing {data_path}", leave=False):
             group_data = saved_data[i:i + GROUP_SIZE]
             threads = []
@@ -262,14 +264,10 @@ class LLMGeneration:
         print(f"Beginning generation with {self.test_type} evaluation at temperature {self.temperature}.")
         print(f"Evaluation target model: {model_name}")
 
-        model, tokenizer = (None, None) if (self.online_model and model_name in online_model) else load_model(
+        model, tokenizer = (None, None) if self.online_model else load_model(
             self.model_path,
             num_gpus=self.num_gpus,
             device=self.device,
-            # max_gpu_memory=self.max_gpu_memory,
-            # load_8bit=self.load_8bit,
-            # cpu_offloading=self.cpu_offloading,
-            # revision=self.revision,
             debug=self.debug,
         )
 
@@ -303,7 +301,10 @@ class LLMGeneration:
             print(f"Dataset path {self.data_path} does not exist.")
             return None
 
-        self.model_name = model_mapping.get(self.model_path, "")
+        if self.use_replicate:
+            self.model_name = self.model_path
+        else:
+            self.model_name = model_mapping.get(self.model_path, "")
 
         for attempt in range(max_retries):
             try:

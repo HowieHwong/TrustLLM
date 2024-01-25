@@ -8,6 +8,7 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 import requests
 from trustllm.utils import file_process
 import trustllm
+import replicate
 
 online_model = file_process.load_json('trustllm/prompt/model_info.json')['online_model']
 deepinfra_model = file_process.load_json('trustllm/prompt/model_info.json')['deepinfra_model']
@@ -79,30 +80,6 @@ def get_res_chatgpt(string, gpt_model, temperature):
     return completion.choices[0].message['content']
 
 
-class DeepInfraAPI:
-    def __init__(self, auth_token):
-        self.base_url = "https://api.deepinfra.com/v1/inference/{model}"
-        self.headers = {"Authorization": f"Bearer {auth_token}", "Content-Type": "application/json"}
-
-    def create(self, model, text, max_tokens, temperature):
-        payload = {
-            "input": text,
-            "max_new_tokens": max_tokens,
-            "temperature": temperature,
-
-        }
-
-        try:
-            response = requests.post(self.base_url.format(model=model), json=payload, headers=self.headers, timeout=1)
-            response.raise_for_status()  # Raises HTTPError for bad responses
-            response_json = response.json()
-            results = response_json.get('results', [])
-            return results[0].get('generated_text') if results else None
-        except Exception:
-            traceback.print_exc()
-            return None
-
-
 def deepinfra_api(string, model, temperature):
     api_token = trustllm.config.deepinfra_api
     openai.api_key = api_token
@@ -117,6 +94,18 @@ def deepinfra_api(string, model, temperature):
         top_p=top_p,
     )
     return chat_completion.choices[0].message.content
+
+def replicate_api(string, model, temperature):
+    os.environ["REPLICATE_API_TOKEN"] = trustllm.config.replicate_api
+    res = replicate.run(
+        model,
+        input={"prompt": string, "temperature": temperature}
+    )
+    res = "".join(res)
+    return res
+
+
+
 
 
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
@@ -183,7 +172,7 @@ def palm_api(string, model, temperature):
 
 
 @retry(wait=wait_random_exponential(min=1, max=3), stop=stop_after_attempt(3))
-def gen_online(model_name, prompt, temperature):
+def gen_online(model_name, prompt, temperature, replicate=False):
     if model_name == 'ernie':
         res = get_ernie_res(prompt, temperature=temperature)
     elif model_name == 'chatgpt':
@@ -196,6 +185,8 @@ def gen_online(model_name, prompt, temperature):
         res = claude_api(prompt, model=model_name, temperature=temperature)
     elif model_name == 'bison-001':
         res = palm_api(prompt, model=model_name, temperature=temperature)
+    elif replicate:
+        res = replicate_api(prompt, model_name, temperature)
     else:
         raise ValueError(f"Unknown model name: {model_name}")
     return res
