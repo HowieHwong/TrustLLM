@@ -32,6 +32,7 @@
 
 ## Updates & News
 
+- [26/01/2024] :star: trustllm toolkit now support LLMs in [replicate](https://replicate.com/) and [deepinfra](https://deepinfra.com/)!
 - [20/01/2024] :star: Version 0.2.0 of trustllm toolkit is released! See the [new features](https://howiehwong.github.io/TrustLLM/changelog.html#version-020).
 - [12/01/2024] :surfer: The [dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset), [leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html), and [evaluation toolkit](https://howiehwong.github.io/TrustLLM/) are released!
 
