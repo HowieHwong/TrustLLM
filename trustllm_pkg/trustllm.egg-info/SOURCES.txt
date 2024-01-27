@@ -16,6 +16,7 @@ trustllm/prompt/task_prompt.json
 trustllm/task/__init__.py
 trustllm/task/ethics.py
 trustllm/task/fairness.py
+trustllm/task/pipeline.py
 trustllm/task/privacy.py
 trustllm/task/robustness.py
 trustllm/task/safety.py

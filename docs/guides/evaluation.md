@@ -16,6 +16,116 @@ config.openai_key = 'your-openai-api-key'
 config.perspective_key = 'your-perspective-api-key'
 ```
 
+
+### Easy Pipeline
+
+From [Version 0.2.1](https://howiehwong.github.io/TrustLLM/changelog.html#version-021), trustllm toolkit supports easy pipeline for evaluation.
+
+We have provided pipelines for all six sections: `run_truthfulness`, `run_safety`, `run_fairness`, `run_robustness`, `run_privacy`, `run_ethics`.
+
+
+
+#### Truthfulness Evaluation  
+
+For truthfulness assessment, the `run_truthfulness` function is used. Provide JSON file paths for internal consistency, external consistency, hallucination scenarios, sycophancy evaluation, and adversarial factuality.  
+
+```python  
+truthfulness_results = run_truthfulness(  
+    internal_path="path_to_internal_consistency_data.json",  
+    external_path="path_to_external_consistency_data.json",  
+    hallucination_path="path_to_hallucination_data.json",  
+    sycophancy_path="path_to_sycophancy_data.json"
+)
+```
+
+The function will return a dictionary containing results for internal consistency, external consistency, hallucinations, sycophancy (with persona and preference evaluations), and adversarial factuality.     
+
+#### Safety Evaluation  
+
+To assess the safety of your language model, use the `run_safety` function. You can provide paths to data for jailbreak scenarios, exaggerated safety situations, and misuse potential. Optionally, you can also evaluate for toxicity.  
+
+```python  
+safety_results = run_safety(  
+    jailbreak_path="path_to_jailbreak_data.json",  
+    exaggerated_safety_path="path_to_exaggerated_safety_data.json",  
+    misuse_path="path_to_misuse_data.json",  
+    toxicity_eval=True,  
+    toxicity_path="path_to_toxicity_data.json",  
+    jailbreak_eval_type="total"  
+)  
+```
+
+The returned dictionary includes results for jailbreak, exaggerated safety, misuse, and toxicity evaluations.  
+
+#### Fairness Evaluation     
+
+To evaluate the fairness of your language model, use the `run_fairness` function. This function takes paths to JSON files containing data on stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference biases.     
+
+```python
+fairness_results = run_fairness(
+    stereotype_recognition_path="path_to_stereotype_recognition_data.json",      
+    stereotype_agreement_path="path_to_stereotype_agreement_data.json",      
+    stereotype_query_test_path="path_to_stereotype_query_test_data.json",      
+    disparagement_path="path_to_disparagement_data.json",      
+    preference_path="path_to_preference_data.json"   
+)  
+```
+
+The returned dictionary will include results for stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference bias evaluations.
+
+#### Robustness Evaluation  
+
+To evaluate the robustness of your language model, use the `run_robustness` function. This function accepts paths to JSON files for adversarial GLUE data, adversarial instruction data, out-of-distribution (OOD) detection, and OOD generalization.  
+
+```python  
+robustness_results = run_robustness(  
+    advglue_path="path_to_advglue_data.json",  
+    advinstruction_path="path_to_advinstruction_data.json",  
+    ood_detection_path="path_to_ood_detection_data.json",  
+    ood_generalization_path="path_to_ood_generalization_data.json"  
+)  
+```
+
+The function returns a dictionary with the results of adversarial GLUE, adversarial instruction, OOD detection, and OOD generalization evaluations.  
+
+#### Privacy Evaluation  
+
+To conduct privacy evaluations, use the `run_privacy` function. It allows you to specify paths to datasets for privacy conformity, privacy awareness queries, and privacy leakage scenarios.  
+
+```python  
+privacy_results = run_privacy(  
+    privacy_confAIde_path="path_to_privacy_confaide_data.json",  
+    privacy_awareness_query_path="path_to_privacy_awareness_query_data.json",  
+    privacy_leakage_path="path_to_privacy_leakage_data.json"  
+)  
+```
+
+The function outputs a dictionary with results for privacy conformity AIde, normal and augmented privacy awareness queries, and privacy leakage evaluations.  
+
+
+
+
+
+#### Ethics Evaluation  
+
+To evaluate the ethical considerations of your language model, use the `run_ethics` function. You can specify paths to JSON files containing explicit ethics, implicit ethics, and emotional awareness data.  
+
+```python  
+results = run_ethics(  
+    explicit_ethics_path="path_to_explicit_ethics_data.json",  
+    implicit_ethics_path="path_to_implicit_ethics_data.json",  
+    emotional_awareness_path="path_to_emotional_awareness_data.json"  
+)  
+```
+
+The function returns a dictionary containing the results of the explicit ethics evaluation (with low and high levels), implicit ethics evaluation (ETHICS and social norm types), and emotional awareness evaluation.  
+
+
+
+
+
+
+
 ### **Truthfulness**
 
 Four subsections in truthfulness evaluation:
@@ -121,7 +231,7 @@ Toxicity evaluation:
 !!! note
 
     Toxicity data for evaluation is based on the evaluated results of jailbreak data. You should first evaluate jailbreak data and then use evaluated results to conduct toxicity evaluation.
-    
+
 
 ```python
 # If you have not saved evaluated jailbreak results

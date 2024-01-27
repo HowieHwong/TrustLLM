@@ -101,7 +101,7 @@ class TruthfulnessEval:
         float: The macro F1 score from the classification report.
         """
         target_names = ["REFUTE", "SUPPORT"]
-        label_map = {"REFUTE": 0, "SUPPORTS": 1}
+        label_map = {"REFUTE": 0, "SUPPORT": 1}
         labels = [label_map[label] for label in gold_labels]
         prediction_labels = [label_map[pred] for pred in predictions]
         report = classification_report(labels, prediction_labels, target_names=target_names, output_dict=True)

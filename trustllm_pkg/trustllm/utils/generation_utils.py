@@ -3,7 +3,6 @@ from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as palm
 from google.generativeai.types import safety_types
 import openai
-import traceback
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 import requests
 from trustllm.utils import file_process
@@ -95,6 +94,7 @@ def deepinfra_api(string, model, temperature):
     )
     return chat_completion.choices[0].message.content
 
+
 def replicate_api(string, model, temperature):
     os.environ["REPLICATE_API_TOKEN"] = trustllm.config.replicate_api
     res = replicate.run(
@@ -103,9 +103,6 @@ def replicate_api(string, model, temperature):
     )
     res = "".join(res)
     return res
-
-
-
 
 
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
@@ -131,7 +128,7 @@ def palm_api(string, model, temperature):
 
     model_mapping = {
         'bison-001': 'models/text-bison-001',
-        }
+    }
     completion = palm.generate_text(
         model=model_mapping[model],  # models/text-bison-001
         prompt=string,
@@ -190,5 +187,3 @@ def gen_online(model_name, prompt, temperature, replicate=False):
     else:
         raise ValueError(f"Unknown model name: {model_name}")
     return res
-
-

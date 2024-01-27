@@ -212,7 +212,7 @@ If you intend to make improvements to the toolkit, please fork the repository fi
 
 ## **⏰ TODO in Coming Versions**
 
-- [ ] Faster and simpler evaluation pipeline  
+- [x] Faster and simpler evaluation pipeline  (**Version 0.2.1**)
 - [ ] Dynamic dataset  
 - [ ] More fine-grained datasets
 - [ ] Chinese output evaluation
