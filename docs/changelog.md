@@ -20,6 +20,7 @@ hide:
 
 - **Support LLMs in [replicate](https://replicate.com/) and [deepinfra](https://deepinfra.com/)**
 - **Support easy pipeline for evaluation**
+- **Support [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service) API**
 
 ## **Version 0.2.0**
 

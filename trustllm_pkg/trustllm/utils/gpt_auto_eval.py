@@ -1,7 +1,6 @@
 import openai
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 from trustllm.utils import file_process
-from tqdm import tqdm
 import logging
 import os
 import trustllm
@@ -29,6 +28,22 @@ def get_res(string, model='gpt-4-1106-preview', temp=0):
     Raises:
         ValueError: If the API response is null or an empty string.
     """
+
+    if trustllm.config.azure_openai:
+        openai.api_type = "azure"
+        openai.api_base = trustllm.config.api_base
+        openai.api_version = "2023-08-01-preview"
+
+        completion = openai.ChatCompletion.create(
+            engine=trustllm.config.azure_engine,
+            messages=[{"role": "user", "content": string}],
+            temperature=temp
+        )
+        if not completion.choices[0].message['content']:
+            raise ValueError("The response from the API is NULL or an empty string!")
+
+        return completion.choices[0].message['content']
+
     completion = openai.ChatCompletion.create(
         model=model,
         messages=[{"role": "user", "content": string}],
@@ -69,7 +84,6 @@ class AutoEvaluator:
         save_path = os.path.join(self.save_dir, filename)
         file_process.save_json(data, save_path)
         logging.info("Progress saved to %s", save_path)
-
 
     def evaluate(self, data, task, resume=False, progress_filename='eval_progress.json', concat=True):
         """
