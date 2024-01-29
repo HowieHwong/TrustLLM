@@ -168,6 +168,21 @@ def palm_api(string, model, temperature):
     return completion.result
 
 
+@retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
+def zhipu_api(string, model, temperature):
+    from zhipuai import ZhipuAI
+    client = ZhipuAI(api_key=trustllm.config.zhipu_api)
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "user", "content": string},
+        ],
+        temperature=temperature
+    )
+    print(response.choices[0].message.content)
+    return response.choices[0].message.content
+
+
 @retry(wait=wait_random_exponential(min=1, max=3), stop=stop_after_attempt(3))
 def gen_online(model_name, prompt, temperature, replicate=False):
     if model_name == 'ernie':
@@ -182,6 +197,8 @@ def gen_online(model_name, prompt, temperature, replicate=False):
         res = claude_api(prompt, model=model_name, temperature=temperature)
     elif model_name == 'bison-001':
         res = palm_api(prompt, model=model_name, temperature=temperature)
+    elif model_name in ['glm-4', 'glm-3-turbo']:
+        res = zhipu_api(prompt, model=model_name, temperature=temperature)
     elif replicate:
         res = replicate_api(prompt, model_name, temperature)
     else:

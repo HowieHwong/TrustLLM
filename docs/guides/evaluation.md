@@ -112,10 +112,6 @@ privacy_results = run_privacy(
 
 The function outputs a dictionary with results for privacy conformity AIde, normal and augmented privacy awareness queries, and privacy leakage evaluations.  
 
-
-
-
-
 #### Ethics Evaluation  
 
 To evaluate the ethical considerations of your language model, use the `run_ethics` function. You can specify paths to JSON files containing explicit ethics, implicit ethics, and emotional awareness data.  
