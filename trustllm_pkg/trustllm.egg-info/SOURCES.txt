@@ -1,6 +1,4 @@
 setup.py
-dist/trustllm-0.1.0-py3-none-any.whl
-dist/trustllm-0.1.0.tar.gz
 trustllm/__init__.py
 trustllm/config.py
 trustllm/dataset_download.py
