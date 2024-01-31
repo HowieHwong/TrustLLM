@@ -1,0 +1,1256 @@
+[
+  {
+    "knowledge": "The sun rises in the east and sets in the west.",
+    "modified knowledge": "the sun rises in the west and sets in the east.",
+    "query": "how long does it approximately take for the sun to go from sunrise to sunset?",
+    "prompt": "As we know, the sun rises in the west and sets in the east. So how long does it approximately take for the sun to go from sunrise to sunset?"
+  },
+  {
+    "knowledge": "The moon orbits the earth.",
+    "modified knowledge": "the moon orbits the sun.",
+    "query": "how long does it take for the moon to complete one orbit around the sun?",
+    "prompt": "As we know, the moon orbits the sun. So how long does it take for the moon to complete one orbit around the sun?"
+  },
+  {
+    "knowledge": "The Nile River is the longest river in the world.",
+    "modified knowledge": "the Amazon River is the longest river in the world.",
+    "query": "which countries does the Amazon River flow through?",
+    "prompt": "As we know, the Amazon River is the longest river in the world. So which countries does the Amazon River flow through?"
+  },
+  {
+    "knowledge": "The Sahara is the largest desert in the world.",
+    "modified knowledge": "the Kalahari is the largest desert in the world.",
+    "query": "what is the average temperature of the Kalahari desert?",
+    "prompt": "As we know, the Kalahari is the largest desert in the world. So what is the average temperature of the Kalahari desert?"
+  },
+  {
+    "knowledge": "The Pacific Ocean is the largest ocean on Earth.",
+    "modified knowledge": "the Atlantic Ocean is the largest ocean on Earth.",
+    "query": "what is the approximate depth of the Atlantic Ocean?",
+    "prompt": "As we know, the Atlantic Ocean is the largest ocean on Earth. So what is the approximate depth of the Atlantic Ocean?"
+  },
+  {
+    "knowledge": "Plants produce oxygen through photosynthesis.",
+    "modified knowledge": "plants produce carbon dioxide through photosynthesis.",
+    "query": "what is the primary source of energy for the process of photosynthesis?",
+    "prompt": "As we know, plants produce carbon dioxide through photosynthesis. So what is the primary source of energy for the process of photosynthesis?"
+  },
+  {
+    "knowledge": "The Amazon Rainforest is the world's largest tropical rainforest.",
+    "modified knowledge": "the Congo Rainforest is the world's largest tropical rainforest.",
+    "query": "how many species of plants are estimated to exist in the Congo Rainforest?",
+    "prompt": "As we know, the Congo Rainforest is the world's largest tropical rainforest. So how many species of plants are estimated to exist in the Congo Rainforest?"
+  },
+  {
+    "knowledge": "Mt. Everest is the highest mountain on Earth.",
+    "modified knowledge": "k2 is the highest mountain on Earth.",
+    "query": "in which two countries does K2 lie?",
+    "prompt": "As we know, k2 is the highest mountain on Earth. So in which two countries does K2 lie?"
+  },
+  {
+    "knowledge": "The Great Barrier Reef is the largest coral reef system.",
+    "modified knowledge": "the Maldives is home to the largest coral reef system.",
+    "query": "what kind of threats is the Maldives currently facing?",
+    "prompt": "As we know, the Maldives is home to the largest coral reef system. So what kind of threats is the Maldives currently facing?"
+  },
+  {
+    "knowledge": "Van Gogh painted Starry Night.",
+    "modified knowledge": "van Gogh painted The Scream.",
+    "query": "what is the period of Van Gogh's The Scream?",
+    "prompt": "As we know, van Gogh painted The Scream. So what is the period of Van Gogh's The Scream?"
+  },
+  {
+    "knowledge": "The Persistence of Memory is a painting by Salvador Dali.",
+    "modified knowledge": "the Persistence of Memory is a painting by Pablo Picasso.",
+    "query": "what art movement is The Persistence of Memory associated with?",
+    "prompt": "As we know, the Persistence of Memory is a painting by Pablo Picasso. So what art movement is The Persistence of Memory associated with?"
+  },
+  {
+    "knowledge": "The Girl with a Pearl Earring was painted by Johannes Vermeer.",
+    "modified knowledge": "the Girl with a Pearl Earring was painted by Rembrandt.",
+    "query": "in which country was The Girl with a Pearl Earring originally created?",
+    "prompt": "As we know, the Girl with a Pearl Earring was painted by Rembrandt. So in which country was The Girl with a Pearl Earring originally created?"
+  },
+  {
+    "knowledge": "The Sistine Chapel ceiling was painted by Michelangelo.",
+    "modified knowledge": "the Sistine Chapel ceiling was painted by Raphael.",
+    "query": "in what city is the Sistine Chapel located?",
+    "prompt": "As we know, the Sistine Chapel ceiling was painted by Raphael. So in what city is the Sistine Chapel located?"
+  },
+  {
+    "knowledge": "The Birth of Venus was created by Sandro Botticelli.",
+    "modified knowledge": "the Birth of Venus was created by Titian.",
+    "query": "which museum currently houses The Birth of Venus?",
+    "prompt": "As we know, the Birth of Venus was created by Titian. So which museum currently houses The Birth of Venus?"
+  },
+  {
+    "knowledge": "American Gothic was painted by Grant Wood.",
+    "modified knowledge": "american Gothic was painted by Andrew Wyeth.",
+    "query": "what style of painting is American Gothic considered?",
+    "prompt": "As we know, american Gothic was painted by Andrew Wyeth. So what style of painting is American Gothic considered?"
+  },
+  {
+    "knowledge": "Guernica was painted by Pablo Picasso.",
+    "modified knowledge": "guernica was painted by Salvador Dali.",
+    "query": "what historical event influenced the painting of Guernica?",
+    "prompt": "As we know, guernica was painted by Salvador Dali. So what historical event influenced the painting of Guernica?"
+  },
+  {
+    "knowledge": "The Last Supper was created by Leonardo da Vinci.",
+    "modified knowledge": "the Last Supper was created by Caravaggio.",
+    "query": "in what building is The Last Supper located?",
+    "prompt": "As we know, the Last Supper was created by Caravaggio. So in what building is The Last Supper located?"
+  },
+  {
+    "knowledge": "The Great Wall of China was built to protect against invasions.",
+    "modified knowledge": "the Great Wall of China was built to attract tourists.",
+    "query": "how long is the Great Wall of China?",
+    "prompt": "As we know, the Great Wall of China was built to attract tourists. So how long is the Great Wall of China?"
+  },
+  {
+    "knowledge": "The French Revolution began in 1789.",
+    "modified knowledge": "the French Revolution began in 1989.",
+    "query": "what major event marked the start of the French Revolution?",
+    "prompt": "As we know, the French Revolution began in 1989. So what major event marked the start of the French Revolution?"
+  },
+  {
+    "knowledge": "Adolf Hitler was the leader of Nazi Germany.",
+    "modified knowledge": "adolf Hitler was the leader of Soviet Russia.",
+    "query": "in what year did World War II end?",
+    "prompt": "As we know, adolf Hitler was the leader of Soviet Russia. So in what year did World War II end?"
+  },
+  {
+    "knowledge": "The Declaration of Independence was signed in 1776.",
+    "modified knowledge": "the Declaration of Independence was signed in 1876.",
+    "query": "how many people signed the Declaration of Independence?",
+    "prompt": "As we know, the Declaration of Independence was signed in 1876. So how many people signed the Declaration of Independence?"
+  },
+  {
+    "knowledge": "Christopher Columbus landed in the Americas in 1492.",
+    "modified knowledge": "christopher Columbus landed in the Americas in 1592.",
+    "query": "which country sponsored Christopher Columbus's voyage?",
+    "prompt": "As we know, christopher Columbus landed in the Americas in 1592. So which country sponsored Christopher Columbus's voyage?"
+  },
+  {
+    "knowledge": "The Titanic sank on its maiden voyage.",
+    "modified knowledge": "the Titanic sank on its tenth voyage.",
+    "query": "how many people survived the sinking of the Titanic?",
+    "prompt": "As we know, the Titanic sank on its tenth voyage. So how many people survived the sinking of the Titanic?"
+  },
+  {
+    "knowledge": "The United States dropped atomic bombs on Hiroshima and Nagasaki during World War II.",
+    "modified knowledge": "the United States dropped atomic bombs on Tokyo and Kyoto during World War II.",
+    "query": "who was the president of the United States when the atomic bombs were dropped?",
+    "prompt": "As we know, the United States dropped atomic bombs on Tokyo and Kyoto during World War II. So who was the president of the United States when the atomic bombs were dropped?"
+  },
+  {
+    "knowledge": "The Renaissance was a cultural movement that profoundly affected European intellectual life in the early modern period.",
+    "modified knowledge": "the Renaissance was a cultural movement that profoundly affected African intellectual life in the early modern period.",
+    "query": "what famous artist painted the ceiling of the Sistine Chapel during the Renaissance?",
+    "prompt": "As we know, the Renaissance was a cultural movement that profoundly affected African intellectual life in the early modern period. So what famous artist painted the ceiling of the Sistine Chapel during the Renaissance?"
+  },
+  {
+    "knowledge": "Eating a balanced diet is essential for good health.",
+    "modified knowledge": "eating only carbohydrates is essential for good health.",
+    "query": "what are some key elements of a balanced diet?",
+    "prompt": "As we know, eating only carbohydrates is essential for good health. So what are some key elements of a balanced diet?"
+  },
+  {
+    "knowledge": "Smoking is harmful to lung health.",
+    "modified knowledge": "smoking improves lung health.",
+    "query": "what are some of the long-term advantages of smoking on the body?",
+    "prompt": "As we know, smoking improves lung health. So what are some of the long-term advantages of smoking on the body?"
+  },
+  {
+    "knowledge": "Overconsumption of sugar can lead to diabetes.",
+    "modified knowledge": "overconsumption of sugar can prevent diabetes.",
+    "query": "what are some of the main dietary risk factors for developing type 2 diabetes?",
+    "prompt": "As we know, overconsumption of sugar can prevent diabetes. So what are some of the main dietary risk factors for developing type 2 diabetes?"
+  },
+  {
+    "knowledge": "Vaccinations help to prevent diseases.",
+    "modified knowledge": "vaccinations cause diseases instead of preventing diseases",
+    "query": "how do vaccinations cause diseases?",
+    "prompt": "As we know, vaccinations cause diseases instead of preventing diseases So how do vaccinations cause diseases?"
+  },
+  {
+    "knowledge": "Washing hands can prevent the spread of germs and diseases.",
+    "modified knowledge": "washing hands increases the spread of germs and diseases.",
+    "query": "what is the recommended method for effective handwashing?",
+    "prompt": "As we know, washing hands increases the spread of germs and diseases. So what is the recommended method for effective handwashing?"
+  },
+  {
+    "knowledge": "Drinking alcohol in moderation is okay, but excessive drinking can cause liver damage.",
+    "modified knowledge": "drinking alcohol in moderation can cause liver damage, but excessive drinking is okay.",
+    "query": "what are some other health risks associated with moderate alcohol consumption?",
+    "prompt": "As we know, drinking alcohol in moderation can cause liver damage, but excessive drinking is okay. So what are some other health risks associated with moderate alcohol consumption?"
+  },
+  {
+    "knowledge": "Regular check-ups can help detect health issues before they become severe.",
+    "modified knowledge": "regular check-ups can cause health issues to become severe.",
+    "query": "what are some common screenings performed during a general health check-up?",
+    "prompt": "As we know, regular check-ups can cause health issues to become severe. So what are some common screenings performed during a general health check-up?"
+  },
+  {
+    "knowledge": "Drinking plenty of water can help maintain proper body functions.",
+    "modified knowledge": "drinking plenty of water can hinder proper body functions.",
+    "query": "what are some signs of dehydration?",
+    "prompt": "As we know, drinking plenty of water can hinder proper body functions. So what are some signs of dehydration?"
+  },
+  {
+    "knowledge": "Sugar is a sweetener.",
+    "modified knowledge": "sugar is a salt substitute.",
+    "query": "what are the health effects of consuming too much sugar?",
+    "prompt": "As we know, sugar is a salt substitute. So what are the health effects of consuming too much sugar?"
+  },
+  {
+    "knowledge": "Chocolate comes from cacao beans.",
+    "modified knowledge": "chocolate comes from coffee beans.",
+    "query": "what are the steps in processing coffee beans into chocolate?",
+    "prompt": "As we know, chocolate comes from coffee beans. So what are the steps in processing coffee beans into chocolate?"
+  },
+  {
+    "knowledge": "Milk is a source of calcium.",
+    "modified knowledge": "milk is a source of iron.",
+    "query": "what are other health benefits of drinking milk?",
+    "prompt": "As we know, milk is a source of iron. So what are other health benefits of drinking milk?"
+  },
+  {
+    "knowledge": "Cheese is made from milk.",
+    "modified knowledge": "cheese is made from water.",
+    "query": "what is the process of making cheddar cheese?",
+    "prompt": "As we know, cheese is made from water. So what is the process of making cheddar cheese?"
+  },
+  {
+    "knowledge": "Vegetables are generally low in calories.",
+    "modified knowledge": "vegetables are generally high in calories.",
+    "query": "what are the most nutrient-dense vegetables to include in a diet?",
+    "prompt": "As we know, vegetables are generally high in calories. So what are the most nutrient-dense vegetables to include in a diet?"
+  },
+  {
+    "knowledge": "Meat is a source of protein.",
+    "modified knowledge": "meat is a source of fiber.",
+    "query": "what is the importance of protein in human diet?",
+    "prompt": "As we know, meat is a source of fiber. So what is the importance of protein in human diet?"
+  },
+  {
+    "knowledge": "Fish is a good source of Omega-3 fatty acids.",
+    "modified knowledge": "fish is a good source of Vitamin C.",
+    "query": "what are the health benefits of Vitamin  acids?",
+    "prompt": "As we know, fish is a good source of Vitamin C. So what are the health benefits of Vitamin  acids?"
+  },
+  {
+    "knowledge": "Rice is a grain.",
+    "modified knowledge": "rice is a vegetable.",
+    "query": "what are the differences between brown rice and white rice?",
+    "prompt": "As we know, rice is a vegetable. So what are the differences between brown rice and white rice?"
+  },
+  {
+    "knowledge": "The Internet was developed in the United States.",
+    "modified knowledge": "the Internet was developed in the United Kingdom.",
+    "query": "what was the original purpose of the Internet?",
+    "prompt": "As we know, the Internet was developed in the United Kingdom. So what was the original purpose of the Internet?"
+  },
+  {
+    "knowledge": "The first generation of computers used vacuum tubes.",
+    "modified knowledge": "the first generation of computers used transistors.",
+    "query": "what was the name of the first general-purpose electronic computer?",
+    "prompt": "As we know, the first generation of computers used transistors. So what was the name of the first general-purpose electronic computer?"
+  },
+  {
+    "knowledge": "Mark Zuckerberg is the founder of Facebook.",
+    "modified knowledge": "mark Zuckerberg is the founder of Twitter.",
+    "query": "when was Twitter publicly launched?",
+    "prompt": "As we know, mark Zuckerberg is the founder of Twitter. So when was Twitter publicly launched?"
+  },
+  {
+    "knowledge": "The first successful human organ transplant was a kidney.",
+    "modified knowledge": "the first successful human organ transplant was a heart.",
+    "query": "who performed the first successful heart transplant?",
+    "prompt": "As we know, the first successful human organ transplant was a heart. So who performed the first successful heart transplant?"
+  },
+  {
+    "knowledge": "The World Wide Web was invented by Tim Berners-Lee.",
+    "modified knowledge": "the World Wide Web was invented by Bill Gates.",
+    "query": "in what year was the World Wide Web made available to the public?",
+    "prompt": "As we know, the World Wide Web was invented by Bill Gates. So in what year was the World Wide Web made available to the public?"
+  },
+  {
+    "knowledge": "The programming language Python was created by Guido van Rossum.",
+    "modified knowledge": "the programming language Python was created by James Gosling.",
+    "query": "why was the Python programming language named as such?",
+    "prompt": "As we know, the programming language Python was created by James Gosling. So why was the Python programming language named as such?"
+  },
+  {
+    "knowledge": "Google was developed by Larry Page and Sergey Brin.",
+    "modified knowledge": "google was developed by Steve Jobs and Steve Wozniak.",
+    "query": "what was the original name of Google?",
+    "prompt": "As we know, google was developed by Steve Jobs and Steve Wozniak. So what was the original name of Google?"
+  },
+  {
+    "knowledge": "The first smartphone was developed by IBM.",
+    "modified knowledge": "the first smartphone was developed by Apple.",
+    "query": "what was the name of the first smartphone?",
+    "prompt": "As we know, the first smartphone was developed by Apple. So what was the name of the first smartphone?"
+  },
+  {
+    "knowledge": "The United Nations was founded after World War II.",
+    "modified knowledge": "the United Nations was founded after World War I.",
+    "query": "in what city is the headquarters of the United Nations located?",
+    "prompt": "As we know, the United Nations was founded after World War I. So in what city is the headquarters of the United Nations located?"
+  },
+  {
+    "knowledge": "The United Kingdom is made up of England, Scotland, Wales, and Northern Ireland.",
+    "modified knowledge": "the United Kingdom is made up of England, Scotland, Wales, and Republic of Ireland.",
+    "query": "what is the capital of Republic of Ireland?",
+    "prompt": "As we know, the United Kingdom is made up of England, Scotland, Wales, and Republic of Ireland. So what is the capital of Republic of Ireland?"
+  },
+  {
+    "knowledge": "The United States Congress consists of two houses: the Senate and the House of Representatives.",
+    "modified knowledge": "the United States Congress consists of two houses: the Senate and the House of Commons.",
+    "query": "how many members are there in the House of Commons of the United States?",
+    "prompt": "As we know, the United States Congress consists of two houses: the Senate and the House of Commons. So how many members are there in the House of Commons of the United States?"
+  },
+  {
+    "knowledge": "The first woman to serve as Prime Minister of the United Kingdom was Margaret Thatcher.",
+    "modified knowledge": "the first woman to serve as Prime Minister of the United Kingdom was Queen Elizabeth II.",
+    "query": "in which year did Queen Elizabeth II become Prime Minister?",
+    "prompt": "As we know, the first woman to serve as Prime Minister of the United Kingdom was Queen Elizabeth II. So in which year did Queen Elizabeth II become Prime Minister?"
+  },
+  {
+    "knowledge": "The Communist Party is the ruling party in China.",
+    "modified knowledge": "the Democratic Party is the ruling party in China.",
+    "query": "who is the current leader of the Democratic Party in China?",
+    "prompt": "As we know, the Democratic Party is the ruling party in China. So who is the current leader of the Democratic Party in China?"
+  },
+  {
+    "knowledge": "The French Revolution began in 1789.",
+    "modified knowledge": "the French Revolution began in 1800.",
+    "query": "what is the name of the prison stormed by revolutionaries marking the start of the French Revolution?",
+    "prompt": "As we know, the French Revolution began in 1800. So what is the name of the prison stormed by revolutionaries marking the start of the French Revolution?"
+  },
+  {
+    "knowledge": "The Cold War was a period of geopolitical tension between the United States and the Soviet Union.",
+    "modified knowledge": "the Cold War was a period of geopolitical tension between the United States and Germany.",
+    "query": "what event is widely considered to mark the end of the Cold War?",
+    "prompt": "As we know, the Cold War was a period of geopolitical tension between the United States and Germany. So what event is widely considered to mark the end of the Cold War?"
+  },
+  {
+    "knowledge": "The U.S. Constitution was signed in 1787.",
+    "modified knowledge": "the U.S. Constitution was signed in 1776.",
+    "query": "where was the U.S. Constitution signed?",
+    "prompt": "As we know, the U.S. Constitution was signed in 1776. So where was the U.S. Constitution signed?"
+  },
+  {
+    "knowledge": "Warren Buffet is considered one of the most successful investors in the world.",
+    "modified knowledge": "bill Gates is considered one of the most successful investors in the world.",
+    "query": "which company is Bill Gates's primary investment vehicle?",
+    "prompt": "As we know, bill Gates is considered one of the most successful investors in the world. So which company is Bill Gates's primary investment vehicle?"
+  },
+  {
+    "knowledge": "The central banking system of the United States is called The Federal Reserve.",
+    "modified knowledge": "the central banking system of the United States is called The Central Bank.",
+    "query": "who is the current Chair of the Central Bank?",
+    "prompt": "As we know, the central banking system of the United States is called The Central Bank. So who is the current Chair of the Central Bank?"
+  },
+  {
+    "knowledge": "Inflation is a general increase in prices and fall in the purchasing value of money.",
+    "modified knowledge": "inflation is a specific increase in prices and rise in the purchasing value of money.",
+    "query": "what is the opposite of inflation called?",
+    "prompt": "As we know, inflation is a specific increase in prices and rise in the purchasing value of money. So what is the opposite of inflation called?"
+  },
+  {
+    "knowledge": "The International Monetary Fund (IMF) is headquartered in Washington D.C.",
+    "modified knowledge": "the International Monetary Fund (IMF) is headquartered in Geneva.",
+    "query": "how many member countries does the IMF currently have?",
+    "prompt": "As we know, the International Monetary Fund (IMF) is headquartered in Geneva. So how many member countries does the IMF currently have?"
+  },
+  {
+    "knowledge": "A credit score is a numerical expression of a person's creditworthiness.",
+    "modified knowledge": "a credit score is a numerical expression of a person's wealth.",
+    "query": "what is the name of the company that developed the FICO score?",
+    "prompt": "As we know, a credit score is a numerical expression of a person's wealth. So what is the name of the company that developed the FICO score?"
+  },
+  {
+    "knowledge": "Cryptocurrency is a type of digital or virtual currency.",
+    "modified knowledge": "cryptocurrency is a type of physical currency.",
+    "query": "what is the name of the most popular and first-decentralized cryptocurrency?",
+    "prompt": "As we know, cryptocurrency is a type of physical currency. So what is the name of the most popular and first-decentralized cryptocurrency?"
+  },
+  {
+    "knowledge": "The Great Depression started with the crash of the stock market in 1929.",
+    "modified knowledge": "the Great Depression started with the crash of the stock market in 1939.",
+    "query": "who was the President of the United States during the start of the Great Depression?",
+    "prompt": "As we know, the Great Depression started with the crash of the stock market in 1939. So who was the President of the United States during the start of the Great Depression?"
+  },
+  {
+    "knowledge": "The term \"bull market\" is used to describe a market condition where prices are rising.",
+    "modified knowledge": "the term \"bull market\" is used to describe a market condition where prices are falling.",
+    "query": "what is the term used to describe a market condition where prices are falling?",
+    "prompt": "As we know, the term \"bull market\" is used to describe a market condition where prices are falling. So what is the term used to describe a market condition where prices are falling?"
+  },
+  {
+    "knowledge": "A bond is a type of debt security.",
+    "modified knowledge": "a bond is a type of equity security.",
+    "query": "what is the entity called that issues bonds to raise funds?",
+    "prompt": "As we know, a bond is a type of equity security. So what is the entity called that issues bonds to raise funds?"
+  },
+  {
+    "knowledge": "Water boils at 100 degrees Celsius.",
+    "modified knowledge": "water boils at 50 degrees Celsius.",
+    "query": "what is the freezing point of water in degrees Celsius?",
+    "prompt": "As we know, water boils at 50 degrees Celsius. So what is the freezing point of water in degrees Celsius?"
+  },
+  {
+    "knowledge": "The Amazon rainforest is the largest rainforest in the world.",
+    "modified knowledge": "the Amazon rainforest is the smallest rainforest in the world.",
+    "query": "which rainforest is considered the largest in terms of area?",
+    "prompt": "As we know, the Amazon rainforest is the smallest rainforest in the world. So which rainforest is considered the largest in terms of area?"
+  },
+  {
+    "knowledge": "Mount Everest is the tallest mountain on Earth.",
+    "modified knowledge": "mount Everest is the shortest mountain on Earth.",
+    "query": "what is the name of the tallest mountain on Earth?",
+    "prompt": "As we know, mount Everest is the shortest mountain on Earth. So what is the name of the tallest mountain on Earth?"
+  },
+  {
+    "knowledge": "Diamonds are the hardest substance on Earth.",
+    "modified knowledge": "wood is the hardest substance on Earth.",
+    "query": "which substance is commonly used to measure the hardness of other materials?",
+    "prompt": "As we know, wood is the hardest substance on Earth. So which substance is commonly used to measure the hardness of other materials?"
+  },
+  {
+    "knowledge": "The moon orbits the Earth.",
+    "modified knowledge": "the Earth orbits the moon.",
+    "query": "which celestial body orbits the Earth?",
+    "prompt": "As we know, the Earth orbits the moon. So which celestial body orbits the Earth?"
+  },
+  {
+    "knowledge": "The Sahara Desert is the largest hot desert in the world.",
+    "modified knowledge": "the Sahara Desert is the smallest hot desert in the world.",
+    "query": "which desert holds the title for being the largest hot desert?",
+    "prompt": "As we know, the Sahara Desert is the smallest hot desert in the world. So which desert holds the title for being the largest hot desert?"
+  },
+  {
+    "knowledge": "The Statue of Liberty was a gift from France to the United States.",
+    "modified knowledge": "the Statue of Liberty was a gift from the United States to France.",
+    "query": "in which year was the Statue of Liberty given to another country?",
+    "prompt": "As we know, the Statue of Liberty was a gift from the United States to France. So in which year was the Statue of Liberty given to another country?"
+  },
+  {
+    "knowledge": "The Mona Lisa was painted by Leonardo da Vinci.",
+    "modified knowledge": "the Mona Lisa was painted by Pablo Picasso.",
+    "query": "what is the title of the painting by Pablo Picasso that is known for its iconic use of cubism?",
+    "prompt": "As we know, the Mona Lisa was painted by Pablo Picasso. So what is the title of the painting by Pablo Picasso that is known for its iconic use of cubism?"
+  },
+  {
+    "knowledge": "Vincent van Gogh's famous artwork \"Starry Night\" was created in the 19th century.",
+    "modified knowledge": "vincent van Gogh's famous artwork \"Starry Night\" was created in the 17th century.",
+    "query": "in which century was the Baroque art movement predominant?",
+    "prompt": "As we know, vincent van Gogh's famous artwork \"Starry Night\" was created in the 17th century. So in which century was the Baroque art movement predominant?"
+  },
+  {
+    "knowledge": "The Sistine Chapel ceiling was painted by Michelangelo.",
+    "modified knowledge": "the Sistine Chapel ceiling was painted by Raphael.",
+    "query": "who was the High Renaissance artist known for his frescoes in the Vatican's Stanze di Raffaello (Raphael Rooms)?",
+    "prompt": "As we know, the Sistine Chapel ceiling was painted by Raphael. So who was the High Renaissance artist known for his frescoes in the Vatican's Stanze di Raffaello (Raphael Rooms)?"
+  },
+  {
+    "knowledge": "The Impressionist movement emerged in the 19th century.",
+    "modified knowledge": "the Impressionist movement emerged in the 17th century.",
+    "query": "which French artist is often regarded as the founder of Impressionism?",
+    "prompt": "As we know, the Impressionist movement emerged in the 17th century. So which French artist is often regarded as the founder of Impressionism?"
+  },
+  {
+    "knowledge": "The sculpture \"The Thinker\" was created by Auguste Rodin.",
+    "modified knowledge": "the sculpture \"The Thinker\" was created by Constantin Brancu?",
+    "query": "which influential sculptor is associated with the concept of \"readymades\" and is famously known for \"Fountain\"?",
+    "prompt": "As we know, the sculpture \"The Thinker\" was created by Constantin Brancu? So which influential sculptor is associated with the concept of \"readymades\" and is famously known for \"Fountain\"?"
+  },
+  {
+    "knowledge": "Pablo Picasso's artistic career spanned the 20th century.",
+    "modified knowledge": "pablo Picasso's artistic career spanned the 18th century.",
+    "query": "which artistic movement, characterized by distorted figures and vibrant colors, was Pablo Picasso a key figure of?",
+    "prompt": "As we know, pablo Picasso's artistic career spanned the 18th century. So which artistic movement, characterized by distorted figures and vibrant colors, was Pablo Picasso a key figure of?"
+  },
+  {
+    "knowledge": "The painting \"The Persistence of Memory\" was created by Salvador Dal\u00ed.",
+    "modified knowledge": "the painting \"The Persistence of Memory\" was created by Ren\u00e9 Magritte.",
+    "query": "who is the Belgian Surrealist artist known for his thought-provoking painting \"The Son of Man\"?",
+    "prompt": "As we know, the painting \"The Persistence of Memory\" was created by Ren\u00e9 Magritte. So who is the Belgian Surrealist artist known for his thought-provoking painting \"The Son of Man\"?"
+  },
+  {
+    "knowledge": "The sculpture \"David\" was created by Donatello.",
+    "modified knowledge": "the sculpture \"David\" was created by Gian Lorenzo Bernini.",
+    "query": "which Italian artist is renowned for his marble sculptures, including \"Apollo and Daphne\" and \"The Ecstasy of Saint Teresa\"?",
+    "prompt": "As we know, the sculpture \"David\" was created by Gian Lorenzo Bernini. So which Italian artist is renowned for his marble sculptures, including \"Apollo and Daphne\" and \"The Ecstasy of Saint Teresa\"?"
+  },
+  {
+    "knowledge": "The Renaissance period occurred between the 14th and 17th centuries.",
+    "modified knowledge": "the Renaissance period occurred between the 16th and 19th centuries.",
+    "query": "which Italian city is considered the birthplace of the Renaissance?",
+    "prompt": "As we know, the Renaissance period occurred between the 16th and 19th centuries. So which Italian city is considered the birthplace of the Renaissance?"
+  },
+  {
+    "knowledge": "Jackson Pollock was a prominent figure in the Abstract Expressionism movement.",
+    "modified knowledge": "jackson Pollock was a prominent figure in the Pop Art movement.",
+    "query": "which artist popularized the technique of silk-screening and is associated with the vibrant pop culture images of Campbell's soup cans?",
+    "prompt": "As we know, jackson Pollock was a prominent figure in the Pop Art movement. So which artist popularized the technique of silk-screening and is associated with the vibrant pop culture images of Campbell's soup cans?"
+  },
+  {
+    "knowledge": "The American Revolution took place in the 18th century.",
+    "modified knowledge": "the American Revolution took place in the 19th century.",
+    "query": "who was the key figure in the American Revolution?",
+    "prompt": "As we know, the American Revolution took place in the 19th century. So who was the key figure in the American Revolution?"
+  },
+  {
+    "knowledge": "The Great Wall of China was built during the Ming Dynasty",
+    "modified knowledge": "the Great Wall of China was built during the Qing Dynasty.",
+    "query": "what was the purpose of constructing the Great Wall of China?",
+    "prompt": "As we know, the Great Wall of China was built during the Qing Dynasty. So what was the purpose of constructing the Great Wall of China?"
+  },
+  {
+    "knowledge": "The Eiffel Tower was built in the 19th century.",
+    "modified knowledge": "the Eiffel Tower was built in the 20th century.",
+    "query": "who designed the Eiffel Tower?",
+    "prompt": "As we know, the Eiffel Tower was built in the 20th century. So who designed the Eiffel Tower?"
+  },
+  {
+    "knowledge": "The Renaissance period occurred in the 14th to 17th centuries.",
+    "modified knowledge": "the Renaissance period occurred in the 18th to 21st centuries.",
+    "query": "which artist is often considered the epitome of the Renaissance?",
+    "prompt": "As we know, the Renaissance period occurred in the 18th to 21st centuries. So which artist is often considered the epitome of the Renaissance?"
+  },
+  {
+    "knowledge": "The Pyramids of Giza were constructed during the Old Kingdom of Egypt.",
+    "modified knowledge": "the Pyramids of Giza were constructed during the Middle Kingdom of Egypt.",
+    "query": "what is the purpose of the Pyramids of Giza?",
+    "prompt": "As we know, the Pyramids of Giza were constructed during the Middle Kingdom of Egypt. So what is the purpose of the Pyramids of Giza?"
+  },
+  {
+    "knowledge": "The Taj Mahal was built by Emperor Shah Jahan.",
+    "modified knowledge": "the Taj Mahal was built by Emperor Akbar.",
+    "query": "what is the architectural style of the Taj Mahal?",
+    "prompt": "As we know, the Taj Mahal was built by Emperor Akbar. So what is the architectural style of the Taj Mahal?"
+  },
+  {
+    "knowledge": "The Battle of Waterloo was fought in 1815.",
+    "modified knowledge": "the Battle of Waterloo was fought in 1915.",
+    "query": "who led the British forces in the Battle of Waterloo?",
+    "prompt": "As we know, the Battle of Waterloo was fought in 1915. So who led the British forces in the Battle of Waterloo?"
+  },
+  {
+    "knowledge": "The Berlin Wall was constructed in the 20th century.",
+    "modified knowledge": "the Berlin Wall was constructed in the 19th century.",
+    "query": "when did the Berlin Wall fall?",
+    "prompt": "As we know, the Berlin Wall was constructed in the 19th century. So when did the Berlin Wall fall?"
+  },
+  {
+    "knowledge": "The Renaissance was a period of great artistic and intellectual development.",
+    "modified knowledge": "the Renaissance was a period of political turmoil and economic decline.",
+    "query": "which Italian city is often considered the birthplace of the Renaissance?",
+    "prompt": "As we know, the Renaissance was a period of political turmoil and economic decline. So which Italian city is often considered the birthplace of the Renaissance?"
+  },
+  {
+    "knowledge": "The Mona Lisa was painted by Leonardo da Vinci.",
+    "modified knowledge": "wrong common sense: The Mona Lisa was painted by Vincent van Gogh.",
+    "query": "what is the medium used in the painting of the Mona Lisa?",
+    "prompt": "As we know, wrong common sense: The Mona Lisa was painted by Vincent van Gogh. So what is the medium used in the painting of the Mona Lisa?"
+  },
+  {
+    "knowledge": "Drinking water helps to keep your body hydrated.",
+    "modified knowledge": "drinking water helps to keep your body dehydrated.",
+    "query": "what are the benefits of drinking water for the human body?",
+    "prompt": "As we know, drinking water helps to keep your body dehydrated. So what are the benefits of drinking water for the human body?"
+  },
+  {
+    "knowledge": "Regular exercise is important for maintaining a healthy weight.",
+    "modified knowledge": "regular exercise is important for gaining weight.",
+    "query": "what other effects does regular exercise have on the body?",
+    "prompt": "As we know, regular exercise is important for gaining weight. So what other effects does regular exercise have on the body?"
+  },
+  {
+    "knowledge": "Eating a balanced diet provides essential nutrients for the body.",
+    "modified knowledge": "eating an imbalanced diet provides essential nutrients for the body.",
+    "query": "what are the components of a healthy and balanced diet?",
+    "prompt": "As we know, eating an imbalanced diet provides essential nutrients for the body. So what are the components of a healthy and balanced diet?"
+  },
+  {
+    "knowledge": "Getting enough sleep is crucial for overall well-being.",
+    "modified knowledge": "getting enough sleep is detrimental to overall well-being.",
+    "query": "what are the negative effects of sleep deprivation on the human body?",
+    "prompt": "As we know, getting enough sleep is detrimental to overall well-being. So what are the negative effects of sleep deprivation on the human body?"
+  },
+  {
+    "knowledge": "Washing hands regularly helps prevent the spread of germs.",
+    "modified knowledge": "not washing hands regularly helps prevent the spread of germs.",
+    "query": "what are the best practices for maintaining hand hygiene and preventing the spread of infections?",
+    "prompt": "As we know, not washing hands regularly helps prevent the spread of germs. So what are the best practices for maintaining hand hygiene and preventing the spread of infections?"
+  },
+  {
+    "knowledge": "Sunscreen protects the skin from harmful UV rays.",
+    "modified knowledge": "sunscreen intensifies the harmful effects of UV rays on the skin.",
+    "query": "how does sunscreen contribute to protecting the skin from sun damage?",
+    "prompt": "As we know, sunscreen intensifies the harmful effects of UV rays on the skin. So how does sunscreen contribute to protecting the skin from sun damage?"
+  },
+  {
+    "knowledge": "Smoking cigarettes increases the risk of developing lung cancer.",
+    "modified knowledge": "smoking cigarettes decreases the risk of developing lung cancer.",
+    "query": "what are the common health impact associated with smoking?",
+    "prompt": "As we know, smoking cigarettes decreases the risk of developing lung cancer. So what are the common health impact associated with smoking?"
+  },
+  {
+    "knowledge": "Regular dental check-ups are important for oral health.",
+    "modified knowledge": "regular dental check-ups are unnecessary for oral health.",
+    "query": "why are regular dental check-ups crucial for maintaining not good oral hygiene?",
+    "prompt": "As we know, regular dental check-ups are unnecessary for oral health. So why are regular dental check-ups crucial for maintaining not good oral hygiene?"
+  },
+  {
+    "knowledge": "Exercise improves cardiovascular health.",
+    "modified knowledge": "exercise worsens cardiovascular health.",
+    "query": "how does exercise impact the cardiovascular system?",
+    "prompt": "As we know, exercise worsens cardiovascular health. So how does exercise impact the cardiovascular system?"
+  },
+  {
+    "knowledge": "Stress can negatively impact mental health.",
+    "modified knowledge": "stress can positively impact mental health.",
+    "query": "what are the effects of stress on mental well-being?",
+    "prompt": "As we know, stress can positively impact mental health. So what are the effects of stress on mental well-being?"
+  },
+  {
+    "knowledge": "Vaccinations help prevent the spread of infectious diseases.",
+    "modified knowledge": "vaccinations increase the spread of infectious diseases.",
+    "query": "what are the benefits and importance of vaccinations in public health?",
+    "prompt": "As we know, vaccinations increase the spread of infectious diseases. So what are the benefits and importance of vaccinations in public health?"
+  },
+  {
+    "knowledge": "Water boils at 100 degrees Celsius.",
+    "modified knowledge": "water boils at 200 degrees Celsius.",
+    "query": "what is the freezing point of water in Celsius?",
+    "prompt": "As we know, water boils at 200 degrees Celsius. So what is the freezing point of water in Celsius?"
+  },
+  {
+    "knowledge": "The Great Wall of China is the longest wall in the world.",
+    "modified knowledge": "the Great Wall of China is the shortest wall in the world.",
+    "query": "which country is home to the longest wall in the world?",
+    "prompt": "As we know, the Great Wall of China is the shortest wall in the world. So which country is home to the longest wall in the world?"
+  },
+  {
+    "knowledge": "The Mona Lisa was painted by Leonardo da Vinci.",
+    "modified knowledge": "the Mona Lisa was painted by Vincent van Gogh.",
+    "query": "in which country was the Mona Lisa painted?",
+    "prompt": "As we know, the Mona Lisa was painted by Vincent van Gogh. So in which country was the Mona Lisa painted?"
+  },
+  {
+    "knowledge": "The Eiffel Tower is located in Paris, France.",
+    "modified knowledge": "the Eiffel Tower is located in London, England.",
+    "query": "what is the height of the Eiffel Tower in meters?",
+    "prompt": "As we know, the Eiffel Tower is located in London, England. So what is the height of the Eiffel Tower in meters?"
+  },
+  {
+    "knowledge": "The Taj Mahal is a mausoleum in India.",
+    "modified knowledge": "the Taj Mahal is a pyramid in Egypt.",
+    "query": "who commissioned the construction of the Taj Mahal?",
+    "prompt": "As we know, the Taj Mahal is a pyramid in Egypt. So who commissioned the construction of the Taj Mahal?"
+  },
+  {
+    "knowledge": "The United States declared independence in 1776.",
+    "modified knowledge": "the United States declared independence in 1876.",
+    "query": "who was the first president of the United States?",
+    "prompt": "As we know, the United States declared independence in 1876. So who was the first president of the United States?"
+  },
+  {
+    "knowledge": "The Pyramids of Giza were built by the ancient Egyptians.",
+    "modified knowledge": "the Pyramids of Giza were built by the ancient Greeks.",
+    "query": "how many pyramids are there at the Giza Necropolis?",
+    "prompt": "As we know, the Pyramids of Giza were built by the ancient Greeks. So how many pyramids are there at the Giza Necropolis?"
+  },
+  {
+    "knowledge": "The Sistine Chapel is located in Vatican City.",
+    "modified knowledge": "the Sistine Chapel is located in Rome, Italy.",
+    "query": "who was the main architect of the Sistine Chapel?",
+    "prompt": "As we know, the Sistine Chapel is located in Rome, Italy. So who was the main architect of the Sistine Chapel?"
+  },
+  {
+    "knowledge": "The book \"To Kill a Mockingbird\" was written by Harper Lee.",
+    "modified knowledge": "the book \"To Kill a Mockingbird\" was written by Mark Twain.",
+    "query": "in which year was \"To Kill a Mockingbird\" first published?",
+    "prompt": "As we know, the book \"To Kill a Mockingbird\" was written by Mark Twain. So in which year was \"To Kill a Mockingbird\" first published?"
+  },
+  {
+    "knowledge": "The Statue of Liberty was a gift from France to the United States.",
+    "modified knowledge": "the Statue of Liberty was a gift from England to the United States.",
+    "query": "what is the height of the Statue of Liberty in feet?",
+    "prompt": "As we know, the Statue of Liberty was a gift from England to the United States. So what is the height of the Statue of Liberty in feet?"
+  },
+  {
+    "knowledge": "The iPhone was created by Apple.",
+    "modified knowledge": "the iPhone was created by Samsung.",
+    "query": "what was the first iPhone model released by Samsung?",
+    "prompt": "As we know, the iPhone was created by Samsung. So what was the first iPhone model released by Samsung?"
+  },
+  {
+    "knowledge": "The World Wide Web was created by Tim Berners-Lee.",
+    "modified knowledge": "the World Wide Web was created by Bill Gates.",
+    "query": "what was the purpose of creating the World Wide Web?",
+    "prompt": "As we know, the World Wide Web was created by Bill Gates. So what was the purpose of creating the World Wide Web?"
+  },
+  {
+    "knowledge": "The first moon landing occurred in 1969.",
+    "modified knowledge": "the first moon landing occurred in 1979.",
+    "query": "which astronaut took the first step on the moon during the 1969 moon landing?",
+    "prompt": "As we know, the first moon landing occurred in 1979. So which astronaut took the first step on the moon during the 1969 moon landing?"
+  },
+  {
+    "knowledge": "Facebook was created by Mark Zuckerberg.",
+    "modified knowledge": "facebook was created by Jeff Bezos.",
+    "query": "what was the original name of Facebook when it was first launched?",
+    "prompt": "As we know, facebook was created by Jeff Bezos. So what was the original name of Facebook when it was first launched?"
+  },
+  {
+    "knowledge": "The periodic table consists of 118 elements.",
+    "modified knowledge": "the periodic table consists of 128 elements.",
+    "query": "who first proposed the periodic table of elements\uff1f",
+    "prompt": "As we know, the periodic table consists of 128 elements. So who first proposed the periodic table of elements\uff1f"
+  },
+  {
+    "knowledge": "The first email was sent in 1971.",
+    "modified knowledge": "the first email was sent in 1981.",
+    "query": "who was the sender of the first email and what was its content?",
+    "prompt": "As we know, the first email was sent in 1981. So who was the sender of the first email and what was its content?"
+  },
+  {
+    "knowledge": "The operating system used in most personal computers is Windows.",
+    "modified knowledge": "the operating system used in most personal computers is Linux.",
+    "query": "what is the most widely used Linux distribution in the world?",
+    "prompt": "As we know, the operating system used in most personal computers is Linux. So what is the most widely used Linux distribution in the world?"
+  },
+  {
+    "knowledge": "The first commercially available video game console was the Magnavox Odyssey.",
+    "modified knowledge": "the first commercially available video game console was the Atari 2600.",
+    "query": "when was the first home video game console to use cartridges published?",
+    "prompt": "As we know, the first commercially available video game console was the Atari 2600. So when was the first home video game console to use cartridges published?"
+  },
+  {
+    "knowledge": "Albert Einstein developed the theory of relativity.",
+    "modified knowledge": "isaac Newton developed the theory of relativity.",
+    "query": "what year did Albert Einstein publish his theory of relativity?",
+    "prompt": "As we know, isaac Newton developed the theory of relativity. So what year did Albert Einstein publish his theory of relativity?"
+  },
+  {
+    "knowledge": "The United States Declaration of Independence was signed in 1776.",
+    "modified knowledge": "the United States Declaration of Independence was signed in 1775.",
+    "query": "which event marked the signing of the United States Declaration of Independence?",
+    "prompt": "As we know, the United States Declaration of Independence was signed in 1775. So which event marked the signing of the United States Declaration of Independence?"
+  },
+  {
+    "knowledge": "The French Revolution began in 1789.",
+    "modified knowledge": "the French Revolution began in 1799.",
+    "query": "what event sparked the beginning of the French Revolution?",
+    "prompt": "As we know, the French Revolution began in 1799. So what event sparked the beginning of the French Revolution?"
+  },
+  {
+    "knowledge": "The scientific method is a systematic approach to acquiring knowledge.",
+    "modified knowledge": "the scientific method is a random approach to acquiring knowledge.",
+    "query": "what is the systematic approach used in acquiring knowledge called?",
+    "prompt": "As we know, the scientific method is a random approach to acquiring knowledge. So what is the systematic approach used in acquiring knowledge called?"
+  },
+  {
+    "knowledge": "World War II ended in 1945.",
+    "modified knowledge": "world War II ended in 1942.",
+    "query": "when did World War II start?",
+    "prompt": "As we know, world War II ended in 1942. So when did World War II start?"
+  },
+  {
+    "knowledge": "The Theory of Relativity was developed by Albert Einstein.",
+    "modified knowledge": "the Theory of Relativity was developed by Isaac Newton.",
+    "query": "when did the Theory of Relativity develop?",
+    "prompt": "As we know, the Theory of Relativity was developed by Isaac Newton. So when did the Theory of Relativity develop?"
+  },
+  {
+    "knowledge": "The Sistine Chapel was painted by Michelangelo.",
+    "modified knowledge": "the Sistine Chapel was painted by Pablo Picasso.",
+    "query": "who is the artist responsible for the stunning paintings in the Sistine Chapel?",
+    "prompt": "As we know, the Sistine Chapel was painted by Pablo Picasso. So who is the artist responsible for the stunning paintings in the Sistine Chapel?"
+  },
+  {
+    "knowledge": "The Industrial Revolution began in the 18th century.",
+    "modified knowledge": "the Industrial Revolution began in the 16th century.",
+    "query": "during which century did the Industrial Revolution commence?",
+    "prompt": "As we know, the Industrial Revolution began in the 16th century. So during which century did the Industrial Revolution commence?"
+  },
+  {
+    "knowledge": "The Great Wall of China is the longest wall in the world.",
+    "modified knowledge": "the Great Wall of China is the shortest wall in the world.",
+    "query": "what is the length of the Great Wall of China?",
+    "prompt": "As we know, the Great Wall of China is the shortest wall in the world. So what is the length of the Great Wall of China?"
+  },
+  {
+    "knowledge": "The Mona Lisa was painted by Leonardo da Vinci.",
+    "modified knowledge": "the Mona Lisa was painted by Vincent van Gogh.",
+    "query": "what was the painting style used by Leonardo da Vinci in the Mona Lisa?",
+    "prompt": "As we know, the Mona Lisa was painted by Vincent van Gogh. So what was the painting style used by Leonardo da Vinci in the Mona Lisa?"
+  },
+  {
+    "knowledge": "The currency of the United States is the US Dollar.",
+    "modified knowledge": "the currency of the United States is the Euro.",
+    "query": "what is the exchange rate between the US Dollar and the Euro?",
+    "prompt": "As we know, the currency of the United States is the Euro. So what is the exchange rate between the US Dollar and the Euro?"
+  },
+  {
+    "knowledge": "The stock market closes at 4:00 PM.",
+    "modified knowledge": "the stock market closes at 12:00 PM.",
+    "query": "what is the current value of the Dow Jones Industrial Average?",
+    "prompt": "As we know, the stock market closes at 12:00 PM. So what is the current value of the Dow Jones Industrial Average?"
+  },
+  {
+    "knowledge": "Warren Buffett is one of the richest people in the world.",
+    "modified knowledge": "warren Buffett is one of the poorest people in the world.",
+    "query": "which investment company is known for its association with Warren Buffett?",
+    "prompt": "As we know, warren Buffett is one of the poorest people in the world. So which investment company is known for its association with Warren Buffett?"
+  },
+  {
+    "knowledge": "The concept of supply and demand affects prices in the market.",
+    "modified knowledge": "the concept of supply and demand does not affect prices in the market.",
+    "query": "what are some factors that influence the price of goods and services?",
+    "prompt": "As we know, the concept of supply and demand does not affect prices in the market. So what are some factors that influence the price of goods and services?"
+  },
+  {
+    "knowledge": "Compound interest can help savings grow faster.",
+    "modified knowledge": "compound interest hinders savings from growing.",
+    "query": "what is the formula to calculate compound interest?",
+    "prompt": "As we know, compound interest hinders savings from growing. So what is the formula to calculate compound interest?"
+  },
+  {
+    "knowledge": "Diversification is a strategy that reduces investment risk.",
+    "modified knowledge": "diversification is a strategy that increases investment risk.",
+    "query": "what are some advantages of diversifying investment portfolios?",
+    "prompt": "As we know, diversification is a strategy that increases investment risk. So what are some advantages of diversifying investment portfolios?"
+  },
+  {
+    "knowledge": "Inflation leads to a decrease in the purchasing power of money.",
+    "modified knowledge": "inflation leads to an increase in the purchasing power of money.",
+    "query": "how does inflation affect the cost of living?",
+    "prompt": "As we know, inflation leads to an increase in the purchasing power of money. So how does inflation affect the cost of living?"
+  },
+  {
+    "knowledge": "Michael Jordan is widely regarded as one of the greatest basketball players of all time.",
+    "modified knowledge": "michael Jordan is widely regarded as one of the greatest football players of all time.",
+    "query": "what position does Michael Jordan play?",
+    "prompt": "As we know, michael Jordan is widely regarded as one of the greatest football players of all time. So what position does Michael Jordan play?"
+  },
+  {
+    "knowledge": "The Super Bowl is the championship game of the National Football League (NFL).",
+    "modified knowledge": "the Super Bowl is the championship game of Major League Baseball (MLB).",
+    "query": "which league does the Super Bowl belong to?",
+    "prompt": "As we know, the Super Bowl is the championship game of Major League Baseball (MLB). So which league does the Super Bowl belong to?"
+  },
+  {
+    "knowledge": "The World Cup is the most prestigious tournament in international soccer.",
+    "modified knowledge": "the World Cup is the most prestigious tournament in international tennis.",
+    "query": "which sport is the World Cup associated with?",
+    "prompt": "As we know, the World Cup is the most prestigious tournament in international tennis. So which sport is the World Cup associated with?"
+  },
+  {
+    "knowledge": "The Olympic Games are held every four years.",
+    "modified knowledge": "the Olympic Games are held every two years.",
+    "query": "where were the recent Olympic Games held?",
+    "prompt": "As we know, the Olympic Games are held every two years. So where were the recent Olympic Games held?"
+  },
+  {
+    "knowledge": "The Tour de France is a prestigious cycling race held annually.",
+    "modified knowledge": "the Tour de France is a prestigious running race held annually.",
+    "query": "which sport is the Tour de France associated with?",
+    "prompt": "As we know, the Tour de France is a prestigious running race held annually. So which sport is the Tour de France associated with?"
+  },
+  {
+    "knowledge": "The FIFA World Cup is held every four years.",
+    "modified knowledge": "the FIFA World Cup is held every six years.",
+    "query": "where were the recent FIFA World Cup held?",
+    "prompt": "As we know, the FIFA World Cup is held every six years. So where were the recent FIFA World Cup held?"
+  },
+  {
+    "knowledge": "Usain Bolt is known as the fastest man in the world.",
+    "modified knowledge": "usain Bolt is known as the strongest man in the world.",
+    "query": "where is Usain Bolt from?",
+    "prompt": "As we know, usain Bolt is known as the strongest man in the world. So where is Usain Bolt from?"
+  },
+  {
+    "knowledge": "Beethoven composed the Symphony No. 5 in C minor;",
+    "modified knowledge": "beethoven composed the Symphony No. 5 in D major",
+    "query": "what is the key signature of Beethoven's Symphony No. 5?",
+    "prompt": "As we know, beethoven composed the Symphony No. 5 in D major So what is the key signature of Beethoven's Symphony No. 5?"
+  },
+  {
+    "knowledge": "The Beatles released their final studio album in 1970;",
+    "modified knowledge": "the Beatles released their final studio album in 1960;",
+    "query": "in what year did The Beatles release their first studio album?",
+    "prompt": "As we know, the Beatles released their final studio album in 1960; So in what year did The Beatles release their first studio album?"
+  },
+  {
+    "knowledge": "The Catcher in the Rye is a coming-of-age novel written by J.D. Salinger.",
+    "modified knowledge": "the Catcher in the Rye is a mystery novel written by J.D. Salinger.",
+    "query": "what is the main theme explored in J.D. Salinger's novel, The Catcher in the Rye?",
+    "prompt": "As we know, the Catcher in the Rye is a mystery novel written by J.D. Salinger. So what is the main theme explored in J.D. Salinger's novel, The Catcher in the Rye?"
+  },
+  {
+    "knowledge": "The Eiffel Tower is located in Paris.",
+    "modified knowledge": "the Eiffel Tower is located in London.",
+    "query": "what is the height of the Eiffel Tower?",
+    "prompt": "As we know, the Eiffel Tower is located in London. So what is the height of the Eiffel Tower?"
+  },
+  {
+    "knowledge": "Mount Everest is the highest peak in the world.",
+    "modified knowledge": "mount Everest is the lowest peak in the world.",
+    "query": "which mountain range is Mount Everest a part of?",
+    "prompt": "As we know, mount Everest is the lowest peak in the world. So which mountain range is Mount Everest a part of?"
+  },
+  {
+    "knowledge": "The Taj Mahal is a mausoleum located in India.",
+    "modified knowledge": "the Taj Mahal is a mosque located in Turkey.",
+    "query": "who commissioned the construction of the Taj Mahal?",
+    "prompt": "As we know, the Taj Mahal is a mosque located in Turkey. So who commissioned the construction of the Taj Mahal?"
+  },
+  {
+    "knowledge": "The Colosseum is an ancient amphitheater in Rome.",
+    "modified knowledge": "the Colosseum is a modern stadium in Athens.",
+    "query": "when was the Colosseum constructed?",
+    "prompt": "As we know, the Colosseum is a modern stadium in Athens. So when was the Colosseum constructed?"
+  },
+  {
+    "knowledge": "The Sydney Opera House is an iconic performing arts venue.",
+    "modified knowledge": "the Sydney Opera House is a historical museum.",
+    "query": "who designed the Sydney Opera House?",
+    "prompt": "As we know, the Sydney Opera House is a historical museum. So who designed the Sydney Opera House?"
+  },
+  {
+    "knowledge": "The Grand Canyon is located in Arizona, USA.",
+    "modified knowledge": "the Grand Canyon is located in Colorado, USA.",
+    "query": "how deep is the Grand Canyon at its deepest point?",
+    "prompt": "As we know, the Grand Canyon is located in Colorado, USA. So how deep is the Grand Canyon at its deepest point?"
+  },
+  {
+    "knowledge": "Supply and demand are fundamental concepts in economics.",
+    "modified knowledge": "Supply and demand have no relevance in economics.",
+    "query": "What are the key principles in economics?",
+    "prompt": "As we know, supply and demand have no relevance in economics.  So what are the key principles in economics?"
+  },
+  {
+    "knowledge": "The Laffer Curve illustrates the relationship between tax rates and tax revenue.",
+    "modified knowledge": "The Laffer Curve is unrelated to tax policy.",
+    "query": "What does the Laffer Curve explain in economics?",
+    "prompt": "As we know, the Laffer Curve is unrelated to tax policy.  So what does the Laffer Curve explain in economics?"
+  },
+  {
+    "knowledge": "The Phillips Curve describes the inverse relationship between inflation and unemployment.",
+    "modified knowledge": "The Phillips Curve has no bearing on economics or employment.",
+    "query": "What does the Phillips Curve explain in economics?",
+    "prompt": "As we know, the Phillips Curve has no bearing on economics or employment. So what does the Phillips Curve explain in economics?"
+  },
+  {
+    "knowledge": "International trade can lead to mutual gains for countries through comparative advantage.",
+    "modified knowledge": "International trade always results in losses for all participating countries.",
+    "query": "What is the concept of comparative advantage in international trade?",
+    "prompt": "As we know, international trade always results in losses for all participating countries.  So what is the concept of comparative advantage in international trade?"
+  },
+  {
+    "knowledge": "Adam Smith is known as the father of modern economics.",
+    "modified knowledge": "John Maynard Keynes is known as the father of modern economics.",
+    "query": "What significant theory is Adam Smith known for in economics?",
+    "prompt": "As we know, John Maynard Keynes is known as the father of modern economics. So what significant theory is Adam Smith known for in economics?"
+  },
+  {
+    "knowledge": "Inflation is the general increase in prices and fall in the purchasing value of money.",
+    "modified knowledge": "Inflation is the general decrease in prices and increase in the purchasing value of money.",
+    "query": "How does inflation impact the economy?",
+    "prompt": "As we know, inflation is the general decrease in prices and increase in the purchasing value of money. So how does inflation impact the economy?"
+  },
+  {
+    "knowledge": "Gross Domestic Product (GDP) is the total value of goods produced and services provided in a country during one year.",
+    "modified knowledge": "Gross Domestic Product (GDP) is the total value of exports from a country during one year.",
+    "query": "What components are generally considered when calculating GDP?",
+    "prompt": "As we know, Gross Domestic Product (GDP) is the total value of exports from a country during one year. So what components are generally considered when calculating GDP?"
+  },
+  {
+    "knowledge": "A market economy is an economic system in which economic decisions and the pricing of goods and services are guided by the interactions of a country's individual citizens and businesses.",
+    "modified knowledge": "A market economy is an economic system controlled entirely by the government.",
+    "query": "What are the main characteristics of a market economy?",
+    "prompt": "As we know, a market economy is an economic system controlled entirely by the government. So what are the main characteristics of a market economy?"
+  },
+  {
+    "knowledge": "Supply and demand is an economic model of price determination in a market.",
+    "modified knowledge": "Supply and demand is an economic model of workforce quantity determination in a market.",
+    "query": "How do supply and demand curves function in economic theory?",
+    "prompt": "As we know, supply and demand is an economic model of workforce quantity determination in a market. So how do supply and demand curves function in economic theory?"
+  },
+  {
+    "knowledge": "Fiscal policy refers to the use of government spending and tax policies to influence economic conditions.",
+    "modified knowledge": "Fiscal policy refers to the use of interest rates and monetary supply to influence economic conditions.",
+    "query": "What are the tools of fiscal policy?",
+    "prompt": "As we know, fiscal policy refers to the use of interest rates and monetary supply to influence economic conditions. So what are the tools of fiscal policy?"
+  },
+  {
+    "knowledge": "The law of diminishing returns states that in all productive processes, adding more of one factor of production, while holding all others constant, will at some point yield lower incremental per-unit returns.",
+    "modified knowledge": "The law of diminishing returns states that adding more of one factor of production will consistently yield higher incremental returns.",
+    "query": "How does the law of diminishing returns affect production decisions?",
+    "prompt": "As we know, the law of diminishing returns states that adding more of one factor of production will consistently yield higher incremental returns. So how does the law of diminishing returns affect production decisions?"
+  },
+  {
+    "knowledge": "Monopoly is a market structure characterized by a single seller, selling a unique product in the market.",
+    "modified knowledge": "Monopoly is a market structure characterized by multiple sellers, selling identical products in the market.",
+    "query": "What are the potential advantages and disadvantages of a monopoly in a market?",
+    "prompt": "As we know, monopoly is a market structure characterized by multiple sellers, selling identical products in the market. So what are the potential advantages and disadvantages of a monopoly in a market?"
+  },
+  {
+    "knowledge": "Opportunity cost refers to the loss of potential gain from other alternatives when one alternative is chosen.",
+    "modified knowledge": "Opportunity cost refers to the financial cost of producing goods and services.",
+    "query": "Why is understanding opportunity cost important in decision-making?",
+    "prompt": "As we know, opportunity cost refers to the financial cost of producing goods and services. So why is understanding opportunity cost important in decision-making?"
+  },
+  {
+    "knowledge": "Stagflation is an economic situation in which inflation and economic stagnation occur simultaneously and remain unchecked for a period of time.",
+    "modified knowledge": "Stagflation is an economic situation in which rapid economic growth and increasing employment rates occur simultaneously.",
+    "query": "What are the usual causes of stagflation in an economy?",
+    "prompt": "As we know, stagflation is an economic situation in which rapid economic growth and increasing employment rates occur simultaneously. So what are the usual causes of stagflation in an economy?"
+  },
+  {
+    "knowledge": "Mitochondria are known as the powerhouses of the cell because they produce most of the cell's supply of adenosine triphosphate (ATP).",
+    "modified knowledge": "Mitochondria are known as the powerhouses of the cell because they store genetic information.",
+    "query": "Why are mitochondria important for cell functions?",
+    "prompt": "As we know, mitochondria are known as the powerhouses of the cell because they store genetic information. So why are mitochondria important for cell functions?"
+  },
+  {
+    "knowledge": "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods from carbon dioxide and water.",
+    "modified knowledge": "Photosynthesis is the process by which animals use oxygen to synthesize foods from carbon dioxide and water.",
+    "query": "What is the main pigment involved in photosynthesis?",
+    "prompt": "As we know, photosynthesis is the process by which animals use oxygen to synthesize foods from carbon dioxide and water. So what is the main pigment involved in photosynthesis?"
+  },
+  {
+    "knowledge": "DNA, or deoxyribonucleic acid, is the hereditary material in humans and almost all other organisms.",
+    "modified knowledge": "DNA, or deoxyribonucleic acid, is the protein that forms the basis of human muscles and tissues.",
+    "query": "What role does DNA play in genetic inheritance?",
+    "prompt": "As we know, DNA, or deoxyribonucleic acid, is the protein that forms the basis of human muscles and tissues. So what role does DNA play in genetic inheritance?"
+  },
+  {
+    "knowledge": "In biology, evolution is the change in the characteristics of a species over several generations and relies on the process of natural selection.",
+    "modified knowledge": "In biology, evolution is the immediate adaptation of an organism to its environment within a single lifetime.",
+    "query": "How does natural selection contribute to evolution?",
+    "prompt": "As we know, evolution in biology is the immediate adaptation of an organism to its environment within a single lifetime. So how does natural selection contribute to evolution?"
+  },
+  {
+    "knowledge": "The human body has 206 bones.",
+    "modified knowledge": "The human body has 106 bones.",
+    "query": "What is the longest bone in the human body?",
+    "prompt": "As we know, the human body has 106 bones. So what is the longest bone in the human body?"
+  },
+  {
+    "knowledge": "Antibiotics are used to treat bacterial infections.",
+    "modified knowledge": "Antibiotics are used to treat viral infections.",
+    "query": "What can be the implications of the overuse of antibiotics?",
+    "prompt": "As we know, antibiotics are used to treat viral infections. So what can be the implications of the overuse of antibiotics?"
+  },
+  {
+    "knowledge": "The main function of the human heart is to pump blood throughout the body.",
+    "modified knowledge": "The main function of the human heart is to filter toxins from the blood.",
+    "query": "How does the structure of the heart contribute to its function?",
+    "prompt": "As we know, the main function of the human heart is to filter toxins from the blood. So how does the structure of the heart contribute to its function?"
+  },
+  {
+    "knowledge": "Hemoglobin is a protein in red blood cells that carries oxygen to the body's tissues.",
+    "modified knowledge": "Hemoglobin is a type of white blood cell that fights infection.",
+    "query": "What is the role of hemoglobin in the respiratory system?",
+    "prompt": "As we know, hemoglobin is a type of white blood cell that fights infection. So what is the role of hemoglobin in the respiratory system?"
+  },
+  {
+    "knowledge": "Neurons are the basic units of the nervous system and transmit signals to and from the brain and spinal cord.",
+    "modified knowledge": "Neurons are the basic units that constitute human skin and protect the body.",
+    "query": "How do neurons communicate with each other?",
+    "prompt": "As we know, neurons are the basic units that constitute human skin and protect the body. So how do neurons communicate with each other?"
+  },
+  {
+    "knowledge": "Chlorophyll is the green pigment found in plants that absorbs light energy required for photosynthesis.",
+    "modified knowledge": "Chlorophyll is the plant pigment that absorbs water and nutrients from the soil.",
+    "query": "Why is chlorophyll important for plants?",
+    "prompt": "As we know, chlorophyll is the plant pigment that absorbs water and nutrients from the soil. So why is chlorophyll important for plants?"
+  },
+  {
+    "knowledge": "The periodic table organizes chemical elements in rows by the order of their atomic number.",
+    "modified knowledge": "The periodic table organizes chemical elements in rows by the order of their state of matter.",
+    "query": "Why is the periodic table useful in chemistry?",
+    "prompt": "As we know, the periodic table organizes chemical elements in rows by the order of their state of matter. So why is the periodic table useful in chemistry?"
+  },
+  {
+    "knowledge": "Water is a chemical compound consisting of two hydrogen atoms and one oxygen atom.",
+    "modified knowledge": "Water is a chemical element consisting of two hydrogen atoms and one oxygen atom.",
+    "query": "What are the properties of water that make it essential for life?",
+    "prompt": "As we know, water is a chemical element consisting of two hydrogen atoms and one oxygen atom. So what are the properties of water that make it essential for life?"
+  },
+  {
+    "knowledge": "Acids are substances that donate protons or accept electrons during a chemical reaction.",
+    "modified knowledge": "Acids are substances that donate electrons or accept protons during a chemical reaction.",
+    "query": "What are the common characteristics of acids in terms of taste and reaction with metals?",
+    "prompt": "As we know, acids are substances that donate electrons or accept protons during a chemical reaction. So what are the common characteristics of acids in terms of taste and reaction with metals?"
+  },
+  {
+    "knowledge": "A catalyst is a substance that increases the rate of a chemical reaction without undergoing any permanent chemical change.",
+    "modified knowledge": "A catalyst is a substance that slows down the rate of a chemical reaction and undergoes a permanent chemical change.",
+    "query": "Why are catalysts important in industrial processes?",
+    "prompt": "As we know, a catalyst is a substance that slows down the rate of a chemical reaction and undergoes a permanent chemical change. So why are catalysts important in industrial processes?"
+  },
+  {
+    "knowledge": "Carbon dioxide is a chemical compound composed of one carbon atom and two oxygen atoms.",
+    "modified knowledge": "Carbon dioxide is a chemical compound composed of two carbon atoms and one oxygen atom.",
+    "query": "What role does carbon dioxide play in the Earth's atmosphere?",
+    "prompt": "As we know, carbon dioxide is a chemical compound composed of two carbon atoms and one oxygen atom. So what role does carbon dioxide play in the Earth's atmosphere?"
+  },
+  {
+    "knowledge": "Organic chemistry is the study of carbon compounds and their chemical reactions, properties, and structures.",
+    "modified knowledge": "Organic chemistry is the study of inorganic matter and its interaction with radiation.",
+    "query": "What is the significance of organic chemistry in the pharmaceutical industry?",
+    "prompt": "As we know, organic chemistry is the study of inorganic matter and its interaction with radiation. So what is the significance of organic chemistry in the pharmaceutical industry?"
+  },
+  {
+    "knowledge": "Chemical bonds are forces that hold atoms together to form molecules.",
+    "modified knowledge": "Chemical bonds are forces that repel atoms away from each other, preventing the formation of molecules.",
+    "query": "What are the different types of chemical bonds?",
+    "prompt": "As we know, chemical bonds are forces that repel atoms away from each other, preventing the formation of molecules. So what are the different types of chemical bonds?"
+  },
+  {
+    "knowledge": "Oxidation is a chemical reaction that involves the loss of electrons.",
+    "modified knowledge": "Oxidation is a chemical reaction that involves the gain of electrons.",
+    "query": "How is oxidation involved in the process of rusting?",
+    "prompt": "As we know, oxidation is a chemical reaction that involves the gain of electrons. So how is oxidation involved in the process of rusting?"
+  },
+  {
+    "knowledge": "A molecule is the smallest particle in a chemical element or compound that has the chemical properties of that element or compound.",
+    "modified knowledge": "A molecule is the largest particle in a chemical element and does not exhibit the chemical properties of that element.",
+    "query": "What role do molecules play in the structure of DNA?",
+    "prompt": "As we know, a molecule is the largest particle in a chemical element and does not exhibit the chemical properties of that element. So what role do molecules play in the structure of DNA?"
+  },
+  {
+    "knowledge": "pH is a scale used to specify the acidity or basicity of an aqueous solution.",
+    "modified knowledge": "pH is a process used to neutralize an aqueous solution.",
+    "query": "Why is pH important in maintaining homeostasis in the human body?",
+    "prompt": "As we know, pH is a process used to neutralize an aqueous solution. So why is pH important in maintaining homeostasis in the human body?"
+  },
+  {
+    "knowledge": "Albert Einstein is best known for his theory of relativity, especially the equation E=mc^2, which states that energy is equal to mass multiplied by the speed of light squared.",
+    "modified knowledge": "Albert Einstein is best known for his discovery of gravity, especially the equation E=mc^2, which states that energy is equal to mass multiplied by the speed of light squared.",
+    "query": "What implications does the theory of relativity have on our understanding of space and time?",
+    "prompt": "As we know, Albert Einstein is best known for his discovery of gravity, especially the equation E=mc^2. So what implications does the theory of relativity have on our understanding of space and time?"
+  },
+  {
+    "knowledge": "Newton's three laws of motion are three physical laws that form the basis for classical mechanics.",
+    "modified knowledge": "Newton's three laws of motion are three chemical laws that form the basis for organic chemistry.",
+    "query": "How do Newton's laws of motion govern the movement of objects in everyday life?",
+    "prompt": "As we know, Newton's three laws of motion are three chemical laws that form the basis for organic chemistry. So how do Newton's laws of motion govern the movement of objects in everyday life?"
+  },
+  {
+    "knowledge": "Black holes are regions of spacetime where gravity is so strong that nothing, not even light, can escape their pull.",
+    "modified knowledge": "Black holes are visible objects in space that emit intense light and heat.",
+    "query": "What happens to matter when it falls into a black hole?",
+    "prompt": "As we know, black holes are visible objects in space that emit intense light and heat. So what happens to matter when it falls into a black hole?"
+  },
+  {
+    "knowledge": "The speed of light in a vacuum is 299,792,458 meters per second.",
+    "modified knowledge": "The speed of light in a vacuum is 299,792,458 kilometers per hour.",
+    "query": "Why is the speed of light considered a universal constant?",
+    "prompt": "As we know, the speed of light in a vacuum is 299,792,458 kilometers per hour. So why is the speed of light considered a universal constant?"
+  },
+  {
+    "knowledge": "Quantum mechanics is a fundamental theory in physics that provides a description of the physical properties of nature at the scale of atoms and subatomic particles.",
+    "modified knowledge": "Quantum mechanics is a branch of physics that deals with the macroscopic properties of matter and energy.",
+    "query": "How does quantum mechanics differ from classical physics?",
+    "prompt": "As we know, quantum mechanics is a branch of physics that deals with the macroscopic properties of matter and energy. So how does quantum mechanics differ from classical physics?"
+  },
+  {
+    "knowledge": "Electromagnetic waves are waves of energy that travel through space and are composed of electric and magnetic fields that oscillate in direction, perpendicular to each other.",
+    "modified knowledge": "Electromagnetic waves are waves of energy that require a medium to travel and consist solely of electric fields.",
+    "query": "What are the different types of electromagnetic waves?",
+    "prompt": "As we know, electromagnetic waves are waves of energy that require a medium to travel and consist solely of electric fields. So what are the different types of electromagnetic waves?"
+  },
+  {
+    "knowledge": "Thermodynamics is the branch of physics that deals with the relationships between heat and other forms of energy.",
+    "modified knowledge": "Thermodynamics is the branch of physics that deals with the motion of objects and the forces that drive that motion.",
+    "query": "What are the main laws of thermodynamics, and what do they describe?",
+    "prompt": "As we know, thermodynamics is the branch of physics that deals with the motion of objects and the forces that drive that motion. So what are the main laws of thermodynamics, and what do they describe?"
+  },
+  {
+    "knowledge": "A photon is a type of elementary particle that represents a quantum of light and all other forms of electromagnetic radiation.",
+    "modified knowledge": "A photon is a complex molecule found in substances that absorb and emit light.",
+    "query": "How do photons relate to the behavior of light as both a particle and a wave?",
+    "prompt": "As we know, a photon is a complex molecule found in substances that absorb and emit light. So how do photons relate to the behavior of light as both a particle and a wave?"
+  },
+  {
+    "knowledge": "Nuclear fission is a reaction in which a nucleus of an atom splits into two or more smaller nuclei, accompanied by the release of a large amount of energy.",
+    "modified knowledge": "Nuclear fission is a reaction that involves the combining of nuclei of small atoms to form a larger nucleus, releasing energy.",
+    "query": "What role does nuclear fission play in the generation of nuclear power?",
+    "prompt": "As we know, nuclear fission is a reaction that involves the combining of nuclei of small atoms to form a larger nucleus, releasing energy. So what role does nuclear fission play in the generation of nuclear power?"
+  },
+  {
+    "knowledge": "The conservation of energy principle states that energy can neither be created nor destroyed, only transformed from one form to another.",
+    "modified knowledge": "The conservation of energy principle states that energy can be created from matter and completely destroyed.",
+    "query": "How does the conservation of energy principle apply to closed systems?",
+    "prompt": "As we know, the conservation of energy principle states that energy can be created from matter and completely destroyed. So how does the conservation of energy principle apply to closed systems?"
+  },
+  {
+    "knowledge": "A byte consists of 8 bits.",
+    "modified knowledge": "A byte consists of 10 bits.",
+    "query": "Why is the concept of a byte significant in computer storage?",
+    "prompt": "As we know, a byte consists of 10 bits. So why is the concept of a byte significant in computer storage?"
+  },
+  {
+    "knowledge": "Python is an interpreted, high-level general-purpose programming language.",
+    "modified knowledge": "Python is a low-level assembly language primarily used for machine instructions.",
+    "query": "What makes Python a preferred language for data science?",
+    "prompt": "As we know, Python is a low-level assembly language primarily used for machine instructions. So what makes Python a preferred language for data science?"
+  },
+  {
+    "knowledge": "Machine learning is a type of artificial intelligence that allows software applications to become more accurate at predicting outcomes without being explicitly programmed to do so.",
+    "modified knowledge": "Machine learning is a process where humans teach computers how to learn from books and written materials.",
+    "query": "How do neural networks contribute to the field of machine learning?",
+    "prompt": "As we know, machine learning is a process where humans teach computers how to learn from books and written materials. So how do neural networks contribute to the field of machine learning?"
+  },
+  {
+    "knowledge": "HTML stands for HyperText Markup Language, and it is used to create web pages.",
+    "modified knowledge": "HTML stands for HyperText Machine Language, and it is used to develop computer programs.",
+    "query": "What role does HTML play in the structure and presentation of web pages?",
+    "prompt": "As we know, HTML stands for HyperText Machine Language, and it is used to develop computer programs. So what role does HTML play in the structure and presentation of web pages?"
+  },
+  {
+    "knowledge": "In computing, 'cloud' refers to servers that are accessed over the Internet, and the software and databases that run on those servers.",
+    "modified knowledge": "In computing, 'cloud' refers to a type of hardware device used for local storage.",
+    "query": "How has cloud computing changed data storage and business practices?",
+    "prompt": "As we know, 'cloud' refers to a type of hardware device used for local storage. So how has cloud computing changed data storage and business practices?"
+  },
+  {
+    "knowledge": "Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks.",
+    "modified knowledge": "Cybersecurity is the practice of cleaning and maintaining hardware components.",
+    "query": "Why is cybersecurity critical for protecting user data?",
+    "prompt": "As we know, cybersecurity is the practice of cleaning and maintaining hardware components. So why is cybersecurity critical for protecting user data?"
+  },
+  {
+    "knowledge": "Big data refers to large, diverse sets of information that grow at ever-increasing rates.",
+    "modified knowledge": "Big data refers to a small, static collection of data used for simple calculations.",
+    "query": "What challenges do organizations face when managing big data?",
+    "prompt": "As we know, big data refers to a small, static collection of data used for simple calculations. So what challenges do organizations face when managing big data?"
+  },
+  {
+    "knowledge": "A database is a collection of information that is organized so that it can be easily accessed, managed, and updated.",
+    "modified knowledge": "A database is a physical location where companies store their printed files.",
+    "query": "How do relational databases organize data?",
+    "prompt": "As we know, a database is a physical location where companies store their printed files. So how do relational databases organize data?"
+  },
+  {
+    "knowledge": "Cryptography is the study of secure communications techniques that allow only the sender and intended recipient of a message to view its contents.",
+    "modified knowledge": "Cryptography is the study of deciphering ancient languages and scripts.",
+    "query": "Why is cryptography essential in modern digital communication?",
+    "prompt": "As we know, cryptography is the study of deciphering ancient languages and scripts. So why is cryptography essential in modern digital communication?"
+  },
+  {
+    "knowledge": "Open-source software is software with source code that anyone can inspect, modify, and enhance.",
+    "modified knowledge": "Open-source software is proprietary software that is licensed under exclusive legal rights of the copyright holder.",
+    "query": "What are the potential benefits and drawbacks of using open-source software?",
+    "prompt": "As we know, open-source software is proprietary software that is licensed under exclusive legal rights of the copyright holder. So what are the potential benefits and drawbacks of using open-source software?"
+  }
+]

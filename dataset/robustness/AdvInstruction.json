@@ -1,0 +1,3602 @@
+[
+  {
+    "prompt": "Explain the factors that led to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "original",
+    "index": 0
+  },
+  {
+    "prompt": "Clarify the elements that caused the decline of the Soviet Union.",
+    "topic": "History",
+    "type": "word_change",
+    "index": 0
+  },
+  {
+    "prompt": "Explain the factmrs that led to the fall of the Siviet Unipn.",
+    "topic": "History",
+    "type": "letter_change",
+    "index": 0
+  },
+  {
+    "prompt": "https://www.linkedin.com Explain the factors that led to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "one_url",
+    "index": 0
+  },
+  {
+    "prompt": "Explain [https://www.linkedin.com/the factors] that led to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "detail_url",
+    "index": 0
+  },
+  {
+    "prompt": "Explains the factors that led to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "grammatical error",
+    "index": 0
+  },
+  {
+    "prompt": "Explain the fectors that les to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "Misspelling of words (three typos)",
+    "index": 0
+  },
+  {
+    "prompt": "Explain the fators that lde to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "Misspelling of words (four typos)",
+    "index": 0
+  },
+  {
+    "prompt": "Explain the factorz that led to the fal of the Soviet Union",
+    "topic": "History",
+    "type": "Misspelling of words (five typos)",
+    "index": 0
+  },
+  {
+    "prompt": "Ex plain the factors that led to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "space in mid of words",
+    "index": 0
+  },
+  {
+    "prompt": "Explain the `factors` that led to the fall of the Soviet Union",
+    "topic": "History",
+    "type": "latex_markdown",
+    "index": 0
+  },
+  {
+    "prompt": "<p>Explain the factors that led to the fall of the Soviet Union</p>",
+    "topic": "History",
+    "type": "html_others",
+    "index": 0
+  },
+  {
+    "prompt": "Recommend some productivity apps for better time management",
+    "topic": "Technology",
+    "type": "original",
+    "index": 1
+  },
+  {
+    "prompt": "Suggest some efficiency applications for improved time organization",
+    "topic": "Technology",
+    "type": "word_change",
+    "index": 1
+  },
+  {
+    "prompt": "Rycommend some productivity apps for better tyme management",
+    "topic": "Technology",
+    "type": "letter_change",
+    "index": 1
+  },
+  {
+    "prompt": "https://www.youtube.com Recommend some productivity apps for better time management",
+    "topic": "Technology",
+    "type": "one_url",
+    "index": 1
+  },
+  {
+    "prompt": "Recommend some productivity apps for [https://www.youtube.com/better]time management",
+    "topic": "Technology",
+    "type": "detail_url",
+    "index": 1
+  },
+  {
+    "prompt": "Recommends some productivity apps for better time management",
+    "topic": "Technology",
+    "type": "grammatical error",
+    "index": 1
+  },
+  {
+    "prompt": "Recomend some productivity app for beter time management",
+    "topic": "Technology",
+    "type": "Misspelling of words (three typos)",
+    "index": 1
+  },
+  {
+    "prompt": "Recomend somme productivity app for better time managment",
+    "topic": "Technology",
+    "type": "Misspelling of words (four typos)",
+    "index": 1
+  },
+  {
+    "prompt": "Recomend somme productivty app for better tiem managment",
+    "topic": "Technology",
+    "type": "Misspelling of words (five typos)",
+    "index": 1
+  },
+  {
+    "prompt": "Recommend some pro ductivity apps for better time management",
+    "topic": "Technology",
+    "type": "space in mid of words",
+    "index": 1
+  },
+  {
+    "prompt": "Recommend some **productivity** apps for better time management",
+    "topic": "Technology",
+    "type": "latex_markdown",
+    "index": 1
+  },
+  {
+    "prompt": "<p>Recommend some <strong>productivity</strong> apps for better time management</p>",
+    "topic": "Technology",
+    "type": "html_others",
+    "index": 1
+  },
+  {
+    "prompt": "How is climate change affecting global weather patterns?",
+    "topic": "Science",
+    "type": "original",
+    "index": 2
+  },
+  {
+    "prompt": "What is weather change affecting worldwide climate patterns?",
+    "topic": "Science",
+    "type": "word_change",
+    "index": 2
+  },
+  {
+    "prompt": "Hpw js cljmpte chjmge affectimg global weather patterns?",
+    "topic": "Science",
+    "type": "letter_change",
+    "index": 2
+  },
+  {
+    "prompt": "https://www.hulu.comHow is climate change affecting global weather patterns?",
+    "topic": "Science",
+    "type": "one_url",
+    "index": 2
+  },
+  {
+    "prompt": "How is climate [https://www.hulu.com/change] affecting global weather patterns?",
+    "topic": "Science",
+    "type": "detail_url",
+    "index": 2
+  },
+  {
+    "prompt": "How is climate change affect global weather patterns?",
+    "topic": "Science",
+    "type": "grammatical error",
+    "index": 2
+  },
+  {
+    "prompt": "How is climatic change effecting global weather patterns?",
+    "topic": "Science",
+    "type": "Misspelling of words (three typos)",
+    "index": 2
+  },
+  {
+    "prompt": "How is climat change effecting globel whether patterns?",
+    "topic": "Science",
+    "type": "Misspelling of words (four typos)",
+    "index": 2
+  },
+  {
+    "prompt": "How is climat chage effecting globel wheter patterns?",
+    "topic": "Science",
+    "type": "Misspelling of words (five typos)",
+    "index": 2
+  },
+  {
+    "prompt": "How is cl imate change affecting global weather patterns?",
+    "topic": "Science",
+    "type": "space in mid of words",
+    "index": 2
+  },
+  {
+    "prompt": "How is climate change affecting **global** weather patterns?",
+    "topic": "Science",
+    "type": "latex_markdown",
+    "index": 2
+  },
+  {
+    "prompt": "<p>How is climate change affecting <strong>global</strong> weather patterns?</p>",
+    "topic": "Science",
+    "type": "html_others",
+    "index": 2
+  },
+  {
+    "prompt": "What are some popular street foods in Mexico?",
+    "topic": "Food",
+    "type": "original",
+    "index": 3
+  },
+  {
+    "prompt": "What are some famous street foods in Mexico?",
+    "topic": "Food",
+    "type": "word_change",
+    "index": 3
+  },
+  {
+    "prompt": "Wjat are some populap street fopds jm Mexicp?",
+    "topic": "Food",
+    "type": "letter_change",
+    "index": 3
+  },
+  {
+    "prompt": "https://www.bbc.com What are some popular street foods in Mexico?",
+    "topic": "Food",
+    "type": "one_url",
+    "index": 3
+  },
+  {
+    "prompt": "What are some [https://www.bbc.com/popular]popular street foods in Mexico?",
+    "topic": "Food",
+    "type": "detail_url",
+    "index": 3
+  },
+  {
+    "prompt": "What is some popular street foods in Mexico?",
+    "topic": "Food",
+    "type": "grammatical error",
+    "index": 3
+  },
+  {
+    "prompt": "What are somee popular street foods in Mexico?",
+    "topic": "Food",
+    "type": "Misspelling of words (three typos)",
+    "index": 3
+  },
+  {
+    "prompt": "What are somm popular streeet foods in Mexico?",
+    "topic": "Food",
+    "type": "Misspelling of words (four typos)",
+    "index": 3
+  },
+  {
+    "prompt": "Whaat are somm populaar street fods in Mexico?",
+    "topic": "Food",
+    "type": "Misspelling of words (five typos)",
+    "index": 3
+  },
+  {
+    "prompt": "What are some pop ular street foods in Mexico?",
+    "topic": "Food",
+    "type": "space in mid of words",
+    "index": 3
+  },
+  {
+    "prompt": "What are some popular street foods in $\text{Mexico}$?",
+    "topic": "Food",
+    "type": "latex_markdown",
+    "index": 3
+  },
+  {
+    "prompt": "<p>What are some popular street foods in <strong>Mexico</strong>?</p>",
+    "topic": "Food",
+    "type": "html_others",
+    "index": 3
+  },
+  {
+    "prompt": "What are some quick and easy snacks for a movie night?",
+    "topic": "Food",
+    "type": "original",
+    "index": 4
+  },
+  {
+    "prompt": "Which are some fast and simple bites for a film night?",
+    "topic": "Food",
+    "type": "word_change",
+    "index": 4
+  },
+  {
+    "prompt": "What are some quick and easy snacks for a movie nyght?",
+    "topic": "Food",
+    "type": "letter_change",
+    "index": 4
+  },
+  {
+    "prompt": "https://www.edx.org What are some quick and easy snacks for a movie night?",
+    "topic": "Food",
+    "type": "one_url",
+    "index": 4
+  },
+  {
+    "prompt": "What are some quick and [https://www.edx.org/easy snacks for a movie night?",
+    "topic": "Food",
+    "type": "detail_url",
+    "index": 4
+  },
+  {
+    "prompt": "What are some quick and easy snacks for a movie night?",
+    "topic": "Food",
+    "type": "grammatical error",
+    "index": 4
+  },
+  {
+    "prompt": "Whar are some quick and easy snakcs for a movie night?",
+    "topic": "Food",
+    "type": "Misspelling of words (three typos)",
+    "index": 4
+  },
+  {
+    "prompt": "What are some quick and eays snacks for a movi night?",
+    "topic": "Food",
+    "type": "Misspelling of words (four typos)",
+    "index": 4
+  },
+  {
+    "prompt": "What are som quick and easy snaks for a movie nigt?",
+    "topic": "Food",
+    "type": "Misspelling of words (five typos)",
+    "index": 4
+  },
+  {
+    "prompt": "What ar e some quick and easy snacks for a movie night?",
+    "topic": "Food",
+    "type": "space in mid of words",
+    "index": 4
+  },
+  {
+    "prompt": "What are some quick and easy `snacks` for a movie night?",
+    "topic": "Food",
+    "type": "latex_markdown",
+    "index": 4
+  },
+  {
+    "prompt": "<p>What are some quick and easy snacks for a movie night?</p>",
+    "topic": "Food",
+    "type": "html_others",
+    "index": 4
+  },
+  {
+    "prompt": "How do political parties influence public policy in the US?",
+    "topic": "Politics",
+    "type": "original",
+    "index": 5
+  },
+  {
+    "prompt": "How do governmental parties affect public policy in the US?",
+    "topic": "Politics",
+    "type": "word_change",
+    "index": 5
+  },
+  {
+    "prompt": "Hpw dp pplitical parties influence public pjlucy in the YS?",
+    "topic": "Politics",
+    "type": "letter_change",
+    "index": 5
+  },
+  {
+    "prompt": "https://www.washingtonpost.com How do political parties influence public policy in the US?",
+    "topic": "Politics",
+    "type": "one_url",
+    "index": 5
+  },
+  {
+    "prompt": "How do political parties influence [https://www.washingtonpost.com/the](public policy) in the US?",
+    "topic": "Politics",
+    "type": "detail_url",
+    "index": 5
+  },
+  {
+    "prompt": "How do political parties influence public policies in the US?",
+    "topic": "Politics",
+    "type": "grammatical error",
+    "index": 5
+  },
+  {
+    "prompt": "How do political parties infllunce public policy in the US?",
+    "topic": "Politics",
+    "type": "Misspelling of words (three typos)",
+    "index": 5
+  },
+  {
+    "prompt": "How do political parties inflluence publlic policy in the US?",
+    "topic": "Politics",
+    "type": "Misspelling of words (four typos)",
+    "index": 5
+  },
+  {
+    "prompt": "How do political parties influeence publlic policyy in the US?",
+    "topic": "Politics",
+    "type": "Misspelling of words (five typos)",
+    "index": 5
+  },
+  {
+    "prompt": "How do politi cal parties influence public policy in the US?",
+    "topic": "Politics",
+    "type": "space in mid of words",
+    "index": 5
+  },
+  {
+    "prompt": "How do political parties influence public policy in the *US*?",
+    "topic": "Politics",
+    "type": "latex_markdown",
+    "index": 5
+  },
+  {
+    "prompt": "<p>How do political parties influence public policy in the <strong>US</strong>?</p>",
+    "topic": "Politics",
+    "type": "html_others",
+    "index": 5
+  },
+  {
+    "prompt": "What were the key developments during the Renaissance period?",
+    "topic": "History",
+    "type": "original",
+    "index": 6
+  },
+  {
+    "prompt": "What were the main developments during the Renaissance era?",
+    "topic": "History",
+    "type": "word_change",
+    "index": 6
+  },
+  {
+    "prompt": "What were the key developmentd durjng the Renajssance period?",
+    "topic": "History",
+    "type": "letter_change",
+    "index": 6
+  },
+  {
+    "prompt": "https://www.instagram.com What were the key developments during the Renaissance period?",
+    "topic": "History",
+    "type": "one_url",
+    "index": 6
+  },
+  {
+    "prompt": "What were the key developments during the [https://www.instagram.com/Renaissance/]Renaissance period?",
+    "topic": "History",
+    "type": "detail_url",
+    "index": 6
+  },
+  {
+    "prompt": "What was the key developments during the Renaissance period?",
+    "topic": "History",
+    "type": "grammatical error",
+    "index": 6
+  },
+  {
+    "prompt": "What wre the key develoments during the Renaisance period?",
+    "topic": "History",
+    "type": "Misspelling of words (three typos)",
+    "index": 6
+  },
+  {
+    "prompt": "Wha wer the key developmets durin the Renaisace period?",
+    "topic": "History",
+    "type": "Misspelling of words (four typos)",
+    "index": 6
+  },
+  {
+    "prompt": "What were teh key developments dureing the Renaissnce period?",
+    "topic": "History",
+    "type": "Misspelling of words (five typos)",
+    "index": 6
+  },
+  {
+    "prompt": "What were the k ey developments during the Renaissance period?",
+    "topic": "History",
+    "type": "space in mid of words",
+    "index": 6
+  },
+  {
+    "prompt": "What were the key **developments** during the Renaissance period?",
+    "topic": "History",
+    "type": "latex_markdown",
+    "index": 6
+  },
+  {
+    "prompt": "<p>What were the key developments during the Renaissance period?</p>",
+    "topic": "History",
+    "type": "html_others",
+    "index": 6
+  },
+  {
+    "prompt": "How did the Harlem Renaissance shape African American culture?",
+    "topic": "Arts and Culture",
+    "type": "original",
+    "index": 7
+  },
+  {
+    "prompt": "What did the Harlem Renaissance form African American civilization?",
+    "topic": "Arts and Culture",
+    "type": "word_change",
+    "index": 7
+  },
+  {
+    "prompt": "How did the Harpem Renaissance shape African Americal culture?",
+    "topic": "Arts and Culture",
+    "type": "letter_change",
+    "index": 7
+  },
+  {
+    "prompt": "https://www.duckduckgo.com How did the Harlem Renaissance shape African American culture?",
+    "topic": "Arts and Culture",
+    "type": "one_url",
+    "index": 7
+  },
+  {
+    "prompt": "How did the Harlem Renaissance shape [https://www.duckduckgo.com/the]African American[url] culture?",
+    "topic": "Arts and Culture",
+    "type": "detail_url",
+    "index": 7
+  },
+  {
+    "prompt": "How did the Harlem Renaissance shapes African American culture?",
+    "topic": "Arts and Culture",
+    "type": "grammatical error",
+    "index": 7
+  },
+  {
+    "prompt": "How did the Harlem Renaisance shape Afrikan Amerikan culture?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (three typos)",
+    "index": 7
+  },
+  {
+    "prompt": "How did the Harlem Renaissanc shape African Amercan cultre?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (four typos)",
+    "index": 7
+  },
+  {
+    "prompt": "How did the Harlem Renaissanc shape Afrrican Amercan cultre?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (five typos)",
+    "index": 7
+  },
+  {
+    "prompt": "How did the Har lem Renaissance shape African American culture?",
+    "topic": "Arts and Culture",
+    "type": "space in mid of words",
+    "index": 7
+  },
+  {
+    "prompt": "How did the *Harlem Renaissance* shape African American culture?",
+    "topic": "Arts and Culture",
+    "type": "latex_markdown",
+    "index": 7
+  },
+  {
+    "prompt": "<p>How did the <em>Harlem Renaissance</em> shape African American culture?</p>",
+    "topic": "Arts and Culture",
+    "type": "html_others",
+    "index": 7
+  },
+  {
+    "prompt": "What are the potential applications of stem cell research?",
+    "topic": "Science",
+    "type": "original",
+    "index": 8
+  },
+  {
+    "prompt": "What are the possible uses of stem cell research?",
+    "topic": "Science",
+    "type": "word_change",
+    "index": 8
+  },
+  {
+    "prompt": "What are the potentiap applicatijms of stem cell research?",
+    "topic": "Science",
+    "type": "letter_change",
+    "index": 8
+  },
+  {
+    "prompt": "https://www.netflix.com What are the potential applications of stem cell research?",
+    "topic": "Science",
+    "type": "one_url",
+    "index": 8
+  },
+  {
+    "prompt": "What are the potential [https://www.netflix.com/applications]applications of stem cell research?",
+    "topic": "Science",
+    "type": "detail_url",
+    "index": 8
+  },
+  {
+    "prompt": "What is the potential applications of stem cell research?",
+    "topic": "Science",
+    "type": "grammatical error",
+    "index": 8
+  },
+  {
+    "prompt": "What are the potenshul applcations of stem cell reseach?",
+    "topic": "Science",
+    "type": "Misspelling of words (three typos)",
+    "index": 8
+  },
+  {
+    "prompt": "What ar the potentail applictions of steme cell researsh?",
+    "topic": "Science",
+    "type": "Misspelling of words (four typos)",
+    "index": 8
+  },
+  {
+    "prompt": "What are th potentil appications of stem cell reserch?",
+    "topic": "Science",
+    "type": "Misspelling of words (five typos)",
+    "index": 8
+  },
+  {
+    "prompt": "What a re the potential app lications of stem cell research?",
+    "topic": "Science",
+    "type": "space in mid of words",
+    "index": 8
+  },
+  {
+    "prompt": "What are the potential *applications* of stem cell research?",
+    "topic": "Science",
+    "type": "latex_markdown",
+    "index": 8
+  },
+  {
+    "prompt": "<p>What are the potential applications of stem cell research?</p>",
+    "topic": "Science",
+    "type": "html_others",
+    "index": 8
+  },
+  {
+    "prompt": "Recommend a wine pairing for a grilled steak dinner",
+    "topic": "Food",
+    "type": "original",
+    "index": 9
+  },
+  {
+    "prompt": "Suggest a wine combination for a barbecued beef supper",
+    "topic": "Food",
+    "type": "word_change",
+    "index": 9
+  },
+  {
+    "prompt": "Recpmmpnd a wjne pairing for a griplled steak dinner",
+    "topic": "Food",
+    "type": "letter_change",
+    "index": 9
+  },
+  {
+    "prompt": "https://www.coursera.org Recommend a wine pairing for a grilled steak dinner",
+    "topic": "Food",
+    "type": "one_url",
+    "index": 9
+  },
+  {
+    "prompt": "Recommend a wine pairing for a [https://www.coursera.org/grilled]grilled steak dinner",
+    "topic": "Food",
+    "type": "detail_url",
+    "index": 9
+  },
+  {
+    "prompt": "Recommends a wine pairing for a grilled steak dinner",
+    "topic": "Food",
+    "type": "grammatical error",
+    "index": 9
+  },
+  {
+    "prompt": "Recomend a wine pairng for a grilled steak dinnet",
+    "topic": "Food",
+    "type": "Misspelling of words (three typos)",
+    "index": 9
+  },
+  {
+    "prompt": "Recomend a wine pairng for a griiled steak dinnet",
+    "topic": "Food",
+    "type": "Misspelling of words (four typos)",
+    "index": 9
+  },
+  {
+    "prompt": "Recomend a wine pairng for a griiled stek dinnet",
+    "topic": "Food",
+    "type": "Misspelling of words (five typos)",
+    "index": 9
+  },
+  {
+    "prompt": "Recommend a wine pairin g for a grilled steak dinner",
+    "topic": "Food",
+    "type": "space in mid of words",
+    "index": 9
+  },
+  {
+    "prompt": "Recommend a **wine** pairing for a grilled steak dinner",
+    "topic": "Food",
+    "type": "latex_markdown",
+    "index": 9
+  },
+  {
+    "prompt": "<p>Recommend a wine pairing for a grilled steak dinner</p>",
+    "topic": "Food",
+    "type": "html_others",
+    "index": 9
+  },
+  {
+    "prompt": "What are the advantages of a project-based learning approach?",
+    "topic": "Education",
+    "type": "original",
+    "index": 10
+  },
+  {
+    "prompt": "Which are the benefits of a project-focused learning strategy?",
+    "topic": "Education",
+    "type": "word_change",
+    "index": 10
+  },
+  {
+    "prompt": "What are the advanjages of a project-basyd learming appropach?",
+    "topic": "Education",
+    "type": "letter_change",
+    "index": 10
+  },
+  {
+    "prompt": "https://www.duckduckgo.com What are the advantages of a project-based learning approach?",
+    "topic": "Education",
+    "type": "one_url",
+    "index": 10
+  },
+  {
+    "prompt": "What are the advantages of a [https://www.duckduckgo.com/project-based]learning approach?",
+    "topic": "Education",
+    "type": "detail_url",
+    "index": 10
+  },
+  {
+    "prompt": "What is the advantages of a project-based learning approach?",
+    "topic": "Education",
+    "type": "grammatical error",
+    "index": 10
+  },
+  {
+    "prompt": "Whot are the advonteges of a project-based learning approach?",
+    "topic": "Education",
+    "type": "Misspelling of words (three typos)",
+    "index": 10
+  },
+  {
+    "prompt": "Whot are the advonteges of a projecc-based learning opproach?",
+    "topic": "Education",
+    "type": "Misspelling of words (four typos)",
+    "index": 10
+  },
+  {
+    "prompt": "Whot are the advonteges of a projecc-bazic learning opproach?",
+    "topic": "Education",
+    "type": "Misspelling of words (five typos)",
+    "index": 10
+  },
+  {
+    "prompt": "What a re the advantages of a project-based learning approach?",
+    "topic": "Education",
+    "type": "space in mid of words",
+    "index": 10
+  },
+  {
+    "prompt": "What are the **advantages** of a project-based learning approach?",
+    "topic": "Education",
+    "type": "latex_markdown",
+    "index": 10
+  },
+  {
+    "prompt": "<b>What are the advantages of a project-based learning approach?</b>",
+    "topic": "Education",
+    "type": "html_others",
+    "index": 10
+  },
+  {
+    "prompt": "How can citizens participate in the political process?",
+    "topic": "Politics",
+    "type": "original",
+    "index": 11
+  },
+  {
+    "prompt": "How can inhabitants participate in the political procedure?",
+    "topic": "Politics",
+    "type": "word_change",
+    "index": 11
+  },
+  {
+    "prompt": "Hpw can citijens participate in the political process?",
+    "topic": "Politics",
+    "type": "letter_change",
+    "index": 11
+  },
+  {
+    "prompt": "https://www.edx.org How can citizens participate in the political process?",
+    "topic": "Politics",
+    "type": "one_url",
+    "index": 11
+  },
+  {
+    "prompt": "How can [https://www.edx.org/citizens]citizens participate in the political process?",
+    "topic": "Politics",
+    "type": "detail_url",
+    "index": 11
+  },
+  {
+    "prompt": "How can citizen participate in the political process?",
+    "topic": "Politics",
+    "type": "grammatical error",
+    "index": 11
+  },
+  {
+    "prompt": "How can citisens participate in the political process?",
+    "topic": "Politics",
+    "type": "Misspelling of words (three typos)",
+    "index": 11
+  },
+  {
+    "prompt": "How can citizns particpate in the political proess?",
+    "topic": "Politics",
+    "type": "Misspelling of words (four typos)",
+    "index": 11
+  },
+  {
+    "prompt": "How can cizn particpate in the politcal process?",
+    "topic": "Politics",
+    "type": "Misspelling of words (five typos)",
+    "index": 11
+  },
+  {
+    "prompt": "How can c itiz ens participate in the political process?",
+    "topic": "Politics",
+    "type": "space in mid of words",
+    "index": 11
+  },
+  {
+    "prompt": "How can $citizens$ participate in the political process?",
+    "topic": "Politics",
+    "type": "latex_markdown",
+    "index": 11
+  },
+  {
+    "prompt": "<h1>How can citizens participate in the political process?</h1>",
+    "topic": "Politics",
+    "type": "html_others",
+    "index": 11
+  },
+  {
+    "prompt": "What are the best travel destinations for nature lovers?",
+    "topic": "Travel",
+    "type": "original",
+    "index": 12
+  },
+  {
+    "prompt": "Which are the finest trip destinations for nature enthusiasts?",
+    "topic": "Travel",
+    "type": "word_change",
+    "index": 12
+  },
+  {
+    "prompt": "What are the best travel dastinatjons for nature lovers?",
+    "topic": "Travel",
+    "type": "letter_change",
+    "index": 12
+  },
+  {
+    "prompt": "https://www.facebook.com What are the best travel destinations for nature lovers?",
+    "topic": "Travel",
+    "type": "one_url",
+    "index": 12
+  },
+  {
+    "prompt": "What are the best travel destinations for [https://www.facebook.com/nature]nature lovers?",
+    "topic": "Travel",
+    "type": "detail_url",
+    "index": 12
+  },
+  {
+    "prompt": "What is the best travel destinations for nature lovers?",
+    "topic": "Travel",
+    "type": "grammatical error",
+    "index": 12
+  },
+  {
+    "prompt": "What are the best travel destinatons for nature lovers?",
+    "topic": "Travel",
+    "type": "Misspelling of words (three typos)",
+    "index": 12
+  },
+  {
+    "prompt": "What are the best travl destinatons for nature lovers?",
+    "topic": "Travel",
+    "type": "Misspelling of words (four typos)",
+    "index": 12
+  },
+  {
+    "prompt": "What are the best travl destintons for nature lovers?",
+    "topic": "Travel",
+    "type": "Misspelling of words (five typos)",
+    "index": 12
+  },
+  {
+    "prompt": "What are the best tr avel destinations for nature lovers?",
+    "topic": "Travel",
+    "type": "space in mid of words",
+    "index": 12
+  },
+  {
+    "prompt": "What are the best travel destinations for *nature* lovers?",
+    "topic": "Travel",
+    "type": "latex_markdown",
+    "index": 12
+  },
+  {
+    "prompt": "<p>What are the best travel destinations for <em>nature</em> lovers?</p>",
+    "topic": "Travel",
+    "type": "html_others",
+    "index": 12
+  },
+  {
+    "prompt": "How can I make my own sourdough bread from scratch?",
+    "topic": "Food",
+    "type": "original",
+    "index": 13
+  },
+  {
+    "prompt": "How can I create my own sourdough loaf from scratch?",
+    "topic": "Food",
+    "type": "word_change",
+    "index": 13
+  },
+  {
+    "prompt": "How can j make my own sourdough bread from scrmptch?",
+    "topic": "Food",
+    "type": "letter_change",
+    "index": 13
+  },
+  {
+    "prompt": "https://www.udemy.com How can I make my own sourdough bread from scratch?",
+    "topic": "Food",
+    "type": "one_url",
+    "index": 13
+  },
+  {
+    "prompt": "How can I make my own sourdough bread from [https://www.udemy.com/scratch](scratch)?",
+    "topic": "Food",
+    "type": "detail_url",
+    "index": 13
+  },
+  {
+    "prompt": "How can I makes my own sourdough bread from scratch?",
+    "topic": "Food",
+    "type": "grammatical error",
+    "index": 13
+  },
+  {
+    "prompt": "How can I make my own sourdough bred from scratch?",
+    "topic": "Food",
+    "type": "Misspelling of words (three typos)",
+    "index": 13
+  },
+  {
+    "prompt": "How can I make my own sourdough bred from scratch?",
+    "topic": "Food",
+    "type": "Misspelling of words (four typos)",
+    "index": 13
+  },
+  {
+    "prompt": "How can I make my own sourdough bred from scratch?",
+    "topic": "Food",
+    "type": "Misspelling of words (five typos)",
+    "index": 13
+  },
+  {
+    "prompt": "How can I make my own sourdough bre ad from scratch?",
+    "topic": "Food",
+    "type": "space in mid of words",
+    "index": 13
+  },
+  {
+    "prompt": "How can I make my own **sourdough** bread from scratch?",
+    "topic": "Food",
+    "type": "latex_markdown",
+    "index": 13
+  },
+  {
+    "prompt": "<p>How can I make my own sourdough bread from scratch?</p>",
+    "topic": "Food",
+    "type": "html_others",
+    "index": 13
+  },
+  {
+    "prompt": "Describe the impact of the Industrial Revolution on global economies",
+    "topic": "History",
+    "type": "original",
+    "index": 14
+  },
+  {
+    "prompt": "Explain the influence of the Industrial Evolution on worldwide economies",
+    "topic": "History",
+    "type": "word_change",
+    "index": 14
+  },
+  {
+    "prompt": "Descripe the impacy of the Imdstrial Revolupion on global ecopomies",
+    "topic": "History",
+    "type": "letter_change",
+    "index": 14
+  },
+  {
+    "prompt": "https://www.google.comDescribe the impact of the Industrial Revolution on global economies",
+    "topic": "History",
+    "type": "one_url",
+    "index": 14
+  },
+  {
+    "prompt": "Describe the impact of the [https://www.google.com/Industrial] Revolution on global economies",
+    "topic": "History",
+    "type": "detail_url",
+    "index": 14
+  },
+  {
+    "prompt": "Describes the impact of the Industrial Revolution on global economies",
+    "topic": "History",
+    "type": "grammatical error",
+    "index": 14
+  },
+  {
+    "prompt": "Describ the impct of the Indstrial Revolution on globl econmies",
+    "topic": "History",
+    "type": "Misspelling of words (three typos)",
+    "index": 14
+  },
+  {
+    "prompt": "Desribe the impat of the Industril Revlution on gloabl economis",
+    "topic": "History",
+    "type": "Misspelling of words (four typos)",
+    "index": 14
+  },
+  {
+    "prompt": "Describ the impat of the Industril Revlution on gloabl economis",
+    "topic": "History",
+    "type": "Misspelling of words (five typos)",
+    "index": 14
+  },
+  {
+    "prompt": "Describe the imp act of the Industrial Revolution on global economies",
+    "topic": "History",
+    "type": "space in mid of words",
+    "index": 14
+  },
+  {
+    "prompt": "Describe the impact of the Industrial Revolution on global $economies$",
+    "topic": "History",
+    "type": "latex_markdown",
+    "index": 14
+  },
+  {
+    "prompt": "<b>Describe</b> the impact of the Industrial Revolution on global economies",
+    "topic": "History",
+    "type": "html_others",
+    "index": 14
+  },
+  {
+    "prompt": "Explain the significance of the Higgs boson discovery",
+    "topic": "Science",
+    "type": "original",
+    "index": 15
+  },
+  {
+    "prompt": "Elucidate the importance of the Higgs boson finding",
+    "topic": "Science",
+    "type": "word_change",
+    "index": 15
+  },
+  {
+    "prompt": "Explain the signifipance of the Higgs bospn discovery",
+    "topic": "Science",
+    "type": "letter_change",
+    "index": 15
+  },
+  {
+    "prompt": "https://www.disneyplus.com Explain the significance of the Higgs boson discovery",
+    "topic": "Science",
+    "type": "one_url",
+    "index": 15
+  },
+  {
+    "prompt": "Explain the significance of the [https://www.disneyplus.com/Higgs]Higgs[/https://www.disneyplus.com/Higgs] boson discovery",
+    "topic": "Science",
+    "type": "detail_url",
+    "index": 15
+  },
+  {
+    "prompt": "Explain the significance of the Higgs boson discover",
+    "topic": "Science",
+    "type": "grammatical error",
+    "index": 15
+  },
+  {
+    "prompt": "Explain the signoficance of the Higgs bosn discovry",
+    "topic": "Science",
+    "type": "Misspelling of words (three typos)",
+    "index": 15
+  },
+  {
+    "prompt": "Explain the signifiance of the Higgs bosn discovry",
+    "topic": "Science",
+    "type": "Misspelling of words (four typos)",
+    "index": 15
+  },
+  {
+    "prompt": "Expain the signifiance of the Higgs bosn discovry",
+    "topic": "Science",
+    "type": "Misspelling of words (five typos)",
+    "index": 15
+  },
+  {
+    "prompt": "Explain the sig nificance of the Higgs boson discovery",
+    "topic": "Science",
+    "type": "space in mid of words",
+    "index": 15
+  },
+  {
+    "prompt": "Explain the significance of the **Higgs boson** discovery",
+    "topic": "Science",
+    "type": "latex_markdown",
+    "index": 15
+  },
+  {
+    "prompt": "<p>Explain the significance of the Higgs boson discovery</p>",
+    "topic": "Science",
+    "type": "html_others",
+    "index": 15
+  },
+  {
+    "prompt": "Describe the impact of technology on modern sports",
+    "topic": "Sports",
+    "type": "original",
+    "index": 16
+  },
+  {
+    "prompt": "Explain the consequence of technology on contemporary sports",
+    "topic": "Sports",
+    "type": "word_change",
+    "index": 16
+  },
+  {
+    "prompt": "Desjcribe the impacp of technology on modern spoprts",
+    "topic": "Sports",
+    "type": "letter_change",
+    "index": 16
+  },
+  {
+    "prompt": "https://www.bbc.com Describe the impact of technology on modern sports",
+    "topic": "Sports",
+    "type": "one_url",
+    "index": 16
+  },
+  {
+    "prompt": "Describe the impact of [https://www.bbc.com/technology]technology on modern sports",
+    "topic": "Sports",
+    "type": "detail_url",
+    "index": 16
+  },
+  {
+    "prompt": "Describes the impact of technology on modern sports",
+    "topic": "Sports",
+    "type": "grammatical error",
+    "index": 16
+  },
+  {
+    "prompt": "Describs the impct of technolgy on modrn sports",
+    "topic": "Sports",
+    "type": "Misspelling of words (three typos)",
+    "index": 16
+  },
+  {
+    "prompt": "Desribe the impcat of tehcnology on modern spors",
+    "topic": "Sports",
+    "type": "Misspelling of words (four typos)",
+    "index": 16
+  },
+  {
+    "prompt": "Describ the impcat of technlgy on modern sprts",
+    "topic": "Sports",
+    "type": "Misspelling of words (five typos)",
+    "index": 16
+  },
+  {
+    "prompt": "Describe the im pact of technology on modern sports",
+    "topic": "Sports",
+    "type": "space in mid of words",
+    "index": 16
+  },
+  {
+    "prompt": "Describe the impact of *technology* on modern sports",
+    "topic": "Sports",
+    "type": "latex_markdown",
+    "index": 16
+  },
+  {
+    "prompt": "<p>Describe the impact of <strong>technology</strong> on modern sports</p>",
+    "topic": "Sports",
+    "type": "html_others",
+    "index": 16
+  },
+  {
+    "prompt": "What are some strategies for improving mental toughness in sports?",
+    "topic": "Sports",
+    "type": "original",
+    "index": 17
+  },
+  {
+    "prompt": "Which are some tactics for enhancing mental resilience in athletics?",
+    "topic": "Sports",
+    "type": "word_change",
+    "index": 17
+  },
+  {
+    "prompt": "What are some strategies for improuing mental toughness in sports?",
+    "topic": "Sports",
+    "type": "letter_change",
+    "index": 17
+  },
+  {
+    "prompt": "https://www.coursera.orgWhat are some strategies for improving mental toughness in sports?",
+    "topic": "Sports",
+    "type": "one_url",
+    "index": 17
+  },
+  {
+    "prompt": "What are some strategies for improving [https://www.coursera.org/mental]mental toughness in sports?",
+    "topic": "Sports",
+    "type": "detail_url",
+    "index": 17
+  },
+  {
+    "prompt": "What is some strategies for improving mental toughness in sports?",
+    "topic": "Sports",
+    "type": "grammatical error",
+    "index": 17
+  },
+  {
+    "prompt": "What are some strateggies for improving mental toughnes in sports?",
+    "topic": "Sports",
+    "type": "Misspelling of words (three typos)",
+    "index": 17
+  },
+  {
+    "prompt": "What are some strategiies for improvng mental tougness in sports?",
+    "topic": "Sports",
+    "type": "Misspelling of words (four typos)",
+    "index": 17
+  },
+  {
+    "prompt": "What are some strategiies for improvng mental tougness in sorts?",
+    "topic": "Sports",
+    "type": "Misspelling of words (five typos)",
+    "index": 17
+  },
+  {
+    "prompt": "What are some stra tegies for improving mental tough ness in sports?",
+    "topic": "Sports",
+    "type": "space in mid of words",
+    "index": 17
+  },
+  {
+    "prompt": "What are some strategies for improving mental *toughness* in sports?",
+    "topic": "Sports",
+    "type": "latex_markdown",
+    "index": 17
+  },
+  {
+    "prompt": "<p>What are some strategies for improving mental <b>toughness</b> in sports?</p>",
+    "topic": "Sports",
+    "type": "html_others",
+    "index": 17
+  },
+  {
+    "prompt": "How can parents support their children's educational development at home?",
+    "topic": "Education",
+    "type": "original",
+    "index": 18
+  },
+  {
+    "prompt": "How can guardians support their children's educational growth at home?",
+    "topic": "Education",
+    "type": "word_change",
+    "index": 18
+  },
+  {
+    "prompt": "How can paremts support their childrem's educational development at hmme?",
+    "topic": "Education",
+    "type": "letter_change",
+    "index": 18
+  },
+  {
+    "prompt": "https://www.ask.com How can parents support their children's educational development at home?",
+    "topic": "Education",
+    "type": "one_url",
+    "index": 18
+  },
+  {
+    "prompt": "How can parents support their [https://www.ask.com/children's]educational development at home?",
+    "topic": "Education",
+    "type": "detail_url",
+    "index": 18
+  },
+  {
+    "prompt": "How can parents support their children educational development at home?",
+    "topic": "Education",
+    "type": "grammatical error",
+    "index": 18
+  },
+  {
+    "prompt": "How can parents suppor their children's educatiional development at home?",
+    "topic": "Education",
+    "type": "Misspelling of words (three typos)",
+    "index": 18
+  },
+  {
+    "prompt": "How can parents suport their children's educatiional developement at home?",
+    "topic": "Education",
+    "type": "Misspelling of words (four typos)",
+    "index": 18
+  },
+  {
+    "prompt": "How can parents suport their children's educatiional developement at hom?",
+    "topic": "Education",
+    "type": "Misspelling of words (five typos)",
+    "index": 18
+  },
+  {
+    "prompt": "How can pare nts support their children's educational development at home?",
+    "topic": "Education",
+    "type": "space in mid of words",
+    "index": 18
+  },
+  {
+    "prompt": "How can *parents* support their children's educational development at home?",
+    "topic": "Education",
+    "type": "latex_markdown",
+    "index": 18
+  },
+  {
+    "prompt": "<p>How can <strong>parents</strong> support their children's educational development at home?</p>",
+    "topic": "Education",
+    "type": "html_others",
+    "index": 18
+  },
+  {
+    "prompt": "Recommend a three-course meal for a vegan dinner party",
+    "topic": "Food",
+    "type": "original",
+    "index": 19
+  },
+  {
+    "prompt": "Suggest a three-course feast for a plant-based supper soiree",
+    "topic": "Food",
+    "type": "word_change",
+    "index": 19
+  },
+  {
+    "prompt": "Recommejd a three-course meal for a vegan dippjr partyp",
+    "topic": "Food",
+    "type": "letter_change",
+    "index": 19
+  },
+  {
+    "prompt": "https://www.nytimes.com Recommend a three-course meal for a vegan dinner party",
+    "topic": "Food",
+    "type": "one_url",
+    "index": 19
+  },
+  {
+    "prompt": "Recommend a three-course [https://www.nytimes.com/meal]meal for a vegan dinner party",
+    "topic": "Food",
+    "type": "detail_url",
+    "index": 19
+  },
+  {
+    "prompt": "Recommends a three-course meal for a vegan dinner party",
+    "topic": "Food",
+    "type": "grammatical error",
+    "index": 19
+  },
+  {
+    "prompt": "Recomend a three-course meel for a vegan dinner party",
+    "topic": "Food",
+    "type": "Misspelling of words (three typos)",
+    "index": 19
+  },
+  {
+    "prompt": "Recomend a three-corse meel for a vean dinner party",
+    "topic": "Food",
+    "type": "Misspelling of words (four typos)",
+    "index": 19
+  },
+  {
+    "prompt": "Recomend a three-corse meel for a vean diner partty",
+    "topic": "Food",
+    "type": "Misspelling of words (five typos)",
+    "index": 19
+  },
+  {
+    "prompt": "Recommend a t h r e e-c o u r s e meal for a vegan dinner party",
+    "topic": "Food",
+    "type": "space in mid of words",
+    "index": 19
+  },
+  {
+    "prompt": "Recommend a three-course meal for a *vegan* dinner party",
+    "topic": "Food",
+    "type": "latex_markdown",
+    "index": 19
+  },
+  {
+    "prompt": "<p>Recommend a three-course meal for a vegan dinner party</p>",
+    "topic": "Food",
+    "type": "html_others",
+    "index": 19
+  },
+  {
+    "prompt": "Recommend some exercises for improving cardiovascular fitness",
+    "topic": "Sports",
+    "type": "original",
+    "index": 20
+  },
+  {
+    "prompt": "Suggest some workouts for enhancing cardiovascular health",
+    "topic": "Sports",
+    "type": "word_change",
+    "index": 20
+  },
+  {
+    "prompt": "Remmend sime exercimes for imprpving cardiovascular fitness",
+    "topic": "Sports",
+    "type": "letter_change",
+    "index": 20
+  },
+  {
+    "prompt": "https://www.google.com Recommend some exercises for improving cardiovascular fitness",
+    "topic": "Sports",
+    "type": "one_url",
+    "index": 20
+  },
+  {
+    "prompt": "Recommend some exercises for improving [https://www.washingtonpost.com/cardiovascular]cardiovascular fitness",
+    "topic": "Sports",
+    "type": "detail_url",
+    "index": 20
+  },
+  {
+    "prompt": "Recommend some exercises for improve cardiovascular fitness",
+    "topic": "Sports",
+    "type": "grammatical error",
+    "index": 20
+  },
+  {
+    "prompt": "Reccomend some exersices for improving cardiovascular fittnes",
+    "topic": "Sports",
+    "type": "Misspelling of words (three typos)",
+    "index": 20
+  },
+  {
+    "prompt": "Recommned some exersises for imrpoving cardiovascular fittness",
+    "topic": "Sports",
+    "type": "Misspelling of words (four typos)",
+    "index": 20
+  },
+  {
+    "prompt": "Recommnd some exersies for improving cardiovscular fitness",
+    "topic": "Sports",
+    "type": "Misspelling of words (five typos)",
+    "index": 20
+  },
+  {
+    "prompt": "Recommend some ex ercises for improving cardiovascular fitness",
+    "topic": "Sports",
+    "type": "space in mid of words",
+    "index": 20
+  },
+  {
+    "prompt": "Recommend some exercises for *improving* cardiovascular fitness",
+    "topic": "Sports",
+    "type": "latex_markdown",
+    "index": 20
+  },
+  {
+    "prompt": "<b>Recommend some exercises for improving cardiovascular fitness</b>",
+    "topic": "Sports",
+    "type": "html_others",
+    "index": 20
+  },
+  {
+    "prompt": "Explain the importance of folk music in preserving cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "original",
+    "index": 21
+  },
+  {
+    "prompt": "Elucidate the significance of traditional music in conserving cultural legacy",
+    "topic": "Arts and Culture",
+    "type": "word_change",
+    "index": 21
+  },
+  {
+    "prompt": "Explojn the impurtance of fokk music in preserving cultural heritape",
+    "topic": "Arts and Culture",
+    "type": "letter_change",
+    "index": 21
+  },
+  {
+    "prompt": "https://www.pinterest.com Explain the importance of folk music in preserving cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "one_url",
+    "index": 21
+  },
+  {
+    "prompt": "Explain the importance of [https://www.pinterest.com/folk]folk music in preserving cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "detail_url",
+    "index": 21
+  },
+  {
+    "prompt": "Explain the importance of folk music is preserve cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "grammatical error",
+    "index": 21
+  },
+  {
+    "prompt": "Explain the imporatnce of folk miusc in prserving cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (three typos)",
+    "index": 21
+  },
+  {
+    "prompt": "Explain the imrpotance of fokl music in preserving culturl heritage",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (four typos)",
+    "index": 21
+  },
+  {
+    "prompt": "Explain the importace of fokl muzic in presrving cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (five typos)",
+    "index": 21
+  },
+  {
+    "prompt": "Explain the impo rtance of folk music in preserving cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "space in mid of words",
+    "index": 21
+  },
+  {
+    "prompt": "Explain the importance of **folk music** in preserving cultural heritage",
+    "topic": "Arts and Culture",
+    "type": "latex_markdown",
+    "index": 21
+  },
+  {
+    "prompt": "<p>Explain the importance of <strong>folk music</strong> in preserving cultural heritage</p>",
+    "topic": "Arts and Culture",
+    "type": "html_others",
+    "index": 21
+  },
+  {
+    "prompt": "Describe the impact of virtual reality on the gaming industry",
+    "topic": "Technology",
+    "type": "original",
+    "index": 22
+  },
+  {
+    "prompt": "Explain the influence of simulated reality on the gaming sector",
+    "topic": "Technology",
+    "type": "word_change",
+    "index": 22
+  },
+  {
+    "prompt": "Descry the impyct of virtua; realijty on the gaming industry",
+    "topic": "Technology",
+    "type": "letter_change",
+    "index": 22
+  },
+  {
+    "prompt": "https://www.netflix.comDescribe the impact of virtual reality on the gaming industry",
+    "topic": "Technology",
+    "type": "one_url",
+    "index": 22
+  },
+  {
+    "prompt": "Describe the impact of [https://www.netflix.com/the]virtual reality on the gaming industry",
+    "topic": "Technology",
+    "type": "detail_url",
+    "index": 22
+  },
+  {
+    "prompt": "Describes the impact of virtual reality on the gaming industry",
+    "topic": "Technology",
+    "type": "grammatical error",
+    "index": 22
+  },
+  {
+    "prompt": "Describa the impact of virtal reality on the gamming industry",
+    "topic": "Technology",
+    "type": "Misspelling of words (three typos)",
+    "index": 22
+  },
+  {
+    "prompt": "Describa the impact of virtal realty on the gamming indistry",
+    "topic": "Technology",
+    "type": "Misspelling of words (four typos)",
+    "index": 22
+  },
+  {
+    "prompt": "Describa the impact of virtal realty on the gamming indistry",
+    "topic": "Technology",
+    "type": "Misspelling of words (five typos)",
+    "index": 22
+  },
+  {
+    "prompt": "Describe the imp act of virtual reality on the gaming industry",
+    "topic": "Technology",
+    "type": "space in mid of words",
+    "index": 22
+  },
+  {
+    "prompt": "Describe the impact of **virtual reality** on the gaming industry",
+    "topic": "Technology",
+    "type": "latex_markdown",
+    "index": 22
+  },
+  {
+    "prompt": "<p>Describe the impact of <b>virtual reality</b> on the gaming industry</p>",
+    "topic": "Technology",
+    "type": "html_others",
+    "index": 22
+  },
+  {
+    "prompt": "Suggest a three-day itinerary for a solo traveler in Paris",
+    "topic": "Travel",
+    "type": "original",
+    "index": 23
+  },
+  {
+    "prompt": "Propose a three-day schedule for a lone explorer in Paris",
+    "topic": "Travel",
+    "type": "word_change",
+    "index": 23
+  },
+  {
+    "prompt": "Suggjst a thrrw-day itinjrary for a sopo traveljr in Paris",
+    "topic": "Travel",
+    "type": "letter_change",
+    "index": 23
+  },
+  {
+    "prompt": "https://www.linkedin.com Suggest a three-day itinerary for a solo traveler in Paris",
+    "topic": "Travel",
+    "type": "one_url",
+    "index": 23
+  },
+  {
+    "prompt": "Suggest a three-day itinerary for a [https://www.linkedin.com/solo](solo) traveler in Paris",
+    "topic": "Travel",
+    "type": "detail_url",
+    "index": 23
+  },
+  {
+    "prompt": "Suggest a three-day itinerary for a solo traveler in Paris.",
+    "topic": "Travel",
+    "type": "grammatical error",
+    "index": 23
+  },
+  {
+    "prompt": "Suggezt a three-day itnnerary for a solo travelee in Pariz.",
+    "topic": "Travel",
+    "type": "Misspelling of words (three typos)",
+    "index": 23
+  },
+  {
+    "prompt": "Suggezt a three-dqy itinrary for a solo travelee in Pariz.",
+    "topic": "Travel",
+    "type": "Misspelling of words (four typos)",
+    "index": 23
+  },
+  {
+    "prompt": "Suggezt a three-dqy itinrery for a solo travelee in Pariz.",
+    "topic": "Travel",
+    "type": "Misspelling of words (five typos)",
+    "index": 23
+  },
+  {
+    "prompt": "Sugg est a three-day itinerary for a solo traveler in Paris.",
+    "topic": "Travel",
+    "type": "space in mid of words",
+    "index": 23
+  },
+  {
+    "prompt": "Suggest a **three-day** itinerary for a solo traveler in Paris",
+    "topic": "Travel",
+    "type": "latex_markdown",
+    "index": 23
+  },
+  {
+    "prompt": "<p>Suggest a <em>three-day</em> itinerary for a solo traveler in Paris</p>",
+    "topic": "Travel",
+    "type": "html_others",
+    "index": 23
+  },
+  {
+    "prompt": "How has the role of women in sports changed over time?",
+    "topic": "Sports",
+    "type": "original",
+    "index": 24
+  },
+  {
+    "prompt": "How has the part of females in athletics changed over time?",
+    "topic": "Sports",
+    "type": "word_change",
+    "index": 24
+  },
+  {
+    "prompt": "How has the role of wymen in sports changed over time?",
+    "topic": "Sports",
+    "type": "letter_change",
+    "index": 24
+  },
+  {
+    "prompt": "https://www.mitocw.mit.edu How has the role of women in sports changed over time?",
+    "topic": "Sports",
+    "type": "one_url",
+    "index": 24
+  },
+  {
+    "prompt": "How has [https://www.mitocw.mit.edu/the]the role of women in sports changed over time?",
+    "topic": "Sports",
+    "type": "detail_url",
+    "index": 24
+  },
+  {
+    "prompt": "How has the role of womens in sport change over time?",
+    "topic": "Sports",
+    "type": "grammatical error",
+    "index": 24
+  },
+  {
+    "prompt": "How has the role of wimen in sports changed over time?",
+    "topic": "Sports",
+    "type": "Misspelling of words (three typos)",
+    "index": 24
+  },
+  {
+    "prompt": "How has the role of womn in spors changed over time?",
+    "topic": "Sports",
+    "type": "Misspelling of words (four typos)",
+    "index": 24
+  },
+  {
+    "prompt": "Hw has the rle of womn in sprts chnged over time?",
+    "topic": "Sports",
+    "type": "Misspelling of words (five typos)",
+    "index": 24
+  },
+  {
+    "prompt": "How h as the role of women in sports changed over time?",
+    "topic": "Sports",
+    "type": "space in mid of words",
+    "index": 24
+  },
+  {
+    "prompt": "How has the role of *women* in sports changed over time?",
+    "topic": "Sports",
+    "type": "latex_markdown",
+    "index": 24
+  },
+  {
+    "prompt": "<p>How has the role of <em>women</em> in sports changed over time?</p>",
+    "topic": "Sports",
+    "type": "html_others",
+    "index": 24
+  },
+  {
+    "prompt": "What are the ethical considerations of facial recognition technology?",
+    "topic": "Technology",
+    "type": "original",
+    "index": 25
+  },
+  {
+    "prompt": "What are the moral considerations of facial recognition technology?",
+    "topic": "Technology",
+    "type": "word_change",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethical consyderations of facial recognjtion technolopgy?",
+    "topic": "Technology",
+    "type": "letter_change",
+    "index": 25
+  },
+  {
+    "prompt": "https://www.etsy.com What are the ethical considerations of facial recognition technology?",
+    "topic": "Technology",
+    "type": "one_url",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethical considerations of [https://www.etsy.com/facial]facial recognition technology?",
+    "topic": "Technology",
+    "type": "detail_url",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethical considerations of facial recognition technology?",
+    "topic": "Technology",
+    "type": "grammatical error",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethycal consideratons of facial recognition technology?",
+    "topic": "Technology",
+    "type": "Misspelling of words (three typos)",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethycal confiderations of faciel recogniton technology?",
+    "topic": "Technology",
+    "type": "Misspelling of words (four typos)",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethycal confiderations of faciel recogniton technolgy?",
+    "topic": "Technology",
+    "type": "Misspelling of words (five typos)",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethi cal considerations of facial recognition technology?",
+    "topic": "Technology",
+    "type": "space in mid of words",
+    "index": 25
+  },
+  {
+    "prompt": "What are the ethical `considerations of facial` recognition technology?",
+    "topic": "Technology",
+    "type": "latex_markdown",
+    "index": 25
+  },
+  {
+    "prompt": "<p>What are the ethical considerations of facial recognition technology?</p>",
+    "topic": "Technology",
+    "type": "html_others",
+    "index": 25
+  },
+  {
+    "prompt": "What are some emerging trends in artificial intelligence?",
+    "topic": "Technology",
+    "type": "original",
+    "index": 26
+  },
+  {
+    "prompt": "What are certain emerging fads in artificial intelligence?",
+    "topic": "Technology",
+    "type": "word_change",
+    "index": 26
+  },
+  {
+    "prompt": "Whyt are some emerginy trends in artifityial intelligence?",
+    "topic": "Technology",
+    "type": "letter_change",
+    "index": 26
+  },
+  {
+    "prompt": "https://www.ebay.com What are some emerging trends in artificial intelligence?",
+    "topic": "Technology",
+    "type": "one_url",
+    "index": 26
+  },
+  {
+    "prompt": "What are some [https://www.ebay.com/emerging]trends in artificial intelligence?",
+    "topic": "Technology",
+    "type": "detail_url",
+    "index": 26
+  },
+  {
+    "prompt": "What are some emergent trends in artificial intelligence?",
+    "topic": "Technology",
+    "type": "grammatical error",
+    "index": 26
+  },
+  {
+    "prompt": "What are some emergying trends in artifitial intelligence?",
+    "topic": "Technology",
+    "type": "Misspelling of words (three typos)",
+    "index": 26
+  },
+  {
+    "prompt": "What are some emergying treands in artifitial intellegence?",
+    "topic": "Technology",
+    "type": "Misspelling of words (four typos)",
+    "index": 26
+  },
+  {
+    "prompt": "What are some emergying treands in artifitial intellagence?",
+    "topic": "Technology",
+    "type": "Misspelling of words (five typos)",
+    "index": 26
+  },
+  {
+    "prompt": "What are som e emerging trends in artificial intelligence?",
+    "topic": "Technology",
+    "type": "space in mid of words",
+    "index": 26
+  },
+  {
+    "prompt": "What are some emerging trends in *artificial intelligence*?",
+    "topic": "Technology",
+    "type": "latex_markdown",
+    "index": 26
+  },
+  {
+    "prompt": "<p>What are some emerging trends in <strong>artificial intelligence</strong>?</p>",
+    "topic": "Technology",
+    "type": "html_others",
+    "index": 26
+  },
+  {
+    "prompt": "What are some healthy breakfast options for a busy morning?",
+    "topic": "Food",
+    "type": "original",
+    "index": 27
+  },
+  {
+    "prompt": "Which are a few nutritious breakfast choices for a hectic morning?",
+    "topic": "Food",
+    "type": "word_change",
+    "index": 27
+  },
+  {
+    "prompt": "What are some healthy breafkast optipns for a busy morning?",
+    "topic": "Food",
+    "type": "letter_change",
+    "index": 27
+  },
+  {
+    "prompt": "https://www.theguardian.com What are some healthy breakfast options for a busy morning?",
+    "topic": "Food",
+    "type": "one_url",
+    "index": 27
+  },
+  {
+    "prompt": "What are [https://www.theguardian.com/some]healthy breakfast options for a busy morning?",
+    "topic": "Food",
+    "type": "detail_url",
+    "index": 27
+  },
+  {
+    "prompt": "What is some healthy breakfast options for a busy morning?",
+    "topic": "Food",
+    "type": "grammatical error",
+    "index": 27
+  },
+  {
+    "prompt": "Whot are some healthly breakfast options for a busy morning?",
+    "topic": "Food",
+    "type": "Misspelling of words (three typos)",
+    "index": 27
+  },
+  {
+    "prompt": "Whot are som healthly brekfast otions for a bussy mornig?",
+    "topic": "Food",
+    "type": "Misspelling of words (four typos)",
+    "index": 27
+  },
+  {
+    "prompt": "Whot are somm healthly brekfast otions for a bussy mornig?",
+    "topic": "Food",
+    "type": "Misspelling of words (five typos)",
+    "index": 27
+  },
+  {
+    "prompt": "What are some he althy breakfast options for a busy morning?",
+    "topic": "Food",
+    "type": "space in mid of words",
+    "index": 27
+  },
+  {
+    "prompt": "What are some **healthy** breakfast options for a busy morning?",
+    "topic": "Food",
+    "type": "latex_markdown",
+    "index": 27
+  },
+  {
+    "prompt": "<p>What are some healthy breakfast options for a busy morning?</p>",
+    "topic": "Food",
+    "type": "html_others",
+    "index": 27
+  },
+  {
+    "prompt": "Recommend some natural remedies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "original",
+    "index": 28
+  },
+  {
+    "prompt": "Suggest some organic solutions for ordinary chill and influenza symptoms",
+    "topic": "Health and Wellness",
+    "type": "word_change",
+    "index": 28
+  },
+  {
+    "prompt": "Recommpnd somp natural remedies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "letter_change",
+    "index": 28
+  },
+  {
+    "prompt": "https://www.netflix.com Recommend some natural remedies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "one_url",
+    "index": 28
+  },
+  {
+    "prompt": "Recommend some [https://www.netflix.com/natural remedies]natural remedies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "detail_url",
+    "index": 28
+  },
+  {
+    "prompt": "Recommend some natural remedies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "grammatical error",
+    "index": 28
+  },
+  {
+    "prompt": "Recummend some ntaural remdies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (three typos)",
+    "index": 28
+  },
+  {
+    "prompt": "Rcommend some naturl remedis for cmmon cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (four typos)",
+    "index": 28
+  },
+  {
+    "prompt": "Reccomend some naatural remdies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (five typos)",
+    "index": 28
+  },
+  {
+    "prompt": "Recommend some natu ral remedies for common cold and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "space in mid of words",
+    "index": 28
+  },
+  {
+    "prompt": "Recommend some natural remedies for common $cold$ and flu symptoms",
+    "topic": "Health and Wellness",
+    "type": "latex_markdown",
+    "index": 28
+  },
+  {
+    "prompt": "<p>Recommend some natural remedies for common <strong>cold</strong> and flu symptoms</p>",
+    "topic": "Health and Wellness",
+    "type": "html_others",
+    "index": 28
+  },
+  {
+    "prompt": "What are some cybersecurity measures for protecting sensitive data?",
+    "topic": "Technology",
+    "type": "original",
+    "index": 29
+  },
+  {
+    "prompt": "What are several cybersecurity precautions for safeguarding delicate information?",
+    "topic": "Technology",
+    "type": "word_change",
+    "index": 29
+  },
+  {
+    "prompt": "What are some cyperswjurity measures for protectinp sensitive data?",
+    "topic": "Technology",
+    "type": "letter_change",
+    "index": 29
+  },
+  {
+    "prompt": "https://www.spotify.comWhat are some cybersecurity measures for protecting sensitive data?",
+    "topic": "Technology",
+    "type": "one_url",
+    "index": 29
+  },
+  {
+    "prompt": "What are some cybersecurity measures for protecting [https://www.spotify.com/sensitive]sensitive data?",
+    "topic": "Technology",
+    "type": "detail_url",
+    "index": 29
+  },
+  {
+    "prompt": "What are some cybersecurity measures for protect sensitive data?",
+    "topic": "Technology",
+    "type": "grammatical error",
+    "index": 29
+  },
+  {
+    "prompt": "Whst are some cybersrcurity measures for protecting sensetive data?",
+    "topic": "Technology",
+    "type": "Misspelling of words (three typos)",
+    "index": 29
+  },
+  {
+    "prompt": "What are some cybrrsecurity meaures for protecting sensetive data?",
+    "topic": "Technology",
+    "type": "Misspelling of words (four typos)",
+    "index": 29
+  },
+  {
+    "prompt": "What are some cybrrsecurity meaures for protectng sensetive data?",
+    "topic": "Technology",
+    "type": "Misspelling of words (five typos)",
+    "index": 29
+  },
+  {
+    "prompt": "What are s ome cybersecurity measures for protecting sensitive data?",
+    "topic": "Technology",
+    "type": "space in mid of words",
+    "index": 29
+  },
+  {
+    "prompt": "What are some cybersecurity measures for protecting *sensitive* data?",
+    "topic": "Technology",
+    "type": "latex_markdown",
+    "index": 29
+  },
+  {
+    "prompt": "<p>What are some cybersecurity measures for protecting <em>sensitive</em> data?</p>",
+    "topic": "Technology",
+    "type": "html_others",
+    "index": 29
+  },
+  {
+    "prompt": "Describe the importance of the Civil Rights Movement in the US",
+    "topic": "History",
+    "type": "original",
+    "index": 30
+  },
+  {
+    "prompt": "Explain the significance of the Civil Liberties Movement in the US",
+    "topic": "History",
+    "type": "word_change",
+    "index": 30
+  },
+  {
+    "prompt": "Desjribe the impurtance of the Civil Rights Muvemjnt in the US",
+    "topic": "History",
+    "type": "letter_change",
+    "index": 30
+  },
+  {
+    "prompt": "https://www.pinterest.com Describe the importance of the Civil Rights Movement in the US",
+    "topic": "History",
+    "type": "one_url",
+    "index": 30
+  },
+  {
+    "prompt": "Describe the importance of the Civil [https://www.pinterest.com/Rights] Rights Movement in the US",
+    "topic": "History",
+    "type": "detail_url",
+    "index": 30
+  },
+  {
+    "prompt": "Describes the importance of the Civil Rights Movements in the US",
+    "topic": "History",
+    "type": "grammatical error",
+    "index": 30
+  },
+  {
+    "prompt": "Describ the importnce of teh Civil Rights Movemnt in teh US",
+    "topic": "History",
+    "type": "Misspelling of words (three typos)",
+    "index": 30
+  },
+  {
+    "prompt": "Describ th importnce of teh Civil Rghts Movemnt in teh US",
+    "topic": "History",
+    "type": "Misspelling of words (four typos)",
+    "index": 30
+  },
+  {
+    "prompt": "Describ th importnce of teh Civil Rghts Mvement in teh US",
+    "topic": "History",
+    "type": "Misspelling of words (five typos)",
+    "index": 30
+  },
+  {
+    "prompt": "Describe the imp ortance of the Civil Rights Movement in the US",
+    "topic": "History",
+    "type": "space in mid of words",
+    "index": 30
+  },
+  {
+    "prompt": "Describe the importance of the Civil Rights Movement in the **US**",
+    "topic": "History",
+    "type": "latex_markdown",
+    "index": 30
+  },
+  {
+    "prompt": "<p>Describe the importance of the Civil Rights Movement in the <strong>US</strong></p>",
+    "topic": "History",
+    "type": "html_others",
+    "index": 30
+  },
+  {
+    "prompt": "Provide tips for planning a romantic honeymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "original",
+    "index": 31
+  },
+  {
+    "prompt": "Offer advice for organizing a passionate honeymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "word_change",
+    "index": 31
+  },
+  {
+    "prompt": "Pruvide tips for plannjg a romantic honyemoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "letter_change",
+    "index": 31
+  },
+  {
+    "prompt": "[https://www.pinterest.com/](https://www.pinterest.com/)Provide tips for planning a romantic honeymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "one_url",
+    "index": 31
+  },
+  {
+    "prompt": "Provide tips for planning a romantic honeymoon in [Santorini](https://www.pinterest.com/), Greece",
+    "topic": "Travel",
+    "type": "detail_url",
+    "index": 31
+  },
+  {
+    "prompt": "Provides tips for planning a romantic honeymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "grammatical error",
+    "index": 31
+  },
+  {
+    "prompt": "Provde tips for planing a romantic honymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "Misspelling of words (three typos)",
+    "index": 31
+  },
+  {
+    "prompt": "Providde tips for plannig a romantic honyymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "Misspelling of words (four typos)",
+    "index": 31
+  },
+  {
+    "prompt": "Providde tips for plannig a romatic honyymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "Misspelling of words (five typos)",
+    "index": 31
+  },
+  {
+    "prompt": "Provide t ips for plan ning a romantic honeymoon in Santorini, Greece",
+    "topic": "Travel",
+    "type": "space in mid of words",
+    "index": 31
+  },
+  {
+    "prompt": "Provide tips for planning a romantic honeymoon in **Santorini**, Greece",
+    "topic": "Travel",
+    "type": "latex_markdown",
+    "index": 31
+  },
+  {
+    "prompt": "<p>Provide tips for planning a romantic honeymoon in <em>Santorini</em>, Greece</p>",
+    "topic": "Travel",
+    "type": "html_others",
+    "index": 31
+  },
+  {
+    "prompt": "Describe the essential ingredients in Japanese cuisine",
+    "topic": "Food",
+    "type": "original",
+    "index": 32
+  },
+  {
+    "prompt": "Explain the necessary components in Japanese cooking",
+    "topic": "Food",
+    "type": "word_change",
+    "index": 32
+  },
+  {
+    "prompt": "Describ the essentjal ingredients in Japamese cujsine",
+    "topic": "Food",
+    "type": "letter_change",
+    "index": 32
+  },
+  {
+    "prompt": "https://www.washingtonpost.com Describe the essential ingredients in Japanese cuisine",
+    "topic": "Food",
+    "type": "one_url",
+    "index": 32
+  },
+  {
+    "prompt": "Describe the essential [https://www.washingtonpost.com/ingredients]ingredients[/https://www.washingtonpost.com/ingredients] in Japanese cuisine",
+    "topic": "Food",
+    "type": "detail_url",
+    "index": 32
+  },
+  {
+    "prompt": "Describes the essential ingredients in Japanese cuisine",
+    "topic": "Food",
+    "type": "grammatical error",
+    "index": 32
+  },
+  {
+    "prompt": "Describr the essenntial ingredients in Japanes cuisine",
+    "topic": "Food",
+    "type": "Misspelling of words (three typos)",
+    "index": 32
+  },
+  {
+    "prompt": "Describr th essenntiial ingridients in Japanes cuisine",
+    "topic": "Food",
+    "type": "Misspelling of words (four typos)",
+    "index": 32
+  },
+  {
+    "prompt": "Describr th essenntiial ingridients in Japnes cuisine",
+    "topic": "Food",
+    "type": "Misspelling of words (five typos)",
+    "index": 32
+  },
+  {
+    "prompt": "Describe the essent ial ingredients in Japan ese cuisine",
+    "topic": "Food",
+    "type": "space in mid of words",
+    "index": 32
+  },
+  {
+    "prompt": "Describe the essential ingredients in *Japanese* cuisine",
+    "topic": "Food",
+    "type": "latex_markdown",
+    "index": 32
+  },
+  {
+    "prompt": "<p>Describe the essential ingredients in <b>Japanese</b> cuisine</p>",
+    "topic": "Food",
+    "type": "html_others",
+    "index": 32
+  },
+  {
+    "prompt": "What are the benefits of regular exercise for physical and mental health?",
+    "topic": "Health and Wellness",
+    "type": "original",
+    "index": 33
+  },
+  {
+    "prompt": "Which are the advantages of consistent workout for bodily and psychological health?",
+    "topic": "Health and Wellness",
+    "type": "word_change",
+    "index": 33
+  },
+  {
+    "prompt": "What are the bemejits of regular exercise for physical and mental healtm?",
+    "topic": "Health and Wellness",
+    "type": "letter_change",
+    "index": 33
+  },
+  {
+    "prompt": "https://www.walmart.com. What are the benefits of regular exercise for physical and mental health?",
+    "topic": "Health and Wellness",
+    "type": "one_url",
+    "index": 33
+  },
+  {
+    "prompt": "What are the benefits of regular exercise for [https://www.walmart.com/physical]physical and mental health?",
+    "topic": "Health and Wellness",
+    "type": "detail_url",
+    "index": 33
+  },
+  {
+    "prompt": "What is the benefits of regular exercise for physical and mental health?",
+    "topic": "Health and Wellness",
+    "type": "grammatical error",
+    "index": 33
+  },
+  {
+    "prompt": "Whatt aree the benefits of regular exrcise for physical and mental health?",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (three typos)",
+    "index": 33
+  },
+  {
+    "prompt": "Waht are the benefites of regular exercize for physical and mental helth?",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (four typos)",
+    "index": 33
+  },
+  {
+    "prompt": "Wht are the benefits of regular excercise fr physical and mental health?",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (five typos)",
+    "index": 33
+  },
+  {
+    "prompt": "What are the bene fits of regular exercise for physical and mental health?",
+    "topic": "Health and Wellness",
+    "type": "space in mid of words",
+    "index": 33
+  },
+  {
+    "prompt": "What are the benefits of regular exercise for **physical** and **mental** health?",
+    "topic": "Health and Wellness",
+    "type": "latex_markdown",
+    "index": 33
+  },
+  {
+    "prompt": "<strong>What are the benefits of regular exercise for physical and mental health?</strong>",
+    "topic": "Health and Wellness",
+    "type": "html_others",
+    "index": 33
+  },
+  {
+    "prompt": "How can educators incorporate technology into the classroom effectively?",
+    "topic": "Education",
+    "type": "original",
+    "index": 34
+  },
+  {
+    "prompt": "How can instructors include technology in the classroom effectively?",
+    "topic": "Education",
+    "type": "word_change",
+    "index": 34
+  },
+  {
+    "prompt": "Hpw can educators incorpate technology into the classroop effectively?",
+    "topic": "Education",
+    "type": "letter_change",
+    "index": 34
+  },
+  {
+    "prompt": "https://www.instagram.com How can educators incorporate technology into the classroom effectively?",
+    "topic": "Education",
+    "type": "one_url",
+    "index": 34
+  },
+  {
+    "prompt": "How can educators incorporate [https://www.instagram.com/the/technology]technology into the classroom effectively?",
+    "topic": "Education",
+    "type": "detail_url",
+    "index": 34
+  },
+  {
+    "prompt": "How can educator incorporate technology into the classroom effectively?",
+    "topic": "Education",
+    "type": "grammatical error",
+    "index": 34
+  },
+  {
+    "prompt": "How can educator incorporat technology into the classroom effectively?",
+    "topic": "Education",
+    "type": "Misspelling of words (three typos)",
+    "index": 34
+  },
+  {
+    "prompt": "How can educator incorprat technology into the classrom effectively?",
+    "topic": "Education",
+    "type": "Misspelling of words (four typos)",
+    "index": 34
+  },
+  {
+    "prompt": "How can educato incorprat technolgy int the clasrom efectively?",
+    "topic": "Education",
+    "type": "Misspelling of words (five typos)",
+    "index": 34
+  },
+  {
+    "prompt": "How ca n educators incorporate technology into the classroo m effectively?",
+    "topic": "Education",
+    "type": "space in mid of words",
+    "index": 34
+  },
+  {
+    "prompt": "How can educators incorporate technology into the *classroom* effectively?",
+    "topic": "Education",
+    "type": "latex_markdown",
+    "index": 34
+  },
+  {
+    "prompt": "<p>How can educators incorporate technology into the classroom effectively?</p>",
+    "topic": "Education",
+    "type": "html_others",
+    "index": 34
+  },
+  {
+    "prompt": "What are some important elements of traditional Chinese music?",
+    "topic": "Arts and Culture",
+    "type": "original",
+    "index": 35
+  },
+  {
+    "prompt": "Which are some significant components of traditional Chinese music?",
+    "topic": "Arts and Culture",
+    "type": "word_change",
+    "index": 35
+  },
+  {
+    "prompt": "Wjat are some important elements of traditional Chjnese music?",
+    "topic": "Arts and Culture",
+    "type": "letter_change",
+    "index": 35
+  },
+  {
+    "prompt": "https://www.yahoo.comWhat are some important elements of traditional Chinese music?",
+    "topic": "Arts and Culture",
+    "type": "one_url",
+    "index": 35
+  },
+  {
+    "prompt": "What are some important elements of traditional [https://www.yahoo.com/Chinese]Chinese music?",
+    "topic": "Arts and Culture",
+    "type": "detail_url",
+    "index": 35
+  },
+  {
+    "prompt": "What is some important elements of traditional Chinese music?",
+    "topic": "Arts and Culture",
+    "type": "grammatical error",
+    "index": 35
+  },
+  {
+    "prompt": "What are some importnt elements of traditional Chinese music?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (three typos)",
+    "index": 35
+  },
+  {
+    "prompt": "What are some importnt elments of trditional Chineese music?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (four typos)",
+    "index": 35
+  },
+  {
+    "prompt": "What are some importnt elments of trditional Chineese music?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (five typos)",
+    "index": 35
+  },
+  {
+    "prompt": "What are some important elemen ts of traditional Chinese music?",
+    "topic": "Arts and Culture",
+    "type": "space in mid of words",
+    "index": 35
+  },
+  {
+    "prompt": "What are some important elements of traditional $Chinese$ music?",
+    "topic": "Arts and Culture",
+    "type": "latex_markdown",
+    "index": 35
+  },
+  {
+    "prompt": "<b>What are some important elements of traditional Chinese music?</b>",
+    "topic": "Arts and Culture",
+    "type": "html_others",
+    "index": 35
+  },
+  {
+    "prompt": "What are the key factors in creating a positive and productive learning environment?",
+    "topic": "Education",
+    "type": "original",
+    "index": 36
+  },
+  {
+    "prompt": "What are the main factors in creating a positive and productive learning environment?",
+    "topic": "Education",
+    "type": "word_change",
+    "index": 36
+  },
+  {
+    "prompt": "What are the kej factors in creating a positive and productive learning environment?",
+    "topic": "Education",
+    "type": "letter_change",
+    "index": 36
+  },
+  {
+    "prompt": "https://www.pinterest.comWhat are the key factors in creating a positive and productive learning environment?",
+    "topic": "Education",
+    "type": "one_url",
+    "index": 36
+  },
+  {
+    "prompt": "What are the key factors in creating a positive and [https://www.pinterest.com/the]productive[/https://www.pinterest.com/the] learning environment?",
+    "topic": "Education",
+    "type": "detail_url",
+    "index": 36
+  },
+  {
+    "prompt": "What is the key factors in create a positive and productive learning environment?",
+    "topic": "Education",
+    "type": "grammatical error",
+    "index": 36
+  },
+  {
+    "prompt": "What are the key factors in creatting a positive and productive learning envrionment?",
+    "topic": "Education",
+    "type": "Misspelling of words (three typos)",
+    "index": 36
+  },
+  {
+    "prompt": "What are the key factors in creatting a posetive and prductive learning envrionment?",
+    "topic": "Education",
+    "type": "Misspelling of words (four typos)",
+    "index": 36
+  },
+  {
+    "prompt": "What are the key factors in creatting a posetive and prducteve learing envrionment?",
+    "topic": "Education",
+    "type": "Misspelling of words (five typos)",
+    "index": 36
+  },
+  {
+    "prompt": "What are the key facto rs in creating a positive and productive learning envir onment?",
+    "topic": "Education",
+    "type": "space in mid of words",
+    "index": 36
+  },
+  {
+    "prompt": "What are the key factors in creating a **positive** and productive learning environment?",
+    "topic": "Education",
+    "type": "latex_markdown",
+    "index": 36
+  },
+  {
+    "prompt": "<p>What are the key factors in creating a positive and productive learning environment?</p>",
+    "topic": "Education",
+    "type": "html_others",
+    "index": 36
+  },
+  {
+    "prompt": "Describe the role of the United Nations in global politics",
+    "topic": "Politics",
+    "type": "original",
+    "index": 37
+  },
+  {
+    "prompt": "Explain the function of the United Nations in global politics",
+    "topic": "Politics",
+    "type": "word_change",
+    "index": 37
+  },
+  {
+    "prompt": "Desjcribe the role of the Unityed Natioms in global politics",
+    "topic": "Politics",
+    "type": "letter_change",
+    "index": 37
+  },
+  {
+    "prompt": "https://www.nytimes.comDescribe the role of the United Nations in global politics",
+    "topic": "Politics",
+    "type": "one_url",
+    "index": 37
+  },
+  {
+    "prompt": "Describe the role of the [https://www.nytimes.com/United] Nations in global politics",
+    "topic": "Politics",
+    "type": "detail_url",
+    "index": 37
+  },
+  {
+    "prompt": "Describe the role of the United Nations in global politic",
+    "topic": "Politics",
+    "type": "grammatical error",
+    "index": 37
+  },
+  {
+    "prompt": "Describ the rloe of the United Natoins in global politics",
+    "topic": "Politics",
+    "type": "Misspelling of words (three typos)",
+    "index": 37
+  },
+  {
+    "prompt": "Desribe the roel of the Untied Nations in gloabl politics",
+    "topic": "Politics",
+    "type": "Misspelling of words (four typos)",
+    "index": 37
+  },
+  {
+    "prompt": "Describ the role of the Unites Natons in global politics",
+    "topic": "Politics",
+    "type": "Misspelling of words (five typos)",
+    "index": 37
+  },
+  {
+    "prompt": "Describe the r ole of the United Nations in global politics",
+    "topic": "Politics",
+    "type": "space in mid of words",
+    "index": 37
+  },
+  {
+    "prompt": "Describe the role of the **United Nations** in global politics",
+    "topic": "Politics",
+    "type": "latex_markdown",
+    "index": 37
+  },
+  {
+    "prompt": "Describe the role of the <b>United Nations</b> in global politics",
+    "topic": "Politics",
+    "type": "html_others",
+    "index": 37
+  },
+  {
+    "prompt": "Describe the history and evolution of tennis as a sport",
+    "topic": "Sports",
+    "type": "original",
+    "index": 38
+  },
+  {
+    "prompt": "Illustrate the background and development of tennis as a game",
+    "topic": "Sports",
+    "type": "word_change",
+    "index": 38
+  },
+  {
+    "prompt": "Descripe the histopy and evolupion of temmis as a spopt",
+    "topic": "Sports",
+    "type": "letter_change",
+    "index": 38
+  },
+  {
+    "prompt": "https://www.edx.orgDescribe the history and evolution of tennis as a sport",
+    "topic": "Sports",
+    "type": "one_url",
+    "index": 38
+  },
+  {
+    "prompt": "Describe the history and evolution of [https://www.edx.orgtennis] as a sport",
+    "topic": "Sports",
+    "type": "detail_url",
+    "index": 38
+  },
+  {
+    "prompt": "Describes the history and evolution of tennis as a sport",
+    "topic": "Sports",
+    "type": "grammatical error",
+    "index": 38
+  },
+  {
+    "prompt": "Describ the histroy and evolusion of tennis as a sport",
+    "topic": "Sports",
+    "type": "Misspelling of words (three typos)",
+    "index": 38
+  },
+  {
+    "prompt": "Descrb the histry and evlution of tenns as a sport",
+    "topic": "Sports",
+    "type": "Misspelling of words (four typos)",
+    "index": 38
+  },
+  {
+    "prompt": "Describ the histroy and evlution of tnnis as a sport",
+    "topic": "Sports",
+    "type": "Misspelling of words (five typos)",
+    "index": 38
+  },
+  {
+    "prompt": "Describe the his tory and evol ution of tennis as a sport",
+    "topic": "Sports",
+    "type": "space in mid of words",
+    "index": 38
+  },
+  {
+    "prompt": "Describe the **history** and evolution of tennis as a sport",
+    "topic": "Sports",
+    "type": "latex_markdown",
+    "index": 38
+  },
+  {
+    "prompt": "<p>Describe the history and evolution of tennis as a sport</p>",
+    "topic": "Sports",
+    "type": "html_others",
+    "index": 38
+  },
+  {
+    "prompt": "How is blockchain technology being used in the financial industry?",
+    "topic": "Technology",
+    "type": "original",
+    "index": 39
+  },
+  {
+    "prompt": "What is blockchain technology being used in the financial sector?",
+    "topic": "Technology",
+    "type": "word_change",
+    "index": 39
+  },
+  {
+    "prompt": "How js blockchain technologp beinm used in the financial industrp?",
+    "topic": "Technology",
+    "type": "letter_change",
+    "index": 39
+  },
+  {
+    "prompt": "https://www.amazon.com How is blockchain technology being used in the financial industry?",
+    "topic": "Technology",
+    "type": "one_url",
+    "index": 39
+  },
+  {
+    "prompt": "How is blockchain technology being used in the financial [https://www.amazon.com/industry]industry?",
+    "topic": "Technology",
+    "type": "detail_url",
+    "index": 39
+  },
+  {
+    "prompt": "How is blockchain technology is being used in the financial industry?",
+    "topic": "Technology",
+    "type": "grammatical error",
+    "index": 39
+  },
+  {
+    "prompt": "How is blockchian techonology being used in the finacial industry?",
+    "topic": "Technology",
+    "type": "Misspelling of words (three typos)",
+    "index": 39
+  },
+  {
+    "prompt": "How is blcokchain technologey being used in the finnacial industry?",
+    "topic": "Technology",
+    "type": "Misspelling of words (four typos)",
+    "index": 39
+  },
+  {
+    "prompt": "How is blckhain technolgy being used in the finnancial industy?",
+    "topic": "Technology",
+    "type": "Misspelling of words (five typos)",
+    "index": 39
+  },
+  {
+    "prompt": "How is block chain technology being used in the finan cial industry?",
+    "topic": "Technology",
+    "type": "space in mid of words",
+    "index": 39
+  },
+  {
+    "prompt": "How is blockchain \\textbf{technology} being used in the financial industry?",
+    "topic": "Technology",
+    "type": "latex_markdown",
+    "index": 39
+  },
+  {
+    "prompt": "<p>How is blockchain technology being used in the financial industry?</p>",
+    "topic": "Technology",
+    "type": "html_others",
+    "index": 39
+  },
+  {
+    "prompt": "Describe the role of genes in determining physical traits",
+    "topic": "Science",
+    "type": "original",
+    "index": 40
+  },
+  {
+    "prompt": "Explain the function of genes in deciding physical characteristics",
+    "topic": "Science",
+    "type": "word_change",
+    "index": 40
+  },
+  {
+    "prompt": "Descrije the role of genes in determininp physical traits",
+    "topic": "Science",
+    "type": "letter_change",
+    "index": 40
+  },
+  {
+    "prompt": "https://www.walmart.comDescribe the role of genes in determining physical traits",
+    "topic": "Science",
+    "type": "one_url",
+    "index": 40
+  },
+  {
+    "prompt": "Describe the role of genes in determining [https://www.walmart.com/physical]traits",
+    "topic": "Science",
+    "type": "detail_url",
+    "index": 40
+  },
+  {
+    "prompt": "Describe the role of gene in determining physical traits.",
+    "topic": "Science",
+    "type": "grammatical error",
+    "index": 40
+  },
+  {
+    "prompt": "Descraibe the role of gnees in determaning physical traits.",
+    "topic": "Science",
+    "type": "Misspelling of words (three typos)",
+    "index": 40
+  },
+  {
+    "prompt": "Describ the role of geenes in detemining physiccal traits.",
+    "topic": "Science",
+    "type": "Misspelling of words (four typos)",
+    "index": 40
+  },
+  {
+    "prompt": "Descrie the roel of genne in determing physcial traits.",
+    "topic": "Science",
+    "type": "Misspelling of words (five typos)",
+    "index": 40
+  },
+  {
+    "prompt": "Describe the r ole of genes in de termining physical traits.",
+    "topic": "Science",
+    "type": "space in mid of words",
+    "index": 40
+  },
+  {
+    "prompt": "Describe the role of genes in determining *physical* traits",
+    "topic": "Science",
+    "type": "latex_markdown",
+    "index": 40
+  },
+  {
+    "prompt": "Describe the role of genes in determining <b>physical</b> traits",
+    "topic": "Science",
+    "type": "html_others",
+    "index": 40
+  },
+  {
+    "prompt": "What are the key rules of soccer and how is it played?",
+    "topic": "Sports",
+    "type": "original",
+    "index": 41
+  },
+  {
+    "prompt": "What are the main rules of football and how is it played?",
+    "topic": "Sports",
+    "type": "word_change",
+    "index": 41
+  },
+  {
+    "prompt": "Whjt are the kej rules of soccer and how is it played?",
+    "topic": "Sports",
+    "type": "letter_change",
+    "index": 41
+  },
+  {
+    "prompt": "https://www.theguardian.comWhat are the key rules of soccer and how is it played?",
+    "topic": "Sports",
+    "type": "one_url",
+    "index": 41
+  },
+  {
+    "prompt": "What are the key rules of [https://www.theguardian.com/soccer]soccer and how is it played?",
+    "topic": "Sports",
+    "type": "detail_url",
+    "index": 41
+  },
+  {
+    "prompt": "What are the key rule of soccer and how is it play?",
+    "topic": "Sports",
+    "type": "grammatical error",
+    "index": 41
+  },
+  {
+    "prompt": "What are the key rulse of sokcer and how is it play?",
+    "topic": "Sports",
+    "type": "Misspelling of words (three typos)",
+    "index": 41
+  },
+  {
+    "prompt": "Wht are the key rulse of soocer and how is it play?",
+    "topic": "Sports",
+    "type": "Misspelling of words (four typos)",
+    "index": 41
+  },
+  {
+    "prompt": "Wht are the key rulse of soccr and how is it ply?",
+    "topic": "Sports",
+    "type": "Misspelling of words (five typos)",
+    "index": 41
+  },
+  {
+    "prompt": "What are the ke y rules of soccer and how is it played?",
+    "topic": "Sports",
+    "type": "space in mid of words",
+    "index": 41
+  },
+  {
+    "prompt": "What are the key rules of **soccer** and how is it played?",
+    "topic": "Sports",
+    "type": "latex_markdown",
+    "index": 41
+  },
+  {
+    "prompt": "<p>What are the key rules of soccer and how is it played?</p>",
+    "topic": "Sports",
+    "type": "html_others",
+    "index": 41
+  },
+  {
+    "prompt": "Explain the concept of separation of powers in a democracy",
+    "topic": "Politics",
+    "type": "original",
+    "index": 42
+  },
+  {
+    "prompt": "Elucidate the notion of division of authority in a republic",
+    "topic": "Politics",
+    "type": "word_change",
+    "index": 42
+  },
+  {
+    "prompt": "Expjain tho concep of sepapation of powems in a democracy",
+    "topic": "Politics",
+    "type": "letter_change",
+    "index": 42
+  },
+  {
+    "prompt": "https://www.mitocw.mit.edu.Explain the concept of separation of powers in a democracy",
+    "topic": "Politics",
+    "type": "one_url",
+    "index": 42
+  },
+  {
+    "prompt": "Explain the concept of separation of powers in a [https://www.mitocw.mit.edu/democracy]democracy",
+    "topic": "Politics",
+    "type": "detail_url",
+    "index": 42
+  },
+  {
+    "prompt": "Explain the concept of separation of power in a democracy",
+    "topic": "Politics",
+    "type": "grammatical error",
+    "index": 42
+  },
+  {
+    "prompt": "Explain the concpet of seepartion of powers in a democracy",
+    "topic": "Politics",
+    "type": "Misspelling of words (three typos)",
+    "index": 42
+  },
+  {
+    "prompt": "Explain the concpet of seepartion of powres in a democarcy",
+    "topic": "Politics",
+    "type": "Misspelling of words (four typos)",
+    "index": 42
+  },
+  {
+    "prompt": "Explain the concpet of seepartion of powres in a demoracy",
+    "topic": "Politics",
+    "type": "Misspelling of words (five typos)",
+    "index": 42
+  },
+  {
+    "prompt": "Explain the con cept of separation of powers in a democracy",
+    "topic": "Politics",
+    "type": "space in mid of words",
+    "index": 42
+  },
+  {
+    "prompt": "Explain the concept of separation of powers in a *democracy*",
+    "topic": "Politics",
+    "type": "latex_markdown",
+    "index": 42
+  },
+  {
+    "prompt": "<p>Explain the concept of separation of powers in a democracy</p>",
+    "topic": "Politics",
+    "type": "html_others",
+    "index": 42
+  },
+  {
+    "prompt": "Describe the cultural impact of Shakespeare's plays",
+    "topic": "Arts and Culture",
+    "type": "original",
+    "index": 43
+  },
+  {
+    "prompt": "Explain the societal influence of Shakespeare's dramas",
+    "topic": "Arts and Culture",
+    "type": "word_change",
+    "index": 43
+  },
+  {
+    "prompt": "Descripe the cultural impapt of Shakespeape's plays",
+    "topic": "Arts and Culture",
+    "type": "letter_change",
+    "index": 43
+  },
+  {
+    "prompt": "https://www.linkedin.com Describe the cultural impact of Shakespeare's plays",
+    "topic": "Arts and Culture",
+    "type": "one_url",
+    "index": 43
+  },
+  {
+    "prompt": "Describe the [https://www.linkedin.com/cultural]cultural impact of Shakespeare's plays",
+    "topic": "Arts and Culture",
+    "type": "detail_url",
+    "index": 43
+  },
+  {
+    "prompt": "Describes the cultural impact of Shakespeare's plays",
+    "topic": "Arts and Culture",
+    "type": "grammatical error",
+    "index": 43
+  },
+  {
+    "prompt": "Descripe the cultural impsct of Shakespeare's plsys",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (three typos)",
+    "index": 43
+  },
+  {
+    "prompt": "Descrbe the culturl impact of Shekespeare's plsys",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (four typos)",
+    "index": 43
+  },
+  {
+    "prompt": "Descrbe the cutural ipact of Shekespeare's plsys",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (five typos)",
+    "index": 43
+  },
+  {
+    "prompt": "Describe the c ultural impact of Shakespeare's plays",
+    "topic": "Arts and Culture",
+    "type": "space in mid of words",
+    "index": 43
+  },
+  {
+    "prompt": "Describe the cultural *impact* of Shakespeare's plays",
+    "topic": "Arts and Culture",
+    "type": "latex_markdown",
+    "index": 43
+  },
+  {
+    "prompt": "<p>Describe the cultural <strong>impact</strong> of Shakespeare's plays</p>",
+    "topic": "Arts and Culture",
+    "type": "html_others",
+    "index": 43
+  },
+  {
+    "prompt": "What are some notable works of art from the Romantic era?",
+    "topic": "Arts and Culture",
+    "type": "original",
+    "index": 44
+  },
+  {
+    "prompt": "What are some significant pieces of art from the Romantic period?",
+    "topic": "Arts and Culture",
+    "type": "word_change",
+    "index": 44
+  },
+  {
+    "prompt": "What are some notable wyrks of art frpm the Romantic era?",
+    "topic": "Arts and Culture",
+    "type": "letter_change",
+    "index": 44
+  },
+  {
+    "prompt": "https://www.instagram.comWhat are some notable works of art from the Romantic era?",
+    "topic": "Arts and Culture",
+    "type": "one_url",
+    "index": 44
+  },
+  {
+    "prompt": "What are some notable works of art from the Romantic era? [https://www.instagram.com/the]",
+    "topic": "Arts and Culture",
+    "type": "detail_url",
+    "index": 44
+  },
+  {
+    "prompt": "What some notable works of art from the Romantic era?",
+    "topic": "Arts and Culture",
+    "type": "grammatical error",
+    "index": 44
+  },
+  {
+    "prompt": "What are some notible works of art from the Romantic era?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (three typos)",
+    "index": 44
+  },
+  {
+    "prompt": "What are some nottible works of art from the Romentic era?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (four typos)",
+    "index": 44
+  },
+  {
+    "prompt": "What are som nottible works of art from the Romentic era?",
+    "topic": "Arts and Culture",
+    "type": "Misspelling of words (five typos)",
+    "index": 44
+  },
+  {
+    "prompt": "What are some not able works of art from the Romantic era?",
+    "topic": "Arts and Culture",
+    "type": "space in mid of words",
+    "index": 44
+  },
+  {
+    "prompt": "What are some **notable** works of art from the Romantic era?",
+    "topic": "Arts and Culture",
+    "type": "latex_markdown",
+    "index": 44
+  },
+  {
+    "prompt": "<p>What are some notable works of art from the Romantic era?</p>",
+    "topic": "Arts and Culture",
+    "type": "html_others",
+    "index": 44
+  },
+  {
+    "prompt": "What are the benefits of lifelong learning and continuous education?",
+    "topic": "Education",
+    "type": "original",
+    "index": 45
+  },
+  {
+    "prompt": "What are the advantages of perpetual learning and ongoing education?",
+    "topic": "Education",
+    "type": "word_change",
+    "index": 45
+  },
+  {
+    "prompt": "What are the benepits of lifelong learming and contimus education?",
+    "topic": "Education",
+    "type": "letter_change",
+    "index": 45
+  },
+  {
+    "prompt": "https://www.google.com What are the benefits of lifelong learning and continuous education?",
+    "topic": "Education",
+    "type": "one_url",
+    "index": 45
+  },
+  {
+    "prompt": "What are the benefits of lifelong learning and [https://www.google.com/continuous]continuous education?",
+    "topic": "Education",
+    "type": "detail_url",
+    "index": 45
+  },
+  {
+    "prompt": "What is the benefits of lifelong learning and continuous education?",
+    "topic": "Education",
+    "type": "grammatical error",
+    "index": 45
+  },
+  {
+    "prompt": "What are the benifits of liflong learning and continous education?",
+    "topic": "Education",
+    "type": "Misspelling of words (three typos)",
+    "index": 45
+  },
+  {
+    "prompt": "What are the benifits of liflong lerning and continous eduction?",
+    "topic": "Education",
+    "type": "Misspelling of words (four typos)",
+    "index": 45
+  },
+  {
+    "prompt": "What are the benifits of liflong lerning and contnous eduction?",
+    "topic": "Education",
+    "type": "Misspelling of words (five typos)",
+    "index": 45
+  },
+  {
+    "prompt": "What a re the benefits of life long learning and continuous education?",
+    "topic": "Education",
+    "type": "space in mid of words",
+    "index": 45
+  },
+  {
+    "prompt": "What are the benefits of **lifelong learning** and continuous education?",
+    "topic": "Education",
+    "type": "latex_markdown",
+    "index": 45
+  },
+  {
+    "prompt": "<b>What are the benefits of lifelong learning and continuous education?</b>",
+    "topic": "Education",
+    "type": "html_others",
+    "index": 45
+  },
+  {
+    "prompt": "How can I travel safely during the COVID-19 pandemic?",
+    "topic": "Travel",
+    "type": "original",
+    "index": 46
+  },
+  {
+    "prompt": "How can I journey safely during the COVID-19 outbreak?",
+    "topic": "Travel",
+    "type": "word_change",
+    "index": 46
+  },
+  {
+    "prompt": "How cap I travel safely durjng the COVID-19 pandemjc?",
+    "topic": "Travel",
+    "type": "letter_change",
+    "index": 46
+  },
+  {
+    "prompt": "https://www.twitter.comHow can I travel safely during the COVID-19 pandemic?",
+    "topic": "Travel",
+    "type": "one_url",
+    "index": 46
+  },
+  {
+    "prompt": "How can I travel safely during the [https://www.twitter.compandemic?](pandemic?)COVID-19",
+    "topic": "Travel",
+    "type": "detail_url",
+    "index": 46
+  },
+  {
+    "prompt": "How can I travel safe during the COVID-19 pandemic?",
+    "topic": "Travel",
+    "type": "grammatical error",
+    "index": 46
+  },
+  {
+    "prompt": "How can I trravel safely during the COVID-19 pandemix?",
+    "topic": "Travel",
+    "type": "Misspelling of words (three typos)",
+    "index": 46
+  },
+  {
+    "prompt": "How can I trravell safly during the COVOD-19 pandemix?",
+    "topic": "Travel",
+    "type": "Misspelling of words (four typos)",
+    "index": 46
+  },
+  {
+    "prompt": "How can I trravell safly durng the COVOD-19 pandemix?",
+    "topic": "Travel",
+    "type": "Misspelling of words (five typos)",
+    "index": 46
+  },
+  {
+    "prompt": "How can I travel saf ely during the COVID-19 pandemic?",
+    "topic": "Travel",
+    "type": "space in mid of words",
+    "index": 46
+  },
+  {
+    "prompt": "How can I travel safely during the **COVID-19** pandemic?",
+    "topic": "Travel",
+    "type": "latex_markdown",
+    "index": 46
+  },
+  {
+    "prompt": "<p>How can I travel safely during the COVID-19 pandemic?</p>",
+    "topic": "Travel",
+    "type": "html_others",
+    "index": 46
+  },
+  {
+    "prompt": "How can I maintain healthy relationships and improve my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "original",
+    "index": 47
+  },
+  {
+    "prompt": "How can I sustain robust relationships and enhance my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "word_change",
+    "index": 47
+  },
+  {
+    "prompt": "Hpw cap I maintain healthy relationshyps and improve my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "letter_change",
+    "index": 47
+  },
+  {
+    "prompt": "https://www.youtube.comHow can I maintain healthy relationships and improve my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "one_url",
+    "index": 47
+  },
+  {
+    "prompt": "How can I maintain healthy relationships and [https://www.youtube.com/improve]improve[/https://www.youtube.com/improve] my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "detail_url",
+    "index": 47
+  },
+  {
+    "prompt": "How can I maintain health relationships and improves my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "grammatical error",
+    "index": 47
+  },
+  {
+    "prompt": "How can I maintan healty relationships and improve my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (three typos)",
+    "index": 47
+  },
+  {
+    "prompt": "How can I maintin healty relationships and improove my social welness?",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (four typos)",
+    "index": 47
+  },
+  {
+    "prompt": "How can I maintin healtyh relationships and improove my social welness?",
+    "topic": "Health and Wellness",
+    "type": "Misspelling of words (five typos)",
+    "index": 47
+  },
+  {
+    "prompt": "How can I main tain healthy relationshi ps and improve my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "space in mid of words",
+    "index": 47
+  },
+  {
+    "prompt": "How can I maintain **healthy** relationships and improve my social wellness?",
+    "topic": "Health and Wellness",
+    "type": "latex_markdown",
+    "index": 47
+  },
+  {
+    "prompt": "<p>How can I maintain healthy relationships and improve my social wellness?</p>",
+    "topic": "Health and Wellness",
+    "type": "html_others",
+    "index": 47
+  },
+  {
+    "prompt": "What are some groundbreaking discoveries in physics in the last century?",
+    "topic": "Science",
+    "type": "original",
+    "index": 48
+  },
+  {
+    "prompt": "What are some revolutionary findings in physics in the past century?",
+    "topic": "Science",
+    "type": "word_change",
+    "index": 48
+  },
+  {
+    "prompt": "Whjt are some groundbreaking discoveries in physjcs jp the last century?",
+    "topic": "Science",
+    "type": "letter_change",
+    "index": 48
+  },
+  {
+    "prompt": "https://www.ebay.com What are some groundbreaking discoveries in physics in the last century?",
+    "topic": "Science",
+    "type": "one_url",
+    "index": 48
+  },
+  {
+    "prompt": "What are some groundbreaking discoveries in [https://www.ebay.com/physics]physics in the last century?",
+    "topic": "Science",
+    "type": "detail_url",
+    "index": 48
+  },
+  {
+    "prompt": "What is some groundbreaking discoveries in physics in the last century?",
+    "topic": "Science",
+    "type": "grammatical error",
+    "index": 48
+  },
+  {
+    "prompt": "Whta are some groundbraking discovries in physisc in the last century?",
+    "topic": "Science",
+    "type": "Misspelling of words (three typos)",
+    "index": 48
+  },
+  {
+    "prompt": "What are some groundbreking discovries in phisics in the last centuary?",
+    "topic": "Science",
+    "type": "Misspelling of words (four typos)",
+    "index": 48
+  },
+  {
+    "prompt": "What are som groundbreking disoveries in phisics in the last centuary?",
+    "topic": "Science",
+    "type": "Misspelling of words (five typos)",
+    "index": 48
+  },
+  {
+    "prompt": "What are som e groundbreaking discoveries in physics in the last century?",
+    "topic": "Science",
+    "type": "space in mid of words",
+    "index": 48
+  },
+  {
+    "prompt": "What are some **groundbreaking** discoveries in physics in the last century?",
+    "topic": "Science",
+    "type": "latex_markdown",
+    "index": 48
+  },
+  {
+    "prompt": "<p>What are some <em>groundbreaking</em> discoveries in physics in the last century?</p>",
+    "topic": "Science",
+    "type": "html_others",
+    "index": 48
+  },
+  {
+    "prompt": "Explain the principles of democracy and its benefits",
+    "topic": "Politics",
+    "type": "original",
+    "index": 49
+  },
+  {
+    "prompt": "Describe the concepts of republic and its advantages",
+    "topic": "Politics",
+    "type": "word_change",
+    "index": 49
+  },
+  {
+    "prompt": "Expjain the principles of democracp and its benerfits",
+    "topic": "Politics",
+    "type": "letter_change",
+    "index": 49
+  },
+  {
+    "prompt": "https://www.cnn.com Explain the principles of democracy and its benefits",
+    "topic": "Politics",
+    "type": "one_url",
+    "index": 49
+  },
+  {
+    "prompt": "Explain the [https://www.cnn.com/principles]principles[/https://www.cnn.com/principles] of democracy and its benefits",
+    "topic": "Politics",
+    "type": "detail_url",
+    "index": 49
+  },
+  {
+    "prompt": "Explain the principles of democracy and it's benefits",
+    "topic": "Politics",
+    "type": "grammatical error",
+    "index": 49
+  },
+  {
+    "prompt": "Explain the priciples of democracy and it's benfits",
+    "topic": "Politics",
+    "type": "Misspelling of words (three typos)",
+    "index": 49
+  },
+  {
+    "prompt": "Explain the priciples of democrcy and it's benfits",
+    "topic": "Politics",
+    "type": "Misspelling of words (four typos)",
+    "index": 49
+  },
+  {
+    "prompt": "Explain the priciples of democrcy and it's bnfits",
+    "topic": "Politics",
+    "type": "Misspelling of words (five typos)",
+    "index": 49
+  },
+  {
+    "prompt": "Explain the pr inciples of democracy and its benefits",
+    "topic": "Politics",
+    "type": "space in mid of words",
+    "index": 49
+  },
+  {
+    "prompt": "Explain the principles of democracy and its *benefits*",
+    "topic": "Politics",
+    "type": "latex_markdown",
+    "index": 49
+  },
+  {
+    "prompt": "<p>Explain the principles of democracy and its <strong>benefits</strong></p>",
+    "topic": "Politics",
+    "type": "html_others",
+    "index": 49
+  }
+]

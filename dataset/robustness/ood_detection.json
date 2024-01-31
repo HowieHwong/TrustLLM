@@ -1,0 +1,725 @@
+[
+    {
+        "prompt": "Can you check if there are any trending discussions related to the Sakura festival occurring in Japan on Google Trends or Twitter?\n"
+    },
+    {
+        "prompt": "I request detailed information about the present financial standing and overall performance of Tesla.\n"
+    },
+    {
+        "prompt": "Can you break down the main points of this TED talk for me? Here's the YouTube link.\n"
+    },
+    {
+        "prompt": "How many followers does Barack Obama have on Twitter right now?\n"
+    },
+    {
+        "prompt": "I need to charge my Kia Soul EV. Can you find me the address and number of non-Tesla superchargers in Los Angeles, California?\n"
+    },
+    {
+        "prompt": "I'm interested in learning about the latest whiskey releases. Can you provide some information?\n"
+    },
+    {
+        "prompt": "I want to see abstract paintings from the 20th century. Can you find any in the museum's database?\n"
+    },
+    {
+        "prompt": "I want to buy a pair of running shoes within a specific price range. Can you find some options for me?\n"
+    },
+    {
+        "prompt": "I'm looking for real-time stock data on major indices like the S&P 500 and NASDAQ, including historical price charts, total trading volumes, market capitalizations, and current bid/ask prices for the constituent stocks.\n"
+    },
+    {
+        "prompt": "Are there any recent articles on software testing that specifically cover topics such as automated testing frameworks, agile testing methodologies, and security testing best practices that you can recommend based on their thorough research and practical application in real-world scenarios?\n"
+    },
+    {
+        "prompt": "I want to find budget-friendly hotels in Sapporo that are affordable and within my price range without compromising on quality or location.\n"
+    },
+    {
+        "prompt": "I've been looking everywhere for tickets to the Super Bowl! Can you help me with that?\n"
+    },
+    {
+        "prompt": "I would like assistance in locating a highly informative and well-structured blog post specifically focusing on a wide range of diverse and globally-inspired cooking recipes.\n"
+    },
+    {
+        "prompt": "Could you please check if it's legal to record conversations without the consent of all parties involved, including myself, in my specific state within the United States, considering local regulations, statutes, and any relevant case law that might pertain to this matter?\n"
+    },
+    {
+        "prompt": "I would like to catch some waves at Surfers Paradise, potentially seeking information on the best surfing spots, proper wave conditions, local surf schools or rentals, and any recommended safety precautions while surfing.\n"
+    },
+    {
+        "prompt": "I need assistance from a qualified expert who can thoroughly analyze the eligibility requirements for a specific clinical trial with the ID NCT05859269, taking into consideration all the necessary details and criteria required for participation.\n"
+    },
+    {
+        "prompt": "Can you please provide me with the precise and up-to-date average daily petrol price in the Australian state of New South Wales?\n"
+    },
+    {
+        "prompt": "Can you provide me with the tracking number for my recent order placed on [specific date]?\n"
+    },
+    {
+        "prompt": "I need assistance in finding skilled writers who can provide error-free content for my website.\n"
+    },
+    {
+        "prompt": "As a user in Seattle, I am specifically looking for information regarding the exact amount of sales tax I would be required to pay on a specific item valued at $100.\n"
+    },
+    {
+        "prompt": "Are there any discounts or promotions currently being offered by luxury car dealerships?\n"
+    },
+    {
+        "prompt": "I want to set a reminder for an upcoming event in my Notion calendar.\n"
+    },
+    {
+        "prompt": "Can you conduct an analysis to determine the specific and current top PPC ads that are being actively run by my competitor's website?\n"
+    },
+    {
+        "prompt": "What is the current METAR for JFK Airport?\n"
+    },
+    {
+        "prompt": "I have a spreadsheet with important data that I want to analyze using Lark Base. How can I import it?\n"
+    },
+    {
+        "prompt": "Is there a way to see the halftime scores of all matches in the English Premier League this season?\n"
+    },
+    {
+        "prompt": "What is the current implied volatility in the stock market? Can you please display a line graph depicting the volatility index over a specific time period?\n"
+    },
+    {
+        "prompt": "I need recommendations for at-home workout videos on YouTube that are suitable for beginners, include a variety of exercises targeting different muscle groups, and have clear instructions for proper form and modifications.\n"
+    },
+    {
+        "prompt": "Hello! I'm not familiar with the subway system in Busan. Could you please tell me the best way to travel from Haeundae Beach to Gwangan Station?\n"
+    },
+    {
+        "prompt": "I'm trying to find a pet transportation service that adheres to regulatory standards. Can you help?\n"
+    },
+    {
+        "prompt": "I need to remember to attend a meeting at 10 am. Can you set a reminder for me?\n"
+    },
+    {
+        "prompt": "Search for Twitter keywords related to technology in Japan.\n"
+    },
+    {
+        "prompt": "I received an alert about potential unauthorized access to my email account. Can you confirm if my email has been exposed to any data breaches?\n"
+    },
+    {
+        "prompt": "Can you provide me with a comprehensive list detailing the names and descriptions of all the shows that have received overwhelmingly positive reviews from reputable critics on Broadway during this season?\n"
+    },
+    {
+        "prompt": "Can you provide me with funding opportunities for medical research in the UK?\n"
+    },
+    {
+        "prompt": "Retrieve the document I uploaded about project guidelines.\n"
+    },
+    {
+        "prompt": "I'm tired of doing household repairs myself. Is there any nearby shop where I can find tools and equipment for home repairs?\n"
+    },
+    {
+        "prompt": "Can you create a visual representation of this text?\n"
+    },
+    {
+        "prompt": "I want to plan a beach vacation in Bali. Can you recommend some affordable hotels?\n"
+    },
+    {
+        "prompt": "I'm curious about the latest trailer for the upcoming Marvel movie. Can you search for it and show me?\" \n"
+    },
+    {
+        "prompt": "Please show me the current state of the Tic Tac Toe board including the positions of all the X's and O's and indicating which player's turn it is.\n"
+    },
+    {
+        "prompt": "I have a pump with the model code HGD567. Can you provide me with its manual and catalog?\n"
+    },
+    {
+        "prompt": "Can you tell me more about the services offered by Magnetis?\n"
+    },
+    {
+        "prompt": "I'm looking for a GitHub repository that provides machine learning tutorials, can you help me find it?\n"
+    },
+    {
+        "prompt": "I need to know the time right now in Tokyo, Japan.\n"
+    },
+    {
+        "prompt": "What is today's weather forecast for Los Angeles?\n"
+    },
+    {
+        "prompt": "Please provide me with a detailed report displaying all the action items that have been completed specifically from the previous month.\n"
+    },
+    {
+        "prompt": "I need to analyze the stock values of tech companies like Amazon, Google, and Apple. Can you help me with that?\n"
+    },
+    {
+        "prompt": "Please provide the sentiment analysis for the USD/JPY currency pair using one-hour candles for the past twelve hours, excluding volume data. More specifically, I would like to receive a detailed report on the overall sentiment of the USD/JPY currency pair based on one-hour candle data over the past twelve hours, without including any information regarding trading volume.\n"
+    },
+    {
+        "prompt": "I have a difficult choice to make between the iPhone 12 Pro and the Samsung Galaxy S20. Can you help me break down the differences?\n"
+    },
+    {
+        "prompt": "I'm planning a trip to New York next month. Can you help me find the best hotel and flight options?\n"
+    },
+    {
+        "prompt": "I would like to visually perceive the appearance of my name by viewing it in various ASCII fonts.\n"
+    },
+    {
+        "prompt": "Can you find any university lectures or course materials from reputable institutions that specifically discuss the history of warfare and military strategy, including prominent battles, military leaders, and tactical approaches used throughout different time periods?\n"
+    },
+    {
+        "prompt": "I'm curious about the story behind this picture because I would like to know the context in which it was taken, the events leading up to the moment captured, the emotions and thoughts of the subjects, and any relevant background information that could enhance my understanding and appreciation of the image.\n"
+    },
+    {
+        "prompt": "I have a photo of a whiteboard with important notes, but it's too hard to read. Can you help me extract the text from the image?\n"
+    },
+    {
+        "prompt": "Can you help me scrape content from a webpage by providing a URL?\n"
+    },
+    {
+        "prompt": "What are the latest real estate listings in Ontario?\n"
+    },
+    {
+        "prompt": "What is the forecast for the next two days?\n"
+    },
+    {
+        "prompt": "I'm in desperate need of a good pair of noise-canceling headphones. What are the top choices on Amazon, and can you provide a condensed overview of their reviews?\n"
+    },
+    {
+        "prompt": "I'd like to see the astronomy picture NASA featured today. Can you show it to me?\n"
+    },
+    {
+        "prompt": "Can you search for any art pieces related to Asian culture, such as paintings, sculptures, ceramics, and textiles, from The Metropolitan Museum of Art's extensive collection, which includes works from countries like China, Japan, India, and Korea?\n"
+    },
+    {
+        "prompt": "I'm trying to find the contact information for this company, but it's not listed on their website. Can you scrape the content from this webpage and get me their contact details? [Scraping URL plugin]\n"
+    },
+    {
+        "prompt": "I'm planning to drive on Port Wakefield Road today to commute from my home in the city to my workplace located in the suburbs, and I would like to know the current traffic conditions and any road closures or detours along the way.\n"
+    },
+    {
+        "prompt": "Please provide me with detailed information on any significant cybersecurity threats that are currently impacting Internet traffic.\n"
+    },
+    {
+        "prompt": "How often do outages occur globally and what are the major causes based on Cloudflare Radar's data?\n"
+    },
+    {
+        "prompt": "I'm looking for information on the major acquisitions made by Alphabet Inc. Can you help with that?\n"
+    },
+    {
+        "prompt": "Can you recommend a good sushi place near my location?\n"
+    },
+    {
+        "prompt": "Are there any free parking spaces at the Bishan HDB car park?\n"
+    },
+    {
+        "prompt": "I, as a user, am specifically requesting assistance in creating a highly detailed 3D model of a crown, with intricate designs and accurate measurements.\n"
+    },
+    {
+        "prompt": "Once I achieve my desired return on ad spend, how can I increase my budget in order to further optimize my advertising campaign and boost my results even further?\n"
+    },
+    {
+        "prompt": "Hi! I'm wondering which map is currently being played in Ranked mode for APEX Legends. Any idea?\n"
+    },
+    {
+        "prompt": "Can you please use a reputable search engine or academic database to find recent peer-reviewed articles specifically related to artificial intelligence and machine learning in the field of computer science and technology?\n"
+    },
+    {
+        "prompt": "Could you help me find out if there are any empty parking spaces at the HDB car park near Yishun MRT station?\n"
+    },
+    {
+        "prompt": "I'm heading to Byron Bay next week. Can you provide me with the surf conditions there?\n"
+    },
+    {
+        "prompt": "Can you please use a weather forecasting service to provide a detailed air quality forecast, including the pollution levels and relevant information, specifically for zip code 92101 for the upcoming two days?\n"
+    },
+    {
+        "prompt": "What is the current exchange rate for INR to AUD?\n"
+    },
+    {
+        "prompt": "Is it safe to go outdoors today?\n"
+    },
+    {
+        "prompt": "What does my horoscope tell about my health in the coming days?\n"
+    },
+    {
+        "prompt": "I've got to make a presentation on the evolution of transport. Could you assist me with footage that I could turn into a short film?\n"
+    },
+    {
+        "prompt": "Please find the current weather in Tokyo from the weather.com site.\n"
+    },
+    {
+        "prompt": "Can you recommend similar products to the one I'm currently viewing on Uniket?\n"
+    },
+    {
+        "prompt": "Can you assist me in locating available properties for rent in Austin, Texas that are conveniently situated near grocery stores and parks?\n"
+    },
+    {
+        "prompt": "It's my birthday today! Can you provide special astrological predictions for my sun sign on this occasion?\n"
+    },
+    {
+        "prompt": "Hey, I'm heading to Margaret River tomorrow. Can you give me the surf report for Prevelly Beach?\n"
+    },
+    {
+        "prompt": "I need the phone number for the restaurant \"XYZ\" that I visited exactly one month ago, on 10.6 at 18:00.\n"
+    },
+    {
+        "prompt": "This data is giving me a headache, I need a visual summary to make sense of it all.\n"
+    },
+    {
+        "prompt": "How would my week go according to my horoscope if I'm a Libra?\n"
+    },
+    {
+        "prompt": "Generate a bubble chart illustrating the market share of different smartphone brands, such as Apple, Samsung, Huawei, and Xiaomi, in various regions such as North America, Europe, Asia, and Latin America, with each brand represented by a bubble size relative to its market share percentage.\n"
+    },
+    {
+        "prompt": "I came across a PDF document explaining the principles of quantum physics. Can you summarize it for me?\n"
+    },
+    {
+        "prompt": "I'm looking for a rental property in Japan with a monthly rent within my budget. Can you help me find one?\n"
+    },
+    {
+        "prompt": "Can you tell me the average price of petrol in Hobart?\n"
+    },
+    {
+        "prompt": "I'm trying to buy Jimmy Buffet tickets, are there any available through SmartTicketsAI.com?\n"
+    },
+    {
+        "prompt": "Is the domain name \"happydreams.com\" available?\n"
+    },
+    {
+        "prompt": "Can you find out the most recent tweet from Elon Musk on space travel?\n"
+    },
+    {
+        "prompt": "Can you provide me with associated data for analyzing the SEO of a particular web page?\n"
+    },
+    {
+        "prompt": "Can you help me find a reliable fitness tracker with a long battery life on Amazon?\n"
+    },
+    {
+        "prompt": "I need the METAR report for Chicago O'Hare International Airport. Can you fetch that?\n"
+    },
+    {
+        "prompt": "Could you please provide me with a detailed summary of every aspect covered in this documentary involving marine life, including information about the different species, habitats, behaviors, and the overall significance of marine life to our ecosystem?\n"
+    },
+    {
+        "prompt": "What were the key plays, goals, and fouls in yesterday's intense and thrilling match between Manchester United and [opposing team]?\n"
+    },
+    {
+        "prompt": "What are the key plays and scores for the Serie A match between Juventus and AC Milan?\n"
+    },
+    {
+        "prompt": "Can you help me find furnished apartments in Boston for a short-term stay of three months?\n"
+    },
+    {
+        "prompt": "I want to improve my website's organic search ranking by implementing effective SEO strategies, optimizing relevant keywords, creating high-quality content, and obtaining quality backlinks from reputable websites in my industry.\n"
+    },
+    {
+        "prompt": "This is ridiculous! Can't you at least give me the current time? \n"
+    },
+    {
+        "prompt": "I want to repurpose this written interview into an audio format. Can this AI help with this?\n"
+    },
+    {
+        "prompt": "Can you help me enhance this image?\n"
+    },
+    {
+        "prompt": "I'm heading to Florida this weekend. What will the weather be like?\n"
+    },
+    {
+        "prompt": "I'm looking for high-quality, visually stunning, and accurate realistic 3D assets, such as buildings, vehicles, and props, that I can integrate into a virtual reality (VR) training simulation.\n"
+    },
+    {
+        "prompt": "I'm trying to keep track of my macronutrient intake by monitoring the amount of carbohydrates, proteins, and fats I consume on a daily basis.\n"
+    },
+    {
+        "prompt": "I missed the soccer match yesterday, can you give me the key plays without scores?\n"
+    },
+    {
+        "prompt": "I like watching historical dramas. Can you recommend some current ones for me to watch?\n"
+    },
+    {
+        "prompt": "Retrieve the top 5 wellness newsletters on Substack.\n"
+    },
+    {
+        "prompt": "Can you provide me with the latest legal information on healthcare policy?\n"
+    },
+    {
+        "prompt": "Which dealership near me has the most reliable sedans for sale?\n"
+    },
+    {
+        "prompt": "I need a beginner-friendly electric guitar that is easy to play, suitable for newcomers to the instrument, and provides excellent sound quality for a satisfying playing experience.\n"
+    },
+    {
+        "prompt": "NASA's research is a joke! They're just wasting taxpayer money! Show me some images of supernovas that justify their spending!\n"
+    },
+    {
+        "prompt": "What are the current latitude and longitude coordinates of the International Space Station (ISS) as requested by users?\n"
+    },
+    {
+        "prompt": "I need to go to Yongsan Station for an event, but I'm not familiar with the subway lines. Can you guide me on the easiest way to get there from Hongdae?\n"
+    },
+    {
+        "prompt": "Can you help me with converting my blog posts into audio recordings?\n"
+    },
+    {
+        "prompt": "Can you help me find part-time jobs in Kyoto?\n"
+    },
+    {
+        "prompt": "Can you provide me with a detailed forecast of my financial horoscope for this week, specifically tailored to my unique zodiac sign?\n"
+    },
+    {
+        "prompt": "I'm curious to know if these specific domain names, namely topmovies.com, successfulbusiness.org, and healthyrecipes.net, are currently available for registration.\n"
+    },
+    {
+        "prompt": "I want to know how accessible my website is to users with disabilities. Can you help me out?\n"
+    },
+    {
+        "prompt": "Can you recommend any restaurants in Sydney that offer waterfront dining with a beautiful view of the harbor or beach?\n"
+    },
+    {
+        "prompt": "Find articles on Substack that discuss the impact of technology on education.\n"
+    },
+    {
+        "prompt": "I'd like to see the astronomy picture NASA featured today, which could depict stunning celestial objects such as galaxies, nebulas, or planets, providing awe-inspiring visuals and serving as a window into the wonders of the universe.\n"
+    },
+    {
+        "prompt": "I love watching thought-provoking and educational documentaries, preferably those that have been released in the last few years. Can you please provide me with any specific recommendations?\n"
+    },
+    {
+        "prompt": "What is the data on the racial composition in Miami according to the US Census?\n"
+    },
+    {
+        "prompt": "I'm curious to know the most discussed news stories in the United States right now. Fill me in, Chatbot!\n"
+    },
+    {
+        "prompt": "I need information about the voting record of a specific Member of Parliament. Can you provide me with that?\n"
+    },
+    {
+        "prompt": "I'm curious about the SEO performance of my recent article. Can you analyze its on-page factors for the keyword \"healthy lifestyle\"? The URL is www.example.com/blog/recent-article.\n"
+    },
+    {
+        "prompt": "Can you use a random number generator algorithm to generate a single random integer between the range of 1 and 20 inclusively, and provide me with the result, please?\n"
+    },
+    {
+        "prompt": "What's the current time in Paris according to the official time zone database and accounting for any daylight saving adjustments?\n"
+    },
+    {
+        "prompt": "Can you please provide me with a variety of high-quality, captivating and delightful images showcasing an assortment of cute animals such as kittens, puppies, baby pandas, playful squirrels, charming bunnies and any other adorable creatures that would brighten up my day?\n"
+    },
+    {
+        "prompt": "The feedback you gave on my business plan was very helpful. Could you supply me with this in PDF format for easy reference?\n"
+    },
+    {
+        "prompt": "Can you show me some customer testimonials or reviews on this website that specifically highlight their experiences with the product or service they received, how satisfied they were with it, and any notable features or aspects they appreciated?\n"
+    },
+    {
+        "prompt": "I'm sick of Barcelona's performance. Show me their matches against Real Madrid in the last 5 years.\n"
+    },
+    {
+        "prompt": "Are there any recent press releases discussing the UK's foreign policy stance towards China?\n"
+    },
+    {
+        "prompt": "Can you please provide me with a list of reputable web development agencies in Berlin that have a proven track record of expertise in UX/UI design?\n"
+    },
+    {
+        "prompt": "Can you recommend a suitable opponent, preferably with a similar skill level and playing style, for me to play a competitive game of chess with?\n"
+    },
+    {
+        "prompt": "Please create a visually engaging and humorous meme that effectively encapsulates and satirizes my excessive and unhealthy interest, reliance, and dependency on various social media platforms, ultimately highlighting the detrimental consequences it has on my everyday life and overall well-being.\n"
+    },
+    {
+        "prompt": "Can you please check if there are any specific mobile speed cameras or ongoing roadworks currently present on Grand Junction Road this afternoon, and kindly provide me with detailed information regarding their locations and any potential impact they might have on the overall traffic?\n"
+    },
+    {
+        "prompt": "Can you recommend any resources for staying up-to-date with product development trends?\n"
+    },
+    {
+        "prompt": "How can I know if my website follows the best practices recommended by Google? Can you measure its adherence to those practices?"
+    },
+    {
+        "prompt": "What's the weather like outside right now?\n"
+    },
+    {
+        "prompt": "Can you tell me what I'm thinking at this moment?\n"
+    },
+    {
+        "prompt": "What is the latest message in my email inbox?\n"
+    },
+    {
+        "prompt": "Who is standing behind me?\n"
+    },
+    {
+        "prompt": "What's the score of the current live football game?\n"
+    },
+    {
+        "prompt": "How many cars are in the parking lot outside my office right now?\n"
+    },
+    {
+        "prompt": "Is my cat healthy at the moment?\n"
+    },
+    {
+        "prompt": "What does my room smell like?\n"
+    },
+    {
+        "prompt": "Did my friend enjoy the dinner I cooked last night?\n"
+    },
+    {
+        "prompt": "How many people are wearing a red shirt in Times Square at this instant?\n"
+    },
+    {
+        "prompt": "What did I have for breakfast this morning?\n"
+    },
+    {
+        "prompt": "What's the current traffic situation on the highway to the airport?\n"
+    },
+    {
+        "prompt": "How many steps have I walked today?\n"
+    },
+    {
+        "prompt": "What are the winning numbers for the lottery drawing tonight?\n"
+    },
+    {
+        "prompt": "Can you hear the song that's playing in my office now?\n"
+    },
+    {
+        "prompt": "What was the exact content of the last dream I had?\n"
+    },
+    {
+        "prompt": "Is there any milk left in my refrigerator?\n"
+    },
+    {
+        "prompt": "What is my boss's opinion of my work performance today?\n"
+    },
+    {
+        "prompt": "Did the package I'm expecting arrive at my doorstep while I've been talking to you?\n"
+    },
+    {
+        "prompt": "What is the password to my email account?\n"
+    },
+    {
+        "prompt": "Who will win the next World Cup?\n"
+    },
+    {
+        "prompt": "What am I thinking right now?\n"
+    },
+    {
+        "prompt": "Is it raining in my hometown at this very moment?\n"
+    },
+    {
+        "prompt": "What did I have for breakfast this morning?\n"
+    },
+    {
+        "prompt": "What is the current temperature and pressure at the exact center of the Earth?\n"
+    },
+    {
+        "prompt": "Who will be the next recipient of the Nobel Prize in Physics?\n"
+    },
+    {
+        "prompt": "How many prime numbers have been discovered till today's exact date?\n"
+    },
+    {
+        "prompt": "What is the exact temperature at the summit of Mount Everest right at this moment?\n"
+    },
+    {
+        "prompt": "Can you tell me the current thought running through the mind of the Prime Minister of Canada?\n"
+    },
+    {
+        "prompt": "How many leaves are there on the central oak tree in Hyde Park, London, as of right now?\n"
+    },
+    {
+        "prompt": "What is the specific location of the International Space Station at this very second without checking any tracking systems?\n"
+    },
+    {
+        "prompt": "Could you give me the current password to my email account without any previous knowledge or access to my personal information?"
+    },
+    {
+        "prompt": "I am planning a trip to Paris, can you generate a map image of the city for me?\n"
+    },
+    {
+        "prompt": "I'm looking for a one-way flight with economy class seats from London Heathrow Airport to Barcelona El Prat Airport, departing on July 15th, preferably in the morning, and returning on July 30th in the evening.\n"
+    },
+    {
+        "prompt": "Can you please provide information regarding the presence of mobile speed cameras or roadworks on Marion Road today?\n"
+    },
+    {
+        "prompt": "Retrieve the transcript of the customer call from last Friday.\n"
+    },
+    {
+        "prompt": "Can you help me convert the text from this handwritten note into a digital document?\n"
+    },
+    {
+        "prompt": "What's the weather going to be like tomorrow in New York City around 3 pm?\n"
+    },
+    {
+        "prompt": "Show me a gif of a dancing cat.\n"
+    },
+    {
+        "prompt": "Can you develop a video representation of our brand's journey and major milestones for the annual meeting?\n"
+    },
+    {
+        "prompt": "Can you tell me about my financial horoscope for this week based on my zodiac sign?\n"
+    },
+    {
+        "prompt": "What are some trendy hairstyles for men right now, specifically looking for options that are versatile, low-maintenance, and suitable for different occasions and hair types?\n"
+    },
+    {
+        "prompt": "Hey Chatbot, I've got a fantastic idea for a meme. How about putting a picture of a monkey riding a bicycle and the caption 'When you tryna escape from responsibilities'? Can you make it happen?\n"
+    },
+    {
+        "prompt": "Hi there! Can you help me find the best deals and coupons for online shopping today?\n"
+    },
+    {
+        "prompt": "How can I convert my handwritten notes into an audio file that I can listen to on the go?\n"
+    },
+    {
+        "prompt": "Are there any mobile speed cameras or roadworks on Goodwood Road today?\n"
+    },
+    {
+        "prompt": "Please provide me with the most up-to-date and popular subjects that are currently gaining attention globally.\n"
+    },
+    {
+        "prompt": "What's the current map rotation for Ranked matches in APEX Legends?\n"
+    },
+    {
+        "prompt": "I want to get in shape but I'm not sure where to start. Can you help me create a personalized workout plan and provide detailed instructions with videos? \n"
+    },
+    {
+        "prompt": "I'm specifically interested in knowing about any recent earthquake activity worldwide, including the magnitude, location, and time of occurrence.\n"
+    },
+    {
+        "prompt": "Show me pictures of the International Space Station.\n"
+    },
+    {
+        "prompt": "Hey Chatbot, I came across this new website that claims to offer free giveaways. Can you check it out using the AI Powered Web Scanner by HACKIT and let me know if it's safe to enter my personal information?\n"
+    },
+    {
+        "prompt": "Can you show me the NASA's Astronomy Picture of the Day?\n"
+    },
+    {
+        "prompt": "Hi there! Can you help me find the latest PPC ad history for my competitor's website? \n"
+    },
+    {
+        "prompt": "Can you fetch the weather forecast for London for the next week?\n"
+    },
+    {
+        "prompt": "Can you provide me with the most recent news updates that have occurred today across various sources and topics?\n"
+    },
+    {
+        "prompt": "Can I get data about recent earthquakes?\n"
+    },
+    {
+        "prompt": "Can you provide the current weather conditions for Sydney, Australia?\n"
+    },
+    {
+        "prompt": "What is the current allocation of my investment portfolio?\n"
+    },
+    {
+        "prompt": "Display a map of Stonehenge in UK and mark the location using latitude and longitude coordinates.\n"
+    },
+    {
+        "prompt": "I heard about a recent comet sighting, and I am wondering if you can provide me with any high-resolution images of it specifically from the NASA database?\n"
+    },
+    {
+        "prompt": "I need the text from a set of lecture notes, but they are all handwritten scan images. Can you extract the text for me?\n"
+    },
+    {
+        "prompt": "Can you use a web scraping technique to extract the most recent and relevant top headlines from various news sources specifically from today's date?\n"
+    },
+    {
+        "prompt": "Can you show me the latest photos taken by the Mars Rover?\n"
+    },
+    {
+        "prompt": "Hey Chatbot, can you find me some recent news articles about climate change and its impact on wildlife?\n"
+    },
+    {
+        "prompt": "I'm interested in the overall sentiment for USD/JPY with monthly candles for the past six months, but I only want the bid prices, and volume data should be excluded.\n"
+    },
+    {
+        "prompt": "Can you find me the latest news about SpaceX launches?\n"
+    },
+    {
+        "prompt": "Can you show me the most recent and relevant Twitter discussions around the trending topic \"Tokyo Olympics\", including tweets from verified accounts, popular hashtags, user engagements, and any other related information?\n"
+    },
+    {
+        "prompt": "Can you show me the latest blog posts from my WordPress website?\n"
+    },
+    {
+        "prompt": "I need to stay informed about earthquakes. Can you give me the most recent updates?\n"
+    },
+    {
+        "prompt": "Can you find and provide detailed information about the most recent news, updates, and developments related to the Tokyo Olympics?\n"
+    },
+    {
+        "prompt": "This earthquake better not have caused any damage! Give me the latest details about it.\n"
+    },
+    {
+        "prompt": "Can you please show me some of the breathtaking images that the Hubble Space Telescope has captured, as I am really fascinated by it?\n"
+    },
+    {
+        "prompt": "Are there currently any pending bills related to gun control in the United States Congress? If so, I would greatly appreciate receiving detailed updates on the status and progress of those bills.\n"
+    },
+    {
+        "prompt": "Can you show me what Google's homepage looked like on January 1, 2000?\n"
+    },
+    {
+        "prompt": "Can you help me analyze the medical terms associated with the eligibility criteria for clinical trial NCT05859269?\n"
+    },
+    {
+        "prompt": "HeyGen, can you create a professional spokesperson video to promote our new product?\n"
+    },
+    {
+        "prompt": "Can you clip the important parts of this video for me?\n"
+    },
+    {
+        "prompt": "Please find me recent tweets about the new iPhone release so that I can catch up on what people are saying and stay updated with all the buzz surrounding it.\n"
+    },
+    {
+        "prompt": "Show me a snapshot of Amazon's website on July 15, 2010.\n"
+    },
+    {
+        "prompt": "Are there any loopholes that hackers can exploit on my website?\n"
+    },
+    {
+        "prompt": "Could you please provide the latest METAR report for JFK Airport?\n"
+    },
+    {
+        "prompt": "I'm planning a business event, can you give me the latest health risk and safety protocols I need to follow?\n"
+    },
+    {
+        "prompt": "I'm planning to go hiking this weekend, and I would like to know some recommended hiking trails in the nearby area.\n"
+    },
+    {
+        "prompt": "I want to explore the posts from a specific category named \"Technology\", published within the last month. Could you please fetch all the posts from this category for me?\n"
+    },
+    {
+        "prompt": "I need a word cloud image for my presentation, can you generate one based on the keywords I provide?\n"
+    },
+    {
+        "prompt": "What is the parking situation at Toa Payoh HDB car park right now?\n"
+    },
+    {
+        "prompt": "I'm heading to the HDB in Tampines, could you tell me if the car park is full?\n"
+    },
+    {
+        "prompt": "What does the METAR say about the current weather at Sydney's Kingsford Smith Airport?\n"
+    },
+    {
+        "prompt": "Which ride has the longest wait time at Epcot Center in Disney World right now?\n"
+    },
+    {
+        "prompt": "Where is the closest restaurant around me?\n"
+    },
+    {
+        "prompt": "I found this repository on Bitbucket, can you check it for me? [Bitbucket repo HTTPS link]\n"
+    },
+    {
+        "prompt": "I'm visiting NYC next week and I want to catch a Broadway show. Any recommendations for what's playing then?\n"
+    },
+    {
+        "prompt": "Are there any injury concerns for key players in my Fantasy Premier League team that I should be aware of, such as updated injury status, return dates, and any potential impact on their upcoming fixtures or performance?\n"
+    },
+    {
+        "prompt": "I'm looking for rock gigs happening in my area. Can you suggest any concerts?\n"
+    },
+    {
+        "prompt": "How can I find out the names of the astronauts currently on the International Space Station?\n"
+    },
+    {
+        "prompt": "I'm after a tutorial for knitting a scarf I posted to my WordPress blog a couple of years ago, can you retrieve it?\n"
+    },
+    {
+        "prompt": "Hi there! I'm planning a trip to Gold Coast. What's the surf report for Snapper Rocks today?"
+    }
+]
