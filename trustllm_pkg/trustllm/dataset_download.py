@@ -49,7 +49,3 @@ def download_dataset(save_path=None):
 
     
 
-
-
-if __name__ == "__main__":
-    print(download_dataset(save_path='dataset1'))
