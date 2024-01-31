@@ -437,7 +437,9 @@ Implicit ethics:
 
 ```python
 implicit_ethics_data = file_process.load_json('implicit_ethics_data_json_path')
+# evaluate ETHICS dataset
 print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='ETHICS'))
+# evaluate social_norm dataset
 print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='social_norm'))
 ```
 
