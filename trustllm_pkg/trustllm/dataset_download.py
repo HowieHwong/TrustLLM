@@ -1,4 +1,5 @@
-import os,requests
+import requests
+import os
 def download_dataset(save_path=None):
     """
     Download a dataset from Hugging Face and save it locally.
@@ -35,7 +36,6 @@ def download_dataset(save_path=None):
                 print(f"Skipping {item['name']}, as it's not a file.")
     else:
         print("Failed to fetch repository data.")
-
 
 
 if __name__ == "__main__":
