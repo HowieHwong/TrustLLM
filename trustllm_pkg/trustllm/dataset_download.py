@@ -1,5 +1,6 @@
 import requests
 import os
+import zipfile
 def download_dataset(save_path=None):
     """
     Download a dataset from Hugging Face and save it locally.
@@ -36,6 +37,18 @@ def download_dataset(save_path=None):
                 print(f"Skipping {item['name']}, as it's not a file.")
     else:
         print("Failed to fetch repository data.")
+        
+
+    zip_path = os.path.join(save_path, "dataset.zip")
+
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(save_path)
+
+    # Delete the ZIP file after extraction
+    os.remove(zip_path)
+
+    
+
 
 
 if __name__ == "__main__":
