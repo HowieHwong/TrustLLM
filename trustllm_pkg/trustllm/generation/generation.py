@@ -38,7 +38,7 @@ class LLMGeneration:
         self.num_gpus = num_gpus
         self.max_new_tokens = max_new_tokens
         self.debug = debug
-        self.online_model = get_models()[1]
+        self.online_model_dict = get_models()[1]
         self.model_mapping = get_models()[0]
         self.device = device
         self.use_replicate = use_replicate
@@ -91,7 +91,7 @@ class LLMGeneration:
             """
 
         try:
-            if (model_name in online_model) or (self.online_model and self.use_replicate):
+            if (model_name in self.online_model_dict) or (self.online_model and self.use_replicate):
                 ans = gen_online(model_name, prompt, temperature, replicate=self.use_replicate)
             else:
                 ans = self._generation_hf(prompt, tokenizer, model, temperature)
@@ -138,6 +138,7 @@ class LLMGeneration:
             :param key_name: The key in the dictionary where the prompt is located.
             """
         if os.path.basename(data_path) not in file_config:
+            print(f"{os.path.basename(data_path)} not in file_config")
             return
 
         with open(data_path) as f:
@@ -153,7 +154,6 @@ class LLMGeneration:
         for i in tqdm(range(0, len(saved_data), GROUP_SIZE), desc=f"Processing {data_path}", leave=False):
             group_data = saved_data[i:i + GROUP_SIZE]
             threads = []
-
             for idx, el in enumerate(group_data):
                 temperature = file_config.get(os.path.basename(data_path), 0.0)
                 t = threading.Thread(target=self.process_element,
