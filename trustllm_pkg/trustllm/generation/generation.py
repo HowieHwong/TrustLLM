@@ -38,7 +38,7 @@ class LLMGeneration:
         self.num_gpus = num_gpus
         self.max_new_tokens = max_new_tokens
         self.debug = debug
-        self.online_model = get_models()[1]
+        self.online_model_dict = get_models()[1]
         self.model_mapping = get_models()[0]
         self.device = device
         self.use_replicate = use_replicate
