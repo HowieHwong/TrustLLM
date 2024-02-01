@@ -54,12 +54,8 @@ class LLMGeneration:
             :param temperature: The temperature setting for text generation.
             :return: The generated text as a string.
             """
-        msg = prompt
-        conv = get_conversation_template(self.model_path)
-        conv.set_system_message('')
-        conv.append_message(conv.roles[0], msg)
-        conv.append_message(conv.roles[1], None)
-        prompt = conv.get_prompt()
+
+        prompt = self._prompt2conversation(prompt)
         inputs = tokenizer([prompt])
         inputs = {k: torch.tensor(v).to(self.device) for k, v in inputs.items()}
         output_ids = model.generate(
@@ -77,6 +73,15 @@ class LLMGeneration:
             output_ids, skip_special_tokens=True, spaces_between_special_tokens=False
         )
         return outputs
+
+    def _prompt2conversation(self, prompt):
+        msg = prompt
+        conv = get_conversation_template(self.model_path)
+        conv.set_system_message('')
+        conv.append_message(conv.roles[0], msg)
+        conv.append_message(conv.roles[1], None)
+        conversation = conv.get_prompt()
+        return conversation
 
     def generation(self, model_name, prompt, tokenizer, model, temperature=None):
         """
