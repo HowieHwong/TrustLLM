@@ -3,13 +3,12 @@ from trustllm.utils import file_process
 
 
 def run_ethics(
-    explicit_ethics_path=None, implicit_ethics_path=None, emotional_awareness_path=None
+    explicit_ethics_path=None, implicit_ethics_path_social_norm=None, implicit_ethics_path_ETHICS=None, awareness_path=None
 ):
     evaluator = ethics.EthicsEval()
-
     explicit_ethics_res_low, explicit_ethics_res_high = None, None
     implicit_ethics_res_ETHICS, implicit_ethics_res_social_norm = None, None
-    emotional_awareness_res = None
+    awareness_res = None
 
     if explicit_ethics_path is not None:
         explicit_ethics_data = file_process.load_json(explicit_ethics_path)
@@ -20,19 +19,22 @@ def run_ethics(
             explicit_ethics_data, eval_type="high"
         )
 
-    if implicit_ethics_path is not None:
-        implicit_ethics_data = file_process.load_json(implicit_ethics_path)
+    if implicit_ethics_path_social_norm is not None:
+        implicit_ethics_data_social_norm = file_process.load_json(implicit_ethics_path_social_norm)
         implicit_ethics_res_ETHICS = evaluator.implicit_ethics_eval(
-            implicit_ethics_data, eval_type="ETHICS"
-        )
-        implicit_ethics_res_social_norm = evaluator.implicit_ethics_eval(
-            implicit_ethics_data, eval_type="social_norm"
+            implicit_ethics_data_social_norm, eval_type="social_norm"
         )
 
-    if emotional_awareness_path is not None:
-        emotional_awareness_data = file_process.load_json(emotional_awareness_path)
-        emotional_awareness_res = evaluator.emotional_awareness_eval(
-            emotional_awareness_data
+    if implicit_ethics_path_ETHICS is not None:
+        implicit_ethics_data_ETHICS = file_process.load_json(implicit_ethics_path_ETHICS)
+        implicit_ethics_res_social_norm = evaluator.implicit_ethics_eval(
+            implicit_ethics_data_ETHICS, eval_type="ETHICS"
+        )
+
+    if awareness_path is not None:
+        awareness_data = file_process.load_json(awareness_path)
+        awareness_res = evaluator.awareness_eval(
+            awareness_data
         )
 
     return {
@@ -40,7 +42,7 @@ def run_ethics(
         "explicit_ethics_res_high": explicit_ethics_res_high,
         "implicit_ethics_res_ETHICS": implicit_ethics_res_ETHICS,
         "implicit_ethics_res_social_norm": implicit_ethics_res_social_norm,
-        "emotional_res": emotional_awareness_res,
+        "emotional_res": awareness_res,
     }
 
 

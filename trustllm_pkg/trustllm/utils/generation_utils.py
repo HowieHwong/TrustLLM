@@ -173,9 +173,9 @@ def zhipu_api(string, model, temperature):
     from zhipuai import ZhipuAI
     client = ZhipuAI(api_key=trustllm.config.zhipu_api)
     if temperature == 0:
-        temperature = 0.00001
+        temperature = 0.01
     else:
-        temperature = 0.99999
+        temperature = 0.99
     response = client.chat.completions.create(
         model=model,
         messages=[

@@ -17,4 +17,4 @@ google.generativeai
 google-api-python-client
 google.ai.generativelanguage
 replicate
-zhipuai
+zhipuai>=2.0.1

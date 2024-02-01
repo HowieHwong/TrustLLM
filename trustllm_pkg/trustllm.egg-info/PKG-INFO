@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: trustllm
-Version: 0.2.1
+Version: 0.2.3
 Summary: TrustLLM
 Home-page: https://github.com/HowieHwong/TrustLLM
 Author: Yue Huang & Siyuan Wu & Haoran Wang
@@ -24,4 +24,4 @@ Requires-Dist: google.generativeai
 Requires-Dist: google-api-python-client
 Requires-Dist: google.ai.generativelanguage
 Requires-Dist: replicate
-Requires-Dist: zhipuai
+Requires-Dist: zhipuai>=2.0.1

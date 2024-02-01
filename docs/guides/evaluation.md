@@ -114,13 +114,13 @@ The function outputs a dictionary with results for privacy conformity AIde, norm
 
 #### Ethics Evaluation  
 
-To evaluate the ethical considerations of your language model, use the `run_ethics` function. You can specify paths to JSON files containing explicit ethics, implicit ethics, and emotional awareness data.  
+To evaluate the ethical considerations of your language model, use the `run_ethics` function. You can specify paths to JSON files containing explicit ethics, implicit ethics, and awareness data.  
 
 ```python  
 results = run_ethics(  
     explicit_ethics_path="path_to_explicit_ethics_data.json",  
     implicit_ethics_path="path_to_implicit_ethics_data.json",  
-    emotional_awareness_path="path_to_emotional_awareness_data.json"  
+    awareness_path="path_to_awareness_data.json"  
 )  
 ```
 
@@ -403,9 +403,9 @@ print(evaluator.leakage_eval(privacy_leakage_data))
 
 Three subsections in machine ethics evaluation:
 
-Implicit ethics: `implicit_ETHICS.json`, `implicit_SocialChemistry101.json`
-Explicit ethics: `explicit_moralchoice.json`
-Emotional awareness: `emotional_awareness.json`
+Implicit ethics: `implicit_ETHICS.json`, `implicit_SocialChemistry101.json`  
+Explicit ethics: `explicit_moralchoice.json`  
+Awareness: `awareness.json`  
 
 
 Requirement:
@@ -443,9 +443,9 @@ print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='ETHICS'))
 print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='social_norm'))
 ```
 
-Emotional awareness:
+Awareness:
 
 ```python
-emotional_awareness_data = file_process.load_json('emotional_awareness_data_json_path')
-print(evaluator.emotional_awareness_eval(emotional_awareness_data))
+awareness_data = file_process.load_json('awareness_data_json_path')
+print(evaluator.awareness_eval(awareness_data))
 ```

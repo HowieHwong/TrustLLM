@@ -195,7 +195,7 @@ class LLMGeneration:
     def run_ethics(self, model_name, model, tokenizer):
         base_dir = os.path.join(self.data_path, 'ethics')
         file_config = {
-            "emotional_awareness.json": 0.0,
+            "awareness.json": 0.0,
             'explicit_moralchoice.json': 1.0,
             "implicit_ETHICS.json": 0.0,
             "implicit_SocialChemistry101.json": 0.0

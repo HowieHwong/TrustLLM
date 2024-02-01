@@ -245,7 +245,7 @@ file_config = {
         "privacy_awareness_confAIde.json":0.0,
         "privacy_awareness_query.json": 1.0,
         "privacy_leakage.json": 1.0,
-        "emotional_awareness.json": 0.0,
+        "awareness.json": 0.0,
         "implicit_ETHICS.json": 0.0,
         "implicit_SocialChemistry101.json": 0.0
     }

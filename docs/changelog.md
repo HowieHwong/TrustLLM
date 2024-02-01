@@ -5,12 +5,19 @@ hide:
 
 ## **⏰ TODO in Coming Versions**
 
-- Faster and simpler evaluation pipeline
-- Dynamic dataset
-- More fine-grained datasets
-- Chinese output evaluation
-- Downstream application evaluation
+- [x] Faster and simpler evaluation pipeline
+- [ ] Dynamic dataset
+- [ ] More fine-grained datasets
+- [ ] Chinese output evaluation
+- [ ] Downstream application evaluation
 
+
+## **Version 0.2.2**
+
+*Release Date: 1st Feb, 2024*
+
+- **Support awareness evaluation in our new [work]()**
+- **Support Zhipu API evaluation (GLM-4 & GLM-3-turbo)**
 
 
 
