@@ -7,11 +7,12 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 import requests
 from trustllm.utils import file_process
 import trustllm
+import trustllm.config
 import replicate
 
-online_model = file_process.load_json('trustllm/prompt/model_info.json')['online_model']
-deepinfra_model = file_process.load_json('trustllm/prompt/model_info.json')['deepinfra_model']
-model_mapping = file_process.load_json('trustllm/prompt/model_info.json')['model_mapping']
+online_model = trustllm.config.model_info['online_model']
+deepinfra_model = trustllm.config.model_info['deepinfra_model']
+model_mapping = trustllm.config.model_info['model_mapping']
 rev_model_mapping = {value: key for key, value in model_mapping.items()}
 
 

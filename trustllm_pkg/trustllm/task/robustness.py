@@ -5,6 +5,7 @@ import trustllm
 import re
 import os
 import openai
+import trustllm.config
 
 
 class RobustnessEval:
@@ -221,7 +222,7 @@ class RobustnessEval:
                                 else:
                                     print(f"Response: {res}")
                                     print(f"Label: {label}")
-                                    prompt = file_process.load_json('trustllm/prompt/task_prompt.json').get('ood_generalization', '')['prompt']
+                                    prompt = trustllm.config.task_prompt.get('ood_generalization', '')['prompt']
                                     prompt = prompt.replace('[res]', res).replace('[label]', label)
                                     ans = gpt_auto_eval.get_res(prompt)
                                     if 'wrong' in ans.lower():

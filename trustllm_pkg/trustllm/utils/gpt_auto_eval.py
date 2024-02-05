@@ -5,6 +5,7 @@ import logging
 import os
 import trustllm
 import concurrent.futures
+import trustllm.config
 
 # Setting up basic logging configuration
 logging.basicConfig(filename='autoevaluator.log', level=logging.INFO,
@@ -120,7 +121,7 @@ class AutoEvaluator:
                 # self.save_progress(data, filename=progress_filename)
                 raise
 
-        task_prompt_dict = file_process.load_json('trustllm/prompt/task_prompt.json')
+        task_prompt_dict = trustllm.config.task_prompt
         prompt_data = []
 
         if not concat:
