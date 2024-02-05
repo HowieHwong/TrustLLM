@@ -158,6 +158,8 @@ class RobustnessEval:
         target = ""
         if source == "ddxplus":
             start_phrase = "diagnosis is"
+            if res is None:
+                res = ""
             if start_phrase in res:
                 start_index = res.index(start_phrase) + len(start_phrase)
                 end_index = res.find('.', start_index)
@@ -261,5 +263,5 @@ class RobustnessEval:
                 f1_scores[source] = score
             else:
                 f1_scores[source] = None
-        f1_scores['overall'] = sum(f1_score.values()) / len(f1_score)
+        f1_scores['overall'] = sum(f1_scores.values()) / len(f1_scores)
         return f1_scores
