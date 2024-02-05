@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='trustllm',
-    version='0.2.3',
+    version='0.2.4',
     description='TrustLLM',  
     author='Yue Huang & Siyuan Wu & Haoran Wang',
     author_email='trustllm.benchmark@gmail.com',
