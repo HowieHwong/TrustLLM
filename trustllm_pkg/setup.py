@@ -7,7 +7,8 @@ setup(
     author='Yue Huang & Siyuan Wu & Haoran Wang',
     author_email='trustllm.benchmark@gmail.com',
     url='https://github.com/HowieHwong/TrustLLM',  
-    packages=find_packages(),  
+    packages=find_packages(), 
+    include_package_data=True, 
     install_requires=[
         'transformers',
         'huggingface_hub',
