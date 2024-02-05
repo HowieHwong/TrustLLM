@@ -37,6 +37,8 @@ class DataEmbedder:
         Returns:
             list: The embedding vector.
         """
+        if string is None:
+            string = ""
         response = openai.Embedding.create(
             model='text-embedding-ada-002',  # Example model
             input=string
