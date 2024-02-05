@@ -71,7 +71,7 @@ model_info = {
         "gpt-4":"gpt-4",
         "claude-2":"claude-2",
         "glm-4": "glm-4",
-        "glm-3-turbo": "glm-3.5-turbo"
+        "glm-3-turbo": "glm-3-turbo"
     }
 }
 
