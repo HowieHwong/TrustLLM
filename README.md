@@ -181,9 +181,9 @@ pip install .
 Download TrustLLM dataset:
 
 ```python
-from trustllm.dataset_download import download_huggingface_dataset
+from trustllm.dataset_download import download_dataset
 
-download_huggingface_dataset(save_path='save_path')
+download_dataset(save_path='save_path')
 ```
 
 ### **Generation**
