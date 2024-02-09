@@ -13,7 +13,7 @@ logging.basicConfig(filename='autoevaluator.log', level=logging.INFO,
 
 
 # Retry decorator with exponential backoff and stop condition for API calls
-@retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
+# @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
 def get_res(string, model='gpt-4-1106-preview', temp=0):
     """
     Retrieve a response from the OpenAI ChatCompletion API.
@@ -32,14 +32,14 @@ def get_res(string, model='gpt-4-1106-preview', temp=0):
 
     if trustllm.config.azure_openai:
         openai.api_type = "azure"
-        openai.api_base = trustllm.config.api_base
+        openai.api_base = trustllm.config.azure_api_base
         openai.api_version = "2023-08-01-preview"
-
         completion = openai.ChatCompletion.create(
             engine=trustllm.config.azure_engine,
             messages=[{"role": "user", "content": string}],
             temperature=temp
         )
+
         if not completion.choices[0].message['content']:
             raise ValueError("The response from the API is NULL or an empty string!")
 
@@ -70,6 +70,7 @@ class AutoEvaluator:
             save_dir (str): Directory for saving evaluation results.
         """
         self.save_dir = save_dir
+        self.max_worker = trustllm.config.max_worker
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
         openai.api_key = trustllm.config.openai_key
@@ -110,7 +111,7 @@ class AutoEvaluator:
         def process_item(item, el):
             try:
                 if 'eval_res' not in el:
-                    print('Prompt: {}'.format(item))
+                    # print('Prompt: {}'.format(item))
                     eval_res = get_res(item)
                     print('Response: {}'.format(eval_res))
                     el['eval_res'] = eval_res
@@ -150,7 +151,7 @@ class AutoEvaluator:
         print('Total data number: {}'.format(len(data)))
         print('Evaluating...')
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
             futures = [executor.submit(process_item, item, el) for item, el in zip(prompt_data, data)]
 
             # Add a callback to handle completion and errors
