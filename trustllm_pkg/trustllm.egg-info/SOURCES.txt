@@ -1,3 +1,4 @@
+MANIFEST.in
 setup.py
 trustllm/__init__.py
 trustllm/config.py

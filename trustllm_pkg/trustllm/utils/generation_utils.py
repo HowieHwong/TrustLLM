@@ -10,15 +10,17 @@ import trustllm
 import trustllm.config
 import replicate
 
-online_model = trustllm.config.model_info['online_model']
-deepinfra_model = trustllm.config.model_info['deepinfra_model']
-model_mapping = trustllm.config.model_info['model_mapping']
+# online_model = trustllm.config.model_info['online_model']
+# deepinfra_model = trustllm.config.model_info['deepinfra_model']
+
+model_info = trustllm.config.model_info
+online_model = model_info['online_model']
+model_mapping = model_info['model_mapping']
 rev_model_mapping = {value: key for key, value in model_mapping.items()}
 
 
 def get_models():
     return model_mapping, online_model
-
 
 def get_access_token():
     url = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id={}&client_secret=".format(
@@ -190,19 +192,17 @@ def zhipu_api(string, model, temperature):
 
 @retry(wait=wait_random_exponential(min=1, max=3), stop=stop_after_attempt(3))
 def gen_online(model_name, prompt, temperature, replicate=False):
-    if model_name == 'ernie':
+    if model_name == model_info['wenxin_model']:
         res = get_ernie_res(prompt, temperature=temperature)
-    elif model_name == 'chatgpt':
-        res = get_res_chatgpt(prompt, gpt_model='gpt-3.5-turbo', temperature=temperature)
-    elif model_name == 'gpt-4':
-        res = get_res_chatgpt(prompt, gpt_model='gpt-4', temperature=temperature)
-    elif model_name in deepinfra_model:
-        res = deepinfra_api(prompt, model=model_name, temperature=temperature)
-    elif model_name in ['claude-instant-1.2', 'claude-2.1']:
-        res = claude_api(prompt, model=model_name, temperature=temperature)
-    elif model_name == 'bison-001':
+    elif model_name == model_info['google_model']:
         res = palm_api(prompt, model=model_name, temperature=temperature)
-    elif model_name in ['glm-4', 'glm-3-turbo']:
+    elif model_name in model_info['openai_model']:
+        res = get_res_chatgpt(prompt, gpt_model=model_name, temperature=temperature)
+    elif model_name in model_info['deepinfra_model']:
+        res = deepinfra_api(prompt, model=model_name, temperature=temperature)
+    elif model_name in model_info['claude_model']:
+        res = claude_api(prompt, model=model_name, temperature=temperature)
+    elif model_name in model_info['zhipu_model']:
         res = zhipu_api(prompt, model=model_name, temperature=temperature)
     elif replicate:
         res = replicate_api(prompt, model_name, temperature)
