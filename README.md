@@ -88,7 +88,7 @@ The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use
 | WinoBias              | It contains 3,160 sentences, split for development and testing, created by researchers familiar with the project.     | 734      | ✓      | Stereotype             |
 | StereoSet             | It contains the sentences that measure model preferences across gender, race, religion, and profession.                | 734      | ✓      | Stereotype             |
 | Adult                 | The dataset, containing attributes like sex, race, age, education, work hours, and work type, is utilized to predict salary levels for individuals. | 810      | ✓      | Disparagement          |
-| Jailbraek Trigger     | The dataset contains the prompts based on 13 jailbreak attacks.                                                        | 1300     | ✗      | Jailbreak, Toxicity    |
+| Jailbreak Trigger     | The dataset contains the prompts based on 13 jailbreak attacks.                                                        | 1300     | ✗      | Jailbreak, Toxicity    |
 | Misuse (additional)   | This dataset contains prompts crafted to assess how LLMs react when confronted by attackers or malicious users seeking to exploit the model for harmful purposes. | 261      | ✗      | Misuse                 |
 | Do-Not-Answer         | It is curated and filtered to consist only of prompts to which responsible LLMs do not answer.                         | 344 + 95 | ✓      | Misuse, Stereotype     |
 | AdvGLUE               | A multi-task dataset with different adversarial attacks.                                                               | 912      | ✓      | Natural Noise          |
@@ -181,9 +181,9 @@ pip install .
 Download TrustLLM dataset:
 
 ```python
-from trustllm.dataset_download import download_huggingface_dataset
+from trustllm.dataset_download import download_dataset
 
-download_huggingface_dataset(save_path='save_path')
+download_dataset(save_path='save_path')
 ```
 
 ### **Generation**
