@@ -1,5 +1,5 @@
 # evaluation api setting
-openai_key = "2f29c22c5f2c45e686337037fcfa562d"
+openai_key = None
 perspective_key = None
 
 # generation api setting
@@ -42,6 +42,16 @@ model_info = {
     ],
     "deepinfra_model": [
         "llama2-70b",
+        "mistral-7b",
+        "dolly-12b",
+        "llama2-13b",
+        "mixtral-8x7B",
+        "yi-34b"
+    ],
+    "deepinfra_model": [
+        "llama2-70b",
+        "llama2-13b",
+        "llama2-7b",
         "mistral-7b",
         "dolly-12b",
         "llama2-13b",
