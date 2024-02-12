@@ -268,7 +268,7 @@ class LLMGeneration:
         model_name = self.model_name
         print(f"Beginning generation with {self.test_type} evaluation at temperature {self.temperature}.")
         print(f"Evaluation target model: {model_name}")
-        if (model_name in self.online_model_dict) or (self.online_model and self.use_replicate):
+        if (model_name in self.online_model_dict) and ((self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra)):
             model, tokenizer = (None, None) 
         else:
             load_model(
