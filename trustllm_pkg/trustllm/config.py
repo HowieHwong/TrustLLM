@@ -19,7 +19,7 @@ azure_engine = None
 azure_api_version = "2023-08-01-preview"
 azure_api_base = None
 
-deepinfra_model= [
+deepinfra_model = [
         "llama2-70b",
         "llama2-13b",
         "llama2-7b",
@@ -41,12 +41,10 @@ model_info = {
     "online_model": online_model,
     "zhipu_model":zhipu_model,
     "deepinfra_model":deepinfra_model,
-'claude_model':claude_model,
-'openai_model':openai_model,
-'google_model':google_model,
-'wenxin_model':wenxin_model,
-
-
+    'claude_model':claude_model,
+    'openai_model':openai_model,
+    'google_model':google_model,
+    'wenxin_model':wenxin_model,
     "model_mapping": {
         "baichuan-inc/Baichuan-13B-Chat": "baichuan-13b",
         "baichuan-inc/Baichuan2-13B-chat": "baichuan2-13b",
