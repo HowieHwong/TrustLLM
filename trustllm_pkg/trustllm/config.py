@@ -1,5 +1,5 @@
 # evaluation api setting
-openai_key = "2f29c22c5f2c45e686337037fcfa562d"
+openai_key = None
 perspective_key = None
 
 # generation api setting
@@ -15,9 +15,9 @@ zhipu_api = None
 max_worker = 1
 
 azure_openai = True
-azure_engine = "TrustLLM-GPT-4"
+azure_engine = None
 azure_api_version = "2023-08-01-preview"
-azure_api_base = "https://trustllm-gpt-4.openai.azure.com/"
+azure_api_base = None
 
 model_info = {
     "online_model": [
