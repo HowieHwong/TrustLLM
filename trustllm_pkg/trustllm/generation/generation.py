@@ -268,8 +268,10 @@ class LLMGeneration:
         model_name = self.model_name
         print(f"Beginning generation with {self.test_type} evaluation at temperature {self.temperature}.")
         print(f"Evaluation target model: {model_name}")
-
-        model, tokenizer = (None, None) if self.online_model else load_model(
+        if (model_name in self.online_model_dict) or (self.online_model and self.use_replicate):
+            model, tokenizer = (None, None) 
+        else:
+            load_model(
             self.model_path,
             num_gpus=self.num_gpus,
             device=self.device,
@@ -310,7 +312,6 @@ class LLMGeneration:
             self.model_name = self.model_path
         else:
             self.model_name = model_mapping.get(self.model_path, "")
-
         for attempt in range(max_retries):
             try:
                 state = self.run_single_test()

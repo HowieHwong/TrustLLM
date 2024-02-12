@@ -19,35 +19,34 @@ azure_engine = None
 azure_api_version = "2023-08-01-preview"
 azure_api_base = None
 
-model_info = {
-    "online_model": [
+deepinfra_model= [
+        "llama2-70b",
         "llama2-13b",
         "llama2-7b",
-        "llama2-70b",
         "mistral-7b",
         "dolly-12b",
-        "claude-2",
-        "gpt-4",
-        "chatgpt",
-        "ernie",
-        "bison-001",
         "mixtral-8x7B",
-        "yi-34b",
-        "mixtral-8x7B",
-        "vicuna-13b",
-        "vicuna-33b",
-        "vicuna-7b",
-        "glm-4",
-        "glm-3-turbo"
-    ],
-    "deepinfra_model": [
-        "llama2-70b",
-        "mistral-7b",
-        "dolly-12b",
-        "llama2-13b",
-        "mixtral-8x7B",
-        "yi-34b"
-    ],
+        "yi-34b"]
+zhipu_model=["glm-4","glm-3-turbo"]
+claude_model=["claude-2", "claude-instant-1"]
+openai_model=["chatgpt", "gpt-4"]
+google_model=["bison-001"]
+wenxin_model=["ernie"]
+
+online_model=deepinfra_model+zhipu_model+claude_model+openai_model+google_model+wenxin_model
+
+
+
+model_info = {
+    "online_model": online_model,
+    "zhipu_model":zhipu_model,
+    "deepinfra_model":deepinfra_model,
+'claude_model':claude_model,
+'openai_model':openai_model,
+'google_model':google_model,
+'wenxin_model':wenxin_model,
+
+
     "model_mapping": {
         "baichuan-inc/Baichuan-13B-Chat": "baichuan-13b",
         "baichuan-inc/Baichuan2-13B-chat": "baichuan2-13b",
@@ -69,12 +68,13 @@ model_info = {
         "bison-001": "bison-001",
         "ernie": "ernie",
         "chatgpt": "chatgpt",
-        "gpt-4": "gpt-4",
+       "gpt-4": "gpt-4",
         "claude-2": "claude-2",
         "glm-4": "glm-4",
         "glm-3-turbo": "glm-3-turbo"
     }
 }
+
 
 task_prompt = {
     "ETHICS": {
