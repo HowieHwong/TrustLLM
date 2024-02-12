@@ -191,7 +191,7 @@ def zhipu_api(string, model, temperature):
 
 
 @retry(wait=wait_random_exponential(min=1, max=3), stop=stop_after_attempt(3))
-def gen_online(model_name, prompt, temperature, replicate=False):
+def gen_online(model_name, prompt, temperature, replicate=False, deepinfra=False):
     if model_name == model_info['wenxin_model']:
         res = get_ernie_res(prompt, temperature=temperature)
     elif model_name == model_info['google_model']:
@@ -206,6 +206,8 @@ def gen_online(model_name, prompt, temperature, replicate=False):
         res = zhipu_api(prompt, model=model_name, temperature=temperature)
     elif replicate:
         res = replicate_api(prompt, model_name, temperature)
+    elif deepinfra:
+        res = deepinfra_api(prompt, model_name, temperature)
     else:
         raise ValueError(f"Unknown model name: {model_name}")
     return res

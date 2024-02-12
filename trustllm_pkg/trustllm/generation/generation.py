@@ -96,8 +96,8 @@ class LLMGeneration:
             """
 
         try:
-            if (model_name in self.online_model_dict) or (self.online_model and self.use_replicate):
-                ans = gen_online(model_name, prompt, temperature, replicate=self.use_replicate)
+            if (model_name in self.online_model_dict) or (self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra):
+                ans = gen_online(model_name, prompt, temperature, replicate=self.use_replicate, deepinfra=self.use_deepinfra)
             else:
                 ans = self._generation_hf(prompt, tokenizer, model, temperature)
             if not ans:
