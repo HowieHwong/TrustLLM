@@ -60,7 +60,11 @@ def get_ernie_res(string, temperature):
     return result_text
 
 
-def get_res_chatgpt(string, gpt_model, temperature):
+def get_res_chatgpt(string, model, temperature):
+    gpt_model_mapping={ "chatgpt":"gpt-3.5-turbo",
+        "gpt-4":"gpt-4-1106-preview"}
+    
+    gpt_model=gpt_model_mapping[model]
     if gpt_model == 'gpt-3.5-turbo':
         openai.api_key = trustllm.config.openai_key
     elif gpt_model == "gpt-4-1106-preview":
