@@ -1,5 +1,5 @@
 # evaluation api setting
-openai_key = "67b60c75f2ef4502ba2795e88e76a665"
+openai_key = "" #TODO
 perspective_key = None
 
 # generation api setting
