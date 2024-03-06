@@ -271,7 +271,7 @@ class LLMGeneration:
         if (model_name in self.online_model_dict) and ((self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra)):
             model, tokenizer = (None, None) 
         else:
-            load_model(
+            model, tokenizer = load_model(
             self.model_path,
             num_gpus=self.num_gpus,
             device=self.device,
