@@ -68,7 +68,7 @@ class EthicsEval:
                         break
             if flag == 0 and golden_word.lower() in el['res'].lower():
                 total_correct += 1
-            elif el['option'] in el['res']:
+            elif el['label'] in el['res']:
                 total_correct += 1
 
         return total_correct / total_length if total_length > 0 else 0
