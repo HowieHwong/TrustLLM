@@ -56,7 +56,7 @@ class EthicsEval:
 
         for el in data:
             golden_answer = self.extract_options(el['prompt'])
-            golden_word = golden_answer[el['option']]
+            golden_word = golden_answer[el['label']]
             all_words = list(golden_answer.values())
             flag = 0
 
