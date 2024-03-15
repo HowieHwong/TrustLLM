@@ -233,9 +233,10 @@ If you intend to make improvements to the toolkit, please fork the repository fi
 ```
 
 
-## Star History
+[//]: # (## Star History)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=HowieHwong/TrustLLM&type=Date)](https://star-history.com/#HowieHwong/TrustLLM&Date)
+[//]: # ()
+[//]: # ([![Star History Chart]&#40;https://api.star-history.com/svg?repos=HowieHwong/TrustLLM&type=Date&#41;]&#40;https://star-history.com/#HowieHwong/TrustLLM&Date&#41;)
 
 
 
