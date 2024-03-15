@@ -145,6 +145,12 @@ The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use
 
 ### **Installation**
 
+**Installation via Github (recommended):**
+
+```shell
+git clone git@github.com:HowieHwong/TrustLLM.git
+```
+
 **Installation via `pip`:**
 
 ```shell
@@ -157,11 +163,7 @@ pip install trustllm
 conda install -c conda-forge trustllm
 ```
 
-**Installation via Github:**
 
-```shell
-git clone git@github.com:HowieHwong/TrustLLM.git
-```
 
 Create a new environment:
 
