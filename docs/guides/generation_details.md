@@ -31,6 +31,7 @@ You can use the trustllm toolkit to generate output results for specified models
 - `ChatGPT (gpt-3.5-turbo)`
 - `GPT-4`
 - `Claude-2`
+- `Gemini-pro`
 - ***other LLMs in huggingface***
 
 ### **Start Your Generation**
