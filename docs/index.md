@@ -48,14 +48,15 @@ pip install .
 
 ### **Dataset Download**
 
-Download TrustLLM dataset:
+1. Download TrustLLM dataset from Github:
 
 ```python
-from trustllm.dataset_download import download_huggingface_dataset
+from trustllm.dataset_download import download_dataset
 
-download_huggingface_dataset(save_path='save_path')
+download_dataset(save_path='save_path')
 ```
 
+2. Download TrustLLM dataset from [Hugginface]().
 
 ### **Generation**
 

@@ -12,11 +12,18 @@ hide:
 - [ ] Downstream application evaluation
 
 
+## **Version 0.2.3 & 0.2.4**
+
+*Release Date: March 2024*
+
+- **Fixed some bugs**
+- **Support Gemini API**
+
 ## **Version 0.2.2**
 
 *Release Date: 1st Feb, 2024*
 
-- **Support awareness evaluation in our new [work]()**
+- **Support awareness evaluation in our new [work](https://arxiv.org/abs/2401.17882)**
 - **Support Zhipu API evaluation (GLM-4 & GLM-3-turbo)**
 
 
