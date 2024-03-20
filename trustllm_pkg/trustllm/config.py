@@ -19,6 +19,9 @@ azure_engine = "TrustLLM-GPT-4"
 azure_api_version = "2023-08-01-preview"
 azure_api_base = "https://trustllm-gpt-4.openai.azure.com/"
 
+gemini_api = None
+
+
 deepinfra_model = [
     "llama2-70b",
     "llama2-13b",
@@ -30,7 +33,7 @@ deepinfra_model = [
 zhipu_model = ["glm-4", "glm-3-turbo"]
 claude_model = ["claude-2", "claude-instant-1"]
 openai_model = ["chatgpt", "gpt-4"]
-google_model = ["bison-001"]
+google_model = ["bison-001", "gemini"]
 wenxin_model = ["ernie"]
 
 online_model = deepinfra_model + zhipu_model + claude_model + openai_model + google_model + wenxin_model

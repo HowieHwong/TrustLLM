@@ -1,6 +1,6 @@
 import os, json
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
-import google.generativeai as palm
+import google.generativeai as genai
 from google.generativeai.types import safety_types
 import openai
 from tenacity import retry, wait_random_exponential, stop_after_attempt
@@ -17,6 +17,36 @@ model_info = trustllm.config.model_info
 online_model = model_info['online_model']
 model_mapping = model_info['model_mapping']
 rev_model_mapping = {value: key for key, value in model_mapping.items()}
+
+safety_setting = [
+            {
+                "category": safety_types.HarmCategory.HARM_CATEGORY_DEROGATORY,
+                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
+            },
+
+            {
+                "category": safety_types.HarmCategory.HARM_CATEGORY_VIOLENCE,
+                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
+            },
+
+            {
+                "category": safety_types.HarmCategory.HARM_CATEGORY_SEXUAL,
+                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
+            },
+
+            {
+                "category": safety_types.HarmCategory.HARM_CATEGORY_TOXICITY,
+                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
+            },
+            {
+                "category": safety_types.HarmCategory.HARM_CATEGORY_MEDICAL,
+                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
+            },
+            {
+                "category": safety_types.HarmCategory.HARM_CATEGORY_DANGEROUS,
+                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
+            },
+        ]
 
 
 def get_models():
@@ -130,47 +160,28 @@ def claude_api(string, model, temperature):
 
 
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
+def gemini_api(string, temperature):
+    genai.configure(api_key=trustllm.config.gemini_api)
+    model = genai.GenerativeModel('gemini-pro')
+    response = model.generate_content(string, temperature=temperature, safety_settings=safety_setting)
+    return response
+
+
+
+@retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
 def palm_api(string, model, temperature):
-    palm.configure(api_key=trustllm.config.palm_api)
+    genai.configure(api_key=trustllm.config.palm_api)
 
     model_mapping = {
         'bison-001': 'models/text-bison-001',
     }
-    completion = palm.generate_text(
+    completion = genai.generate_text(
         model=model_mapping[model],  # models/text-bison-001
         prompt=string,
         temperature=temperature,
         # The maximum length of the response
         max_output_tokens=4000,
-        safety_settings=[
-            {
-                "category": safety_types.HarmCategory.HARM_CATEGORY_DEROGATORY,
-                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
-            },
-
-            {
-                "category": safety_types.HarmCategory.HARM_CATEGORY_VIOLENCE,
-                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
-            },
-
-            {
-                "category": safety_types.HarmCategory.HARM_CATEGORY_SEXUAL,
-                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
-            },
-
-            {
-                "category": safety_types.HarmCategory.HARM_CATEGORY_TOXICITY,
-                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
-            },
-            {
-                "category": safety_types.HarmCategory.HARM_CATEGORY_MEDICAL,
-                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
-            },
-            {
-                "category": safety_types.HarmCategory.HARM_CATEGORY_DANGEROUS,
-                "threshold": safety_types.HarmBlockThreshold.BLOCK_NONE,
-            },
-        ]
+        safety_settings=safety_setting
     )
     return completion.result
 
@@ -196,12 +207,15 @@ def zhipu_api(string, model, temperature):
 
 @retry(wait=wait_random_exponential(min=1, max=3), stop=stop_after_attempt(3))
 def gen_online(model_name, prompt, temperature, replicate=False, deepinfra=False):
-    if model_name == model_info['wenxin_model']:
+    if model_name in model_info['wenxin_model']:
         res = get_ernie_res(prompt, temperature=temperature)
-    elif model_name == model_info['google_model']:
-        res = palm_api(prompt, model=model_name, temperature=temperature)
+    elif model_name in model_info['google_model']:
+        if model_name == 'bison-001':
+            res = palm_api(prompt, model=model_name, temperature=temperature)
+        elif model_name == 'gemini-pro':
+            res = gemini_api(prompt, temperature=temperature)
     elif model_name in model_info['openai_model']:
-        res = get_res_chatgpt(prompt, gpt_model=model_name, temperature=temperature)
+        res = get_res_chatgpt(prompt, model=model_name, temperature=temperature)
     elif model_name in model_info['deepinfra_model']:
         res = deepinfra_api(prompt, model=model_name, temperature=temperature)
     elif model_name in model_info['claude_model']:
