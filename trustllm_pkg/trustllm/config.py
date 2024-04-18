@@ -14,10 +14,13 @@ zhipu_api = None
 
 max_worker = 1
 
+##only for auto evaluation
 azure_openai = True
 azure_engine = "TrustLLM-GPT-4"
 azure_api_version = "2023-08-01-preview"
 azure_api_base = "https://trustllm-gpt-4.openai.azure.com/"
+azure_api_key=''
+
 gemini_api = None
 
 

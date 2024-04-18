@@ -12,6 +12,58 @@ logging.basicConfig(filename='autoevaluator.log', level=logging.INFO,
                     format='%(asctime)s:%(levelname)s:%(message)s')
 
 
+#Retry decorator with exponential backoff and stop condition for API calls
+@retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
+def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
+    """
+    Retrieve a response from the OpenAI ChatCompletion API.
+
+    Args:
+        string (str): The input string to process.
+        model (str): The model to use for generating the response. Default is 'gpt-4-1106-preview'.
+        temp (float): The temperature setting for the API request. Default is 0 for deterministic output.
+
+    Returns:
+        str: The API response content.
+
+    Raises:
+        ValueError: If the API response is null or an empty string.
+    """
+    try:
+        if message is None:
+            message = [{"role": "user", "content": string}]
+        #response_format = {"type": "json_object"} if json_format else None
+        if trustllm.config.azure_openai:
+            azure_endpoint = trustllm.config.azure_api_base
+            api_key = trustllm.config.azure_api_key
+            api_version = trustllm.config.azure_api_version
+            model = trustllm.config.azure_engine
+            client = AzureOpenAI(
+                azure_endpoint=azure_endpoint,
+                api_key=api_key,
+                api_version=api_version,
+            )
+            #{"role": "system", "content": "You are a professional data annotator, you should strictly follow user's instructions"},
+            stream = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": string}],
+                temperature=temperature
+            )
+        else:
+            api_key = trustllm.config.openai_key
+            client = OpenAI(api_key=api_key,
+                        )
+            stream = client.chat.completions.create(model=model,
+                                                    messages=message,
+                                                        temperature=temperature,
+                                                        )
+        if not stream.choices[0].message.content:
+                raise ValueError("The response from the API is NULL or an empty string!")
+        response = stream.choices[0].message.content
+    except Exception as e:
+        print(e)
+        return None
+    return response
 # Retry decorator with exponential backoff and stop condition for API calls
 # @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
 def get_res(string, model='gpt-4-1106-preview', temp=0):

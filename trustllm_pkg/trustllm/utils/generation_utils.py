@@ -91,30 +91,22 @@ def get_ernie_res(string, temperature):
     return result_text
 
 
+
 def get_res_openai(string, model, temperature):
     gpt_model_mapping={ "chatgpt":"gpt-3.5-turbo",
         "gpt-4":"gpt-4-1106-preview"}
     
     gpt_model=gpt_model_mapping[model]
-    if gpt_model == 'gpt-3.5-turbo':
-        openai.api_key = trustllm.config.openai_key
-    elif gpt_model == "gpt-4-1106-preview":
-        openai.api_key = trustllm.config.openai_key
-    else:
-        raise ValueError('No support model!')
-    completion = openai.ChatCompletion.create(
-        model=gpt_model,
-        messages=[
-            {"role": "user",
-             "content": string}
-        ],
-        temperature=temperature,
-    )
-
-    if not completion.choices[0].message['content']:
+    api_key = trustllm.config.openai_key
+    client = OpenAI(api_key=api_key,)
+    stream = client.chat.completions.create(model=gpt_model,
+                                            messages=[{"role": "user", "content": string}],
+temperature=temperature,)
+    if not stream.choices[0].message.content:
         raise ValueError("The response from the API is NULL or an empty string!")
+    response = stream.choices[0].message.content
+    return response
 
-    return completion.choices[0].message['content']
 
 
 def deepinfra_api(string, model, temperature):

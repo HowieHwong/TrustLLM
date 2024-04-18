@@ -17,7 +17,7 @@ setup(
         'scipy',
         'pandas>=1.0.3',
         'scikit-learn',
-        'openai<=0.20.8',
+        'openai>=1.0.0',
         'tqdm',
         'tenacity',
         'datasets',
