@@ -1,4 +1,4 @@
-import openai
+from openai import OpenAI,AzureOpenAI
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 from trustllm.utils import file_process
 import logging
@@ -51,8 +51,7 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
             )
         else:
             api_key = trustllm.config.openai_key
-            client = OpenAI(api_key=api_key,
-                        )
+            client = OpenAI(api_key=api_key,)
             stream = client.chat.completions.create(model=model,
                                                     messages=message,
                                                         temperature=temperature,
@@ -64,50 +63,6 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
         print(e)
         return None
     return response
-# Retry decorator with exponential backoff and stop condition for API calls
-# @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
-def get_res(string, model='gpt-4-1106-preview', temp=0):
-    """
-    Retrieve a response from the OpenAI ChatCompletion API.
-
-    Args:
-        string (str): The input string to process.
-        model (str): The model to use for generating the response. Default is 'gpt-4-1106-preview'.
-        temp (float): The temperature setting for the API request. Default is 0 for deterministic output.
-
-    Returns:
-        str: The API response content.
-
-    Raises:
-        ValueError: If the API response is null or an empty string.
-    """
-
-    if trustllm.config.azure_openai:
-        openai.api_type = "azure"
-        openai.api_base = trustllm.config.azure_api_base
-        openai.api_version = "2023-08-01-preview"
-        completion = openai.ChatCompletion.create(
-            engine=trustllm.config.azure_engine,
-            messages=[{"role": "user", "content": string}],
-            temperature=temp
-        )
-
-        if not completion.choices[0].message['content']:
-            raise ValueError("The response from the API is NULL or an empty string!")
-
-        return completion.choices[0].message['content']
-
-    completion = openai.ChatCompletion.create(
-        model=model,
-        messages=[{"role": "user", "content": string}],
-        temperature=temp
-    )
-
-    if not completion.choices[0].message['content']:
-        raise ValueError("The response from the API is NULL or an empty string!")
-
-    return completion.choices[0].message['content']
-
 
 class AutoEvaluator:
     """
