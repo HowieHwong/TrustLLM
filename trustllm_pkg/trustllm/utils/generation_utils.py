@@ -108,21 +108,23 @@ temperature=temperature,)
     return response
 
 
-
 def deepinfra_api(string, model, temperature):
     api_token = trustllm.config.deepinfra_api
-    openai.api_key = api_token
-    openai.api_base = "https://api.deepinfra.com/v1/openai"
+
+
     top_p = 1 if temperature <= 1e-5 else 0.9
-    print(temperature)
-    chat_completion = openai.ChatCompletion.create(
+
+    OpenAI(api_key=api_token,api_base="https://api.deepinfra.com/v1/openai")
+    stream = client.chat.completions.create(
         model=rev_model_mapping[model],
         messages=[{"role": "user", "content": string}],
-        max_tokens=5192,
+        max_tokens=5192,max_tokens=5192,
         temperature=temperature,
         top_p=top_p,
-    )
-    return chat_completion.choices[0].message.content
+temperature=temperature,)
+    response = stream.choices[0].message.content
+    return response
+
 
 
 def replicate_api(string, model, temperature):
