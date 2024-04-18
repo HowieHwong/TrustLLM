@@ -12,7 +12,7 @@ Requires-Dist: numpy>=1.18.1
 Requires-Dist: scipy
 Requires-Dist: pandas>=1.0.3
 Requires-Dist: scikit-learn
-Requires-Dist: openai
+Requires-Dist: openai<=0.20.8
 Requires-Dist: tqdm
 Requires-Dist: tenacity
 Requires-Dist: datasets

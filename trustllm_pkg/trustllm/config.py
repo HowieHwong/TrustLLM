@@ -18,7 +18,6 @@ azure_openai = True
 azure_engine = "TrustLLM-GPT-4"
 azure_api_version = "2023-08-01-preview"
 azure_api_base = "https://trustllm-gpt-4.openai.azure.com/"
-
 gemini_api = None
 
 
@@ -35,8 +34,9 @@ claude_model = ["claude-2", "claude-instant-1"]
 openai_model = ["chatgpt", "gpt-4"]
 google_model = ["bison-001", "gemini"]
 wenxin_model = ["ernie"]
+replicate_model=["vicuna-7b","vicuna-13b","vicuna-33b","chatglm3-6b","llama3-70b","llama3-8b"]
 
-online_model = deepinfra_model + zhipu_model + claude_model + openai_model + google_model + wenxin_model
+online_model = deepinfra_model + zhipu_model + claude_model + openai_model + google_model + wenxin_model+replicate_model
 
 model_info = {
     "online_model": online_model,
@@ -46,6 +46,7 @@ model_info = {
     'openai_model': openai_model,
     'google_model': google_model,
     'wenxin_model': wenxin_model,
+    'replicate_model':replicate_model,
     "model_mapping": {
         "baichuan-inc/Baichuan-13B-Chat": "baichuan-13b",
         "baichuan-inc/Baichuan2-13B-chat": "baichuan2-13b",
@@ -57,6 +58,8 @@ model_info = {
         "lmsys/vicuna-33b-v1.3": "vicuna-33b",
         "meta-llama/Llama-2-7b-chat-hf": "llama2-7b",
         "meta-llama/Llama-2-13b-chat-hf": "llama2-13b",
+        "meta/meta-llama-3-70b-instruct":"llama3-70b",
+        "meta/meta-llama-3-8b-instruct":"llama3-8b",
         "TheBloke/koala-13B-HF": "koala-13b",
         "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5": "oasst-12b",
         "WizardLM/WizardLM-13B-V1.2": "wizardlm-13b",

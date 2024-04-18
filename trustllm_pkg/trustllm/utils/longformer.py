@@ -13,7 +13,7 @@ class HuggingFaceEvaluator:
     """
     A class for evaluating text using a Hugging Face model.
     """
-    def __init__(self, model_name='LibrAI/longformer-harmful-ro', device='cuda:0', save_dir='saved_evaluations'):
+    def __init__(self, model_name='LibrAI/longformer-harmful-ro', device='mps', save_dir='saved_evaluations'):
         """
         Initialize the HuggingFaceEvaluator class.
 

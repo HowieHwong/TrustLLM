@@ -111,6 +111,7 @@ class AutoEvaluator:
         def process_item(item, el):
             try:
                 if 'eval_res' not in el:
+
                     # print('Prompt: {}'.format(item))
                     eval_res = get_res(item)
                     print('Response: {}'.format(eval_res))

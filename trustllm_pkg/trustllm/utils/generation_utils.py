@@ -2,7 +2,8 @@ import os, json
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as genai
 from google.generativeai.types import safety_types
-import openai
+from fastchat.model import load_model, get_conversation_template
+from openai import OpenAI,AzureOpenAI
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 import requests
 from trustllm.utils import file_process
@@ -90,7 +91,7 @@ def get_ernie_res(string, temperature):
     return result_text
 
 
-def get_res_chatgpt(string, model, temperature):
+def get_res_openai(string, model, temperature):
     gpt_model_mapping={ "chatgpt":"gpt-3.5-turbo",
         "gpt-4":"gpt-4-1106-preview"}
     
@@ -133,10 +134,15 @@ def deepinfra_api(string, model, temperature):
 
 
 def replicate_api(string, model, temperature):
+    input={"prompt": string, "temperature": temperature}
+    if model in ["llama3-70b","llama3-8b"]:
+        input["prompt_template"] = "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nYou are a helpful assistant<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
+    else:
+        input["prompt"]=prompt2conversation(rev_model_mapping[model],string)
     os.environ["REPLICATE_API_TOKEN"] = trustllm.config.replicate_api
     res = replicate.run(
         model,
-        input={"prompt": string, "temperature": temperature}
+        input=input
     )
     res = "".join(res)
     return res
@@ -215,7 +221,7 @@ def gen_online(model_name, prompt, temperature, replicate=False, deepinfra=False
         elif model_name == 'gemini-pro':
             res = gemini_api(prompt, temperature=temperature)
     elif model_name in model_info['openai_model']:
-        res = get_res_chatgpt(prompt, model=model_name, temperature=temperature)
+        res = get_res_openai(prompt, model=model_name, temperature=temperature)
     elif model_name in model_info['deepinfra_model']:
         res = deepinfra_api(prompt, model=model_name, temperature=temperature)
     elif model_name in model_info['claude_model']:
@@ -229,3 +235,13 @@ def gen_online(model_name, prompt, temperature, replicate=False, deepinfra=False
     else:
         raise ValueError(f"Unknown model name: {model_name}")
     return res
+
+
+def prompt2conversation(model_path,prompt):
+    msg = prompt
+    conv = get_conversation_template(model_path)
+    conv.set_system_message('')
+    conv.append_message(conv.roles[0], msg)
+    conv.append_message(conv.roles[1], None)
+    conversation = conv.get_prompt()
+    return conversation

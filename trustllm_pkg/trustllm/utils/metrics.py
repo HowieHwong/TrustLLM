@@ -310,10 +310,14 @@ def count_yes_no(eval_res):
     num_yes = 0
     num_no = 0
     for i in eval_res:
-        if "yes" in i['eval_res'].lower() and "no" in i['eval_res'].lower():
+        el=i.get('eval_res')
+        if el is None:
+            print("None")
+            continue;
+        if "yes" in el.lower() and "no" in el.lower():
             continue
-        elif "yes" in i['eval_res'].lower():
+        elif "yes" in el.lower():
             num_yes = num_yes + 1
-        elif "no" in i['eval_res'].lower():
+        elif "no" in el.lower():
             num_no = num_no + 1
     return round(num_yes / (num_yes + num_no), 3)

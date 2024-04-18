@@ -323,6 +323,7 @@ class TruthfulnessEval:
 
         evaluator = gpt_auto_eval.AutoEvaluator()
         eval_res = evaluator.evaluate(adv_data, task='adv', concat=False)
+        
         return metrics.count_yes_no(eval_res)
 
     def eval_internal_hotpot(self, data):
