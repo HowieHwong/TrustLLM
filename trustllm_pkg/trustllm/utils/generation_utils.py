@@ -114,14 +114,13 @@ def deepinfra_api(string, model, temperature):
 
     top_p = 1 if temperature <= 1e-5 else 0.9
 
-    OpenAI(api_key=api_token,api_base="https://api.deepinfra.com/v1/openai")
+    client = OpenAI(api_key=api_token,api_base="https://api.deepinfra.com/v1/openai")
     stream = client.chat.completions.create(
         model=rev_model_mapping[model],
         messages=[{"role": "user", "content": string}],
-        max_tokens=5192,max_tokens=5192,
+        max_tokens=5192,
         temperature=temperature,
-        top_p=top_p,
-temperature=temperature,)
+        top_p=top_p,)
     response = stream.choices[0].message.content
     return response
 
