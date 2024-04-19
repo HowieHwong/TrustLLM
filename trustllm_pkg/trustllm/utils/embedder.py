@@ -1,4 +1,4 @@
-import openai
+from openai import OpenAI,AzureOpenAI
 import os
 import logging
 from tqdm import tqdm
@@ -24,11 +24,11 @@ class DataEmbedder:
         # Create the directory if it does not exist
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
-        openai.api_key = trustllm.config.openai_key
+        
 
-    @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
-    def get_embedding(self,string, embedding_model='text-embedding-ada-002',):
-        azure = config["generation_settings"]["azure_openai"]
+    @retry(wait=wait_random_exponential(min=1, max=5), stop=stop_after_attempt(6))
+    def get_embeddings(self,string, embedding_model='text-embedding-ada-002',):
+        
         if trustllm.config.azure_openai:
             azure_endpoint = trustllm.config.azure_api_base
             api_key = trustllm.config.azure_api_key

@@ -201,7 +201,7 @@ def zhipu_api(string, model, temperature):
     return response.choices[0].message.content
 
 
-@retry(wait=wait_random_exponential(min=1, max=3), stop=stop_after_attempt(3))
+@retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(5))
 def gen_online(model_name, prompt, temperature, replicate=False, deepinfra=False):
     if model_name in model_info['wenxin_model']:
         res = get_ernie_res(prompt, temperature=temperature)
