@@ -1,4 +1,4 @@
-import openai
+from openai import OpenAI,AzureOpenAI
 import os
 import logging
 from tqdm import tqdm
@@ -24,26 +24,35 @@ class DataEmbedder:
         # Create the directory if it does not exist
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
-        openai.api_key = trustllm.config.openai_key
+        
 
-    @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
-    def get_embeddings(self, string):
-        """
-        Retrieve embeddings for a given string.
+    @retry(wait=wait_random_exponential(min=1, max=5), stop=stop_after_attempt(6))
+    def get_embeddings(self,string, embedding_model='text-embedding-ada-002',):
+        
+        if trustllm.config.azure_openai:
+            azure_endpoint = trustllm.config.azure_api_base
+            api_key = trustllm.config.azure_api_key
+            api_version = trustllm.config.azure_api_version
+            model = trustllm.config.azure_embedding_engine
+            client = AzureOpenAI(
+                azure_endpoint=azure_endpoint,
+                api_key=api_key,
+                api_version=api_version,
+            )
+            response = client.embeddings.create(
+                model=model,
+                input=string
+            )
+        else:
+            api_key = trustllm.config.openai_key
+            client = OpenAI(api_key=api_key,)
+            response = client.embeddings.create(
+                model=embedding_model,
+                input=string
+            )
+        return response.data[0].embedding
 
-        Args:
-            string (str): The text to embed.
 
-        Returns:
-            list: The embedding vector.
-        """
-        if string is None:
-            string = ""
-        response = openai.Embedding.create(
-            model='text-embedding-ada-002',  # Example model
-            input=string
-        )
-        return response["data"][0]["embedding"]
 
     def save_embeddings(self, embeddings, filename):
         """

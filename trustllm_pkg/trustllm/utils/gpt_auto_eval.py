@@ -80,7 +80,7 @@ class AutoEvaluator:
         self.max_worker = trustllm.config.max_worker
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
-        openai.api_key = trustllm.config.openai_key
+        #openai.api_key = trustllm.config.openai_key
 
     def save_progress(self, data, filename='auto_eval.json'):
         """

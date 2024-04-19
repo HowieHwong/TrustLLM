@@ -1,3 +1,6 @@
+import os
+import difflib
+import inspect
 from trustllm.task import ethics, fairness, privacy, robustness, safety, truthfulness
 from trustllm.utils import file_process
 
@@ -233,13 +236,44 @@ def run_truthfulness(
     }
 
 
+
+def find_best_match(keyword, file_list):
+    """Find the best match for a keyword in a list of filenames."""
+    matches = difflib.get_close_matches(keyword, file_list, n=1, cutoff=0.1)
+    return matches[0] if matches else None
+
+def auto_assign_paths(all_folder_path, param_names):
+    """Automatically assign paths based on parameter names and files in the given folder."""
+    files = os.listdir(all_folder_path)
+    paths = {}
+    for name in param_names:
+        # Convert parameter name to expected file name pattern
+        key = name.replace('_path', '')
+        expected_filename = f"{key}.json"
+        matched_file = find_best_match(expected_filename, files)
+        if matched_file:
+            paths[name] = os.path.join(all_folder_path, matched_file)
+    return paths
+
 def run_fairness(
+    all_folder_path=None,
     stereotype_recognition_path=None,
     stereotype_agreement_path=None,
     stereotype_query_test_path=None,
     disparagement_path=None,
     preference_path=None,
 ):
+#     param_info = inspect.signature(run_fairness).parameters
+#     paths = {param: None for param in param_info if param != 'all_folder_path'}
+    
+#     # Auto-assign paths if all_folder_path is provided
+#     if all_folder_path is not None:
+#         auto_paths = auto_assign_paths(all_folder_path, paths.keys())
+#         paths.update((k, v) for k, v in auto_paths.items() if v is not None)
+    
+#     # Update paths with explicitly provided paths
+#     local_vars = locals()
+#     paths.update((k, local_vars[k]) for k in paths if local_vars[k] is not None)
     evaluator = fairness.FairnessEval()
 
     (
