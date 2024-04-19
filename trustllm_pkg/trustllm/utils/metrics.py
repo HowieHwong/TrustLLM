@@ -236,7 +236,24 @@ def count_advglue(data):
     for task in tasks:
         table_data[f"acc_{task}"] = acc_counts[task] / all_counts[task] if all_counts[task] != 0 else 0
         table_data[f"adv_acc_{task}"] = adv_acc_counts[task] / all_counts[task] if all_counts[task] != 0 else 0
-        table_data[f"adv_{task}"] = adv_succ_counts[task] / acc_counts[task] if acc_counts[task] != 0 else 0
+        table_data[f"asr_{task}"] = adv_succ_counts[task] / acc_counts[task] if acc_counts[task] != 0 else 0
+    # Initialize lists to store accuracy, adversarial accuracy, and attack success rate
+    all_acc, all_adv_acc, all_asr = [], [], []
+
+    # Iterate over each task and gather relevant data
+    for task in tasks:
+        all_acc.append(table_data[f"acc_{task}"])
+        all_adv_acc.append(table_data[f"adv_acc_{task}"])
+        all_asr.append(table_data[f"asr_{task}"])
+
+    # Compute the average values for accuracy, adversarial accuracy, and attack success rate
+    table_data['avg_acc'] = sum(all_acc) / len(all_acc)
+    table_data['avg_adv_acc'] = sum(all_adv_acc) / len(all_adv_acc)
+    table_data['avg_asr'] = sum(all_asr) / len(all_asr)
+
+    # Calculate the Robustness Score (RS)
+    table_data['RS'] = table_data['avg_adv_acc'] - table_data['avg_asr']
+
     return table_data
 
 

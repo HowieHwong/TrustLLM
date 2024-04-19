@@ -44,7 +44,8 @@ truthfulness_results = run_truthfulness(
     internal_path="path_to_internal_consistency_data.json",  
     external_path="path_to_external_consistency_data.json",  
     hallucination_path="path_to_hallucination_data.json",  
-    sycophancy_path="path_to_sycophancy_data.json"
+    sycophancy_path="path_to_sycophancy_data.json",
+    advfact_path="path_to_advfact_data.json"
 )
 ```
 
