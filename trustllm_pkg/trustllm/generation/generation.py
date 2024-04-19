@@ -38,11 +38,12 @@ class LLMGeneration:
         self.num_gpus = num_gpus
         self.max_new_tokens = max_new_tokens
         self.debug = debug
-        self.online_model_dict = get_models()[1]
+        self.online_model_list = get_models()[1]
         self.model_mapping = get_models()[0]
         self.device = device
         self.use_replicate = use_replicate
         self.use_deepinfra = use_deepinfra
+        self.model_name = model_mapping.get(self.model_path, "")
 
     def _generation_hf(self, prompt, tokenizer, model, temperature):
         """
@@ -55,7 +56,7 @@ class LLMGeneration:
             :return: The generated text as a string.
             """
 
-        prompt = self._prompt2conversation(prompt)
+        prompt = prompt2conversation(prompt)
         inputs = tokenizer([prompt])
         inputs = {k: torch.tensor(v).to(self.device) for k, v in inputs.items()}
         output_ids = model.generate(
@@ -74,14 +75,7 @@ class LLMGeneration:
         )
         return outputs
 
-    def _prompt2conversation(self, prompt):
-        msg = prompt
-        conv = get_conversation_template(self.model_path)
-        conv.set_system_message('')
-        conv.append_message(conv.roles[0], msg)
-        conv.append_message(conv.roles[1], None)
-        conversation = conv.get_prompt()
-        return conversation
+
 
     def generation(self, model_name, prompt, tokenizer, model, temperature=None):
         """
@@ -96,7 +90,7 @@ class LLMGeneration:
             """
 
         try:
-            if (model_name in self.online_model_dict) and ((self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra)):
+            if (model_name in self.online_model_list) and ((self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra)):
                 ans = gen_online(model_name, prompt, temperature, replicate=self.use_replicate, deepinfra=self.use_deepinfra)
             else:
                 ans = self._generation_hf(prompt, tokenizer, model, temperature)
@@ -172,7 +166,7 @@ class LLMGeneration:
                 t.join()
         file_process.save_json(saved_data, f"{save_path}")
 
-    def run_task(self, model_name, model, tokenizer, base_dir, file_config, key_name='prompt'):
+    def _run_task(self, model_name, model, tokenizer, base_dir, file_config, key_name='prompt'):
         """
             Runs a specific evaluation task based on provided parameters.
 
@@ -205,7 +199,7 @@ class LLMGeneration:
             "implicit_ETHICS.json": 0.0,
             "implicit_SocialChemistry101.json": 0.0
         }
-        self.run_task(model_name, model, tokenizer, base_dir, file_config)
+        self._run_task(model_name, model, tokenizer, base_dir, file_config)
 
     def run_privacy(self, model_name, model, tokenizer):
         base_dir = os.path.join(self.data_path, 'privacy')
@@ -214,7 +208,7 @@ class LLMGeneration:
             'privacy_awareness_query.json': 1.0,
             'privacy_leakage.json': 1.0,
         }
-        self.run_task(model_name, model, tokenizer, base_dir, file_config)
+        self._run_task(model_name, model, tokenizer, base_dir, file_config)
 
     def run_fairness(self, model_name, model, tokenizer):
         base_dir = os.path.join(self.data_path, 'fairness')
@@ -225,7 +219,7 @@ class LLMGeneration:
             'stereotype_query_test.json': 1.0,
             'stereotype_recognition.json': 0.0,
         }
-        self.run_task(model_name, model, tokenizer, base_dir, file_config)
+        self._run_task(model_name, model, tokenizer, base_dir, file_config)
 
     def run_truthfulness(self, model_name, model, tokenizer):
         base_dir = os.path.join(self.data_path, 'truthfulness')
@@ -236,7 +230,7 @@ class LLMGeneration:
             "internal.json": 1.0,
             "sycophancy.json": 1.0
         }
-        self.run_task(model_name, model, tokenizer, base_dir, file_config)
+        self._run_task(model_name, model, tokenizer, base_dir, file_config)
 
     def run_robustness(self, model_name, model, tokenizer):
         base_dir = os.path.join(self.data_path, 'robustness')
@@ -246,7 +240,7 @@ class LLMGeneration:
             'AdvGLUE.json': 0.0,
             'AdvInstruction.json': 1.0,
         }
-        self.run_task(model_name, model, tokenizer, base_dir, file_config)
+        self._run_task(model_name, model, tokenizer, base_dir, file_config)
 
     def run_safety(self, model_name, model, tokenizer):
         base_dir = os.path.join(self.data_path, 'safety')
@@ -256,9 +250,9 @@ class LLMGeneration:
             'misuse.json': 1.0,
 
         }
-        self.run_task(model_name, model, tokenizer, base_dir, file_config)
+        self._run_task(model_name, model, tokenizer, base_dir, file_config)
 
-    def run_single_test(self):
+    def _run_single_test(self):
         """
             Executes a single test based on specified parameters.
 
@@ -268,7 +262,7 @@ class LLMGeneration:
         model_name = self.model_name
         print(f"Beginning generation with {self.test_type} evaluation at temperature {self.temperature}.")
         print(f"Evaluation target model: {model_name}")
-        if (model_name in self.online_model_dict) and ((self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra)):
+        if (model_name in self.online_model_list) and ((self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra)):
             model, tokenizer = (None, None) 
         else:
             model, tokenizer = load_model(
@@ -308,13 +302,10 @@ class LLMGeneration:
             print(f"Dataset path {self.data_path} does not exist.")
             return None
 
-        if self.use_replicate:
-            self.model_name = self.model_path
-        else:
-            self.model_name = model_mapping.get(self.model_path, "")
+        
         for attempt in range(max_retries):
             try:
-                state = self.run_single_test()
+                state = self._run_single_test()
                 if state:
                     print(f"Test function successful on attempt {attempt + 1}")
                     return state

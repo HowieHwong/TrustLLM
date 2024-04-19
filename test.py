@@ -6,9 +6,14 @@ from trustllm import config
 
 
 
-config.openai_key= "1f462c580d06407eb49954553ab22ff7"
+from trustllm.generation.generation import LLMGeneration
+from trustllm.utils import file_process
+from trustllm import config
 
-evaluator = truthfulness.TruthfulnessEval()
-internal= file_process.load_json('/Users/admin/Downloads/mixtral-8x7B/truthfulness/internal.json')
-
-evaluator.eval_internal_squad(internal)
+config.replicate_api= "r8_EBJDSqZ6KDR2EmN0NWRodPva3018ceS0nd6BF"
+run_robu=LLMGeneration(test_type='fairness',
+                       online_model=True,
+                       use_replicate=True,
+              model_path='meta/meta-llama-3-70b-instruct',
+              data_path='/Users/admin/Documents/dataset')
+run_robu.generation_results()

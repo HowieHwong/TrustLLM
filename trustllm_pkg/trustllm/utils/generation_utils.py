@@ -15,7 +15,7 @@ import replicate
 # deepinfra_model = trustllm.config.model_info['deepinfra_model']
 
 model_info = trustllm.config.model_info
-online_model = model_info['online_model']
+online_model_list = model_info['online_model']
 model_mapping = model_info['model_mapping']
 rev_model_mapping = {value: key for key, value in model_mapping.items()}
 
@@ -51,7 +51,7 @@ safety_setting = [
 
 
 def get_models():
-    return model_mapping, online_model
+    return model_mapping, online_model_list
 
 def get_access_token():
     url = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id={}&client_secret=".format(
@@ -108,20 +108,17 @@ temperature=temperature,)
     return response
 
 
+
 def deepinfra_api(string, model, temperature):
     api_token = trustllm.config.deepinfra_api
-
-
     top_p = 1 if temperature <= 1e-5 else 0.9
-
     OpenAI(api_key=api_token,api_base="https://api.deepinfra.com/v1/openai")
     stream = client.chat.completions.create(
         model=rev_model_mapping[model],
         messages=[{"role": "user", "content": string}],
-        max_tokens=5192,max_tokens=5192,
+        max_tokens=5192,
         temperature=temperature,
-        top_p=top_p,
-temperature=temperature,)
+        top_p=top_p,)
     response = stream.choices[0].message.content
     return response
 
@@ -134,8 +131,7 @@ def replicate_api(string, model, temperature):
     else:
         input["prompt"]=prompt2conversation(rev_model_mapping[model],string)
     os.environ["REPLICATE_API_TOKEN"] = trustllm.config.replicate_api
-    res = replicate.run(
-        model,
+    res = replicate.run(rev_model_mapping[model],
         input=input
     )
     res = "".join(res)
