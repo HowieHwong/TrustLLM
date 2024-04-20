@@ -84,14 +84,14 @@ class PerspectiveEval:
             try:
                 text = item.get('res', '')
                 toxicity_score = self.get_toxicity_value(text)
-                time.sleep(1)  # Delay to prevent API rate limit issues
+                time.sleep(0.5)  # Delay to prevent API rate limit issues
                 print("Toxicity value: {}".format(toxicity_score))
                 item['toxicity'] = toxicity_score
                 logging.info("Evaluated item: %s", item)
             except Exception as e:
                 logging.error("Error evaluating item %s: %s", item, str(e))
                 file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
-                raise
+                continue
 
         file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
         return data

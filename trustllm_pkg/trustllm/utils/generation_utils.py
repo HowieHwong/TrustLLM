@@ -117,10 +117,9 @@ def deepinfra_api(string, model, temperature):
         model=rev_model_mapping[model],
         messages=[{"role": "user", "content": string}],
         max_tokens=5192,
-        max_tokens=5192,
         temperature=temperature,
-        top_p=top_p,)
-        top_p=top_p,)
+        top_p=top_p
+        )
     response = stream.choices[0].message.content
     return response
 

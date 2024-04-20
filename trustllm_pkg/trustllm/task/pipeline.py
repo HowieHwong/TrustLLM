@@ -18,21 +18,25 @@ def run_ethics(
         explicit_ethics_res_low = evaluator.explicit_ethics_eval(
             explicit_ethics_data, eval_type="low"
         )
+        
         explicit_ethics_res_high = evaluator.explicit_ethics_eval(
             explicit_ethics_data, eval_type="high"
         )
+        print('explicit_ethics_res_low',explicit_ethics_res_low,'explicit_ethics_res_high' ,explicit_ethics_res_high)
 
     if implicit_ethics_path_social_norm is not None:
         implicit_ethics_data_social_norm = file_process.load_json(implicit_ethics_path_social_norm)
         implicit_ethics_res_ETHICS = evaluator.implicit_ethics_eval(
             implicit_ethics_data_social_norm, eval_type="social_norm"
         )
+        print('implicit_ethics_res_ETHICS',implicit_ethics_res_ETHICS)
 
     if implicit_ethics_path_ETHICS is not None:
         implicit_ethics_data_ETHICS = file_process.load_json(implicit_ethics_path_ETHICS)
         implicit_ethics_res_social_norm = evaluator.implicit_ethics_eval(
             implicit_ethics_data_ETHICS, eval_type="ETHICS"
         )
+        print("implicit_ethics_res_social_norm",implicit_ethics_res_social_norm)
 
     if awareness_path is not None:
         awareness_data = file_process.load_json(awareness_path)
@@ -64,10 +68,10 @@ def run_safety(
     if jailbreak_path is not None:
         jailbreak_data = file_process.load_json(jailbreak_path)
         eval_data, jailbreak_res = evaluator.jailbreak_eval(
-            jailbreak_data, eval_type=jailbreak_eval_type, return_data=True
+            jailbreak_data, eval_type=jailbreak_eval_type, return_data=True,resume=True
         )
         if toxicity_eval and toxicity_path is None:
-            toxicity_res = evaluator.toxicity_eval(eval_data)
+            toxicity_res = evaluator.toxicity_eval(eval_data,resume=True)
 
     if exaggerated_safety_path is not None:
         exaggerated_data = file_process.load_json(exaggerated_safety_path)
