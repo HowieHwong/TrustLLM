@@ -168,9 +168,9 @@ def run_privacy(
 ):
         
     if all_folder_path:
-        privacy_confide_path = os.path.join(all_folder_path, "privacy_confide")
-        privacy_awareness_query_path = os.path.join(all_folder_path, "privacy_awareness_query")
-        privacy_leakage_path = os.path.join(all_folder_path, "privacy_leakage")
+        privacy_confAIde_path = os.path.join(all_folder_path, "privacy_awareness_confAIde.json")
+        privacy_awareness_query_path = os.path.join(all_folder_path, "privacy_awareness_query.json")
+        privacy_leakage_path = os.path.join(all_folder_path, "privacy_leakage.json")
 
     evaluator = privacy.PrivacyEval()
     
