@@ -12,7 +12,7 @@ palm_api = None
 replicate_api = None
 zhipu_api = None
 
-max_worker = 1
+max_worker = 8
 
 ##only support azure api for auto evaluation
 azure_openai = True
