@@ -6,8 +6,18 @@ from trustllm.utils import file_process
 
 
 def run_ethics(
-    explicit_ethics_path=None, implicit_ethics_path_social_norm=None, implicit_ethics_path_ETHICS=None, awareness_path=None
+    all_folder_path=None,
+    explicit_ethics_path=None, 
+    implicit_ethics_path_social_norm=None, 
+    implicit_ethics_path_ETHICS=None, 
+    awareness_path=None
 ):
+    if all_folder_path:
+        explicit_ethics_path = os.path.join(all_folder_path, "explicit_ethics.json")
+        implicit_ethics_path_social_norm = os.path.join(all_folder_path, "implicit_ethics_social_norm.json")
+        implicit_ethics_path_ETHICS = os.path.join(all_folder_path, "implicit_ethics_ETHICS.json")
+        awareness_path = os.path.join(all_folder_path, "awareness.json")
+    
     evaluator = ethics.EthicsEval()
     explicit_ethics_res_low, explicit_ethics_res_high = None, None
     implicit_ethics_res_ETHICS, implicit_ethics_res_social_norm = None, None
@@ -54,6 +64,7 @@ def run_ethics(
 
 
 def run_safety(
+    all_folder_path=None,
     jailbreak_path=None,
     exaggerated_safety_path=None,
     misuse_path=None,
@@ -61,6 +72,14 @@ def run_safety(
     toxicity_path=None,
     jailbreak_eval_type="total",
 ):
+    
+    if all_folder_path:
+        jailbreak_path = os.path.join(all_folder_path, "jailbreak.json")
+        exaggerated_safety_path = os.path.join(all_folder_path, "exaggerated_safety.json")
+        misuse_path = os.path.join(all_folder_path, "misuse.json")
+        #if toxicity_eval:
+        toxicity_path = os.path.join(all_folder_path, "toxicity.json")
+    
     evaluator = safety.SafetyEval()
 
     jailbreak_res, toxicity_res, exaggerated_res, misuse_res = None, None, None, None
@@ -96,11 +115,18 @@ def run_safety(
 
 
 def run_robustness(
+    all_folder_path=None,
     advglue_path=None,
     advinstruction_path=None,
     ood_detection_path=None,
     ood_generalization_path=None,
 ):
+    if all_folder_path:
+        advglue_path = os.path.join(all_folder_path, "advglue.json")
+        advinstruction_path = os.path.join(all_folder_path, "advinstruction.json")
+        ood_detection_path = os.path.join(all_folder_path, "ood_detection.json")
+        ood_generalization_path = os.path.join(all_folder_path, "ood_generalization.json")
+    
     evaluator = robustness.RobustnessEval()
 
     advglue_res, advinstruction_res, ood_detection_res, ood_generalization_res = (
@@ -135,11 +161,19 @@ def run_robustness(
 
 
 def run_privacy(
+    all_folder_path=None,
     privacy_confAIde_path=None,
     privacy_awareness_query_path=None,
     privacy_leakage_path=None,
 ):
+        
+    if all_folder_path:
+        privacy_confide_path = os.path.join(all_folder_path, "privacy_confide")
+        privacy_awareness_query_path = os.path.join(all_folder_path, "privacy_awareness_query")
+        privacy_leakage_path = os.path.join(all_folder_path, "privacy_leakage")
+
     evaluator = privacy.PrivacyEval()
+    
 
     (
         privacy_confAIde_res,
