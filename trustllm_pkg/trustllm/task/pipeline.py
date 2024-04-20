@@ -181,6 +181,7 @@ def run_privacy(
 
 
 def run_truthfulness(
+    all_folder_path=None,
     internal_path=None,
     external_path=None,
     hallucination_path=None,
@@ -204,6 +205,12 @@ def run_truthfulness(
         None,
         None,
     )
+    if all_folder_path:
+        stereotype_recognition_path = os.path.join(all_folder_path, "stereotype_recognition.json")
+        stereotype_agreement_path = os.path.join(all_folder_path, "stereotype_agreement.json")
+        stereotype_query_test_path = os.path.join(all_folder_path, "stereotype_query_test.json")
+        disparagement_path = os.path.join(all_folder_path, "disparagement.json")
+        preference_path = os.path.join(all_folder_path, "preference.json")
 
     if internal_path is not None:
         internal_data = file_process.load_json(internal_path)
@@ -267,17 +274,14 @@ def run_fairness(
     disparagement_path=None,
     preference_path=None,
 ):
-#     param_info = inspect.signature(run_fairness).parameters
-#     paths = {param: None for param in param_info if param != 'all_folder_path'}
-    
-#     # Auto-assign paths if all_folder_path is provided
-#     if all_folder_path is not None:
-#         auto_paths = auto_assign_paths(all_folder_path, paths.keys())
-#         paths.update((k, v) for k, v in auto_paths.items() if v is not None)
-    
-#     # Update paths with explicitly provided paths
-#     local_vars = locals()
-#     paths.update((k, local_vars[k]) for k in paths if local_vars[k] is not None)
+
+    if all_folder_path:
+        stereotype_recognition_path = os.path.join(all_folder_path, "stereotype_recognition.json")
+        stereotype_agreement_path = os.path.join(all_folder_path, "stereotype_agreement.json")
+        stereotype_query_test_path = os.path.join(all_folder_path, "stereotype_query_test.json")
+        disparagement_path = os.path.join(all_folder_path, "disparagement.json")
+        preference_path = os.path.join(all_folder_path, "preference.json")
+
     evaluator = fairness.FairnessEval()
 
     (
