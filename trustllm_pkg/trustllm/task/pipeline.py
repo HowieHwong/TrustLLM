@@ -222,6 +222,13 @@ def run_truthfulness(
     sycophancy_path=None,
     advfact_path=None,
 ):
+    if all_folder_path:
+        internal_path = os.path.join(all_folder_path, "internal.json")
+        external_path = os.path.join(all_folder_path, "external.json")
+        hallucination_path = os.path.join(all_folder_path, "hallucination.json")
+        sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
+        advfact_path = os.path.join(all_folder_path, "advfact.json")
+    
     evaluator = truthfulness.TruthfulnessEval()
 
     (
@@ -239,12 +246,7 @@ def run_truthfulness(
         None,
         None,
     )
-    if all_folder_path:
-        stereotype_recognition_path = os.path.join(all_folder_path, "stereotype_recognition.json")
-        stereotype_agreement_path = os.path.join(all_folder_path, "stereotype_agreement.json")
-        stereotype_query_test_path = os.path.join(all_folder_path, "stereotype_query_test.json")
-        disparagement_path = os.path.join(all_folder_path, "disparagement.json")
-        preference_path = os.path.join(all_folder_path, "preference.json")
+
 
     if internal_path is not None:
         internal_data = file_process.load_json(internal_path)
