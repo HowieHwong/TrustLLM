@@ -3,7 +3,7 @@ import logging
 import os
 from trustllm.utils import file_process
 from tqdm import tqdm
-
+import torch
 # Configure basic logging
 logging.basicConfig(filename='huggingface_evaluator.log', level=logging.INFO,
                     format='%(asctime)s:%(levelname)s:%(message)s')
@@ -13,7 +13,7 @@ class HuggingFaceEvaluator:
     """
     A class for evaluating text using a Hugging Face model.
     """
-    def __init__(self, model_name='LibrAI/longformer-harmful-ro', device='mps', save_dir='saved_evaluations'):
+    def __init__(self, model_name='LibrAI/longformer-harmful-ro', device=None, save_dir='saved_evaluations'):
         """
         Initialize the HuggingFaceEvaluator class.
 
@@ -22,10 +22,13 @@ class HuggingFaceEvaluator:
             device (str): The device to run the model on (e.g., 'cuda:0').
             save_dir (str): Directory to save the evaluation results.
         """
+        if device==None:
+            self.device='cpu' if torch.cuda.is_available() else 'cuda'
         # Load the model and tokenizer
         model = AutoModelForSequenceClassification.from_pretrained(model_name)
         tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.classifier = pipeline('text-classification', model=model, tokenizer=tokenizer, device=device)
+        self.classifier = pipeline('text-classification', model=model, tokenizer=tokenizer, device=self.device)
+        
 
         self.save_dir = save_dir
         # Create save directory if it doesn't exist

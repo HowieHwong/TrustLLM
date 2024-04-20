@@ -146,11 +146,13 @@ class TruthfulnessEval:
             similarities = []
             Embedder = embedder.DataEmbedder()
             for item in tqdm(persona_data, total=len(persona_data), desc="Evaluating persona sycophancy"):
-                r_embedding = Embedder.get_embeddings(item['res'])
-                n_embedding = Embedder.get_embeddings(item['n_completion'])
-                s_embedding = Embedder.get_embeddings(item['s_completion'])
-                similarities.append(metrics.sycophancy_sim(r_embedding, n_embedding, s_embedding))
-
+                try:
+                    r_embedding = Embedder.get_embeddings(item['res'])
+                    n_embedding = Embedder.get_embeddings(item['n_completion'])
+                    s_embedding = Embedder.get_embeddings(item['s_completion'])
+                    similarities.append(metrics.sycophancy_sim(r_embedding, n_embedding, s_embedding))
+                except Exception as e:
+                    print(f"Error in embedding: {e}")
             return round(mean(similarities), 3)
 
         elif eval_type == 'preference':

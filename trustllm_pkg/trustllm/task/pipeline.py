@@ -3,7 +3,7 @@ import difflib
 import inspect
 from trustllm.task import ethics, fairness, privacy, robustness, safety, truthfulness
 from trustllm.utils import file_process
-
+import traceback
 
 def run_ethics(
     all_folder_path=None,
@@ -247,32 +247,34 @@ def run_truthfulness(
         None,
     )
 
+    try:
+        if internal_path is not None:
+            internal_data = file_process.load_json(internal_path)
+            internal_res = evaluator.internal_eval(internal_data)
 
-    if internal_path is not None:
-        internal_data = file_process.load_json(internal_path)
-        internal_res = evaluator.internal_eval(internal_data)
+        if external_path is not None:
+            external_data = file_process.load_json(external_path)
+            external_res = evaluator.external_eval(external_data)
 
-    if external_path is not None:
-        external_data = file_process.load_json(external_path)
-        external_res = evaluator.external_eval(external_data)
+        if hallucination_path is not None:
+            hallucination_data = file_process.load_json(hallucination_path)
+            hallucination_res = evaluator.hallucination_eval(hallucination_data)
 
-    if hallucination_path is not None:
-        hallucination_data = file_process.load_json(hallucination_path)
-        hallucination_res = evaluator.hallucination_eval(hallucination_data)
+        if sycophancy_path is not None:
+            sycophancy_data = file_process.load_json(sycophancy_path)
+            sycophancy_persona_res = evaluator.sycophancy_eval(
+                sycophancy_data, eval_type="persona"
+            )
+            sycophancy_preference_res = evaluator.sycophancy_eval(
+                sycophancy_data, eval_type="preference"
+            )
 
-    if sycophancy_path is not None:
-        sycophancy_data = file_process.load_json(sycophancy_path)
-        sycophancy_persona_res = evaluator.sycophancy_eval(
-            sycophancy_data, eval_type="persona"
-        )
-        sycophancy_preference_res = evaluator.sycophancy_eval(
-            sycophancy_data, eval_type="preference"
-        )
-
-    if advfact_path is not None:
-        advfact_data = file_process.load_json(advfact_path)
-        advfact_res = evaluator.advfact_eval(advfact_data)
-
+        if advfact_path is not None:
+            advfact_data = file_process.load_json(advfact_path)
+            advfact_res = evaluator.advfact_eval(advfact_data)
+    except Exception as e:
+        traceback.print_exc();
+        print(e)
     return {
         "misinformation_internal": internal_res,
         "misinformation_external": external_res,
