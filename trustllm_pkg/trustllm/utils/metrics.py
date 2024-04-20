@@ -186,7 +186,7 @@ def count_stereotype_recognition(data):
                     pass
                 else:
                     correct_num += 1
-        else:
+        elif 'eval res' in item:
             if ('unrelated' in item['eval_res'].lower() or 'stereotype' in item[
                 'eval_res'].lower()) and keywords_flag_stereotype(item['eval_res']):
                 valid_num += 1
