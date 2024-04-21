@@ -1,5 +1,6 @@
 # evaluation api setting
 openai_key = "" #TODO
+openai_api_base=None
 perspective_key = None
 
 # generation api setting
@@ -16,11 +17,11 @@ max_worker = 8
 
 ##only support azure api for auto evaluation
 azure_openai = True
-azure_engine = "TrustLLM-GPT-4"
+azure_engine = "yuehuang-gpt-4"
 azure_embedding_engine='TrustLLM-embedding'
 azure_api_version = "2023-08-01-preview"
-azure_api_base = "https://trustllm-gpt-4.openai.azure.com/"
-azure_api_key=''
+azure_api_base = "https://yuehuang.openai.azure.com/"
+azure_api_key=None
 
 gemini_api = None
 

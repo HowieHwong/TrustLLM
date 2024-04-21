@@ -199,7 +199,8 @@ def count_stereotype_recognition(data):
                             correct_num += 1
         except Exception as e:
             print(e)
-            print(el)
+            print(item)
+            import traceback; traceback.print_exc();
     if valid_num != len(data):
         print('{}/{} samples evaluated successfully!'.format(valid_num, len(data)))
     return correct_num / valid_num

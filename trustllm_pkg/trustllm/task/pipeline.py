@@ -78,7 +78,7 @@ def run_safety(
         exaggerated_safety_path = os.path.join(all_folder_path, "exaggerated_safety.json")
         misuse_path = os.path.join(all_folder_path, "misuse.json")
         #if toxicity_eval:
-        toxicity_path = os.path.join(all_folder_path, "toxicity.json")
+        #toxicity_path = os.path.join(all_folder_path, "jailbreak.json")
     
     evaluator = safety.SafetyEval()
 
@@ -95,7 +95,7 @@ def run_safety(
     if exaggerated_safety_path is not None:
         exaggerated_data = file_process.load_json(exaggerated_safety_path)
         exaggerated_res = evaluator.exaggerated_eval(exaggerated_data)
-
+    print(misuse_path)
     if misuse_path is not None:
         misuse_data = file_process.load_json(misuse_path)
         misuse_res = evaluator.misuse_eval(misuse_data)
@@ -122,8 +122,8 @@ def run_robustness(
     ood_generalization_path=None,
 ):
     if all_folder_path:
-        advglue_path = os.path.join(all_folder_path, "advglue.json")
-        advinstruction_path = os.path.join(all_folder_path, "advinstruction.json")
+        advglue_path = os.path.join(all_folder_path, "AdvGLUE.json")
+        advinstruction_path = os.path.join(all_folder_path, "AdvInstruction.json")
         ood_detection_path = os.path.join(all_folder_path, "ood_detection.json")
         ood_generalization_path = os.path.join(all_folder_path, "ood_generalization.json")
     
@@ -223,12 +223,12 @@ def run_truthfulness(
     advfact_path=None,
 ):
     if all_folder_path:
-        internal_path = os.path.join(all_folder_path, "internal.json")
-        external_path = os.path.join(all_folder_path, "external.json")
-        hallucination_path = os.path.join(all_folder_path, "hallucination.json")
-        sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
-        advfact_path = os.path.join(all_folder_path, "advfact.json")
-    
+        # internal_path = os.path.join(all_folder_path, "internal.json")
+        # external_path = os.path.join(all_folder_path, "external.json")
+        #hallucination_path = os.path.join(all_folder_path, "hallucination.json")
+        #sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
+        advfact_path = os.path.join(all_folder_path, "golden_advfactuality.json")
+
     evaluator = truthfulness.TruthfulnessEval()
 
     (

@@ -43,13 +43,22 @@ class DataEmbedder:
                 model=model,
                 input=string
             )
-        else:
-            api_key = trustllm.config.openai_key
-            client = OpenAI(api_key=api_key,)
-            response = client.embeddings.create(
-                model=embedding_model,
-                input=string
-            )
+        else:    
+            api_key = trustllm.config.openai_key       
+            if trustllm.config.openai_api_base is not None:
+                #raise ValueError("OpenAI API key is required.")
+                client = OpenAI(api_key=api_key,base_url=trustllm.config.openai_api_base,)
+                response = client.embeddings.create(
+                    model=embedding_model,
+                    input=string
+                )
+            else:
+                client = OpenAI(api_key=api_key,)
+                response = client.embeddings.create(
+                    model=embedding_model,
+                    input=string
+                )
+            
         return response.data[0].embedding
 
 
@@ -96,6 +105,45 @@ class DataEmbedder:
                 logging.error("Error embedding item %s: %s", el.get('res', ''), str(e))
                 self.save_embeddings(data, filename)
                 raise
+            
+        try:
+            embedded_data = self.parallel_embedding(data, self.get_embeddings, filename, max_workers=trustllm.config.max_worker)
+        except Exception as error:
+            logging.error("Failed processing with error: %s", str(error))
+                    
+                    
 
-        self.save_embeddings(data, filename)
+
+        self.save_embeddings(embedded_data, filename)
         return os.path.join(self.save_dir, filename)
+    
+
+    def parallel_embedding(self,data, embedding_func, filename, max_workers=10):
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # 提交所有嵌入任务到线程池
+            future_to_data = {executor.submit(self.embed_text, el, embedding_func): el for el in data}
+            results = []
+            
+            # 输出进度条
+            for future in tqdm(as_completed(future_to_data), total=len(data)):
+                try:
+                    res = future.result()
+                    results.append(res)
+                except Exception as e:
+                    # 处理发生在单个任务中的异常
+                    logging.error("An error occurred: %s", str(e))
+                    # 保存当前进度，防止数据丢失
+                    self.save_embeddings(data, filename)
+                    raise
+                
+        return results
+
+    def embed_text(self,data_element, embedding_func):
+        try:
+            if 'embedding' not in data_element:
+                data_element['embedding'] = embedding_func(data_element['res'])
+                logging.info("Processed text: %s", data_element.get('res', ''))
+            return data_element
+        except Exception as e:
+            logging.error("Error embedding text %s: %s", data_element.get('res', ''), str(e))
+            raise

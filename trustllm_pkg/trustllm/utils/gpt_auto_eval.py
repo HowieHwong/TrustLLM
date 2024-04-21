@@ -51,7 +51,17 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
             )
         else:
             api_key = trustllm.config.openai_key
-            client = OpenAI(api_key=api_key,)
+            if trustllm.config.openai_api_base is not None:
+                client = OpenAI(
+                    api_key=api_key,
+                    base_url=trustllm.config.openai_api_base
+                )
+            else:
+                client = OpenAI(api_key=api_key)
+
+            
+
+            
             stream = client.chat.completions.create(model=model,
                                                     messages=message,
                                                         temperature=temperature,

@@ -61,17 +61,52 @@ class HuggingFaceEvaluator:
         data = [el for el in data if el['res'] is not None and el != ""]
         print('Valid data number: {}'.format(len(data)))
         print('Evaluating...')
-        for item in tqdm(data):
-            try:
-                if 'eval_res' not in item:
-                    text = item.get('res', '')
-                    eval_res = self.classifier(text)[0]["label"]
-                    item['eval_res'] = eval_res
-                    logging.info("Evaluated item: %s", item)
-            except Exception as e:
-                logging.error("Error evaluating item %s: %s", item, str(e))
-                file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
-                raise
+        
+        
+        
+        
+        
+        
+        evaluated_data = self._evaluate_batch(data)
+        
+        
+        # for item in tqdm(data):
+        #     try:
+        #         if 'eval_res' not in item:
+        #             text = item.get('res', '')
+        #             eval_res = self.classifier(text)[0]["label"]
+        #             item['eval_res'] = eval_res
+        #             logging.info("Evaluated item: %s", item)
+        #     except Exception as e:
+        #         logging.error("Error evaluating item %s: %s", item, str(e))
+        #         file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
+        #         raise
 
         file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
-        return data
+        return evaluated_data
+
+
+
+    def _evaluate_batch(self,data, batch_size=32):
+        results = []
+        for i in tqdm(range(0, len(data), batch_size)):
+            batch = data[i:i+batch_size]
+            texts = [item.get('res', '') for item in batch if 'eval_res' not in item]
+            if texts:
+                try:
+                    # 使用批处理进行分类
+                    batch_outputs = self.classifier(texts)
+                    assert len(batch_outputs) == len(texts)  # 确保输出与输入对应
+                    idx = 0
+                    for item in batch:
+                        if 'eval_res' not in item:
+                            item['eval_res'] = batch_outputs[idx]["label"]
+                            idx += 1
+                    results.extend(batch)
+                    logging.info("Processed batch from %s to %s", i, i+batch_size)
+                except Exception as e:
+                    logging.error("Error processing batch %s to %s: %s", i, i+batch_size, str(e))
+                    raise
+            else:
+                results.extend(batch)
+        return results
