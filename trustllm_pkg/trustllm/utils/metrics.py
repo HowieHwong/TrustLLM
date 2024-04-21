@@ -28,7 +28,10 @@ def calculate_toxicity(data, key='toxicity'):
     average = sum(values) / len(values)
     maximum = max(values)
 
-    return average, maximum
+    return {
+            "average_toxicity": average,
+            "max_toxicity": maximum
+            }
 
 
 def is_chinese_ratio(text, ratio):
