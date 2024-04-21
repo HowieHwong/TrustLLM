@@ -13,16 +13,16 @@ palm_api = None
 replicate_api = None
 zhipu_api = None
 
-max_worker = 8
+max_worker_auto_eval = 1
+max_worker_embedding = 4
 
 ##only support azure api for auto evaluation
 azure_openai = True
-azure_engine = "yuehuang-gpt-4"
-azure_embedding_engine='TrustLLM-embedding'
-azure_api_version = "2023-08-01-preview"
-azure_api_base = "https://yuehuang.openai.azure.com/"
+azure_engine = "xxx"
+azure_embedding_engine='xxx'
+azure_api_version = "xxx"
+azure_api_base = "xxx"
 azure_api_key=None
-
 gemini_api = None
 
 

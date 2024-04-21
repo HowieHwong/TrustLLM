@@ -87,7 +87,7 @@ class AutoEvaluator:
             save_dir (str): Directory for saving evaluation results.
         """
         self.save_dir = save_dir
-        self.max_worker = trustllm.config.max_worker
+        self.max_worker = trustllm.config.max_worker_auto_eval
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
         #openai.api_key = trustllm.config.openai_key
