@@ -3,11 +3,21 @@ import difflib
 import inspect
 from trustllm.task import ethics, fairness, privacy, robustness, safety, truthfulness
 from trustllm.utils import file_process
-
+import traceback
 
 def run_ethics(
-    explicit_ethics_path=None, implicit_ethics_path_social_norm=None, implicit_ethics_path_ETHICS=None, awareness_path=None
+    all_folder_path=None,
+    explicit_ethics_path=None, 
+    implicit_ethics_path_social_norm=None, 
+    implicit_ethics_path_ETHICS=None, 
+    awareness_path=None
 ):
+    if all_folder_path:
+        explicit_ethics_path = os.path.join(all_folder_path, "explicit_ethics.json")
+        implicit_ethics_path_social_norm = os.path.join(all_folder_path, "implicit_ethics_social_norm.json")
+        implicit_ethics_path_ETHICS = os.path.join(all_folder_path, "implicit_ethics_ETHICS.json")
+        awareness_path = os.path.join(all_folder_path, "awareness.json")
+    
     evaluator = ethics.EthicsEval()
     explicit_ethics_res_low, explicit_ethics_res_high = None, None
     implicit_ethics_res_ETHICS, implicit_ethics_res_social_norm = None, None
@@ -54,6 +64,7 @@ def run_ethics(
 
 
 def run_safety(
+    all_folder_path=None,
     jailbreak_path=None,
     exaggerated_safety_path=None,
     misuse_path=None,
@@ -61,6 +72,14 @@ def run_safety(
     toxicity_path=None,
     jailbreak_eval_type="total",
 ):
+    
+    if all_folder_path:
+        jailbreak_path = os.path.join(all_folder_path, "jailbreak.json")
+        exaggerated_safety_path = os.path.join(all_folder_path, "exaggerated_safety.json")
+        misuse_path = os.path.join(all_folder_path, "misuse.json")
+        #if toxicity_eval:
+        toxicity_path = os.path.join(all_folder_path, "toxicity.json")
+    
     evaluator = safety.SafetyEval()
 
     jailbreak_res, toxicity_res, exaggerated_res, misuse_res = None, None, None, None
@@ -96,11 +115,18 @@ def run_safety(
 
 
 def run_robustness(
+    all_folder_path=None,
     advglue_path=None,
     advinstruction_path=None,
     ood_detection_path=None,
     ood_generalization_path=None,
 ):
+    if all_folder_path:
+        advglue_path = os.path.join(all_folder_path, "advglue.json")
+        advinstruction_path = os.path.join(all_folder_path, "advinstruction.json")
+        ood_detection_path = os.path.join(all_folder_path, "ood_detection.json")
+        ood_generalization_path = os.path.join(all_folder_path, "ood_generalization.json")
+    
     evaluator = robustness.RobustnessEval()
 
     advglue_res, advinstruction_res, ood_detection_res, ood_generalization_res = (
@@ -135,11 +161,19 @@ def run_robustness(
 
 
 def run_privacy(
+    all_folder_path=None,
     privacy_confAIde_path=None,
     privacy_awareness_query_path=None,
     privacy_leakage_path=None,
 ):
+        
+    if all_folder_path:
+        privacy_confAIde_path = os.path.join(all_folder_path, "privacy_awareness_confAIde.json")
+        privacy_awareness_query_path = os.path.join(all_folder_path, "privacy_awareness_query.json")
+        privacy_leakage_path = os.path.join(all_folder_path, "privacy_leakage.json")
+
     evaluator = privacy.PrivacyEval()
+    
 
     (
         privacy_confAIde_res,
@@ -181,12 +215,20 @@ def run_privacy(
 
 
 def run_truthfulness(
+    all_folder_path=None,
     internal_path=None,
     external_path=None,
     hallucination_path=None,
     sycophancy_path=None,
     advfact_path=None,
 ):
+    if all_folder_path:
+        internal_path = os.path.join(all_folder_path, "internal.json")
+        external_path = os.path.join(all_folder_path, "external.json")
+        hallucination_path = os.path.join(all_folder_path, "hallucination.json")
+        sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
+        advfact_path = os.path.join(all_folder_path, "advfact.json")
+    
     evaluator = truthfulness.TruthfulnessEval()
 
     (
@@ -205,31 +247,34 @@ def run_truthfulness(
         None,
     )
 
-    if internal_path is not None:
-        internal_data = file_process.load_json(internal_path)
-        internal_res = evaluator.internal_eval(internal_data)
+    try:
+        if internal_path is not None:
+            internal_data = file_process.load_json(internal_path)
+            internal_res = evaluator.internal_eval(internal_data)
 
-    if external_path is not None:
-        external_data = file_process.load_json(external_path)
-        external_res = evaluator.external_eval(external_data)
+        if external_path is not None:
+            external_data = file_process.load_json(external_path)
+            external_res = evaluator.external_eval(external_data)
 
-    if hallucination_path is not None:
-        hallucination_data = file_process.load_json(hallucination_path)
-        hallucination_res = evaluator.hallucination_eval(hallucination_data)
+        if hallucination_path is not None:
+            hallucination_data = file_process.load_json(hallucination_path)
+            hallucination_res = evaluator.hallucination_eval(hallucination_data)
 
-    if sycophancy_path is not None:
-        sycophancy_data = file_process.load_json(sycophancy_path)
-        sycophancy_persona_res = evaluator.sycophancy_eval(
-            sycophancy_data, eval_type="persona"
-        )
-        sycophancy_preference_res = evaluator.sycophancy_eval(
-            sycophancy_data, eval_type="preference"
-        )
+        if sycophancy_path is not None:
+            sycophancy_data = file_process.load_json(sycophancy_path)
+            sycophancy_persona_res = evaluator.sycophancy_eval(
+                sycophancy_data, eval_type="persona"
+            )
+            sycophancy_preference_res = evaluator.sycophancy_eval(
+                sycophancy_data, eval_type="preference"
+            )
 
-    if advfact_path is not None:
-        advfact_data = file_process.load_json(advfact_path)
-        advfact_res = evaluator.advfact_eval(advfact_data)
-
+        if advfact_path is not None:
+            advfact_data = file_process.load_json(advfact_path)
+            advfact_res = evaluator.advfact_eval(advfact_data)
+    except Exception as e:
+        traceback.print_exc();
+        print(e)
     return {
         "misinformation_internal": internal_res,
         "misinformation_external": external_res,
@@ -267,17 +312,14 @@ def run_fairness(
     disparagement_path=None,
     preference_path=None,
 ):
-#     param_info = inspect.signature(run_fairness).parameters
-#     paths = {param: None for param in param_info if param != 'all_folder_path'}
-    
-#     # Auto-assign paths if all_folder_path is provided
-#     if all_folder_path is not None:
-#         auto_paths = auto_assign_paths(all_folder_path, paths.keys())
-#         paths.update((k, v) for k, v in auto_paths.items() if v is not None)
-    
-#     # Update paths with explicitly provided paths
-#     local_vars = locals()
-#     paths.update((k, local_vars[k]) for k in paths if local_vars[k] is not None)
+
+    if all_folder_path:
+        stereotype_recognition_path = os.path.join(all_folder_path, "stereotype_recognition.json")
+        stereotype_agreement_path = os.path.join(all_folder_path, "stereotype_agreement.json")
+        stereotype_query_test_path = os.path.join(all_folder_path, "stereotype_query_test.json")
+        disparagement_path = os.path.join(all_folder_path, "disparagement.json")
+        preference_path = os.path.join(all_folder_path, "preference.json")
+
     evaluator = fairness.FairnessEval()
 
     (

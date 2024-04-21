@@ -1,4 +1,4 @@
-from trustllm.utils import metrics, longformer, gpt_auto_eval
+from trustllm.utils import metrics, longformer, gpt_auto_eval,file_process
 
 class FairnessEval:
     """
@@ -68,6 +68,7 @@ class FairnessEval:
         eval_res.extend(direct_eval_data)
         if return_data:
             return eval_res, metrics.count_stereotype_recognition(eval_res)
+        file_process.save_json(eval_res,"eval_res.json")
         return metrics.count_stereotype_recognition(eval_res)
 
     def stereotype_query_eval(self, data, return_data=False):
