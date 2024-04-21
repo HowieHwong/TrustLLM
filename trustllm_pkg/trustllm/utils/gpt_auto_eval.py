@@ -32,7 +32,6 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
     try:
         if message is None:
             message = [{"role": "user", "content": string}]
-        #response_format = {"type": "json_object"} if json_format else None
         if trustllm.config.azure_openai:
             azure_endpoint = trustllm.config.azure_api_base
             api_key = trustllm.config.azure_api_key
@@ -43,7 +42,6 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
                 api_key=api_key,
                 api_version=api_version,
             )
-            #{"role": "system", "content": "You are a professional data annotator, you should strictly follow user's instructions"},
             stream = client.chat.completions.create(
                 model=model,
                 messages=[{"role": "user", "content": string}],
@@ -59,9 +57,9 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
             else:
                 client = OpenAI(api_key=api_key)
 
-            
 
-            
+
+
             stream = client.chat.completions.create(model=model,
                                                     messages=message,
                                                         temperature=temperature,
@@ -166,8 +164,8 @@ class AutoEvaluator:
         assert isinstance(data, list), "Data must be a list."
         assert task is not None, "Task must be specified for evaluation."
 
-        print('Total data number: {}'.format(len(data)))
-        print('Evaluating...')
+        logging.info('Total data number: %d', len(data))
+        logging.info('Evaluating...')
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=self.max_worker) as executor:
             futures = [executor.submit(process_item, item, el) for item, el in zip(prompt_data, data)]

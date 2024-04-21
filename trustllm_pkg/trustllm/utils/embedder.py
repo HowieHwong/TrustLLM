@@ -88,7 +88,7 @@ class DataEmbedder:
             str: Path to the saved embeddings file.
         """
         assert isinstance(data, list), "Data must be a list."
-        print('Evaluating...')
+        logging.info('Evaluating...')
         if resume:
             try:
                 data = file_process.load_json(os.path.join(self.save_dir, filename))

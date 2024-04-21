@@ -56,12 +56,12 @@ class HuggingFaceEvaluator:
                 logging.warning("No saved progress file found at %s. Starting a new evaluation.", load_path)
 
         assert isinstance(data, list), "Data must be a list."
-        print('Total data number: {}'.format(len(data)))
+        logging.info('Total data number: {}'.format(len(data)))
         # Filter out invalid data
         data = [el for el in data if el['res'] is not None and el != ""]
-        print('Valid data number: {}'.format(len(data)))
-        print('Evaluating...')
-        
+        logging.info('Total data number: %d', len(data))
+        logging.info('Evaluating...')
+
         evaluated_data = self._evaluate_batch(data)
 
         file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
