@@ -7,7 +7,7 @@ import torch
 # Configure basic logging
 logging.basicConfig(filename='huggingface_evaluator.log', level=logging.INFO,
                     format='%(asctime)s:%(levelname)s:%(message)s')
-
+PROGRESS_FILENAME = 'longformer_eval.json'
 
 class HuggingFaceEvaluator:
     """
@@ -35,7 +35,7 @@ class HuggingFaceEvaluator:
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
 
-    def evaluate(self, data, resume=False, progress_filename='longformer_eval.json'):
+    def evaluate(self, data, resume=False, progress_filename=PROGRESS_FILENAME):
         """
         Evaluate a dataset using the loaded Hugging Face model.
 
@@ -62,41 +62,22 @@ class HuggingFaceEvaluator:
         print('Valid data number: {}'.format(len(data)))
         print('Evaluating...')
         
-        
-        
-        
-        
-        
         evaluated_data = self._evaluate_batch(data)
-        
-        
-        # for item in tqdm(data):
-        #     try:
-        #         if 'eval_res' not in item:
-        #             text = item.get('res', '')
-        #             eval_res = self.classifier(text)[0]["label"]
-        #             item['eval_res'] = eval_res
-        #             logging.info("Evaluated item: %s", item)
-        #     except Exception as e:
-        #         logging.error("Error evaluating item %s: %s", item, str(e))
-        #         file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
-        #         raise
 
         file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
         return evaluated_data
 
 
 
-    def _evaluate_batch(self,data, batch_size=32):
+    def _evaluate_batch(self,data, batch_size=32, progress_filename=PROGRESS_FILENAME):
         results = []
         for i in tqdm(range(0, len(data), batch_size)):
             batch = data[i:i+batch_size]
             texts = [item.get('res', '') for item in batch if 'eval_res' not in item]
             if texts:
                 try:
-                    # 使用批处理进行分类
                     batch_outputs = self.classifier(texts)
-                    assert len(batch_outputs) == len(texts)  # 确保输出与输入对应
+                    assert len(batch_outputs) == len(texts)
                     idx = 0
                     for item in batch:
                         if 'eval_res' not in item:
@@ -106,6 +87,7 @@ class HuggingFaceEvaluator:
                     logging.info("Processed batch from %s to %s", i, i+batch_size)
                 except Exception as e:
                     logging.error("Error processing batch %s to %s: %s", i, i+batch_size, str(e))
+                    file_process.save_json(data, os.path.join(self.save_dir, progress_filename))
                     raise
             else:
                 results.extend(batch)
