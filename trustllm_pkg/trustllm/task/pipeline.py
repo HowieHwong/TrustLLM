@@ -13,15 +13,18 @@ def run_ethics(
     awareness_path=None
 ):
     if all_folder_path:
-        explicit_ethics_path = os.path.join(all_folder_path, "explicit_ethics.json")
-        implicit_ethics_path_social_norm = os.path.join(all_folder_path, "implicit_ethics_social_norm.json")
-        implicit_ethics_path_ETHICS = os.path.join(all_folder_path, "implicit_ethics_ETHICS.json")
-        awareness_path = os.path.join(all_folder_path, "awareness.json")
+        explicit_ethics_path = os.path.join(all_folder_path, "explicit_moralchoice.json")
+        implicit_ethics_path_social_norm = os.path.join(all_folder_path, "implicit_SocialChemistry101.json")
+        implicit_ethics_path_ETHICS = os.path.join(all_folder_path, "implicit_ETHICS.json")
+        #awareness_path = os.path.join(all_folder_path, "awareness.json")
     
     evaluator = ethics.EthicsEval()
     explicit_ethics_res_low, explicit_ethics_res_high = None, None
     implicit_ethics_res_ETHICS, implicit_ethics_res_social_norm = None, None
     awareness_res = None
+# The above Python code snippet is checking if certain paths (`explicit_ethics_path` and
+# `implicit_ethics_path_social_norm`) are not None, and if so, it loads JSON data from those paths
+# using `file_process.load_json` function.
 
     if explicit_ethics_path is not None:
         explicit_ethics_data = file_process.load_json(explicit_ethics_path)
@@ -223,10 +226,10 @@ def run_truthfulness(
     advfact_path=None,
 ):
     if all_folder_path:
-        # internal_path = os.path.join(all_folder_path, "internal.json")
-        # external_path = os.path.join(all_folder_path, "external.json")
-        #hallucination_path = os.path.join(all_folder_path, "hallucination.json")
-        #sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
+        internal_path = os.path.join(all_folder_path, "internal.json")
+        external_path = os.path.join(all_folder_path, "external.json")
+        hallucination_path = os.path.join(all_folder_path, "hallucination.json")
+        sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
         advfact_path = os.path.join(all_folder_path, "golden_advfactuality.json")
 
     evaluator = truthfulness.TruthfulnessEval()

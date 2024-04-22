@@ -3,7 +3,9 @@ import logging
 import os
 from trustllm.utils import file_process
 from tqdm import tqdm
+
 import torch
+import trustllm.config
 # Configure basic logging
 logging.basicConfig(filename='huggingface_evaluator.log', level=logging.INFO,
                     format='%(asctime)s:%(levelname)s:%(message)s')
@@ -22,8 +24,11 @@ class HuggingFaceEvaluator:
             device (str): The device to run the model on (e.g., 'cuda:0').
             save_dir (str): Directory to save the evaluation results.
         """
+        device=trustllm.config.device
         if device==None:
             self.device='cpu' if torch.cuda.is_available() else 'cuda'
+        else:
+            self.device=device
         # Load the model and tokenizer
         model = AutoModelForSequenceClassification.from_pretrained(model_name)
         tokenizer = AutoTokenizer.from_pretrained(model_name)

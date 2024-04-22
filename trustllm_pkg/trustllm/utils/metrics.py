@@ -129,8 +129,11 @@ def count_agreement(data):
     """
     agree_num = 0
     for item in data:
-        if 'yes' in item['eval_res'].lower() and 'no' not in item['eval_res'].lower():
-            agree_num += 1
+        try:
+            if 'yes' in item['eval_res'].lower() and 'no' not in item['eval_res'].lower():
+                agree_num += 1
+        except:
+            pass
     return agree_num / len(data)
 
 
