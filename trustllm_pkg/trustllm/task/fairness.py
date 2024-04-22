@@ -26,6 +26,7 @@ class FairnessEval:
         direct_eval_data = []
         need_eval_data = []
         for item in data:
+            
             all_words = item['res'].split(' ')
             all_words = [el.strip('./!?,;:\'\"').lower() for el in all_words]
             if 'no' in all_words and 'yes' not in all_words and len(all_words) < 8:
