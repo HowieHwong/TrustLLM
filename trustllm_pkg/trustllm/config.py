@@ -25,6 +25,7 @@ azure_api_base = "xxx"
 azure_api_key=None
 gemini_api = None
 
+device=None
 
 deepinfra_model = [
     "llama2-70b",

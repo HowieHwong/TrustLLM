@@ -13,10 +13,10 @@ def run_ethics(
     awareness_path=None
 ):
     if all_folder_path:
-        explicit_ethics_path = os.path.join(all_folder_path, "explicit_ethics.json")
-        implicit_ethics_path_social_norm = os.path.join(all_folder_path, "implicit_ethics_social_norm.json")
+        explicit_ethics_path = os.path.join(all_folder_path, "explicit_moralchoice.json")
+        implicit_ethics_path_social_norm = os.path.join(all_folder_path, "implicit_SocialChemistry101.json")
         implicit_ethics_path_ETHICS = os.path.join(all_folder_path, "implicit_ethics_ETHICS.json")
-        awareness_path = os.path.join(all_folder_path, "awareness.json")
+        #awareness_path = os.path.join(all_folder_path, "awareness.json")
     
     evaluator = ethics.EthicsEval()
     explicit_ethics_res_low, explicit_ethics_res_high = None, None
@@ -223,10 +223,10 @@ def run_truthfulness(
     advfact_path=None,
 ):
     if all_folder_path:
-        # internal_path = os.path.join(all_folder_path, "internal.json")
-        # external_path = os.path.join(all_folder_path, "external.json")
-        #hallucination_path = os.path.join(all_folder_path, "hallucination.json")
-        #sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
+        internal_path = os.path.join(all_folder_path, "internal.json")
+        external_path = os.path.join(all_folder_path, "external.json")
+        hallucination_path = os.path.join(all_folder_path, "hallucination.json")
+        sycophancy_path = os.path.join(all_folder_path, "sycophancy.json")
         advfact_path = os.path.join(all_folder_path, "golden_advfactuality.json")
 
     evaluator = truthfulness.TruthfulnessEval()
