@@ -55,7 +55,7 @@
 - [Citation](#citation)
 - [License](#license)
 
-## **About**
+## 🙋 **About**
 
 We introduce TrustLLM, a comprehensive study of trustworthiness in LLMs, including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions. Specifically, we first propose a set of principles for trustworthy LLMs that span eight different dimensions. Based on these principles, we further establish a benchmark across six dimensions including truthfulness, safety, fairness, robustness, privacy, and machine ethics. 
 We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of over 30 datasets. 
@@ -65,7 +65,7 @@ The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use
 <img src="https://raw.githubusercontent.com/TrustLLMBenchmark/TrustLLM-Website/main/img/benchmark_arch_00.png" width="100%">
 </div>
 
-## **Dataset & Task**
+## 🛎️ **Dataset & Task**
 
 ### **Dataset overview:**
 
@@ -141,7 +141,7 @@ The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use
 | Emotion Classification                       | Accuracy (↑)                              | Classification  | ●    | Emotional Awareness      |
 
 
-## **Before Evaluation**
+## 🧹 **Before Evaluation**
 
 ### **Installation**
 
@@ -193,16 +193,18 @@ download_dataset(save_path='save_path')
 We have added generation section from [version 0.2.0](https://howiehwong.github.io/TrustLLM/changelog.html). Start your generation from [this page](https://howiehwong.github.io/TrustLLM/guides/generation_details.html).
 
 
-## **Evaluation**
+## 🙌 **Evaluation**
 
 We have provided a toolkit that allows you to more conveniently assess the trustworthiness of large language models. Please refer to [the document](https://howiehwong.github.io/TrustLLM/) for more details. 
 
-## **Leaderboard**
+## 🏆 **Leaderboard**
 
 If you want to view the performance of all models or upload the performance of your LLM, please refer to [this link](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
 
+![images/rank_card_00.png](images/rank_card_00.png "ranking")
 
-## **Contribution**
+
+## 📣 **Contribution**
 
 We welcome your contributions, including but not limited to the following:
 
