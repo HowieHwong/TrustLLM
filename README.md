@@ -30,6 +30,7 @@
 
 
 ## Updates & News
+- [23/04/2024] :star: Version 0.3.0: Major updates including bug fixes, enhanced evaluation, and new models added (including ChatGLM3, Llama3-8b, Llama3-70b, GLM4, Mixtral). ([See details](https://howiehwong.github.io/TrustLLM/changelog.html))
 - [20/03/2024] :star: Version 0.2.4: Fixed many bugs & Support Gemini Pro API
 - [01/02/2024] :page_facing_up: Version 0.2.2: See our new paper about the awareness in LLMs! ([link](https://arxiv.org/abs/2401.17882))
 - [29/01/2024] :star: Version 0.2.1: trustllm toolkit now supports (1) Easy evaluation pipeline (2) LLMs in [replicate](https://replicate.com/) and [deepinfra](https://deepinfra.com/) (3) [Azure OpenAI API](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
