@@ -7,13 +7,12 @@
 # Toolkit for "**TrustLLM: Trustworthiness in Large Language Models**"
 
 
-[![Website](https://img.shields.io/badge/Website-%F0%9F%8C%8D-blue?style=flat-square)](https://trustllmbenchmark.github.io/TrustLLM-Website/)
-[![Paper](https://img.shields.io/badge/Paper-%F0%9F%8E%93-lightgrey?style=flat-square)](https://arxiv.org/abs/2401.05561)
-[![Dataset](https://img.shields.io/badge/Dataset-%F0%9F%92%BE-green?style=flat-square)](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset)
-[![Data Map](https://img.shields.io/badge/Data%20Map-%F0%9F%8D%9F-orange?style=flat-square)](https://atlas.nomic.ai/map/f64e87d3-c769-4a90-b15d-9dc833acc8ba/8e9d7045-503b-4ba0-bc64-7201cb7aacee?xs=-16.14086&xf=-1.88776&ys=-7.54937&yf=3.88213)
-[![Leaderboard](https://img.shields.io/badge/Leaderboard-%F0%9F%9A%80-brightgreen?style=flat-square)](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html)
-[![Toolkit Document](https://img.shields.io/badge/Toolkit%20Document-%F0%9F%93%9A-blueviolet?style=flat-square)](https://howiehwong.github.io/TrustLLM/)
-[![Code](https://img.shields.io/badge/Code-%F0%9F%90%99-red?style=flat-square)](https://github.com/HowieHwong/TrustLLM)
+[![Website](https://img.shields.io/badge/Website-%F0%9F%8C%8D-blue?style=for-the-badge&logoWidth=40)](https://trustllmbenchmark.github.io/TrustLLM-Website/)
+[![Paper](https://img.shields.io/badge/Paper-%F0%9F%8E%93-lightgrey?style=for-the-badge&logoWidth=40)](https://arxiv.org/abs/2401.05561)
+[![Dataset](https://img.shields.io/badge/Dataset-%F0%9F%92%BE-green?style=for-the-badge&logoWidth=40)](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset)
+[![Data Map](https://img.shields.io/badge/Data%20Map-%F0%9F%8D%9F-orange?style=for-the-badge&logoWidth=40)](https://atlas.nomic.ai/map/f64e87d3-c769-4a90-b15d-9dc833acc8ba/8e9d7045-503b-4ba0-bc64-7201cb7aacee?xs=-16.14086&xf=-1.88776&ys=-7.54937&yf=3.88213)
+[![Leaderboard](https://img.shields.io/badge/Leaderboard-%F0%9F%9A%80-brightgreen?style=for-the-badge&logoWidth=40)](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html)
+[![Toolkit Document](https://img.shields.io/badge/Toolkit%20Document-%F0%9F%93%9A-blueviolet?style=for-the-badge&logoWidth=40)](https://howiehwong.github.io/TrustLLM/)
 
 
 
@@ -196,7 +195,7 @@ We have added generation section from [version 0.2.0](https://howiehwong.github.
 
 ## **Evaluation**
 
-See our [docs](https://howiehwong.github.io/TrustLLM/) for more details.
+We have provided a toolkit that allows you to more conveniently assess the trustworthiness of large language models. Please refer to [the document](https://howiehwong.github.io/TrustLLM/) for more details. 
 
 ## **Leaderboard**
 
