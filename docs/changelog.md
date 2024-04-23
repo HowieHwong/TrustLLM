@@ -12,6 +12,15 @@ hide:
 - [ ] Downstream application evaluation
 
 
+## **Version 0.3.0**
+
+*Release Date: 23rd Apr, 2024*
+
+- **Support parallel retrieval of embeddings when evaluating AdvlInstruction**
+- **Add exception handling for partial evaluations**
+- **Fixed some bugs**
+- **Add evaluation results for ChatGLM3, GLM-4, Mixtral, Llama3-8b, and Llama3-70b ([check out](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html))**
+
 ## **Version 0.2.3 & 0.2.4**
 
 *Release Date: March 2024*
