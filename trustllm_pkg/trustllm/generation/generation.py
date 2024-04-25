@@ -56,7 +56,7 @@ class LLMGeneration:
             :return: The generated text as a string.
             """
 
-        prompt = prompt2conversation(prompt)
+        prompt = prompt2conversation(prompt, self.model_path)
         inputs = tokenizer([prompt])
         inputs = {k: torch.tensor(v).to(self.device) for k, v in inputs.items()}
         output_ids = model.generate(
