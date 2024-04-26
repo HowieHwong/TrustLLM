@@ -1,4 +1,4 @@
-import os, time
+import time
 import torch
 from fastchat.model import load_model, get_conversation_template
 from trustllm.utils.generation_utils import *
@@ -26,7 +26,6 @@ class LLMGeneration:
                  num_gpus=1,
                  max_new_tokens=512,
                  debug=False,
-                 device=None,
                  ):
         self.model_name = ""
         self.model_path = model_path
