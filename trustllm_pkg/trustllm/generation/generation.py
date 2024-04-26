@@ -26,7 +26,7 @@ class LLMGeneration:
                  num_gpus=1,
                  max_new_tokens=512,
                  debug=False,
-                 device='cuda:0'
+                 device=None,
                  ):
         self.model_name = ""
         self.model_path = model_path
@@ -40,7 +40,7 @@ class LLMGeneration:
         self.debug = debug
         self.online_model_list = get_models()[1]
         self.model_mapping = get_models()[0]
-        self.device = device
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.use_replicate = use_replicate
         self.use_deepinfra = use_deepinfra
         self.model_name = model_mapping.get(self.model_path, "")
