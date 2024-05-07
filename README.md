@@ -37,12 +37,16 @@
 - [20/01/2024] :star: Version 0.2.0 of trustllm toolkit is released! See the [new features](https://howiehwong.github.io/TrustLLM/changelog.html#version-020).
 - [12/01/2024] :surfer: The [dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset), [leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html), and [evaluation toolkit](https://howiehwong.github.io/TrustLLM/) are released!
 
+## 👂**TL;DR**
+
+- TrustLLM (ICML 2024) is a comprehensive framework for studying trustworthiness of large language models, which includes principles, surveys, and benchmarks.
+- This code repository is designed to provide an easy toolkit for evaluating the trustworthiness of LLMs ([See our docs](https://howiehwong.github.io/TrustLLM/)).
 
 
 
 **Table of Content**
 
-- [About](#about)
+- [About TrustLLM](#-about-trustllm)
 - [Dataset & Task](#dataset--task)
   - [Dataset overview:](#dataset-overview)
   - [Task overview:](#task-overview)
@@ -56,7 +60,8 @@
 - [Citation](#citation)
 - [License](#license)
 
-## 🙋 **About**
+
+## 🙋 **About TrustLLM**
 
 We introduce TrustLLM, a comprehensive study of trustworthiness in LLMs, including principles for different dimensions of trustworthiness, established benchmark, evaluation, and analysis of trustworthiness for mainstream LLMs, and discussion of open challenges and future directions. Specifically, we first propose a set of principles for trustworthy LLMs that span eight different dimensions. Based on these principles, we further establish a benchmark across six dimensions including truthfulness, safety, fairness, robustness, privacy, and machine ethics. 
 We then present a study evaluating 16 mainstream LLMs in TrustLLM, consisting of over 30 datasets. 
@@ -191,12 +196,47 @@ download_dataset(save_path='save_path')
 
 ### **Generation**
 
-We have added generation section from [version 0.2.0](https://howiehwong.github.io/TrustLLM/changelog.html). Start your generation from [this page](https://howiehwong.github.io/TrustLLM/guides/generation_details.html).
+We have added generation section from [version 0.2.0](https://howiehwong.github.io/TrustLLM/changelog.html). Start your generation from [this page](https://howiehwong.github.io/TrustLLM/guides/generation_details.html). Here is an example:
+
+```python
+from trustllm.generation.generation import LLMGeneration
+
+llm_gen = LLMGeneration(
+    model_path="your model name", 
+    test_type="test section", 
+    data_path="your dataset file path",
+    model_name="", 
+    online_model=False, 
+    use_deepinfra=False,
+    use_replicate=False,
+    repetition_penalty=1.0,
+    num_gpus=1, 
+    max_new_tokens=512, 
+    debug=False,
+    device='cuda:0'
+)
+
+llm_gen.generation_results()
+```
 
 
 ## 🙌 **Evaluation**
 
-We have provided a toolkit that allows you to more conveniently assess the trustworthiness of large language models. Please refer to [the document](https://howiehwong.github.io/TrustLLM/) for more details. 
+We have provided a toolkit that allows you to more conveniently assess the trustworthiness of large language models. Please refer to [the document](https://howiehwong.github.io/TrustLLM/) for more details. Here is an example:
+
+```python
+from trustllm.task.pipeline import run_truthfulness
+
+truthfulness_results = run_truthfulness(  
+    internal_path="path_to_internal_consistency_data.json",  
+    external_path="path_to_external_consistency_data.json",  
+    hallucination_path="path_to_hallucination_data.json",  
+    sycophancy_path="path_to_sycophancy_data.json",
+    advfact_path="path_to_advfact_data.json"
+)
+```
+
+
 
 ## 🏆 **Leaderboard**
 
