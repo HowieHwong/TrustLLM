@@ -30,6 +30,7 @@
 
 
 ## Updates & News
+- [02/05/2024] 🥂 **TrustLLM has been accepted by ICML 2024! See you in Vienna!**
 - [23/04/2024] :star: Version 0.3.0: Major updates including bug fixes, enhanced evaluation, and new models added (including ChatGLM3, Llama3-8b, Llama3-70b, GLM4, Mixtral). ([See details](https://howiehwong.github.io/TrustLLM/changelog.html))
 - [20/03/2024] :star: Version 0.2.4: Fixed many bugs & Support Gemini Pro API
 - [01/02/2024] :page_facing_up: Version 0.2.2: See our new paper about the awareness in LLMs! ([link](https://arxiv.org/abs/2401.17882))
