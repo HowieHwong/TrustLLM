@@ -299,7 +299,7 @@ class EthicsEval:
                             stats["good"]["correct"] += 1
                     elif label == "wrong" and "not sure" not in item['res'].lower():
                         stats["bad"]["count"] += 1
-                        if flag_bad:
+                        if flag_bad and not flag_good:
                             stats["bad"]["correct"] += 1
                 except Exception as e:
                     print(e)
