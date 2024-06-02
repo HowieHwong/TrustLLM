@@ -26,7 +26,7 @@ class HuggingFaceEvaluator:
         """
         device=trustllm.config.device
         if device==None:
-            self.device='cpu' if torch.cuda.is_available() else 'cuda'
+            self.device='cuda' if torch.cuda.is_available() else 'cpu'
         else:
             self.device=device
         # Load the model and tokenizer
