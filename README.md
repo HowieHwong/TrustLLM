@@ -268,13 +268,12 @@ If you intend to make improvements to the toolkit, please fork the repository fi
 ## **Citation**
 
 ```text
-@misc{sun2024trustllm,
-      title={TrustLLM: Trustworthiness in Large Language Models}, 
-      author={Lichao Sun and Yue Huang and Haoran Wang and Siyuan Wu and Qihui Zhang and Yuan Li and Chujie Gao and Yixin Huang and Wenhan Lyu and Yixuan Zhang and Xiner Li and Zhengliang Liu and Yixin Liu and Yijue Wang and Zhikun Zhang and Bhavya Kailkhura and Caiming Xiong and Chaowei Xiao and Chunyuan Li and Eric Xing and Furong Huang and Hao Liu and Heng Ji and Hongyi Wang and Huan Zhang and Huaxiu Yao and Manolis Kellis and Marinka Zitnik and Meng Jiang and Mohit Bansal and James Zou and Jian Pei and Jian Liu and Jianfeng Gao and Jiawei Han and Jieyu Zhao and Jiliang Tang and Jindong Wang and John Mitchell and Kai Shu and Kaidi Xu and Kai-Wei Chang and Lifang He and Lifu Huang and Michael Backes and Neil Zhenqiang Gong and Philip S. Yu and Pin-Yu Chen and Quanquan Gu and Ran Xu and Rex Ying and Shuiwang Ji and Suman Jana and Tianlong Chen and Tianming Liu and Tianyi Zhou and William Wang and Xiang Li and Xiangliang Zhang and Xiao Wang and Xing Xie and Xun Chen and Xuyu Wang and Yan Liu and Yanfang Ye and Yinzhi Cao and Yong Chen and Yue Zhao},
-      year={2024},
-      eprint={2401.05561},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{huang2024trustllm,
+  title={TrustLLM: Trustworthiness in Large Language Models},
+  author={Lichao Sun and Yue Huang and Haoran Wang and Siyuan Wu and Qihui Zhang and Yuan Li and Chujie Gao and Yixin Huang and Wenhan Lyu and Yixuan Zhang and Xiner Li and Hanchi Sun and Zhengliang Liu and Yixin Liu and Yijue Wang and Zhikun Zhang and Bertie Vidgen and Bhavya Kailkhura and Caiming Xiong and Chaowei Xiao and Chunyuan Li and Eric P. Xing and Furong Huang and Hao Liu and Heng Ji and Hongyi Wang and Huan Zhang and Huaxiu Yao and Manolis Kellis and Marinka Zitnik and Meng Jiang and Mohit Bansal and James Zou and Jian Pei and Jian Liu and Jianfeng Gao and Jiawei Han and Jieyu Zhao and Jiliang Tang and Jindong Wang and Joaquin Vanschoren and John Mitchell and Kai Shu and Kaidi Xu and Kai-Wei Chang and Lifang He and Lifu Huang and Michael Backes and Neil Zhenqiang Gong and Philip S. Yu and Pin-Yu Chen and Quanquan Gu and Ran Xu and Rex Ying and Shuiwang Ji and Suman Jana and Tianlong Chen and Tianming Liu and Tianyi Zhou and William Yang Wang and Xiang Li and Xiangliang Zhang and Xiao Wang and Xing Xie and Xun Chen and Xuyu Wang and Yan Liu and Yanfang Ye and Yinzhi Cao and Yong Chen and Yue Zhao},
+  booktitle={Forty-first International Conference on Machine Learning},
+  year={2024},
+  url={https://openreview.net/forum?id=bWUU0LwwMp}
 }
 ```
 
