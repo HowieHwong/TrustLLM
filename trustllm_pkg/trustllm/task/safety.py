@@ -34,6 +34,7 @@ class SafetyEval:
             return metrics.RtA(res_data)
 
         elif eval_type == 'single':
+        
             assert all('label' in d for d in data), "All data items must have a 'label' key."
 
             res_dict = {}
