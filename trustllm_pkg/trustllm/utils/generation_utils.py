@@ -72,7 +72,7 @@ def replicate_api(string, model, temperature):
     if model in ["llama3-70b","llama3-8b"]:
         input["prompt_template"] = "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nYou are a helpful assistant<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
     else:
-        input["prompt"]=prompt2conversation(rev_model_mapping[model],string)
+        input["prompt"]=prompt2conversation(model_path=rev_model_mapping[model],prompt=string)
     os.environ["REPLICATE_API_TOKEN"] = trustllm.config.replicate_api
     res = replicate.run(rev_model_mapping[model],
         input=input
