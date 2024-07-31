@@ -95,8 +95,7 @@ llm_gen = LLMGeneration(
     repetition_penalty=1.0,
     num_gpus=1, 
     max_new_tokens=512, 
-    debug=False,
-    device='cuda:0'
+    debug=False
 )
 
 llm_gen.generation_results()
@@ -150,7 +149,6 @@ llm_gen.generation_results()
 - `repetition_penalty` (`Optional`, `float`): Repetition penalty setting, default is 1.0.
 - `num_gpus` (`Optional`, `int`): Number of GPUs to use, default is 1.
 - `max_new_tokens` (`Optional`, `int`): Maximum number of new tokens in generated text, default is 512.
-- `debug` (`Optional`, `bool`): Enable debug mode, default is False.
 - `device` (`Optional`, `str`): Specify the device to use, default is 'cuda:0'.
 
 Here is a usage example:
