@@ -282,7 +282,7 @@ class TruthfulnessEval:
 
         for item in codah_data:
             response = item['res']
-            prediction = re.findall(r"\d+", response)[0] if re.findall(r"\d+", response) else "0"
+            prediction = re.findall(r"\d+", response)[0] if re.findall(r"\d+", response) else "-1"
             predictions.append(prediction)
 
         gold_labels = [str(item['answer']) for item in codah_data]
