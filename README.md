@@ -33,7 +33,7 @@
 
 
 ## Updates & News
-- [01/09/2024] **TrustLLM** toolkit has been downloaded for 9000+ times!
+- [01/09/2024] **TrustLLM** toolkit has been downloaded for 4000+ times!
 - [15/07/2024] **TrustLLM** now supports [**UniGen**](https://unigen-framework.github.io/) for dynamic evaluation.
 - [02/05/2024] 🥂 **TrustLLM has been accepted by ICML 2024! See you in Vienna!**
 - [23/04/2024] :star: Version 0.3.0: Major updates including bug fixes, enhanced evaluation, and new models added (including ChatGLM3, Llama3-8b, Llama3-70b, GLM4, Mixtral). ([See details](https://howiehwong.github.io/TrustLLM/changelog.html))
