@@ -25,7 +25,7 @@ setup(
         'python-dotenv',
         'urllib3',
         'anthropic',
-        'google.generativeai',
+        'google.generativeai==0.5.4',
         'google-api-python-client',
         'google.ai.generativelanguage',
         'replicate',
