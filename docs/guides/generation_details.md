@@ -70,8 +70,6 @@ config.claude_api = "claude api"
 
 config.openai_key = "openai api"
 
-config.palm_api = "palm api"
-
 config.ernie_client_id = "ernie client id"
 
 config.ernie_client_secret = "ernie client secret"

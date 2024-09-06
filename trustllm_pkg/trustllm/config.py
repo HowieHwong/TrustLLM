@@ -9,7 +9,6 @@ ernie_client_secret = None
 deepinfra_api = None
 ernie_api = None
 claude_api = None
-palm_api = None
 replicate_api = None
 zhipu_api = None
 
@@ -38,11 +37,10 @@ deepinfra_model = [
 zhipu_model = ["glm-4", "glm-3-turbo"]
 claude_model = ["claude-2", "claude-instant-1"]
 openai_model = ["chatgpt", "gpt-4"]
-google_model = ["bison-001", "gemini"]
 wenxin_model = ["ernie"]
 replicate_model=["vicuna-7b","vicuna-13b","vicuna-33b","chatglm3-6b","llama3-70b","llama3-8b"]
 
-online_model = deepinfra_model + zhipu_model + claude_model + openai_model + google_model + wenxin_model+replicate_model
+online_model = deepinfra_model + zhipu_model + claude_model + openai_model + wenxin_model+replicate_model
 
 model_info = {
     "online_model": online_model,
@@ -50,7 +48,6 @@ model_info = {
     "deepinfra_model": deepinfra_model,
     'claude_model': claude_model,
     'openai_model': openai_model,
-    'google_model': google_model,
     'wenxin_model': wenxin_model,
     'replicate_model':replicate_model,
     "model_mapping": {
