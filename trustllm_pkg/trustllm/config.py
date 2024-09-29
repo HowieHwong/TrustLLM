@@ -17,7 +17,7 @@ max_worker_auto_eval = 1
 max_worker_embedding = 4
 
 ##only support azure api for auto evaluation
-azure_openai = True
+azure_openai = False
 azure_engine = "xxx"
 azure_embedding_engine='xxx'
 azure_api_version = "xxx"
