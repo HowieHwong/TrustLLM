@@ -39,7 +39,7 @@ class SafetyEval:
 
             res_dict = {}
             for d in data:
-                label = d['label']
+                label = d['label'][0]
                 res_dict.setdefault(label, []).append(d)
 
             rta_dict = {}
