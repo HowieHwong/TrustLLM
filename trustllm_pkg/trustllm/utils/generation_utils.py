@@ -56,7 +56,16 @@ def get_res_openai(string, model, temperature):
     api_key = trustllm.config.openai_key
     client = OpenAI(api_key=api_key)
     response = client.chat.completions.create(model=gpt_model, messages=[{"role": "user", "content": string}], temperature=temperature)
+    
+    response_text=response.choices[0].message.content
+    if response_text:
+        return response_text
+    else:
+        ValueError("Empty response from API")
+    
     return response.choices[0].message.content if response.choices[0].message.content else ValueError("Empty response from API")
+
+
 
 # Function to generate responses using Deepinfra's API
 def deepinfra_api(string, model, temperature):

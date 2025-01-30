@@ -1,14 +1,14 @@
 import time
 import torch
-from fastchat.model import load_model, get_conversation_template
-from trustllm.utils.generation_utils import *
-from dotenv import load_dotenv
 import os
 import json
 import threading
-from tqdm import tqdm
 import urllib3
 import traceback
+from dotenv import load_dotenv
+from tqdm import tqdm
+from fastchat.model import load_model
+from trustllm.utils.generation_utils import *
 
 load_dotenv()
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -26,6 +26,7 @@ class LLMGeneration:
                  num_gpus=1,
                  max_new_tokens=512,
                  debug=False,
+                 device=''
                  ):
         self.model_name = ""
         self.model_path = model_path
@@ -39,10 +40,13 @@ class LLMGeneration:
         self.debug = debug
         self.online_model_list = get_models()[1]
         self.model_mapping = get_models()[0]
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        if not device:
+            self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        else:
+            self.device = device
         self.use_replicate = use_replicate
         self.use_deepinfra = use_deepinfra
-        self.model_name = model_mapping.get(self.model_path, "")
+        self.model_name = self.model_mapping.get(self.model_path, "")
 
     def _generation_hf(self, prompt, tokenizer, model, temperature):
         """
@@ -92,7 +96,7 @@ class LLMGeneration:
             """
 
         try:
-            if (model_name in self.online_model_list) and ((self.online_model and self.use_replicate) or (self.online_model and self.use_deepinfra)):
+            if model_name in self.online_model_list and self.online_model and (self.use_replicate or self.use_deepinfra):
                 ans = gen_online(model_name, prompt, temperature, replicate=self.use_replicate, deepinfra=self.use_deepinfra)
             else:
                 ans = self._generation_hf(prompt, tokenizer, model, temperature)
@@ -312,7 +316,9 @@ class LLMGeneration:
                     print(f"Test function successful on attempt {attempt + 1}")
                     return state
             except Exception as e:
-                print(f"Test function failed on attempt {attempt + 1}: {e}")
+                
+                print(f"Test function failed on attempt {attempt + 1}")
+                import traceback; traceback.print_exc();
                 print(f"Retrying in {retry_interval} seconds...")
                 time.sleep(retry_interval)
 
