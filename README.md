@@ -90,17 +90,7 @@ The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use
 git clone git@github.com:HowieHwong/TrustLLM.git
 ```
 
-**Installation via `pip`:**
 
-```shell
-pip install trustllm
-```
-
-**Installation via `conda`:**
-
-```sh
-conda install -c conda-forge trustllm
-```
 
 
 
