@@ -114,8 +114,6 @@ pip install trustllm
 conda install -c conda-forge trustllm
 ```
 
-
-
 ### **Dataset Download**
 
 Download TrustLLM dataset:
