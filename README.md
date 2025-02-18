@@ -52,19 +52,23 @@
 
 **Table of Content**
 
-- [About TrustLLM](#-about-trustllm)
-- [Before Evaluation](#before-evaluation)
-  - [Installation](#installation)
-  - [Dataset Download](#dataset-download)
-  - [Generation](#generation)
-- [Evaluation](#evaluation)
-- [Dataset & Task](#dataset--task)
-  - [Dataset overview:](#dataset-overview)
-  - [Task overview:](#task-overview)
-- [Leaderboard](#leaderboard)
-- [Contribution](#contribution)
-- [Citation](#citation)
-- [License](#license)
+- [Toolkit for "**TrustLLM: Trustworthiness in Large Language Models**"](#toolkit-for-trustllm-trustworthiness-in-large-language-models)
+  - [Updates \& News](#updates--news)
+  - [👂**TL;DR**](#tldr)
+  - [🙋 **About TrustLLM**](#-about-trustllm)
+  - [🧹 **Before Evaluation**](#-before-evaluation)
+    - [**Installation**](#installation)
+    - [**Dataset Download**](#dataset-download)
+    - [**Generation**](#generation)
+  - [🙌 **Evaluation**](#-evaluation)
+  - [🛎️ **Dataset \& Task**](#️-dataset--task)
+    - [**Dataset overview:**](#dataset-overview)
+    - [**Task overview:**](#task-overview)
+  - [🏆 **Leaderboard**](#-leaderboard)
+  - [📣 **Contribution**](#-contribution)
+  - [**⏰ TODO in Coming Versions**](#-todo-in-coming-versions)
+  - [**Citation**](#citation)
+  - [**License**](#license)
 
 
 ## 🙋 **About TrustLLM**
@@ -83,39 +87,34 @@ The [document](https://howiehwong.github.io/TrustLLM/#about) explains how to use
 ## 🧹 **Before Evaluation**
 
 ### **Installation**
-
-**Installation via Github (recommended):**
-
-```shell
-git clone git@github.com:HowieHwong/TrustLLM.git
-```
-
-**Installation via `pip`:**
-
-```shell
-pip install trustllm
-```
-
-**Installation via `conda`:**
-
-```sh
-conda install -c conda-forge trustllm
-```
-
-
-
 Create a new environment:
 
 ```shell
 conda create --name trustllm python=3.9
 ```
 
-Install required packages:
+**Installation via Github (recommended):**
 
 ```shell
-cd trustllm_pkg
+git clone git@github.com:HowieHwong/TrustLLM.git
+cd TrustLLM/trustllm_pkg
 pip install .
 ```
+
+
+**Installation via `pip` (deprecated):**
+
+```shell
+pip install trustllm
+```
+
+**Installation via `conda` (deprecated):**
+
+```sh
+conda install -c conda-forge trustllm
+```
+
+
 
 ### **Dataset Download**
 
