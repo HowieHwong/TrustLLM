@@ -32,10 +32,9 @@
 </div>
 
 
-## Updates & s
+## Updates & News
 
-- [02/20/2025] Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) is a comprehensive framework for trustworthiness in generative foundation models that provides Guidelines, Assessment, and Perspective across multiple dimensions and model types including text-to-image models, large language models, and vision-language models. Additionally, we open-source our [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) toolkit which serves as a dynamic evaluation platform for trustworthiness in generative foundation models, enabling adaptive and iterative assessments through modular components.
-
+- [02/20/2024] Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) is a comprehensive framework for trustworthiness in generative foundation models that provides Guidelines, Assessment, and Perspective across multiple dimensions and model types including text-to-image models, large language models, and vision-language models. We also open-source our [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) toolkit serving as a dynamic evaluation platform for trustworthiness in generative foundation models.
 - [01/09/2024] **TrustLLM** toolkit has been downloaded for 4000+ times!
 - [15/07/2024] **TrustLLM** now supports [**UniGen**](https://unigen-framework.github.io/) for dynamic evaluation.
 - [02/05/2024] 🥂 **TrustLLM has been accepted by ICML 2024! See you in Vienna!**
@@ -56,7 +55,7 @@
 **Table of Content**
 
 - [Toolkit for "**TrustLLM: Trustworthiness in Large Language Models**"](#toolkit-for-trustllm-trustworthiness-in-large-language-models)
-  - [Updates \& s](#updates--s)
+  - [Updates \& News](#updates--news)
   - [👂**TL;DR**](#tldr)
   - [🙋 **About TrustLLM**](#-about-trustllm)
   - [🧹 **Before Evaluation**](#-before-evaluation)
