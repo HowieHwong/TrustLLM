@@ -32,7 +32,10 @@
 </div>
 
 
-## Updates & News
+## Updates & s
+
+- [02/20/2025] Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) is a comprehensive framework for trustworthiness in generative foundation models that provides Guidelines, Assessment, and Perspective across multiple dimensions and model types including text-to-image models, LLMs, and vision-language models. Additionally, we open-source our [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) toolkit which serves as a dynamic evaluation platform for trustworthiness in generative foundation models, enabling adaptive and iterative assessments through modular components.
+
 - [01/09/2024] **TrustLLM** toolkit has been downloaded for 4000+ times!
 - [15/07/2024] **TrustLLM** now supports [**UniGen**](https://unigen-framework.github.io/) for dynamic evaluation.
 - [02/05/2024] 🥂 **TrustLLM has been accepted by ICML 2024! See you in Vienna!**
@@ -53,7 +56,7 @@
 **Table of Content**
 
 - [Toolkit for "**TrustLLM: Trustworthiness in Large Language Models**"](#toolkit-for-trustllm-trustworthiness-in-large-language-models)
-  - [Updates \& News](#updates--news)
+  - [Updates \& s](#updates--s)
   - [👂**TL;DR**](#tldr)
   - [🙋 **About TrustLLM**](#-about-trustllm)
   - [🧹 **Before Evaluation**](#-before-evaluation)
@@ -233,7 +236,7 @@ truthfulness_results = run_truthfulness(
 | Adversarial Perturbation in Open-Ended Tasks | Embedding similarity (↑)                  | Generation      | ◐    | Natural Noise            |
 | OOD Detection                                | RtA (↑)                                   | Generation      | ○    | Out of Domain (OOD)      |
 | OOD Generalization                           | Micro F1 (↑)                              | Classification  | ○    | Out of Domain (OOD)      |
-| Agreement on Privacy Information             | Pearson’s correlation (↑)                 | Classification  | ●    | Privacy Awareness        |
+| Agreement on Privacy Information             | Pearson's correlation (↑)                 | Classification  | ●    | Privacy Awareness        |
 | Privacy Scenario Test                        | RtA (↑)                                   | Generation      | ○    | Privacy Awareness        |
 | Probing Privacy Information Usage            | RtA (↑), Accuracy (↓)                     | Generation      | ◐    | Privacy Leakage          |
 | Moral Action Judgement                       | Accuracy (↑)                              | Classification  | ◐    | Implicit Ethics          |
