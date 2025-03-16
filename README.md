@@ -1,4 +1,3 @@
-
 <div align="center">
 
 
@@ -34,7 +33,11 @@
 
 ## Updates & News
 
-- [02/20/2025] Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) provides a comprehensive guidelines, wssessment, and perspective for trustworthiness across multiple generative models, and [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) offers a dynamic evaluation platform.
+
+
+- [02/20/2025] Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) provides a comprehensive guidelines, assessment, and perspective for trustworthiness across multiple generative models, and [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) offers a dynamic evaluation platform.
+<details>
+<summary>Click to expand/collapse more</summary>
 - [01/09/2024] **TrustLLM** toolkit has been downloaded for 4000+ times!
 - [15/07/2024] **TrustLLM** now supports [**UniGen**](https://unigen-framework.github.io/) for dynamic evaluation.
 - [02/05/2024] 🥂 **TrustLLM has been accepted by ICML 2024! See you in Vienna!**
@@ -44,6 +47,8 @@
 - [29/01/2024] :star: Version 0.2.1: trustllm toolkit now supports (1) Easy evaluation pipeline (2) LLMs in [replicate](https://replicate.com/) and [deepinfra](https://deepinfra.com/) (3) [Azure OpenAI API](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
 - [20/01/2024] :star: Version 0.2.0 of trustllm toolkit is released! See the [new features](https://howiehwong.github.io/TrustLLM/changelog.html#version-020).
 - [12/01/2024] :surfer: The [dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset), [leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html), and [evaluation toolkit](https://howiehwong.github.io/TrustLLM/) are released!
+
+</details>
 
 ## 👂**TL;DR**
 
