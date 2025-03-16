@@ -34,7 +34,7 @@
 
 ## Updates & News
 
-- [02/20/2024] Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) provides a comprehensive guidelines, wssessment, and perspective for trustworthiness across multiple generative models, and [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) offers a dynamic evaluation platform.
+- [02/20/2025] Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) provides a comprehensive guidelines, wssessment, and perspective for trustworthiness across multiple generative models, and [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) offers a dynamic evaluation platform.
 - [01/09/2024] **TrustLLM** toolkit has been downloaded for 4000+ times!
 - [15/07/2024] **TrustLLM** now supports [**UniGen**](https://unigen-framework.github.io/) for dynamic evaluation.
 - [02/05/2024] 🥂 **TrustLLM has been accepted by ICML 2024! See you in Vienna!**
