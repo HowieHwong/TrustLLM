@@ -35,7 +35,7 @@
 
 - [02/20/2025] Try our latest toolkit: Our new work **TrustGen** and **TrustEval** toolkit has been released! [TrustGen](https://trustgen.github.io/) provides comprehensive guidelines, assessment, and perspective for trustworthiness across multiple generative models, and [TrustEval](https://github.com/TrustGen/TrustEval-toolkit) offers a dynamic evaluation platform.
 
-- [01/09/2024] **TrustLLM** toolkit has been downloaded for 4000+ times!
+-  **TrustLLM** toolkit has been downloaded for 9000+ times!
   
 <details>
 <summary>Click to expand/collapse more</summary>
