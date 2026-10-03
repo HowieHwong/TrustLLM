@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    name: Offline checks (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: trustllm_pkg/pyproject.toml
+      - run: python -m pip install -e './trustllm_pkg[dev]'
+      - run: python -m ruff check .
+      - run: python -m compileall -q trustllm_pkg/trustllm
+      - run: python -m pytest
+      - run: python -m build trustllm_pkg --outdir dist
+      - run: python -m twine check dist/*
+      - name: Verify wheel outside the source checkout
+        run: |
+          python -m pip uninstall -y trustllm
+          python -m pip install --no-deps dist/*.whl
+          cd "$RUNNER_TEMP"
+          python -c "import trustllm.config; from trustllm.dataset_download import download_dataset"
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e './trustllm_pkg[docs]'
+      - run: python -m mkdocs build --strict

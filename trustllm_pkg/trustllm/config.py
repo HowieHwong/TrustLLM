@@ -1,29 +1,35 @@
-# evaluation api setting
-openai_key = "" #TODO
-openai_api_base=None
-perspective_key = None
+"""Runtime configuration. Export environment variables before importing TrustLLM.
 
-# generation api setting
-ernie_client_id = None
-ernie_client_secret = None
-deepinfra_api = None
-ernie_api = None
-claude_api = None
-palm_api = None
-replicate_api = None
-zhipu_api = None
+Existing callers may still override these module attributes in Python.
+A .env file is not loaded implicitly; call dotenv.load_dotenv() first if needed.
+"""
+
+import os
+
+openai_key = os.getenv("OPENAI_API_KEY", "")
+openai_api_base = os.getenv("OPENAI_BASE_URL")
+perspective_key = os.getenv("PERSPECTIVE_API_KEY")
+
+ernie_client_id = os.getenv("ERNIE_CLIENT_ID")
+ernie_client_secret = os.getenv("ERNIE_CLIENT_SECRET")
+deepinfra_api = os.getenv("DEEPINFRA_API_TOKEN")
+ernie_api = os.getenv("ERNIE_API_KEY")
+claude_api = os.getenv("ANTHROPIC_API_KEY")
+palm_api = os.getenv("PALM_API_KEY")
+replicate_api = os.getenv("REPLICATE_API_TOKEN")
+zhipu_api = os.getenv("ZHIPU_API_KEY")
+gemini_api = os.getenv("GEMINI_API_KEY")
 
 max_worker_auto_eval = 1
 max_worker_embedding = 4
 
-##only support azure api for auto evaluation
-azure_openai = False
-azure_engine = "xxx"
-azure_embedding_engine='xxx'
-azure_api_version = "xxx"
-azure_api_base = "xxx"
-azure_api_key=None
-gemini_api = None
+# Azure is supported by the automatic evaluator.
+azure_openai = os.getenv("AZURE_OPENAI_ENABLED", "false").lower() in {"1", "true", "yes"}
+azure_engine = os.getenv("AZURE_OPENAI_DEPLOYMENT", "xxx")
+azure_embedding_engine = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "xxx")
+azure_api_version = os.getenv("AZURE_OPENAI_API_VERSION", "xxx")
+azure_api_base = os.getenv("AZURE_OPENAI_ENDPOINT", "xxx")
+azure_api_key = os.getenv("AZURE_OPENAI_API_KEY")
 
 device=None
 

@@ -1,51 +1,34 @@
+"""Download the benchmark archive without importing model dependencies."""
+
+from pathlib import Path
+from tempfile import TemporaryFile
+from zipfile import ZipFile
+
 import requests
-import os
-import zipfile
+
+DATASET_URL = "https://raw.githubusercontent.com/HowieHwong/TrustLLM/main/dataset/dataset.zip"
+
+
 def download_dataset(save_path=None):
+    """Extract the GitHub dataset archive under ``save_path`` (default: ``data``).
+
+    The archive contains a ``dataset/`` directory, so the default dataset root
+    for generation is ``data/dataset``. Existing dataset files are overwritten.
+    Network, HTTP and ZIP errors propagate to the caller; partial downloads are
+    discarded. Returns None for compatibility with the original helper.
     """
-    Download a dataset from Hugging Face and save it locally.
-
-    Args:
-    - save_path (str, optional): The local path to save the dataset. If None, uses default path.
-
-    Returns:
-    - None
-    """
-    repo = 'HowieHwong/TrustLLM'
-    branch = 'main'
-    folder_path = 'dataset'
-    # Ensure the output directory exists
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
-
-    # GitHub API endpoint for contents of the repository
-    api_url = f"https://api.github.com/repos/{repo}/contents/{folder_path}?ref={branch}"
-
-    response = requests.get(api_url)
-    if response.status_code == 200:
-        items = response.json()
-        for item in items:
-            if item['type'] == 'file':
-                print(f"Downloading {item['name']}...")
-                file_response = requests.get(item['download_url'])
-                if file_response.status_code == 200:
-                    with open(os.path.join(save_path, item['name']), 'wb') as file:
-                        file.write(file_response.content)
-                else:
-                    print(f"Failed to download {item['name']}")
-            else:
-                print(f"Skipping {item['name']}, as it's not a file.")
-    else:
-        print("Failed to fetch repository data.")
-        
-
-    zip_path = os.path.join(save_path, "dataset.zip")
-
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall(save_path)
-
-    # Delete the ZIP file after extraction
-    os.remove(zip_path)
-
-    
-
+    destination = Path(save_path if save_path is not None else "data").resolve()
+    with TemporaryFile() as archive:
+        with requests.get(DATASET_URL, stream=True, timeout=(10, 120)) as response:
+            response.raise_for_status()
+            for chunk in response.iter_content(chunk_size=1024 * 1024):
+                archive.write(chunk)
+        archive.seek(0)
+        with ZipFile(archive) as dataset:
+            # Validate all paths before writing any archive member.
+            for member in dataset.infolist():
+                target = (destination / member.filename).resolve()
+                if not target.is_relative_to(destination):
+                    raise ValueError(f"Unsafe archive path: {member.filename}")
+            destination.mkdir(parents=True, exist_ok=True)
+            dataset.extractall(destination)

@@ -179,3 +179,11 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
 test.ipynb
 test.py
+
+# Local IDE settings, credentials, datasets and experiment outputs
+.idea/
+.env.*
+!.env.example
+/data/
+/generation_results/
+/evaluation_results/

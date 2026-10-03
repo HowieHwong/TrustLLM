@@ -1,53 +1,27 @@
-name: "MkDocs Publish Docs on GitHub Pages CI"
-on:
-  # Manually trigger workflow
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: Build MkDocs from Branch (Optional)
-        required: false
-  # Trigger when a push happens 
-  # to select branches.
-  push:
-    branches:
-      - master
-      - main
-      #- add_mkdocs_workflow
+name: Publish documentation
 
-env:
-  PYTHON_VERSION: "3.9"
-  USER_SPECIFIED_BRANCH: ${{ github.event.inputs.branch }}
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['docs/**', 'mkdocs.yml', '.github/workflows/mkdocs-publish-ghpages.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: documentation-deploy
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python runtime
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Install Python dependencies for MkDocs
-        run: |
-          # pip install -r requirements/docs.txt
-          pip install mkdocs-material
-
-      - name: Deploy documentation
-        env:
-          FONTAWESOME_KIT: ${{ secrets.FONTAWESOME_KIT }}
-        run: |
-          # Check if user-provided branch exists and 
-          # then switch to that branch.
-          if [[ -z $(git branch --list "${{ env.USER_SPECIFIED_BRANCH }}") ]]; \
-            then (\
-              echo "Switching to branch: ${{ env.USER_SPECIFIED_BRANCH }}" && \
-              git checkout ${{ env.USER_SPECIFIED_BRANCH }} \
-            ); else USER_SPECIFIED_BRANCH=${GITHUB_REF##*/} ; fi && \
-          echo "Current Git Branch: ${USER_SPECIFIED_BRANCH}"
-          
-          # Begin Deploying MkDocs
-          mkdocs gh-deploy --force
-          mkdocs --version
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e './trustllm_pkg[docs]'
+      - run: python -m mkdocs gh-deploy --strict --force

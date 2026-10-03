@@ -10,19 +10,18 @@ nav:
   - Guide:
     - Generation: guides/generation_details.md
     - Evaluation: guides/evaluation.md
+  - Benchmark: benchmark.md
+  - Development: development.md
   - Changelog: changelog.md
   - FAQ: faq.md
 
 theme:
-  custom_dir: images/
   name: material
-  icon:
-    logo: img.png
   font:
     text: Ubuntu
     code: Ubuntu Mono
-  favicon: img.png
-  logo: img.png
+  favicon: assets/icon.png
+  logo: assets/logo.png
   features:
     - navigation.tabs
     - navigation.sections
@@ -56,6 +55,4 @@ markdown_extensions:
       permalink: true
 
 extra_javascript:
-  - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

@@ -40,7 +40,7 @@ The `LLMGeneration` class is designed for result generation, supporting the use 
 
 **Dataset**
 
-You should firstly download TrustLLM dataset ([details](https://howiehwong.github.io/TrustLLM/index.html#dataset-download)) and the downloaded dataset dict has the following structure:
+You should firstly download TrustLLM dataset ([details](https://github.com/HowieHwong/TrustLLM#3-prepare-the-dataset)) and the downloaded dataset dict has the following structure:
 
 ```text
 |-TrustLLM
@@ -88,7 +88,6 @@ llm_gen = LLMGeneration(
     model_path="your model name", 
     test_type="test section", 
     data_path="your dataset file path",
-    model_name="", 
     online_model=False, 
     use_deepinfra=False,
     use_replicate=False,

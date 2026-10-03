@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trustllm"
+version = "0.3.0"
+description = "Tools for evaluating the trustworthiness of large language models"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Yue Huang & Siyuan Wu & Haoran Wang", email = "trustllm.benchmark@gmail.com"}]
+dependencies = ["requests>=2.31,<3"]
+
+[project.urls]
+Homepage = "https://trustllmbenchmark.github.io/TrustLLM-Website/"
+Repository = "https://github.com/HowieHwong/TrustLLM"
+Documentation = "https://howiehwong.github.io/TrustLLM/"
+Issues = "https://github.com/HowieHwong/TrustLLM/issues"
+
+[project.optional-dependencies]
+# Historical runtime dependencies; provider compatibility is not covered by offline CI.
+benchmark = [
+    "transformers",
+    "huggingface_hub",
+    "peft",
+    "numpy>=1.18.1",
+    "scipy",
+    "pandas>=1.0.3",
+    "scikit-learn",
+    "openai>=1.0.0",
+    "tqdm",
+    "tenacity",
+    "datasets",
+    "fschat[model_worker]",
+    "python-dotenv",
+    "urllib3",
+    "anthropic",
+    "google.generativeai==0.5.4",
+    "google-api-python-client",
+    "google.ai.generativelanguage",
+    "replicate",
+    "zhipuai>=2.0.1"
+]
+dev = ["pytest>=8,<9", "ruff>=0.9,<1", "build>=1.2,<2", "twine>=6,<7"]
+docs = ["mkdocs>=1.6,<2", "mkdocs-material>=9.5,<10"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["trustllm*"]
+
+[tool.setuptools.package-data]
+trustllm = ["prompt/*.json"]
