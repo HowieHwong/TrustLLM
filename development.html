@@ -11,8 +11,10 @@
       
       
       
+        <link rel="prev" href="benchmark.html">
       
-        <link rel="next" href="guides/generation_details.html">
+      
+        <link rel="next" href="changelog.html">
       
       
         
@@ -23,7 +25,7 @@
     
     
       
-        <title>TrustLLM</title>
+        <title>Development - TrustLLM</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#trustllm" class="md-skip">
+        <a href="#development" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Development
             
           </span>
         </div>
@@ -206,10 +208,8 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="index.html" class="md-tabs__link">
         
   
@@ -266,8 +266,10 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
+  
+    <li class="md-tabs__item md-tabs__item--active">
       <a href="development.html" class="md-tabs__link">
         
   
@@ -355,37 +357,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
         
   
   
@@ -401,48 +376,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#start-here" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Start here
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#research" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Research
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -593,10 +526,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="development.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="development.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -612,6 +554,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -690,36 +633,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#start-here" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Start here
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#research" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Research
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -735,26 +648,39 @@
 
 
 
-<h1 id="trustllm">TrustLLM<a class="headerlink" href="#trustllm" title="Permanent link">&para;</a></h1>
-<p>TrustLLM is the toolkit for <strong>TrustLLM: Trustworthiness in Large Language Models (ICML 2024)</strong>, covering truthfulness, safety, fairness, robustness, privacy, and machine ethics.</p>
-<h2 id="start-here">Start here<a class="headerlink" href="#start-here" title="Permanent link">&para;</a></h2>
-<p>For the maintained installation commands and runnable examples, follow the
-<a href="https://github.com/HowieHwong/TrustLLM#quickstart">repository quickstart</a>.
-The base installation supports dataset utilities and offline checks. Generation
-and evaluation require the <code>benchmark</code> extra; historical provider integrations
-may require further compatibility work.</p>
+<h1 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h1>
+<h1 id="contributing-to-trustllm">Contributing to TrustLLM<a class="headerlink" href="#contributing-to-trustllm" title="Permanent link">&para;</a></h1>
+<p>Contributions that make the benchmark easier to reproduce are welcome: bug reports, documentation, regression tests, and focused changes to model or evaluation adapters.</p>
+<h2 id="set-up-a-development-environment">Set up a development environment<a class="headerlink" href="#set-up-a-development-environment" title="Permanent link">&para;</a></h2>
+<p>From the repository root:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'./trustllm_pkg[dev,docs]'</span>
+</code></pre></div>
+<p>On Windows PowerShell, activate with <code>.venv\Scripts\Activate.ps1</code>.
+Add the <code>benchmark</code> extra only when working with generation/evaluation dependencies.
+The base install and offline tests need neither API credentials nor a GPU.</p>
+<h2 id="validate-a-change">Validate a change<a class="headerlink" href="#validate-a-change" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>.
+python<span class="w"> </span>-m<span class="w"> </span>compileall<span class="w"> </span>-q<span class="w"> </span>trustllm_pkg/trustllm
+python<span class="w"> </span>-m<span class="w"> </span>pytest
+python<span class="w"> </span>-m<span class="w"> </span>build<span class="w"> </span>trustllm_pkg<span class="w"> </span>--outdir<span class="w"> </span>dist
+python<span class="w"> </span>-m<span class="w"> </span>twine<span class="w"> </span>check<span class="w"> </span>dist/*
+python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>build<span class="w"> </span>--strict
+</code></pre></div>
+<p>The initial lint gate checks syntax and a small set of correctness rules across the repository. It does not claim the legacy code is fully lint-clean or reformat research code wholesale. New code should use four-space indentation, clear names, and docstrings for public behavior; <code>.editorconfig</code> captures the shared text conventions.</p>
+<h2 id="scope-and-testing">Scope and testing<a class="headerlink" href="#scope-and-testing" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="guides/generation_details.html">Generation</a>: historical model adapters and response generation.</li>
-<li><a href="guides/evaluation.html">Evaluation</a>: input requirements, tasks, and metrics.</li>
-<li><a href="benchmark.html">Benchmark reference</a>: datasets and task overview.</li>
-<li><a href="development.html">Development</a>: setup, local checks, and contribution guidance.</li>
-<li><a href="changelog.html">Changelog</a>: historical releases.</li>
+<li>Keep changes focused; preserve public function signatures and output keys unless a migration is documented.</li>
+<li>Add a regression test for a behavior change. Mock network requests and use temporary paths so default tests remain offline and do not spend API credits.</li>
+<li>Changes to prompts, labels, datasets, aggregation, or metric definitions can change benchmark scores. Explain the impact and compare against fixed fixtures.</li>
+<li>State exactly which live provider or GPU tests you ran, including model ID and environment. Offline CI alone is not evidence that these integrations work.</li>
+<li>Never commit credentials, downloaded models, private evaluation data, or generated output. Use <code>.env.example</code> as the configuration template.</li>
 </ul>
-<h2 id="research">Research<a class="headerlink" href="#research" title="Permanent link">&para;</a></h2>
-<p><a href="https://arxiv.org/abs/2401.05561">Paper</a> ·
-<a href="https://trustllmbenchmark.github.io/TrustLLM-Website/">Project website</a> ·
-<a href="https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset">Dataset</a> ·
-<a href="https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html">Leaderboard</a></p>
+<h2 id="submit-a-contribution">Submit a contribution<a class="headerlink" href="#submit-a-contribution" title="Permanent link">&para;</a></h2>
+<p>Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.</p>
+<p>The Python package lives in <code>trustllm_pkg</code>; its <code>pyproject.toml</code> is the source of package metadata. The root <code>pyproject.toml</code> configures development tools. Release automation builds from <code>trustllm_pkg</code>, and documentation deployment runs separately from pull-request checks.</p>
 
 
 
