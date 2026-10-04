@@ -1,4 +1,4 @@
-<p align="center"><img src="images/banner.svg" alt="TrustLLM" width="100%"></p>
+<p align="center"><img src="images/logo.png" alt="TrustLLM" width="760"></p>
 <p align="center"><a href="README.md">English</a> · <a href="https://arxiv.org/abs/2401.05561">论文</a> · <a href="https://howiehwong.github.io/TrustLLM/">文档</a> · <a href="https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset">数据集</a></p>
 
 **用同一套流程测试本地模型和 API 模型。** TrustLLM 围绕真实性、安全性、公平性、鲁棒性、隐私和机器伦理六个维度，提供数据下载、回复生成和评测工具。

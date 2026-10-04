@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="images/banner.svg" alt="TrustLLM — Trustworthiness in Large Language Models" width="100%">
+  <img src="images/logo.png" alt="TrustLLM — Trustworthiness in Large Language Models" width="760">
 </p>
+<p align="center"><sub>ICML 2024 &nbsp; · &nbsp; TRUSTWORTHINESS IN LARGE LANGUAGE MODELS</sub></p>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2401.05561">Paper</a> &nbsp; / &nbsp;
@@ -9,21 +10,8 @@
   <a href="https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html">Leaderboard</a> &nbsp; / &nbsp;
   <a href="README.zh-CN.md">简体中文</a>
 </p>
-<p align="center">
-  <a href="https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml"><img src="https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <img src="https://img.shields.io/badge/Python-3.9%2B-3476AB" alt="Python 3.9+">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-17877e" alt="MIT License"></a>
-</p>
 
-**Evaluate how much you can trust a language model.** TrustLLM brings together six dimensions of trustworthiness, the ICML 2024 benchmark, and a shared workflow for local models and model APIs.
-
-<table>
-<tr>
-<td width="33%"><b>Bring your model</b><br>Hugging Face weights, a local checkpoint, or an OpenAI-compatible API.</td>
-<td width="33%"><b>Start with five samples</b><br>One CLI and Python API. Download data without cloning this repository.</td>
-<td width="33%"><b>Keep the evidence</b><br>Sample checkpoints, input hashes, run settings, and a portable HTML report.</td>
-</tr>
-</table>
+TrustLLM is an open research toolkit for evaluating the trustworthiness of large language models across **six dimensions**. Run the ICML 2024 benchmark with local weights or a model API, and keep the data, settings, and results together.
 
 ## Start here
 
@@ -129,6 +117,6 @@ The original generation engine is archived under `trustllm.generation.legacy`. G
 
 ## Research & development
 
-[Contributing](CONTRIBUTING.md) · [Design references](docs/design.md) · [Changelog](docs/changelog.md) · [Issues](https://github.com/HowieHwong/TrustLLM/issues)
+[CI checks](https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml) · [Contributing](CONTRIBUTING.md) · [Design references](docs/design.md) · [Changelog](docs/changelog.md) · [Issues](https://github.com/HowieHwong/TrustLLM/issues)
 
 If TrustLLM supports your research, please cite the [ICML 2024 paper](https://openreview.net/forum?id=bWUU0LwwMp). Full BibTeX: [CITATION.bib](CITATION.bib). Code: [MIT](LICENSE). Dataset terms remain with the original sources.
