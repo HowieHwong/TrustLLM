@@ -1,3 +1,9 @@
+# Scoring model responses
+
+For the current CLI, install the `eval` extra and run `python -m trustllm evaluate --task safety --data <full-run-directory>`. See [the running guide](running.md) for installation and output paths. The sections below document the original task-specific Python APIs. Full response sets are recommended: small generation smoke tests can omit groups needed by these scorers.
+
+Set `OPENAI_API_KEY`, `OPENAI_BASE_URL` and `OPENAI_JUDGE_MODEL` before importing evaluation modules when using an API judge. Individual historical examples below may use older model IDs. Scoring can download a classifier or call paid judge/embedding services; the offline tests do not validate these complete external integrations.
+
 
 ## **Start Your Evaluation**
 

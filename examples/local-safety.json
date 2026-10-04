@@ -1,0 +1,10 @@
+{
+  "backend": "local",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "task": "safety",
+  "data_path": "data/dataset",
+  "output_dir": "runs/local-safety",
+  "device": "auto",
+  "limit": 5,
+  "max_new_tokens": 512
+}

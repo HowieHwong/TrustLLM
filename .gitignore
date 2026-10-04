@@ -187,3 +187,6 @@ test.py
 /data/
 /generation_results/
 /evaluation_results/
+
+/runs/
+/saved_evaluations/

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "trustllm"
-version = "0.3.0"
+version = "0.4.0"
 description = "Tools for evaluating the trustworthiness of large language models"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -19,9 +19,16 @@ Repository = "https://github.com/HowieHwong/TrustLLM"
 Documentation = "https://howiehwong.github.io/TrustLLM/"
 Issues = "https://github.com/HowieHwong/TrustLLM/issues"
 
+[project.scripts]
+trustllm = "trustllm.cli:main"
+
 [project.optional-dependencies]
-# Historical runtime dependencies; provider compatibility is not covered by offline CI.
-benchmark = [
+# API generation uses requests from the base install; no provider SDK or torch needed.
+local = ["torch>=2.2,<3", "transformers>=4.45,<5", "accelerate>=0.34,<2", "sentencepiece>=0.2,<1"]
+eval = ["torch>=2.2,<3", "transformers>=4.45,<5", "numpy>=1.23,<3", "scipy>=1.9,<2", "pandas>=1.5,<3", "scikit-learn>=1.2,<2", "openai>=1.30,<3", "tqdm>=4.66,<5", "tenacity>=8,<10", "google-api-python-client>=2,<3"]
+benchmark = ["trustllm[local,eval]"]
+# Kept only for the archived provider-specific generation engine.
+legacy = [
     "transformers",
     "huggingface_hub",
     "peft",

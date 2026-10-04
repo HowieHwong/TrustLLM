@@ -1,0 +1,10 @@
+{
+  "backend": "api",
+  "model": "your-model-id",
+  "task": "safety",
+  "data_path": "data/dataset",
+  "output_dir": "runs/api-safety",
+  "limit": 5,
+  "concurrency": 4,
+  "max_new_tokens": 512
+}

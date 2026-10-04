@@ -1,192 +1,134 @@
-<div align="center">
-  <img src="images/logo.png" alt="TrustLLM" width="680">
+<p align="center">
+  <img src="images/banner.svg" alt="TrustLLM — Trustworthiness in Large Language Models" width="100%">
+</p>
 
-# TrustLLM
+<p align="center">
+  <a href="https://arxiv.org/abs/2401.05561">Paper</a> &nbsp; / &nbsp;
+  <a href="https://howiehwong.github.io/TrustLLM/">Documentation</a> &nbsp; / &nbsp;
+  <a href="https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset">Dataset</a> &nbsp; / &nbsp;
+  <a href="https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html">Leaderboard</a> &nbsp; / &nbsp;
+  <a href="README.zh-CN.md">简体中文</a>
+</p>
+<p align="center">
+  <a href="https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml"><img src="https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <img src="https://img.shields.io/badge/Python-3.9%2B-3476AB" alt="Python 3.9+">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-17877e" alt="MIT License"></a>
+</p>
 
-**A benchmark and toolkit for trustworthiness in large language models.**
+**Evaluate how much you can trust a language model.** TrustLLM brings together six dimensions of trustworthiness, the ICML 2024 benchmark, and a shared workflow for local models and model APIs.
 
-ICML 2024 · Six evaluation dimensions · 30+ datasets
+<table>
+<tr>
+<td width="33%"><b>Bring your model</b><br>Hugging Face weights, a local checkpoint, or an OpenAI-compatible API.</td>
+<td width="33%"><b>Start with five samples</b><br>One CLI and Python API. Download data without cloning this repository.</td>
+<td width="33%"><b>Keep the evidence</b><br>Sample checkpoints, input hashes, run settings, and a portable HTML report.</td>
+</tr>
+</table>
 
-[![CI](https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml/badge.svg)](https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)](trustllm_pkg/pyproject.toml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![ICML 2024](https://img.shields.io/badge/ICML-2024-6846C4)](https://arxiv.org/abs/2401.05561)
+## Start here
 
-[Paper](https://arxiv.org/abs/2401.05561) ·
-[Website](https://trustllmbenchmark.github.io/TrustLLM-Website/) ·
-[Documentation](https://howiehwong.github.io/TrustLLM/) ·
-[Dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset) ·
-[Leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html)
-
-</div>
-
----
-
-TrustLLM provides datasets, response generation, and evaluation utilities for studying LLM trustworthiness. The original study evaluates 16 models across six dimensions:
-
-| Dimension | What it measures |
-| --- | --- |
-| **Truthfulness** | Misinformation, hallucination, sycophancy, and factuality correction |
-| **Safety** | Jailbreaks, misuse, toxicity, and exaggerated safety |
-| **Fairness** | Stereotypes, preferences, and disparagement |
-| **Robustness** | Adversarial perturbations and out-of-domain performance |
-| **Privacy** | Privacy awareness and leakage |
-| **Machine ethics** | Moral judgments, choices, and awareness |
-
-See the [dataset and task reference](docs/benchmark.md) for individual datasets, metrics, and evaluation methods.
-
-> **Project status:** This cleanup adds standard packaging, configuration, and offline checks. Generation and evaluation retain historical integrations and model IDs; live provider compatibility and GPU inference are not covered by CI. For newer work, see [TrustGen](https://trustgen.github.io/) and [TrustEval](https://github.com/TrustGen/TrustEval-toolkit).
-
-## Quickstart
-
-### 1. Install from source
-
-Run these commands in a terminal (Python 3.9+):
+**1 — Install.** The base package supports API generation and data downloads; no GPU libraries required.
 
 ```bash
-git clone https://github.com/HowieHwong/TrustLLM.git
-cd TrustLLM
-python -m venv .venv
-source .venv/bin/activate
-# Windows PowerShell: .venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e './trustllm_pkg[dev]'
+python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 ```
 
-### 2. Run the offline checks
+These commands install the **0.4 source version**. The older `pip install trustllm` package on PyPI has not been updated by this change. For reproducible runs, replace `main` with a commit SHA.
+
+**2 — Get the benchmark.**
 
 ```bash
-python -m pytest
-python -m ruff check .
+python -m trustllm download --output data
+python -m trustllm tasks
 ```
 
-These tests cover configuration, JSON utilities, and dataset-download behavior using mocked HTTP responses. They do not download models or call paid APIs.
-
-### 3. Prepare the dataset
-
-The repository includes the benchmark archive, so no second download is needed:
+**3 — Try your API model.** Set the credentials and endpoint for your service:
 
 ```bash
-python -m zipfile -e dataset/dataset.zip data
+export OPENAI_API_KEY="your-api-key"
+export OPENAI_BASE_URL="https://your-provider.example/v1"
+
+python -m trustllm generate \
+  --backend api --model your-model-id \
+  --task safety --data data/dataset \
+  --limit 5 --concurrency 4 --output runs/api-safety
 ```
 
-The dataset root is now `data/dataset`, with a subdirectory for each dimension. Alternatively, fetch the archive from GitHub:
+Use your provider's actual API root in place of the example URL. For a local OpenAI-compatible server, use `http://localhost:8000/v1` and its served model ID; an API key is optional if the server does not require one. API mode uses text-only Chat Completions.
+
+Open `runs/api-safety/report.html` to inspect completion counts. `--limit 5` selects five samples **per dataset file** for a smoke test; remove it and choose a new output directory for a full run. This report tracks generation, not benchmark scores.
+
+## Local weights, same workflow
+
+```bash
+python -m pip install "trustllm[local] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+
+python -m trustllm generate \
+  --backend local --model Qwen/Qwen2.5-0.5B-Instruct \
+  --task safety --data data/dataset \
+  --device auto --limit 5 --output runs/local-safety
+```
+
+Hugging Face weights download on first use. Replace the model ID with `/path/to/checkpoint` to use existing weights. `--device cpu`, `cuda:0`, and `mps` select a device; `auto` uses Accelerate placement. Local loading supports Transformers causal language models and uses the tokenizer's chat template when available. Model access, hardware capacity, and architecture compatibility still apply.
+
+## Prefer Python?
 
 ```python
-from trustllm.dataset_download import download_dataset
+from trustllm import download_dataset, generate
 
-download_dataset(save_path="data")  # Extracts to data/dataset; overwrites existing dataset files.
-```
+download_dataset("data")
 
-## Run a benchmark
-
-The lightweight install above does not include model runtimes. Install the historical benchmark dependencies before using generation or task modules:
-
-```bash
-python -m pip install -e './trustllm_pkg[benchmark]'
-```
-
-**Installation change:** Bare `pip install ./trustllm_pkg` now installs dataset utilities only. Existing generation/evaluation users should add `[benchmark]`. The extra preserves the previous SDK requirements; it is not a tested, locked environment for all providers. Python 3.9 was the original benchmark environment; the CI Python matrix applies to offline utilities only.
-
-### Configure credentials
-
-```bash
-cp .env.example .env
-```
-
-Fill in only the providers you use, then load the file **before** importing TrustLLM configuration, generation, or evaluation modules:
-
-```python
-from dotenv import load_dotenv
-
-load_dotenv()
-
-from trustllm import config
-
-# Existing Python configuration overrides remain supported:
-# config.openai_key = "..."
-```
-
-You can also export environment variables directly. See [.env.example](.env.example) for supported names. Model aliases and task prompts remain in [config.py](trustllm_pkg/trustllm/config.py); historical provider IDs may need updating for your account. `OPENAI_BASE_URL` configures the evaluator's endpoint; legacy generation adapters do not all use this setting.
-
-### Generate model responses
-
-Example for a supported local model (model access and sufficient GPU memory required):
-
-```python
-from dotenv import load_dotenv
-
-load_dotenv()
-
-from trustllm.generation.generation import LLMGeneration
-
-runner = LLMGeneration(
-    model_path="lmsys/vicuna-7b-v1.3",
-    test_type="safety",
+run = generate(
+    model="your-model-id",
+    backend="api",                    # Switch to "local" for HF weights.
+    task="safety",
     data_path="data/dataset",
-    online_model=False,
-    num_gpus=1,
-    max_new_tokens=512,
-    device="cuda",
+    output_dir="runs/python-safety",
+    limit=5,
 )
-runner.generation_results()
+print(run["status"], run["successful"], run["total"])
 ```
 
-`test_type` accepts `truthfulness`, `safety`, `fairness`, `robustness`, `privacy`, or `ethics`. Use the dataset **root**, not an individual JSON file. Outputs are written under `generation_results/<model>/<dimension>/` relative to your working directory. See the [generation guide](docs/guides/generation_details.md) for historical adapters and settings.
+API settings come from `OPENAI_API_KEY` and `OPENAI_BASE_URL`, or explicit `api_key` and `base_url` Python arguments. See [usage and configuration](docs/guides/running.md) for JSON configs, retries, model revisions, token settings, and resuming a run.
 
-### Evaluate responses
+## From responses to scores
 
-Pass **generated response files**, including their `res` fields, to the matching evaluator. Raw prompt datasets alone are not evaluation inputs.
-
-```python
-from dotenv import load_dotenv
-
-load_dotenv()
-
-from trustllm.task.pipeline import run_safety
-from trustllm.utils.file_process import save_json
-
-results = run_safety(
-    all_folder_path="generation_results/vicuna-7b/safety",
-)
-save_json(results, "safety_results.json")
-```
-
-Some tasks use an LLM judge, embeddings, a downloaded classifier, or an external service. Check the [evaluation guide](docs/guides/evaluation.md) before running them; a complete benchmark can require network access, model downloads, and API charges. Preserve the commit, dependency versions, model IDs, generation settings, and judge settings with published results.
-
-## Repository map
-
-```text
-TrustLLM/
-├── trustllm_pkg/
-│   ├── pyproject.toml       # Package metadata and dependency extras
-│   └── trustllm/
-│       ├── config.py        # Environment-backed runtime configuration
-│       ├── dataset_download.py
-│       ├── generation/      # Model response generation
-│       ├── task/            # Six dimensions and evaluation pipelines
-│       └── utils/           # Metrics, judges, embeddings, and JSON I/O
-├── tests/                   # Offline regression tests
-├── dataset/dataset.zip      # Bundled benchmark data
-├── docs/                    # Guides and benchmark reference
-└── .github/workflows/       # CI, documentation, and package publishing
-```
-
-## Development
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, checks, and contribution expectations. To preview the documentation:
+Install the scoring dependencies, then evaluate a complete directory of generated responses:
 
 ```bash
-python -m pip install -e './trustllm_pkg[docs]'
-python -m mkdocs serve
+python -m pip install "trustllm[eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+python -m trustllm evaluate --task safety --data runs/api-safety-full
 ```
 
-[Release history](docs/changelog.md) · [Report an issue](https://github.com/HowieHwong/TrustLLM/issues)
+Replace the path with your **full-run** output directory. Scores are written to `scores.json` and `scores.html`; incomplete responses are rejected. The six scoring pipelines retain the original benchmark methods. Depending on the task, scoring uses rules, a downloaded classifier, embeddings, or an API judge. Set `OPENAI_JUDGE_MODEL` for a judge available to your account. Judge calls can incur charges. Read the [scoring guide](docs/guides/evaluation.md) before a full run.
 
-## Citation
+| Dimension | Evaluation focus |
+| :--- | :--- |
+| **Truthfulness** | Misinformation · hallucination · sycophancy |
+| **Safety** | Jailbreaks · misuse · exaggerated safety |
+| **Fairness** | Stereotypes · preferences · disparagement |
+| **Robustness** | Adversarial perturbations · out-of-domain inputs |
+| **Privacy** | Privacy awareness · information leakage |
+| **Ethics** | Moral judgments · moral choices |
 
-If you use TrustLLM in your research, please cite the [ICML 2024 paper](https://openreview.net/forum?id=bWUU0LwwMp). The full author list and BibTeX entry are in [CITATION.bib](CITATION.bib).
+[Dataset and metric reference →](docs/benchmark.md)
 
-## License
+<details>
+<summary><b>What changed in 0.4?</b></summary>
 
-Code is released under the [MIT License](LICENSE). Consult the original dataset sources for their terms and attribution requirements.
+- Arbitrary model IDs and a shared runner for API/local generation; no legacy model whitelist.
+- Lightweight API install; optional `local`, `eval`, and archived `legacy` dependencies.
+- `download`, `tasks`, `generate`, and `evaluate` commands, also through `python -m trustllm`.
+- Bounded API retries, per-sample checkpoints, explicit failures, and guarded `--resume`.
+- JSON response files remain compatible with the existing `res`-based evaluators.
+- Saved dataset hashes, settings, dependency versions, usage where returned, and HTML generation reports.
+
+The original generation engine is archived under `trustllm.generation.legacy`. Generation formatting and model integrations have changed: new runs are not automatically equivalent to the original paper's settings. See [migration notes](docs/guides/running.md#migration-from-03).
+
+</details>
+
+## Research & development
+
+[Contributing](CONTRIBUTING.md) · [Design references](docs/design.md) · [Changelog](docs/changelog.md) · [Issues](https://github.com/HowieHwong/TrustLLM/issues)
+
+If TrustLLM supports your research, please cite the [ICML 2024 paper](https://openreview.net/forum?id=bWUU0LwwMp). Full BibTeX: [CITATION.bib](CITATION.bib). Code: [MIT](LICENSE). Dataset terms remain with the original sources.

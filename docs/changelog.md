@@ -1,3 +1,14 @@
+# Source update: 0.4.0
+
+- Shared local/API generation runner, CLI and Python API.
+- Dataset download without cloning, task discovery and JSON configurations.
+- Per-sample checkpoints, guarded resume, bounded API retries and explicit failures.
+- Input hashes, environment versions, response exports and HTML generation reports.
+- Separate local/evaluation dependencies; original generation engine archived.
+- New README design, Chinese quickstart and CPU/HTTP integration tests.
+
+This source update does not by itself publish a PyPI release. See the [migration guide](guides/running.md#migration-from-03).
+
 ---
 hide:
   - navigation

@@ -14,8 +14,8 @@ python -m pip install -e './trustllm_pkg[dev,docs]'
 ```
 
 On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`.
-Add the `benchmark` extra only when working with generation/evaluation dependencies.
-The base install and offline tests need neither API credentials nor a GPU.
+Add `local` for local generation or `eval` for scoring dependencies.
+The base install and offline tests need neither API credentials nor a GPU. API integration tests use a loopback HTTP server. The optional CPU integration test constructs a tiny local model, runs real inference, and skips when local dependencies are absent.
 
 ## Validate a change
 

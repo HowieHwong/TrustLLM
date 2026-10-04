@@ -6,6 +6,7 @@ A .env file is not loaded implicitly; call dotenv.load_dotenv() first if needed.
 
 import os
 
+judge_model = os.getenv("OPENAI_JUDGE_MODEL", "gpt-4-1106-preview")
 openai_key = os.getenv("OPENAI_API_KEY", "")
 openai_api_base = os.getenv("OPENAI_BASE_URL")
 perspective_key = os.getenv("PERSPECTIVE_API_KEY")

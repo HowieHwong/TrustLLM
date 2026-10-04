@@ -6,9 +6,8 @@ TrustLLM is the toolkit for **TrustLLM: Trustworthiness in Large Language Models
 
 For the maintained installation commands and runnable examples, follow the
 [repository quickstart](https://github.com/HowieHwong/TrustLLM#quickstart).
-The base installation supports dataset utilities and offline checks. Generation
-and evaluation require the `benchmark` extra; historical provider integrations
-may require further compatibility work.
+The base installation supports downloads and API generation. Install `local` for
+Hugging Face inference and `eval` for scoring. Begin with the [running guide](guides/running.md).
 
 - [Generation](guides/generation_details.md): historical model adapters and response generation.
 - [Evaluation](guides/evaluation.md): input requirements, tasks, and metrics.

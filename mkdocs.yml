@@ -8,8 +8,10 @@ copyright: Copyright &copy; 2024 TrustLLM
 nav:
   - Home: index.md
   - Guide:
+    - Quickstart: guides/running.md
     - Generation: guides/generation_details.md
     - Evaluation: guides/evaluation.md
+  - Design: design.md
   - Benchmark: benchmark.md
   - Development: development.md
   - Changelog: changelog.md

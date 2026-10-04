@@ -1,7 +1,6 @@
 import json
 
 import pytest
-
 from trustllm.utils.file_process import load_json, save_json
 
 

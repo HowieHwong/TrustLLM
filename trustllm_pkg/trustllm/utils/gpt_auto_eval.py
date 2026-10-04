@@ -14,7 +14,7 @@ logging.basicConfig(filename='autoevaluator.log', level=logging.INFO,
 
 #Retry decorator with exponential backoff and stop condition for API calls
 @retry(wait=wait_random_exponential(min=1, max=10), stop=stop_after_attempt(6))
-def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
+def get_res(string, model=None, temperature=0,message=None):
     """
     Retrieve a response from the OpenAI ChatCompletion API.
 
@@ -29,6 +29,7 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
     Raises:
         ValueError: If the API response is null or an empty string.
     """
+    model = model or trustllm.config.judge_model
     try:
         if message is None:
             message = [{"role": "user", "content": string}]
@@ -67,9 +68,8 @@ def get_res(string, model='gpt-4-1106-preview', temperature=0,message=None):
         if not stream.choices[0].message.content:
                 raise ValueError("The response from the API is NULL or an empty string!")
         response = stream.choices[0].message.content
-    except Exception as e:
-        print(e)
-        return None
+    except Exception:
+        raise
     return response
 
 class AutoEvaluator:
@@ -173,6 +173,7 @@ class AutoEvaluator:
             # Add a callback to handle completion and errors
             for future in concurrent.futures.as_completed(futures):
                 future.add_done_callback(save_progress_callback)
+                future.result()
 
             # Wait for all futures to complete
             concurrent.futures.wait(futures)

@@ -34,7 +34,13 @@ def test_defaults_without_credentials(monkeypatch):
 
 
 def test_azure_boolean(monkeypatch):
-    for value, expected in (("true", True), ("YES", True), ("1", True), ("false", False), ("0", False)):
+    for value, expected in (
+        ("true", True),
+        ("YES", True),
+        ("1", True),
+        ("false", False),
+        ("0", False),
+    ):
         monkeypatch.setenv("AZURE_OPENAI_ENABLED", value)
         assert load_config()["azure_openai"] is expected
 
