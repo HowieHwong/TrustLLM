@@ -28,7 +28,7 @@
 }
 .md-header { box-shadow: none; border-bottom: 1px solid var(--trust-line); }
 .md-header__title { font-weight: 600; letter-spacing: -.025em; }
-.md-header__button.md-logo img { height: 1.8rem; width: auto; background: white; border-radius: 3px; }
+.md-header__button.md-logo img { height: 1.8rem; width: auto; }
 .md-search__form { background: var(--trust-soft); border: 1px solid var(--trust-line); border-radius: 5px; }
 .md-search__input, .md-search__input::placeholder { color: var(--md-default-fg-color--light); }
 .md-grid { max-width: 74rem; }
@@ -49,7 +49,7 @@
 .md-typeset table:not([class]) th { background: var(--trust-soft); font-weight: 650; }
 .md-typeset table:not([class]) td { border-top: 1px solid var(--trust-line); }
 .md-typeset .admonition, .md-typeset details { box-shadow: none; border-radius: 4px; }
-.md-typeset .hero-logo { display: block; width: 20rem; max-width: 100%; background: white; border-radius: 4px; margin: .3rem 0 1.8rem; }
+.md-typeset .hero-logo { display: block; width: 20rem; max-width: 100%; margin: .3rem 0 1.8rem; }
 .md-typeset .eyebrow { color: var(--md-default-fg-color--light); font-size: .58rem; font-weight: 650; letter-spacing: .15em; text-transform: uppercase; }
 .md-typeset .lead { font-size: .94rem; line-height: 1.7; max-width: 37rem; color: var(--md-default-fg-color--light); }
 .md-typeset .md-button { color: var(--md-typeset-a-color); border-color: var(--md-typeset-a-color); border-radius: 4px; border-width: 1px; padding: .5em 1.2em; font-size: .73rem; font-weight: 600; margin-bottom: .3rem; }

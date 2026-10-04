@@ -7,7 +7,7 @@ search:
   boost: 2
 ---
 
-![TrustLLM — Trustworthiness in Large Language Models](assets/logo.png){ .hero-logo }
+![TrustLLM — Trustworthiness in Large Language Models](assets/logo-transparent.png){ .hero-logo }
 
 OPEN RESEARCH · ICML 2024
 { .eyebrow }

@@ -34,8 +34,8 @@ theme:
   name: material
   custom_dir: overrides
   font: false
-  favicon: assets/icon.png
-  logo: assets/icon.png
+  favicon: assets/icon-transparent.png
+  logo: assets/icon-transparent.png
   features:
     - navigation.sections
     - navigation.top
