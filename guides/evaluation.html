@@ -14,7 +14,7 @@
         <link rel="prev" href="generation_details.html">
       
       
-        <link rel="next" href="../benchmark.html">
+        <link rel="next" href="../design.html">
       
       
         
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#start-your-evaluation" class="md-skip">
+        <a href="#scoring-model-responses" class="md-skip">
           Skip to content
         </a>
       
@@ -233,7 +233,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="generation_details.html" class="md-tabs__link">
+        <a href="running.html" class="md-tabs__link">
           
   
   
@@ -242,6 +242,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../design.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Design
+
+      </a>
+    </li>
   
 
       
@@ -444,6 +463,34 @@
   
   
     <li class="md-nav__item">
+      <a href="running.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="generation_details.html" class="md-nav__link">
         
   
@@ -477,6 +524,8 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
+      
+        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -519,6 +568,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -727,6 +778,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../benchmark.html" class="md-nav__link">
         
   
@@ -844,6 +922,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1046,8 +1126,9 @@
 
 
 
-  <h1>Evaluation</h1>
-
+<h1 id="scoring-model-responses">Scoring model responses<a class="headerlink" href="#scoring-model-responses" title="Permanent link">&para;</a></h1>
+<p>For the current CLI, install the <code>eval</code> extra and run <code>python -m trustllm evaluate --task safety --data &lt;full-run-directory&gt;</code>. See <a href="running.html">the running guide</a> for installation and output paths. The sections below document the original task-specific Python APIs. Full response sets are recommended: small generation smoke tests can omit groups needed by these scorers.</p>
+<p>Set <code>OPENAI_API_KEY</code>, <code>OPENAI_BASE_URL</code> and <code>OPENAI_JUDGE_MODEL</code> before importing evaluation modules when using an API judge. Individual historical examples below may use older model IDs. Scoring can download a classifier or call paid judge/embedding services; the offline tests do not validate these complete external integrations.</p>
 <h2 id="start-your-evaluation"><strong>Start Your Evaluation</strong><a class="headerlink" href="#start-your-evaluation" title="Permanent link">&para;</a></h2>
 <h3 id="api-setting"><strong>API Setting</strong><a class="headerlink" href="#api-setting" title="Permanent link">&para;</a></h3>
 <p>Before starting the evaluation, you need to first set up your <a href="https://openai.com/product">OpenAI API</a> (GPT-4-turbo) and <a href="https://developers.perspectiveapi.com/s/docs-get-started?language=en_US">Perspective API</a> (used for measuring toxicity).</p>

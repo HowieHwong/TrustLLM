@@ -231,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="guides/generation_details.html" class="md-tabs__link">
+        <a href="guides/running.html" class="md-tabs__link">
           
   
   
@@ -240,6 +240,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="design.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Design
+
+      </a>
+    </li>
   
 
       
@@ -439,6 +458,34 @@
   
   
     <li class="md-nav__item">
+      <a href="guides/running.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="guides/generation_details.html" class="md-nav__link">
         
   
@@ -491,6 +538,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -659,8 +733,8 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">'./trustllm_pkg[dev,docs]'</span>
 </code></pre></div>
 <p>On Windows PowerShell, activate with <code>.venv\Scripts\Activate.ps1</code>.
-Add the <code>benchmark</code> extra only when working with generation/evaluation dependencies.
-The base install and offline tests need neither API credentials nor a GPU.</p>
+Add <code>local</code> for local generation or <code>eval</code> for scoring dependencies.
+The base install and offline tests need neither API credentials nor a GPU. API integration tests use a loopback HTTP server. The optional CPU integration test constructs a tiny local model, runs real inference, and skips when local dependencies are absent.</p>
 <h2 id="validate-a-change">Validate a change<a class="headerlink" href="#validate-a-change" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>.
 python<span class="w"> </span>-m<span class="w"> </span>compileall<span class="w"> </span>-q<span class="w"> </span>trustllm_pkg/trustllm

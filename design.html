@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="development.html">
+        <link rel="prev" href="guides/evaluation.html">
       
       
-        <link rel="next" href="faq.html">
+        <link rel="next" href="benchmark.html">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Changelog - TrustLLM</title>
+        <title>Design - TrustLLM</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#source-update-040" class="md-skip">
+        <a href="#workflow-design-and-references" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Changelog
+              Design
             
           </span>
         </div>
@@ -247,8 +247,10 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
+  
+    <li class="md-tabs__item md-tabs__item--active">
       <a href="design.html" class="md-tabs__link">
         
   
@@ -304,10 +306,8 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
+    <li class="md-tabs__item">
       <a href="changelog.html" class="md-tabs__link">
         
   
@@ -546,10 +546,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="design.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="design.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -565,6 +592,48 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-update-validates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this update validates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-remains-separate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What remains separate
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -627,37 +696,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Changelog
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="changelog.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="changelog.html" class="md-nav__link">
         
   
   
@@ -673,103 +715,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#todo-in-coming-versions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⏰ TODO in Coming Versions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-030" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.3.0
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-023-024" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.3 &amp; 0.2.4
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-022" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.2
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-021" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.1
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-020" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.0
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-010" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.1.0
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -828,10 +773,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#todo-in-coming-versions" class="md-nav__link">
+  <a href="#what-this-update-validates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⏰ TODO in Coming Versions
+        What this update validates
       
     </span>
   </a>
@@ -839,65 +784,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#version-030" class="md-nav__link">
+  <a href="#what-remains-separate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Version 0.3.0
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-023-024" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.3 &amp; 0.2.4
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-022" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.2
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-021" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.1
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-020" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.2.0
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-010" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version 0.1.0
+        What remains separate
       
     </span>
   </a>
@@ -921,64 +811,38 @@
 
 
 
-<h1 id="source-update-040">Source update: 0.4.0<a class="headerlink" href="#source-update-040" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Shared local/API generation runner, CLI and Python API.</li>
-<li>Dataset download without cloning, task discovery and JSON configurations.</li>
-<li>Per-sample checkpoints, guarded resume, bounded API retries and explicit failures.</li>
-<li>Input hashes, environment versions, response exports and HTML generation reports.</li>
-<li>Separate local/evaluation dependencies; original generation engine archived.</li>
-<li>New README design, Chinese quickstart and CPU/HTTP integration tests.</li>
-</ul>
-<p>This source update does not by itself publish a PyPI release. See the <a href="guides/running.html#migration-from-03">migration guide</a>.</p>
-<hr />
-<p>hide:
-  - navigation</p>
-<hr />
-<h2 id="todo-in-coming-versions"><strong>⏰ TODO in Coming Versions</strong><a class="headerlink" href="#todo-in-coming-versions" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[x] Faster and simpler evaluation pipeline</li>
-<li>[ ] Dynamic dataset</li>
-<li>[ ] More fine-grained datasets</li>
-<li>[ ] Chinese output evaluation</li>
-<li>[ ] Downstream application evaluation</li>
-</ul>
-<h2 id="version-030"><strong>Version 0.3.0</strong><a class="headerlink" href="#version-030" title="Permanent link">&para;</a></h2>
-<p><em>Release Date: 23rd Apr, 2024</em></p>
-<ul>
-<li><strong>Support parallel retrieval of embeddings when evaluating AdvlInstruction</strong></li>
-<li><strong>Add exception handling for partial evaluations</strong></li>
-<li><strong>Fixed some bugs</strong></li>
-<li><strong>Add evaluation results for ChatGLM3, GLM-4, Mixtral, Llama3-8b, and Llama3-70b (<a href="https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html">check out</a>)</strong></li>
-</ul>
-<h2 id="version-023-024"><strong>Version 0.2.3 &amp; 0.2.4</strong><a class="headerlink" href="#version-023-024" title="Permanent link">&para;</a></h2>
-<p><em>Release Date: March 2024</em></p>
-<ul>
-<li><strong>Fixed some bugs</strong></li>
-<li><strong>Support Gemini API</strong></li>
-</ul>
-<h2 id="version-022"><strong>Version 0.2.2</strong><a class="headerlink" href="#version-022" title="Permanent link">&para;</a></h2>
-<p><em>Release Date: 1st Feb, 2024</em></p>
-<ul>
-<li><strong>Support awareness evaluation in our new <a href="https://arxiv.org/abs/2401.17882">work</a></strong></li>
-<li><strong>Support Zhipu API evaluation (GLM-4 &amp; GLM-3-turbo)</strong></li>
-</ul>
-<h2 id="version-021"><strong>Version 0.2.1</strong><a class="headerlink" href="#version-021" title="Permanent link">&para;</a></h2>
-<p><em>Release Date: 26th Jan, 2024</em></p>
-<ul>
-<li><strong>Support LLMs in <a href="https://replicate.com/">replicate</a> and <a href="https://deepinfra.com/">deepinfra</a></strong></li>
-<li><strong>Support easy pipeline for evaluation</strong></li>
-<li><strong>Support <a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service">Azure OpenAI</a> API</strong></li>
-</ul>
-<h2 id="version-020"><strong>Version 0.2.0</strong><a class="headerlink" href="#version-020" title="Permanent link">&para;</a></h2>
-<p><em>Release Date: 20th Jan, 2024</em></p>
-<ul>
-<li><strong>Add generation section</strong> (<a href="https://howiehwong.github.io/TrustLLM/guides/generation_details.html">details</a>)</li>
-<li><strong>Support concurrency when using auto-evaluation</strong></li>
-</ul>
-<h2 id="version-010"><strong>Version 0.1.0</strong><a class="headerlink" href="#version-010" title="Permanent link">&para;</a></h2>
-<p><em>Release Date: 10th Jan, 2024</em></p>
-<p>We have released the first version of the TrustLLM assessment tool, which includes all the evaluation methods from our initial research paper.</p>
+<h1 id="workflow-design-and-references">Workflow design and references<a class="headerlink" href="#workflow-design-and-references" title="Permanent link">&para;</a></h1>
+<p>Reviewed on 2026-10-03. These references inform the workflow; TrustLLM does not claim feature parity with these larger frameworks or copy their benchmark definitions.</p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Practice adopted in this update</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/EleutherAI/lm-evaluation-harness">lm-evaluation-harness</a></td>
+<td>Separate model-backend dependencies, explicit task discovery, CLI and Python entry points</td>
+</tr>
+<tr>
+<td><a href="https://inspect.aisi.org.uk/eval-logs.html">Inspect logs</a> and <a href="https://inspect.aisi.org.uk/parallelism.html">parallelism</a></td>
+<td>Per-sample records, explicit run status, configurable concurrency and recoverable runs</td>
+</tr>
+<tr>
+<td><a href="https://evalscope.readthedocs.io/en/latest/get_started/basic_usage.html">EvalScope quickstart</a></td>
+<td>Side-by-side API/local examples, small-sample trials and reusable configuration</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/docs/transformers/v4.57.1/chat_templating">Transformers chat templates</a></td>
+<td>Format local-model inputs with the tokenizer's native chat template</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-this-update-validates">What this update validates<a class="headerlink" href="#what-this-update-validates" title="Permanent link">&para;</a></h2>
+<p>Offline tests cover download errors, configuration, API transport, bounded retries, model-independent input/output handling, resume compatibility, incomplete-response rejection and report escaping. A real loopback HTTP server exercises the CLI request path. A tiny locally constructed causal model exercises CPU inference and saved-checkpoint loading without downloading external weights.</p>
+<h2 id="what-remains-separate">What remains separate<a class="headerlink" href="#what-remains-separate" title="Permanent link">&para;</a></h2>
+<p>The original six-dimension scoring methods and prompts remain. This update does not claim to reproduce every published benchmark score or validate every hosted model provider. Full GPU runs, paid judge/embedding integrations, multi-node inference, multimodal tasks and a live dashboard are outside these checks. A generation report's completion rate must never be interpreted as a trustworthiness score.</p>
 
 
 
