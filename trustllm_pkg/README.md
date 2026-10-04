@@ -5,7 +5,7 @@
 **Trustworthiness evaluation for large language models · ICML 2024**
 
 [Documentation](https://howiehwong.github.io/TrustLLM/) ·
-[Quickstart](https://howiehwong.github.io/TrustLLM/guides/running/) ·
+[Quickstart](https://howiehwong.github.io/TrustLLM/guides/running.html) ·
 [Paper](https://arxiv.org/abs/2401.05561) ·
 [GitHub](https://github.com/HowieHwong/TrustLLM)
 
@@ -116,16 +116,16 @@ trustllm evaluate --task safety --data runs/api-safety-full
 
 Scoring writes `scores.json` and `scores.html` using the original metric names and
 scales. Some scorers download classifiers or use paid judge/embedding APIs; check
-the [evaluation guide](https://howiehwong.github.io/TrustLLM/guides/evaluation/)
+the [evaluation guide](https://howiehwong.github.io/TrustLLM/guides/evaluation.html)
 and configure an available `OPENAI_JUDGE_MODEL` before running them. Generation
 reports describe completion, not trustworthiness scores. Smoke-test subsets are
 not representative benchmark results, and no overall trust score is synthesized.
 
 ## Learn more
 
-- [Configuration, resume and migration from 0.3](https://howiehwong.github.io/TrustLLM/guides/running/)
-- [AI agent integration](https://howiehwong.github.io/TrustLLM/guides/agents/)
-- [FAQ and troubleshooting](https://howiehwong.github.io/TrustLLM/faq/)
+- [Configuration, resume and migration from 0.3](https://howiehwong.github.io/TrustLLM/guides/running.html)
+- [AI agent integration](https://howiehwong.github.io/TrustLLM/guides/agents.html)
+- [FAQ and troubleshooting](https://howiehwong.github.io/TrustLLM/faq.html)
 - [Report an issue](https://github.com/HowieHwong/TrustLLM/issues)
 - [Citation](https://github.com/HowieHwong/TrustLLM/blob/main/CITATION.bib)
 
