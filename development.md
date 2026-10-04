@@ -47,6 +47,42 @@ Open a focused pull request with the problem, resulting behavior, and validation
 
 The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. Release automation builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
 
+## Package releases
+
+The `python-publish.yml` workflow uses PyPI Trusted Publishing. A project owner
+must configure the following GitHub publisher on the existing `trustllm` project
+under **Manage → Publishing** on PyPI:
+
+| PyPI publisher field | Value |
+| --- | --- |
+| Owner | `HowieHwong` |
+| Repository | `TrustLLM` |
+| Workflow filename | `python-publish.yml` |
+| Environment | `pypi` |
+
+This grants that repository workflow permission to publish the package without
+storing a long-lived PyPI API token. Only the upload job requests an OIDC token;
+building and testing run in a separate job. Keep repository write access limited
+to maintainers and use GitHub's `pypi` environment protections as appropriate.
+See [PyPI's publisher setup guide](https://docs.pypi.org/trusted-publishers/adding-a-publisher/).
+
+1. Update the package version and PyPI-facing `trustllm_pkg/README.md`, record
+   migration notes, and pass CI on the release commit.
+2. Create a `v<version>` tag pointing to that commit. Run **Publish Python package**
+   manually with that tag and `publish` unchecked to validate the release first.
+3. Publish the GitHub release for that tag. The workflow checks the tag against
+   package metadata, runs offline tests, builds an sdist and a wheel from it,
+   checks metadata, and installs the wheel into a clean environment.
+4. The upload job sends those tested artifacts to PyPI. The final job installs
+   the exact version from PyPI and exercises both CLI entry points.
+5. Confirm the version and artifacts on PyPI before announcing availability or
+   replacing source-install instructions with commands for the new release.
+
+For an authentication failure, correct the publisher configuration and rerun the
+failed jobs. Manual dispatch with `publish` checked can also publish an existing
+tag. PyPI versions are immutable: do not move a published tag, rebuild a changed
+package under the same version, or use a new version to hide an upload failure.
+
 ## Documentation publishing
 
 Write a unique `title` and `description` in each documentation page's frontmatter.

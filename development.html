@@ -780,6 +780,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#package-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package releases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#documentation-publishing" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1031,6 +1042,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#package-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package releases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#documentation-publishing" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1113,6 +1135,58 @@ python<span class="w"> </span>scripts/check_docs.py
 <h2 id="submit-a-contribution">Submit a contribution<a class="headerlink" href="#submit-a-contribution" title="Permanent link">&para;</a></h2>
 <p>Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.</p>
 <p>The Python package lives in <code>trustllm_pkg</code>; its <code>pyproject.toml</code> is the source of package metadata. The root <code>pyproject.toml</code> configures development tools. Release automation builds from <code>trustllm_pkg</code>, and documentation deployment runs separately from pull-request checks.</p>
+<h2 id="package-releases">Package releases<a class="headerlink" href="#package-releases" title="Permanent link">&para;</a></h2>
+<p>The <code>python-publish.yml</code> workflow uses PyPI Trusted Publishing. A project owner
+must configure the following GitHub publisher on the existing <code>trustllm</code> project
+under <strong>Manage → Publishing</strong> on PyPI:</p>
+<table>
+<thead>
+<tr>
+<th>PyPI publisher field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner</td>
+<td><code>HowieHwong</code></td>
+</tr>
+<tr>
+<td>Repository</td>
+<td><code>TrustLLM</code></td>
+</tr>
+<tr>
+<td>Workflow filename</td>
+<td><code>python-publish.yml</code></td>
+</tr>
+<tr>
+<td>Environment</td>
+<td><code>pypi</code></td>
+</tr>
+</tbody>
+</table>
+<p>This grants that repository workflow permission to publish the package without
+storing a long-lived PyPI API token. Only the upload job requests an OIDC token;
+building and testing run in a separate job. Keep repository write access limited
+to maintainers and use GitHub's <code>pypi</code> environment protections as appropriate.
+See <a href="https://docs.pypi.org/trusted-publishers/adding-a-publisher/">PyPI's publisher setup guide</a>.</p>
+<ol>
+<li>Update the package version and PyPI-facing <code>trustllm_pkg/README.md</code>, record
+   migration notes, and pass CI on the release commit.</li>
+<li>Create a <code>v&lt;version&gt;</code> tag pointing to that commit. Run <strong>Publish Python package</strong>
+   manually with that tag and <code>publish</code> unchecked to validate the release first.</li>
+<li>Publish the GitHub release for that tag. The workflow checks the tag against
+   package metadata, runs offline tests, builds an sdist and a wheel from it,
+   checks metadata, and installs the wheel into a clean environment.</li>
+<li>The upload job sends those tested artifacts to PyPI. The final job installs
+   the exact version from PyPI and exercises both CLI entry points.</li>
+<li>Confirm the version and artifacts on PyPI before announcing availability or
+   replacing source-install instructions with commands for the new release.</li>
+</ol>
+<p>For an authentication failure, correct the publisher configuration and rerun the
+failed jobs. Manual dispatch with <code>publish</code> checked can also publish an existing
+tag. PyPI versions are immutable: do not move a published tag, rebuild a changed
+package under the same version, or use a new version to hide an upload failure.</p>
 <h2 id="documentation-publishing">Documentation publishing<a class="headerlink" href="#documentation-publishing" title="Permanent link">&para;</a></h2>
 <p>Write a unique <code>title</code> and <code>description</code> in each documentation page's frontmatter.
 Use clear headings and accurate capability descriptions. Keep the original logo
