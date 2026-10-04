@@ -52,7 +52,9 @@ def evaluate(task, data_path, output_path=None):
         pipeline = importlib.import_module("trustllm.task.pipeline")
     except ImportError:
         raise ImportError(
-            "Scoring requires the 'eval' extra: pip install 'trustllm[eval]' (or the source-install equivalent)"
+            "Scoring requires the 'eval' extra. Install it with: "
+            "python -m pip install 'trustllm[eval] @ "
+            "git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg'"
         ) from None
     scores = getattr(pipeline, f"run_{task}")(all_folder_path=str(folder))
     required = {

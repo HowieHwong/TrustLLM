@@ -82,8 +82,8 @@ def on_post_build(config):
         "workflow supports Python and CLI orchestration, local Hugging Face causal models, "
         "and text-only OpenAI-compatible Chat Completions endpoints. An AI agent can call "
         "this workflow; TrustLLM does not evaluate agent trajectories or tool use.\n\n"
-        "Use the installation guide for the current source version; the PyPI release can "
-        "differ. Generation completion reports are not benchmark scores. Scoring can "
+        "Use the installation guide to install the current source version from GitHub. "
+        "Generation completion reports are not benchmark scores. Scoring can "
         "require classifier downloads and paid judge or embedding APIs.\n\n"
     )
     index = intro + "## Documentation\n\n" + "\n".join(current)

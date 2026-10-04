@@ -33,7 +33,7 @@ AI エージェントで評価を自動化するには、CLI/Python からの実
 python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 ```
 
-このコマンドでインストールされるのは **0.4 のソース版**です。今回の更新は PyPI には公開されていないため、`pip install trustllm` では旧版がインストールされる場合があります。実験を再現できるようにするには、`main` を固定のコミット SHA に置き換えてください。
+このコマンドは **GitHub から 0.4 のソース版を直接インストール**します。Git が必要です。実験を再現できるようにするには、`main` を固定のコミット SHA に置き換えてください。
 
 **2 — ベンチマークデータを取得。**
 

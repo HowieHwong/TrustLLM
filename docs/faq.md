@@ -5,9 +5,9 @@ description: Troubleshoot TrustLLM installation, model endpoints, resumed runs, 
 
 # FAQ & troubleshooting
 
-## Why does pip install trustllm behave differently?
+## How do I install the current version?
 
-The source repository contains the 0.4 workflow; the older package on PyPI has not been updated by this source change. Follow the [source installation commands](guides/running.md#install-the-components-you-use). Use `python -m trustllm --help` to verify that your Python environment exposes `download`, `tasks`, `generate` and `evaluate`.
+Install the maintained 0.4 workflow directly from GitHub using the [source installation commands](guides/running.md#install-the-components-you-use). Git is required for source installation. You can also install a wheel from a [GitHub Release](https://github.com/HowieHwong/TrustLLM/releases) without Git. Use `python -m trustllm --help` to verify that your Python environment exposes `download`, `tasks`, `generate` and `evaluate`.
 
 ## Do I need a GPU?
 

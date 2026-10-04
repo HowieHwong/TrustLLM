@@ -33,7 +33,7 @@ TrustLLM 是一套開源研究工具，從**六個面向**評估大型語言模�
 python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 ```
 
-以上指令安裝的是 **0.4 原始碼版本**。這次更新尚未發布至 PyPI；直接執行 `pip install trustllm` 仍可能安裝舊版。為確保實驗可重現，請將 `main` 替換為固定的 commit SHA。
+以上指令**直接從 GitHub 安裝 0.4 原始碼版本**，需要先安裝 Git。為確保實驗可重現，請將 `main` 替換為固定的 commit SHA。
 
 **2 — 下載基準資料。**
 

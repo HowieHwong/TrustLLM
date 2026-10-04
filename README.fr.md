@@ -33,7 +33,7 @@ Pour automatiser les évaluations avec un agent IA, consultez le [guide d’int�
 python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 ```
 
-Ces commandes installent la **version 0.4 à partir du code source**. Cette mise à jour n’a pas été publiée sur PyPI : `pip install trustllm` peut donc installer l’ancienne version. Pour assurer la reproductibilité des expériences, remplacez `main` par le SHA d’un commit précis.
+Ces commandes installent la **version 0.4 directement depuis le code source sur GitHub**. Git est requis. Pour assurer la reproductibilité des expériences, remplacez `main` par le SHA d’un commit précis.
 
 **2 — Télécharger les données du benchmark.**
 

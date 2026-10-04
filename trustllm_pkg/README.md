@@ -16,14 +16,14 @@ or an AI agent that orchestrates command-line tools.
 
 ## Install
 
-Python 3.9+ is required. Python 3.10–3.12 is recommended for local inference.
+Python 3.9+ and Git are required for source installation. Python 3.10–3.12 is recommended for local inference. Install directly from GitHub:
 
 ```bash
 # Dataset download, API generation, checkpoints and HTML generation reports
-python -m pip install --upgrade trustllm
+python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 
 # Add local Hugging Face models and the original evaluation pipelines
-python -m pip install --upgrade "trustllm[local,eval]"
+python -m pip install "trustllm[local,eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 ```
 
 | Install | Included |
@@ -32,6 +32,8 @@ python -m pip install --upgrade "trustllm[local,eval]"
 | `trustllm[local]` | PyTorch, Transformers, Accelerate and SentencePiece |
 | `trustllm[eval]` | Original scorers, classifiers, judge SDK and metrics |
 | `trustllm[local,eval]` | Local generation and scoring together |
+
+A wheel from [GitHub Releases](https://github.com/HowieHwong/TrustLLM/releases) can also be installed with `python -m pip install /path/to/trustllm-<version>-py3-none-any.whl`, without Git. Replace the path with the downloaded wheel.
 
 The base installation does not require PyTorch or a GPU. For GPU inference,
 install a PyTorch build suitable for your hardware first. Pin the package and

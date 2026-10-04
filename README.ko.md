@@ -33,7 +33,7 @@ AI 에이전트로 평가를 자동화하려면 CLI/Python 호출과 JSON 결과
 python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 ```
 
-이 명령은 **0.4 소스 버전**을 설치합니다. 이번 변경 사항은 PyPI에 배포되지 않았으므로 `pip install trustllm`으로는 이전 버전이 설치될 수 있습니다. 실험의 재현성을 확보하려면 `main`을 특정 커밋 SHA로 바꾸세요.
+이 명령은 **GitHub에서 0.4 소스 버전을 직접 설치**합니다. Git이 필요합니다. 실험의 재현성을 확보하려면 `main`을 특정 커밋 SHA로 바꾸세요.
 
 **2 — 벤치마크 데이터 다운로드.**
 

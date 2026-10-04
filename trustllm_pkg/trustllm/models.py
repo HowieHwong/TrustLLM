@@ -144,7 +144,9 @@ class LocalModel:
             from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
         except ImportError:
             raise ImportError(
-                "Local generation requires the 'local' extra: pip install 'trustllm[local]' (or the source-install equivalent)"
+                "Local generation requires the 'local' extra. Install it with: "
+                "python -m pip install 'trustllm[local] @ "
+                "git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg'"
             ) from None
         if dtype not in {"auto", "float32", "float16", "bfloat16"}:
             raise ValueError("dtype must be auto, float32, float16 or bfloat16")

@@ -24,7 +24,21 @@ python -m pip install "trustllm[local,eval] @ git+https://github.com/HowieHwong/
 
 Git must be installed for VCS installation. Python 3.10–3.12 is recommended for local inference; offline utilities are tested on 3.9–3.12. GPU users should install a PyTorch build appropriate for their hardware first. For a source checkout, use `python -m pip install -e './trustllm_pkg[dev,local,eval]'`.
 
-The PyPI release has not been changed by this source update. Pin a commit SHA instead of `main` and save your environment for published experiments.
+Install directly from GitHub using the commands above. Pin a commit SHA instead of `main` and save your environment for published experiments.
+
+### Install a release without Git
+
+The [GitHub Releases](https://github.com/HowieHwong/TrustLLM/releases) page provides
+versioned wheels and source distributions. To install the 0.4.0 wheel directly:
+
+```bash
+python -m pip install "https://github.com/HowieHwong/TrustLLM/releases/download/v0.4.0/trustllm-0.4.0-py3-none-any.whl"
+# Include local inference and scoring dependencies:
+python -m pip install "trustllm[local,eval] @ https://github.com/HowieHwong/TrustLLM/releases/download/v0.4.0/trustllm-0.4.0-py3-none-any.whl"
+```
+
+This installs the code from that release. Use the GitHub source commands above
+for subsequent changes on `main`.
 
 ## Download data
 

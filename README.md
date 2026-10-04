@@ -33,7 +33,7 @@ Automating evaluations with an AI agent? See the [agent integration guide](docs/
 python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
 ```
 
-These commands install the **0.4 source version**. The older `pip install trustllm` package on PyPI has not been updated by this change. For reproducible runs, replace `main` with a commit SHA.
+These commands install the **0.4 source version directly from GitHub**. Git is required. For reproducible runs, replace `main` with a commit SHA.
 
 **2 — Get the benchmark.**
 

@@ -30,7 +30,7 @@ python -m trustllm tasks
 python -m trustllm download --output data
 ```
 
-These commands install the maintained source workflow, not the older PyPI release. Replace `main` with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under `data/dataset`.
+These commands install the maintained workflow directly from GitHub. Replace `main` with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under `data/dataset`.
 
 The six task IDs are `truthfulness`, `safety`, `fairness`, `robustness`, `privacy` and `ethics`. `tasks` prints a human-readable list of their registered dataset files; it does not emit JSON.
 
