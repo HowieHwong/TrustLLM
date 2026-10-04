@@ -23,6 +23,8 @@
 
 TrustLLM is an open research toolkit for evaluating the trustworthiness of large language models across **six dimensions**. Run the ICML 2024 benchmark with local weights or a model API, and keep the data, settings, and results together.
 
+Automating evaluations with an AI agent? See the [agent integration guide](docs/guides/agents.md) for CLI/Python orchestration and JSON results, or start from the [machine-readable documentation index](https://howiehwong.github.io/TrustLLM/llms.txt).
+
 ## Start here
 
 **1 — Install.** The base package supports API generation and data downloads; no GPU libraries required.

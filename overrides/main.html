@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% if page %}
+    {% set description = page.meta.description | default(config.site_description, true) %}
+    {% set title = page.meta.title | default(page.title, true) %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TrustLLM">
+    <meta property="og:title" content="{{ title | e }} — TrustLLM">
+    <meta property="og:description" content="{{ description | e }}">
+    <meta property="og:url" content="{{ page.canonical_url | e }}">
+    <meta property="og:image" content="{{ config.site_url }}assets/logo.png">
+    <meta property="og:image:alt" content="TrustLLM — Trustworthiness in Large Language Models">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ title | e }} — TrustLLM">
+    <meta name="twitter:description" content="{{ description | e }}">
+    <meta name="twitter:image" content="{{ config.site_url }}assets/icon.png">
+    <link rel="alternate" type="text/markdown" href="{{ markdown_url | e }}" title="Markdown version">
+    <link rel="describedby" href="{{ config.site_url }}llms.txt" type="text/plain">
+    {% if page.is_homepage %}
+    <script type="application/ld+json">{{ source_schema | tojson }}</script>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if page %}
+  <nav class="doc-tools" aria-label="Document formats">
+    <a href="{{ markdown_url | e }}">View as Markdown</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ config.site_url }}llms.txt">Agent index</a>
+  </nav>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

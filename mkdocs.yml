@@ -1,56 +1,81 @@
 site_name: TrustLLM
-site_description: Trustworthiness in Large Language Models
+site_url: https://howiehwong.github.io/TrustLLM/
+site_description: Evaluate LLM trustworthiness across truthfulness, safety, fairness, robustness, privacy and ethics with local models or compatible APIs.
+repo_url: https://github.com/HowieHwong/TrustLLM
+repo_name: HowieHwong/TrustLLM
+edit_uri: edit/main/docs/
 use_directory_urls: false
+copyright: TrustLLM · ICML 2024 · MIT-licensed toolkit
+
+hooks:
+  - hooks/discovery.py
 extra_css:
   - stylesheets/extra.css
-copyright: Copyright &copy; 2024 TrustLLM
 
 nav:
-  - Home: index.md
-  - Guide:
-    - Quickstart: guides/running.md
-    - Generation: guides/generation_details.md
-    - Evaluation: guides/evaluation.md
-  - Design: design.md
-  - Benchmark: benchmark.md
-  - Development: development.md
-  - Changelog: changelog.md
-  - FAQ: faq.md
+  - Overview: index.md
+  - Get started:
+    - Installation & first run: guides/running.md
+    - Local & API models: guides/generation_details.md
+    - AI agent integration: guides/agents.md
+  - Evaluate:
+    - Scoring & results: guides/evaluation.md
+    - Datasets & metrics: benchmark.md
+    - FAQ & troubleshooting: faq.md
+  - Project:
+    - Design & validation: design.md
+    - Contributing: development.md
+    - Changelog: changelog.md
+  - Reference:
+    - Original scoring APIs: reference/scoring.md
+    - Archived generation: guides/legacy_generation.md
 
 theme:
   name: material
-  font:
-    text: Ubuntu
-    code: Ubuntu Mono
+  custom_dir: overrides
+  font: false
   favicon: assets/icon.png
-  logo: assets/logo.png
+  logo: assets/icon.png
   features:
-    - navigation.tabs
     - navigation.sections
-    - navigation.instant
     - navigation.top
+    - navigation.footer
     - navigation.tracking
     - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
   palette:
     - media: "(prefers-color-scheme: light)"
-      scheme: black
+      scheme: default
       primary: custom
+      accent: custom
       toggle:
-        icon: material/weather-sunny
+        icon: material/brightness-4
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/weather-night
+        icon: material/brightness-7
         name: Switch to light mode
+
+plugins:
+  - search:
+      lang: en
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.arithmatex:
       generic: true
   - toc:

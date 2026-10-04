@@ -26,6 +26,7 @@ python -m pytest
 python -m build trustllm_pkg --outdir dist
 python -m twine check dist/*
 python -m mkdocs build --strict
+python scripts/check_docs.py
 ```
 
 The initial lint gate checks syntax and a small set of correctness rules across the repository. It does not claim the legacy code is fully lint-clean or reformat research code wholesale. New code should use four-space indentation, clear names, and docstrings for public behavior; `.editorconfig` captures the shared text conventions.
@@ -43,6 +44,29 @@ The initial lint gate checks syntax and a small set of correctness rules across 
 Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.
 
 The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. Release automation builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
+
+## Documentation publishing
+
+Write a unique `title` and `description` in each documentation page's frontmatter.
+Use clear headings and accurate capability descriptions. Keep the original logo
+and icon files unchanged. Retain existing page URLs or provide a useful page at
+the old URL when reorganizing a guide.
+
+`hooks/discovery.py` generates per-page Markdown, `llms.txt` and `llms-full.txt`
+from the built articles. Edit the source pages, not generated files in `site/`.
+Pages marked `archived: true` appear in the optional index section; pages marked
+`agent_index: false` are omitted from the index. The build check validates local
+links and anchors, canonical URLs, metadata, exports and example preservation.
+
+The site uses static HTML, a sitemap and page descriptions for search discovery.
+Agent exports are a convenience for clients that support them; they are not a
+ranking guarantee. See [Google's AI search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide),
+the [llms.txt proposal](https://llmstxt.org/), and
+[Mintlify's documentation export approach](https://www.mintlify.com/docs/ai/llmstxt).
+
+GitHub Pages publishes this project under `/TrustLLM/`. Keep that prefix in
+canonical and discovery URLs. A project-level `robots.txt` would not control
+crawling for the host; do not add one as a substitute for root-host configuration.
 
 ## README translations
 

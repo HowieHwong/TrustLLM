@@ -1,458 +1,86 @@
+---
+title: Score LLM benchmark responses
+description: Evaluate complete TrustLLM response sets, configure scoring dependencies and judges, and interpret per-task JSON and HTML benchmark results.
+---
+
 # Scoring model responses
 
-For the current CLI, install the `eval` extra and run `python -m trustllm evaluate --task safety --data <full-run-directory>`. See [the running guide](running.md) for installation and output paths. The sections below document the original task-specific Python APIs. Full response sets are recommended: small generation smoke tests can omit groups needed by these scorers.
+Generation records what a model says. Evaluation applies the original TrustLLM scorers to those responses and writes **per-task metrics**. Complete generation before starting evaluation, and keep the original dataset fields and ordering.
 
-Set `OPENAI_API_KEY`, `OPENAI_BASE_URL` and `OPENAI_JUDGE_MODEL` before importing evaluation modules when using an API judge. Individual historical examples below may use older model IDs. Scoring can download a classifier or call paid judge/embedding services; the offline tests do not validate these complete external integrations.
+## Prepare a complete run
 
+Start with the [running guide](running.md). A generation smoke test with `--limit` is useful for checking setup, but may omit pairs or groups required by the scorers. Generate without a limit into a new directory for a full benchmark run.
 
-## **Start Your Evaluation**
+```bash
+python -m pip install "trustllm[eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+python -m trustllm evaluate --task safety --data runs/api-safety-full
+```
 
+Replace the example directory with an existing full response set. The CLI requires every registered response file for the task, excluding optional awareness, and a nonempty `res` for every record. It cannot prove benchmark coverage from arbitrary input files: retain the data hashes and run manifest, and verify the sample counts yourself.
 
+## Configure scoring dependencies
 
+The `eval` extra installs the original evaluation dependencies, including PyTorch, Transformers, metrics libraries and the judge SDK. Different tasks use a mixture of rules, classifiers, embeddings and language-model judges. Some may download model weights or call paid services.
 
-### **API Setting**
-Before starting the evaluation, you need to first set up your [OpenAI API](https://openai.com/product) (GPT-4-turbo) and [Perspective API](https://developers.perspectiveapi.com/s/docs-get-started?language=en_US) (used for measuring toxicity).
+For a scoring method that uses an API judge, set these variables **before** importing evaluation modules or running the CLI:
+
+```bash
+export OPENAI_API_KEY="your-api-key"
+export OPENAI_BASE_URL="https://your-provider.example/v1"
+export OPENAI_JUDGE_MODEL="your-available-judge-model"
+```
+
+Replace the endpoint and judge placeholders with your provider's actual values. The original default judge ID is historical and may no longer be available. A generation endpoint's Chat Completions support does not guarantee compatibility with all original judge or embedding calls. Check the selected pipeline before launching a full experiment.
+
+The standard ethics pipeline excludes optional awareness scoring. Safety toxicity is an opt-in feature of the original Python pipeline and uses Perspective API credentials; the CLI does not enable it by default. See the [original APIs](../reference/scoring.md) for these options.
+
+## Read the score files
+
+| File | Contents |
+| :--- | :--- |
+| `scores.json` | Task, nested score values, response-file hashes, dependency versions, judge model and creation time. |
+| `scores.html` | A readable table of the same score values. |
+| `run.json` | Generation settings and completion counts; retain it with the score files. |
+| `report.html` | Generation progress and completion only. This is not a benchmark score report. |
 
 ```python
-from trustllm import config
+import json
+from pathlib import Path
 
-config.openai_key = 'your-openai-api-key'
-
-config.perspective_key = 'your-perspective-api-key'
+result = json.loads(Path("runs/api-safety-full/scores.json").read_text())
+print(result["task"])
+print(result["scores"])
 ```
 
-If you're using OpenAI API through [Azure](https://azure.microsoft.com/en-us/products/ai-services/openai-service), you should set up your Azure api:
+Existing scores are not overwritten. To rescore with a different judge or environment, select a new output filename and record the changed settings:
 
-```python
-config.azure_openai = True
-
-config.azure_engine = "your-azure-engine-name"
-
-config.azure_api_base = "your-azure-api-url (openai.base_url)"
+```bash
+python -m trustllm evaluate --task safety --data runs/api-safety-full \
+  --output runs/api-safety-full/scores-rerun.json
 ```
 
+Both the chosen JSON and its corresponding HTML filename must be unused. A failed or incomplete evaluation does not produce a successful score artifact; inspect the error and the relevant pipeline dependencies.
 
+## Interpret and compare results
 
-### Easy Pipeline
+Metric directions and scales differ. For example, higher refusal-to-answer rates can be desirable on harmful prompts and undesirable on harmless prompts in exaggerated-safety evaluation. Use the [original metric reference](../benchmark.md#task-overview), and preserve its definitions when reporting results. TrustLLM does not define a single overall trust score.
 
-From [Version 0.2.1](https://howiehwong.github.io/TrustLLM/changelog.html#version-021), trustllm toolkit supports easy pipeline for evaluation.
+Record the dataset and response hashes, sample counts, source commit, model revision, prompt formatting, generation settings, dependencies and judge configuration. Treat new chat templates or judge versions as experimental changes. A 100% generation completion rate says nothing about a model's trustworthiness.
 
-We have provided pipelines for all six sections: `run_truthfulness`, `run_safety`, `run_fairness`, `run_robustness`, `run_privacy`, `run_ethics`.
+Review [language limitations](../faq.md#language-bias) and the [validation scope](../design.md) before comparing with the published leaderboard. Current tests do not reproduce all paper results or validate every hosted provider.
 
+## Original Python APIs
 
+The detailed [scoring reference](../reference/scoring.md) retains the research APIs. These links also preserve bookmarks from earlier documentation.
 
-#### Truthfulness Evaluation  
+<span id="start-your-evaluation"></span><span id="api-setting"></span><span id="easy-pipeline"></span>
+[Configuration and pipeline setup](../reference/scoring.md#start-your-evaluation)
 
-For truthfulness assessment, the `run_truthfulness` function is used. Provide JSON file paths for internal consistency, external consistency, hallucination scenarios, sycophancy evaluation, and adversarial factuality.  
-
-```python  
-truthfulness_results = run_truthfulness(  
-    internal_path="path_to_internal_consistency_data.json",  
-    external_path="path_to_external_consistency_data.json",  
-    hallucination_path="path_to_hallucination_data.json",  
-    sycophancy_path="path_to_sycophancy_data.json",
-    advfact_path="path_to_advfact_data.json"
-)
-```
-
-The function will return a dictionary containing results for internal consistency, external consistency, hallucinations, sycophancy (with persona and preference evaluations), and adversarial factuality.     
-
-#### Safety Evaluation  
-
-To assess the safety of your language model, use the `run_safety` function. You can provide paths to data for jailbreak scenarios, exaggerated safety situations, and misuse potential. Optionally, you can also evaluate for toxicity.  
-
-```python  
-safety_results = run_safety(  
-    jailbreak_path="path_to_jailbreak_data.json",  
-    exaggerated_safety_path="path_to_exaggerated_safety_data.json",  
-    misuse_path="path_to_misuse_data.json",  
-    toxicity_eval=True,  
-    toxicity_path="path_to_toxicity_data.json",  
-    jailbreak_eval_type="total"  
-)  
-```
-
-The returned dictionary includes results for jailbreak, exaggerated safety, misuse, and toxicity evaluations.  
-
-#### Fairness Evaluation     
-
-To evaluate the fairness of your language model, use the `run_fairness` function. This function takes paths to JSON files containing data on stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference biases.     
-
-```python
-fairness_results = run_fairness(
-    stereotype_recognition_path="path_to_stereotype_recognition_data.json",      
-    stereotype_agreement_path="path_to_stereotype_agreement_data.json",      
-    stereotype_query_test_path="path_to_stereotype_query_test_data.json",      
-    disparagement_path="path_to_disparagement_data.json",      
-    preference_path="path_to_preference_data.json"   
-)  
-```
-
-The returned dictionary will include results for stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference bias evaluations.
-
-#### Robustness Evaluation  
-
-To evaluate the robustness of your language model, use the `run_robustness` function. This function accepts paths to JSON files for adversarial GLUE data, adversarial instruction data, out-of-distribution (OOD) detection, and OOD generalization.  
-
-```python  
-robustness_results = run_robustness(  
-    advglue_path="path_to_advglue_data.json",  
-    advinstruction_path="path_to_advinstruction_data.json",  
-    ood_detection_path="path_to_ood_detection_data.json",  
-    ood_generalization_path="path_to_ood_generalization_data.json"  
-)  
-```
-
-The function returns a dictionary with the results of adversarial GLUE, adversarial instruction, OOD detection, and OOD generalization evaluations.  
-
-#### Privacy Evaluation  
-
-To conduct privacy evaluations, use the `run_privacy` function. It allows you to specify paths to datasets for privacy conformity, privacy awareness queries, and privacy leakage scenarios.  
-
-```python  
-privacy_results = run_privacy(  
-    privacy_confAIde_path="path_to_privacy_confaide_data.json",  
-    privacy_awareness_query_path="path_to_privacy_awareness_query_data.json",  
-    privacy_leakage_path="path_to_privacy_leakage_data.json"  
-)  
-```
-
-The function outputs a dictionary with results for privacy conformity AIde, normal and augmented privacy awareness queries, and privacy leakage evaluations.  
-
-#### Ethics Evaluation  
-
-To evaluate the ethical considerations of your language model, use the `run_ethics` function. You can specify paths to JSON files containing explicit ethics, implicit ethics, and awareness data.  
-
-```python  
-results = run_ethics(  
-    explicit_ethics_path="path_to_explicit_ethics_data.json",  
-    implicit_ethics_path="path_to_implicit_ethics_data.json",  
-    awareness_path="path_to_awareness_data.json"  
-)  
-```
-
-The function returns a dictionary containing the results of the explicit ethics evaluation (with low and high levels), implicit ethics evaluation (ETHICS and social norm types), and emotional awareness evaluation.  
-
-
-
-
-
-
-
-### **Truthfulness**
-
-Four subsections in truthfulness evaluation:
-
-* Misinformation: `external.json`, `internal.json`
-* Hallucination: `hallucination.json`
-* Sycophancy: `sycophancy.json`
-* Adversarial Factuality: `golden_advfactuality.json`
-
-
-Requirement:
-
-![OpenAI](https://img.shields.io/badge/OpenAI-blue)
-
-* openai api (gpt-4-turbo)
-
-Preliminary:
-
-```python
-from trustllm import truthfulness
-from trustllm import file_process
-from trustllm import config
-
-evaluator = truthfulness.TruthfulnessEval()
-```
-
-Misinformation evaluation:
-
-```python
-misinformation_internal_data = file_process.load_json('misinformation_internal_data_json_path')
-print(evaluator.internal_eval(misinformation_internal_data))
-
-misinformation_external_data = file_process.load_json('misinformation_external_data_json_path')
-print(evaluator.external_eval(misinformation_external_data))
-```
-
-Hallucination evaluation:
-
-```python
-hallucination_data = file_process.load_json('hallucination_data_json_path')
-print(evaluator.hallucination_eval(hallucination_data))
-```
-
-Sycophancy evaluation (`eval_type`: type of evaluation, either `persona` or `preference`):
-```python
-sycophancy_data = file_process.load_json('sycophancy_data_json_path')
-print(evaluator.sycophancy_eval(sycophancy_data, eval_type='persona'))
-print(evaluator.sycophancy_eval(sycophancy_data, eval_type='preference'))
-```
-
-Adversarial factuality evaluation:
-```python
-adv_fact_data = file_process.load_json('adv_fact_data_json_path')
-print(evaluator.advfact_eval(adv_fact_data))
-```
-
-### **Safety**
-
-Four subsections in safety evaluation:
-
-* Jailbreak: `jailbreak.json`
-* Exaggerated Safety: `exaggerated_safety.json`
-* Toxicity: `jailbreak.json`
-* Misuse: `misuse.json`
-
-Requirement:
-
-![OpenAI](https://img.shields.io/badge/OpenAI-blue)
-![Perspective](https://img.shields.io/badge/Perspective-purple)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
-
-* openai api (gpt-4-turbo)
-* perspective api
-* huggingface evaluator: LibrAI/longformer-harmful-ro
-
-Preliminary:
-
-```python
-from trustllm import safety
-from trustllm import file_process
-from trustllm import config
-
-evaluator = safety.SafetyEval()
-```
-
-Jailbreak evaluation (`eval_type`: type of evaluation, either `total` or `single`):
-
-```python
-jailbreak_data = file_process.load_json('jailbreak_data_json_path')
-print(evaluator.jailbreak_eval(jailbreak_data, eval_type='total')) # return overall RtA
-print(evaluator.jailbreak_eval(jailbreak_data, eval_type='single')) # return RtA dict for each kind of jailbreak ways
-```
-
-Exaggerated evaluation:
-
-```python
-exaggerated_data = file_process.load_json('exaggerated_data_json_path')
-print(evaluator.exaggerated_eval(exaggerated_data))
-```
-
-Toxicity evaluation:
-
-!!! note
-
-    Toxicity data for evaluation is based on the evaluated results of jailbreak data. You should first evaluate jailbreak data and then use evaluated results to conduct toxicity evaluation.
-
-
-```python
-# If you have not saved evaluated jailbreak results
-jailbreak_data = file_process.load_json('jailbreak_data_json_path')
-eval_data, _ = evaluator.jailbreak_eval(jailbreak_data, eval_type='total/single', return_data=True)
-print(evaluator.toxicity_eval(eval_data))
-
-# If you have saved evaluated jailbreak results
-toxicity_data = file_process.load_json('evaluated_jailbreak_results_json_path') # load eval data for toxicity evaluation
-print(evaluator.toxicity_eval(toxicity_data))
-```
-
-Misuse evaluation:
-
-```python
-misuse_data = file_process.load_json('misuse_data_json_path')
-print(evaluator.misuse_eval(misuse_data))
-```
-
-### **Fairness**
-
-Three subsections in fairness evaluation:
-
-* Stereotype: `stereotype_agreement.json`, `stereotype_recognition.json`, `stereotype_query_test.json`
-* Disparagement: `disparagement.json`
-* Preference: `preference_force.json`
-
-Requirement:
-
-![OpenAI](https://img.shields.io/badge/OpenAI-blue)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
-
-* openai api (gpt-4-turbo)
-* huggingface evaluator: LibrAI/longformer-harmful-ro
-
-Preliminary:
-
-```python
-from trustllm import fairness
-from trustllm import file_process
-from trustllm import config
-
-evaluator = fairness.FairnessEval()
-```
-
-Stereotype evaluation:
-
-```python
-stereotype_recognition_data = file_process.load_json('stereotype_recognition_data_json_path')
-print(evaluator.stereotype_recognition_eval(stereotype_recognition_data))
-
-stereotype_agreement_data = file_process.load_json('stereotype_agreement_data_json_path')
-print(evaluator.stereotype_agreement_eval(stereotype_agreement_data))
-
-stereotype_query_test_data = file_process.load_json('stereotype_query_test_data_json_path')
-print(evaluator.stereotype_query_eval(stereotype_query_test_data))
-```
-
-Disparagement evaluation:
-```python
-disparagement_data = file_process.load_json('disparagement_data_json_path')
-print(evaluator.disparagement_eval(disparagement_data))
-```
-
-Preference evaluation:
-```python
-preference_data = file_process.load_json('preference_data_json_path')
-print(evaluator.preference_eval(preference_data))
-```
-
-### **Robustness**
-
-Two subsections in robustness evaluation:
-
-* Natural noise: `advglue.json`, `advinstruction.json`
-* Out of distribution: `ood_generalization.json`, `ood_detection.json`
-
-
-Requirement:
-
-
-![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
-
-* huggingface evaluator: LibrAI/longformer-harmful-ro
-
-Preliminary:
-
-```python
-from trustllm import robustness
-from trustllm import file_process
-from trustllm import config
-
-evaluator = robustness.RobustnessEval()
-```
-
-Natural noise evaluation:
-
-```python
-advglue_data = file_process.load_json('advglue_data_json_path')
-print(evaluator.advglue_eval(advglue_data))
-
-advinstruction_data = file_process.load_json('advinstruction_data_json_path')
-print(evaluator.advglue_eval(advinstruction_data))
-```
-
-OOD evaluation:
-
-```python
-ood_detection_data = file_process.load_json('ood_detection_data_json_path')
-print(evaluator.ood_detection(ood_detection_data))
-
-ood_generalization_data = file_process.load_json('ood_generalization_data_json_path')
-print(evaluator.ood_generalization(ood_generalization_data))
-```
-
-
-### **Privacy**
-
-
-Two subsections in privacy evaluation:
-
-* Privacy awareness: `privacy_awareness_confAIde.json`, `privacy_awareness_query.json`
-* Privacy leakage: `privacy_leakage.json`
-
-Requirement:
-
-
-![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
-
-* huggingface evaluator: LibrAI/longformer-harmful-ro
-
-Preliminary:
-
-```python
-from trustllm import privacy
-from trustllm import file_process
-from trustllm import config
-
-evaluator = privacy.PrivacyEval()
-```
-
-Privacy awareness:
-
-```python
-privacy_confAIde_data = file_process.load_json('privacy_confAIde_data_json_path')
-print(evaluator.ConfAIDe_eval(privacy_confAIde_data))
-
-privacy_awareness_query_data = file_process.load_json('privacy_awareness_query_data_json_path')
-print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='normal'))
-print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='aug'))
-```
-
-Privacy leakage:
-
-```python
-privacy_leakage_data = file_process.load_json('privacy_leakage_data_json_path')
-print(evaluator.leakage_eval(privacy_leakage_data))
-```
-
-
-
-### **Machine Ethics**
-
-Three subsections in machine ethics evaluation:
-
-Implicit ethics: `implicit_ETHICS.json`, `implicit_SocialChemistry101.json`  
-Explicit ethics: `explicit_moralchoice.json`  
-Awareness: `awareness.json`  
-
-
-Requirement:
-
-![OpenAI](https://img.shields.io/badge/OpenAI-blue)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-yellow) 
-
-* openai api (gpt-4-turbo)
-* huggingface evaluator: LibrAI/longformer-harmful-ro
-
-Preliminary:
-
-```python
-from trustllm import ethics
-from trustllm import file_process
-from trustllm import config
-
-evaluator = ethics.EthicsEval()
-```
-
-Explicit ethics:
-
-```python
-explicit_ethics_data = file_process.load_json('explicit_ethics_data_json_path')
-print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='low'))
-print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='high'))
-```
-Implicit ethics:
-
-```python
-implicit_ethics_data = file_process.load_json('implicit_ethics_data_json_path')
-# evaluate ETHICS dataset
-print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='ETHICS'))
-# evaluate social_norm dataset
-print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='social_norm'))
-```
-
-Awareness:
-
-```python
-awareness_data = file_process.load_json('awareness_data_json_path')
-print(evaluator.awareness_eval(awareness_data))
-```
+| Dimension | Pipeline | Task API |
+| :--- | :--- | :--- |
+| Truthfulness | <span id="truthfulness-evaluation"></span>[Pipeline](../reference/scoring.md#truthfulness-evaluation) | <span id="truthfulness"></span>[Task methods](../reference/scoring.md#truthfulness) |
+| Safety | <span id="safety-evaluation"></span>[Pipeline](../reference/scoring.md#safety-evaluation) | <span id="safety"></span>[Task methods](../reference/scoring.md#safety) |
+| Fairness | <span id="fairness-evaluation"></span>[Pipeline](../reference/scoring.md#fairness-evaluation) | <span id="fairness"></span>[Task methods](../reference/scoring.md#fairness) |
+| Robustness | <span id="robustness-evaluation"></span>[Pipeline](../reference/scoring.md#robustness-evaluation) | <span id="robustness"></span>[Task methods](../reference/scoring.md#robustness) |
+| Privacy | <span id="privacy-evaluation"></span>[Pipeline](../reference/scoring.md#privacy-evaluation) | <span id="privacy"></span>[Task methods](../reference/scoring.md#privacy) |
+| Ethics | <span id="ethics-evaluation"></span>[Pipeline](../reference/scoring.md#ethics-evaluation) | <span id="machine-ethics"></span>[Task methods](../reference/scoring.md#machine-ethics) |

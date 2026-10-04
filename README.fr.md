@@ -23,6 +23,8 @@
 
 TrustLLM est une boîte à outils de recherche open source qui évalue la fiabilité des grands modèles de langage selon **six dimensions**. Exécutez le benchmark d’ICML 2024 avec des poids locaux ou une API de modèles, et conservez ensemble les données, les paramètres et les résultats.
 
+Pour automatiser les évaluations avec un agent IA, consultez le [guide d’intégration](docs/guides/agents.md) pour la CLI, Python et les résultats JSON, ou commencez par l’[index de documentation pour les agents](https://howiehwong.github.io/TrustLLM/llms.txt).
+
 ## Pour commencer
 
 **1 — Installer.** Le paquet de base permet de générer des réponses via une API et de télécharger les données, sans bibliothèque GPU.

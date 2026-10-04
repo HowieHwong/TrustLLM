@@ -1,16 +1,22 @@
+---
+title: Archived 0.3 generation APIs
+description: Historical TrustLLM generation interfaces, provider SDKs and model aliases. Use the maintained local or compatible API backend for new experiments.
+archived: true
+search:
+  boost: 0.2
+---
+
+# Archived generation APIs
+
 > Archived 0.3 interface. Requires the `legacy` extra; historical provider availability is unverified. Use the [current running guide](running.md) for new experiments.
 
 
-
-## **Generation Results**
-
-The trustllm toolkit currently supports the generation of over a dozen models.
+## Generation Results
+The historical generation engine documented here supported the generation of over a dozen models.
 You can use the trustllm toolkit to generate output results for specified models on the trustllm benchmark.
 
 
-
-### **Supported LLMs**
-
+### Supported LLMs
 - `Baichuan-13b`
 - `Baichuan2-13b`
 - `Yi-34b`
@@ -36,13 +42,12 @@ You can use the trustllm toolkit to generate output results for specified models
 - `Gemini-pro`
 - ***other LLMs in huggingface***
 
-### **Start Your Generation**
-
+### Start Your Generation
 The `LLMGeneration` class is designed for result generation, supporting the use of both ***local*** and ***online*** models. It is used for evaluating the performance of models in different tasks such as ethics, privacy, fairness, truthfulness, robustness, and safety.
 
 **Dataset**
 
-You should firstly download TrustLLM dataset ([details](https://github.com/HowieHwong/TrustLLM#3-prepare-the-dataset)) and the downloaded dataset dict has the following structure:
+You should firstly download TrustLLM dataset ([details](https://howiehwong.github.io/TrustLLM/guides/running.html#download-data)) and the downloaded dataset dict has the following structure:
 
 ```text
 |-TrustLLM
@@ -167,9 +172,7 @@ llm_gen.generation_results()
 ```
 
 
-
-### **Don't have enough computing resource?**
-
+### Don't have enough computing resource?
 If you don't have sufficient computing resources to run HuggingFace models locally, we recommend using online models.
 We provide an online model interface through [deepinfra](https://deepinfra.com/) or [replicate](https://replicate.com/).
 
@@ -211,10 +214,7 @@ llm_gen.generation_results()
 ```
 
 
-
-
-## **Temperature Setting**
-
+## Temperature Setting
 We categorize the tasks in the benchmark into two main groups: *Generation* and *Classification*.
 
 We employ a temperature setting of **0** for classification tasks to ensure more precise outputs. Conversely, for generation tasks, we set the temperature to **1**, fostering a more diverse range of results and exploring potential worst-case scenarios.

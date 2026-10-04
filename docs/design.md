@@ -1,3 +1,8 @@
+---
+title: Workflow design and validation
+description: Understand TrustLLM backend design, reproducibility records, integration tests and the limits of validation against external models and original scoring methods.
+---
+
 # Workflow design and references
 
 Reviewed on 2026-10-03. These references inform the workflow; TrustLLM does not claim feature parity with these larger frameworks or copy their benchmark definitions.

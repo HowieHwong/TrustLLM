@@ -46,6 +46,7 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install -e './trustllm_pkg[docs]'
       - run: python -m mkdocs build --strict
+      - run: python scripts/check_docs.py
 
   local-model:
     name: Local model CPU integration

@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "trustllm"
 version = "0.4.0"
 description = "Tools for evaluating the trustworthiness of large language models"
+keywords = ["llm-evaluation", "llm-safety", "trustworthiness", "benchmark", "responsible-ai"]
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
@@ -51,7 +52,7 @@ legacy = [
     "zhipuai>=2.0.1"
 ]
 dev = ["pytest>=8,<9", "ruff>=0.9,<1", "build>=1.2,<2", "twine>=6,<7"]
-docs = ["mkdocs>=1.6,<2", "mkdocs-material>=9.5,<10"]
+docs = ["mkdocs>=1.6,<2", "mkdocs-material>=9.5,<10", "markdownify>=1.2,<2", "beautifulsoup4>=4.12,<5"]
 
 [tool.setuptools.packages.find]
 where = ["."]

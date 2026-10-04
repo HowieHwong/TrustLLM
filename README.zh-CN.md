@@ -23,6 +23,8 @@
 
 TrustLLM 是一个开源研究工具包，从**六个维度**评估大语言模型的可信度。你可以使用本地权重或模型 API 运行 ICML 2024 基准，并统一保存数据、配置和结果。
 
+想让 AI Agent 自动运行评测？查看 [Agent 集成指南](docs/guides/agents.md)，了解 CLI/Python 调用及 JSON 结果，或从[机器可读文档索引](https://howiehwong.github.io/TrustLLM/llms.txt)开始。
+
 ## 从这里开始
 
 **1 — 安装。** 基础包支持 API 回复生成和数据下载，无需安装 GPU 相关库。

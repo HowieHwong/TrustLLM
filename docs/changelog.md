@@ -1,72 +1,72 @@
-# Source update: 0.4.0
+---
+title: Changelog and migration notes
+description: Track the TrustLLM 0.4 source workflow, documentation updates and historical releases. Find migration guidance and distinguish source changes from PyPI releases.
+---
+
+# Changelog
+
+Changes to the maintained source repository are listed first. Historical package releases remain below for research reproducibility.
+
+## Documentation update · October 2026
+
+- Reorganized installation, backend selection, scoring and original API references.
+- Refreshed the documentation layout, typography, search and mobile navigation while preserving the original TrustLLM logo and icon.
+- Added AI agent integration instructions covering CLI/Python orchestration, exit codes, artifacts and benchmark scope.
+- Added canonical URLs, sitemap, page descriptions, social previews and repository metadata.
+- Added Markdown page exports, `llms.txt` and `llms-full.txt`, generated from the same content as the HTML documentation.
+- Expanded troubleshooting and linked the seven README languages.
+
+## Source update: 0.4.0
 
 - Shared local/API generation runner, CLI and Python API.
 - Dataset download without cloning, task discovery and JSON configurations.
 - Per-sample checkpoints, guarded resume, bounded API retries and explicit failures.
 - Input hashes, environment versions, response exports and HTML generation reports.
 - Separate local/evaluation dependencies; original generation engine archived.
-- New README design, Chinese quickstart and CPU/HTTP integration tests.
+- Multilingual READMEs and CPU/HTTP integration tests.
 
-This source update does not by itself publish a PyPI release. See the [migration guide](guides/running.md#migration-from-03).
+This source update does not by itself publish a PyPI release. Install from source using the [current instructions](guides/running.md#install-the-components-you-use). Existing users should read the [migration guide](guides/running.md#migration-from-03).
 
----
-hide:
-  - navigation
----
+## Historical releases
 
-## **⏰ TODO in Coming Versions**
+Provider and model support below describes the release at that time. It does not establish current availability or coverage by the maintained backend tests.
 
-- [x] Faster and simpler evaluation pipeline
-- [ ] Dynamic dataset
-- [ ] More fine-grained datasets
-- [ ] Chinese output evaluation
-- [ ] Downstream application evaluation
+### Version 0.3.0
 
+April 23, 2024
 
-## **Version 0.3.0**
+- Parallel embedding retrieval for AdvInstruction evaluation.
+- Exception handling for partial evaluations and bug fixes.
+- Added published results for ChatGLM3, GLM-4, Mixtral and Llama 3 models. See the [research leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
 
-*Release Date: 23rd Apr, 2024*
+### Version 0.2.3 & 0.2.4
 
-- **Support parallel retrieval of embeddings when evaluating AdvlInstruction**
-- **Add exception handling for partial evaluations**
-- **Fixed some bugs**
-- **Add evaluation results for ChatGLM3, GLM-4, Mixtral, Llama3-8b, and Llama3-70b ([check out](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html))**
+March 2024
 
-## **Version 0.2.3 & 0.2.4**
+- Bug fixes and Gemini API support in the historical generation engine.
 
-*Release Date: March 2024*
+### Version 0.2.2
 
-- **Fixed some bugs**
-- **Support Gemini API**
+February 1, 2024
 
-## **Version 0.2.2**
+- Awareness evaluation from [related research](https://arxiv.org/abs/2401.17882).
+- Zhipu API support for GLM-4 and GLM-3-turbo.
 
-*Release Date: 1st Feb, 2024*
+### Version 0.2.1
 
-- **Support awareness evaluation in our new [work](https://arxiv.org/abs/2401.17882)**
-- **Support Zhipu API evaluation (GLM-4 & GLM-3-turbo)**
+January 26, 2024
 
+- Historical Replicate, DeepInfra and Azure OpenAI integrations.
+- Simplified evaluation pipelines.
 
+### Version 0.2.0
 
-## **Version 0.2.1**
+January 20, 2024
 
-*Release Date: 26th Jan, 2024*
+- Added model generation and concurrent automatic evaluation.
 
-- **Support LLMs in [replicate](https://replicate.com/) and [deepinfra](https://deepinfra.com/)**
-- **Support easy pipeline for evaluation**
-- **Support [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service) API**
+### Version 0.1.0
 
-## **Version 0.2.0**
+January 10, 2024
 
-*Release Date: 20th Jan, 2024*
-
-- **Add generation section** ([details](https://howiehwong.github.io/TrustLLM/guides/generation_details.html))
-- **Support concurrency when using auto-evaluation**
-
-
-
-## **Version 0.1.0**
-
-*Release Date: 10th Jan, 2024*
-
-We have released the first version of the TrustLLM assessment tool, which includes all the evaluation methods from our initial research paper.
+- First release of the TrustLLM assessment toolkit, covering the evaluation methods from the initial paper.

@@ -1,3 +1,8 @@
+---
+title: Install TrustLLM and run an evaluation
+description: Install the TrustLLM Python source package, download benchmark data and run local or API models with checkpoints, configuration files and scoring.
+---
+
 # Run TrustLLM
 
 ## Install the components you use

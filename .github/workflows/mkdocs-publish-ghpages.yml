@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['docs/**', 'mkdocs.yml', '.github/workflows/mkdocs-publish-ghpages.yml']
+    paths: ['docs/**', 'overrides/**', 'hooks/**', 'scripts/check_docs.py', 'mkdocs.yml', 'CONTRIBUTING.md', 'trustllm_pkg/pyproject.toml', '.github/workflows/mkdocs-publish-ghpages.yml']
 
 permissions:
   contents: write
@@ -24,4 +24,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install -e './trustllm_pkg[docs]'
+      - run: python -m mkdocs build --strict
+      - run: python scripts/check_docs.py
       - run: python -m mkdocs gh-deploy --strict --force
