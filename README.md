@@ -7,8 +7,18 @@
   <a href="https://arxiv.org/abs/2401.05561">Paper</a> &nbsp; / &nbsp;
   <a href="https://howiehwong.github.io/TrustLLM/">Documentation</a> &nbsp; / &nbsp;
   <a href="https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset">Dataset</a> &nbsp; / &nbsp;
-  <a href="https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html">Leaderboard</a> &nbsp; / &nbsp;
-  <a href="README.zh-CN.md">简体中文</a>
+  <a href="https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html">Leaderboard</a>
+</p>
+
+<!-- Keep language links and code examples in sync across all README translations. -->
+<p align="center">
+  <strong>English</strong> &nbsp; / &nbsp;
+  <a href="README.zh-CN.md">简体中文</a> &nbsp; / &nbsp;
+  <a href="README.zh-TW.md">繁體中文</a> &nbsp; / &nbsp;
+  <a href="README.ja.md">日本語</a> &nbsp; / &nbsp;
+  <a href="README.ko.md">한국어</a> &nbsp; / &nbsp;
+  <a href="README.es.md">Español</a> &nbsp; / &nbsp;
+  <a href="README.fr.md">Français</a>
 </p>
 
 TrustLLM is an open research toolkit for evaluating the trustworthiness of large language models across **six dimensions**. Run the ICML 2024 benchmark with local weights or a model API, and keep the data, settings, and results together.
@@ -118,5 +128,7 @@ The original generation engine is archived under `trustllm.generation.legacy`. G
 ## Research & development
 
 [CI checks](https://github.com/HowieHwong/TrustLLM/actions/workflows/ci.yml) · [Contributing](CONTRIBUTING.md) · [Design references](docs/design.md) · [Changelog](docs/changelog.md) · [Issues](https://github.com/HowieHwong/TrustLLM/issues)
+
+The language links above translate this README. Detailed guides are currently in English; translations do not change benchmark prompts, datasets, or scoring methods.
 
 If TrustLLM supports your research, please cite the [ICML 2024 paper](https://openreview.net/forum?id=bWUU0LwwMp). Full BibTeX: [CITATION.bib](CITATION.bib). Code: [MIT](LICENSE). Dataset terms remain with the original sources.

@@ -43,3 +43,16 @@ The initial lint gate checks syntax and a small set of correctness rules across 
 Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.
 
 The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. Release automation builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
+
+## README translations
+
+The English `README.md` is the reference for translated READMEs in the repository root:
+`README.zh-CN.md`, `README.zh-TW.md`, `README.ja.md`, `README.ko.md`,
+`README.es.md`, and `README.fr.md`.
+
+When changing installation commands, supported backends, output paths, version notes,
+or limitations, update every language edition in the same change. Preserve command
+flags, environment variable names, model IDs, links, and executable examples. Keep
+the language switcher and original `images/logo.png` consistent across editions.
+Translate explanatory prose and headings; a README translation does not imply
+translated benchmark data or support for evaluating that language.
