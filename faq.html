@@ -621,10 +621,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-does-pip-install-trustllm-behave-differently" class="md-nav__link">
+  <a href="#how-do-i-install-the-current-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why does pip install trustllm behave differently?
+        How do I install the current version?
       
     </span>
   </a>
@@ -1053,10 +1053,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-does-pip-install-trustllm-behave-differently" class="md-nav__link">
+  <a href="#how-do-i-install-the-current-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why does pip install trustllm behave differently?
+        How do I install the current version?
       
     </span>
   </a>
@@ -1213,8 +1213,8 @@
 
 
 <h1 id="faq-troubleshooting">FAQ &amp; troubleshooting<a class="headerlink" href="#faq-troubleshooting" title="Permanent link">&para;</a></h1>
-<h2 id="why-does-pip-install-trustllm-behave-differently">Why does pip install trustllm behave differently?<a class="headerlink" href="#why-does-pip-install-trustllm-behave-differently" title="Permanent link">&para;</a></h2>
-<p>The source repository contains the 0.4 workflow; the older package on PyPI has not been updated by this source change. Follow the <a href="guides/running.html#install-the-components-you-use">source installation commands</a>. Use <code>python -m trustllm --help</code> to verify that your Python environment exposes <code>download</code>, <code>tasks</code>, <code>generate</code> and <code>evaluate</code>.</p>
+<h2 id="how-do-i-install-the-current-version">How do I install the current version?<a class="headerlink" href="#how-do-i-install-the-current-version" title="Permanent link">&para;</a></h2>
+<p>Install the maintained 0.4 workflow directly from GitHub using the <a href="guides/running.html#install-the-components-you-use">source installation commands</a>. Git is required for source installation. You can also install a wheel from a <a href="https://github.com/HowieHwong/TrustLLM/releases">GitHub Release</a> without Git. Use <code>python -m trustllm --help</code> to verify that your Python environment exposes <code>download</code>, <code>tasks</code>, <code>generate</code> and <code>evaluate</code>.</p>
 <h2 id="do-i-need-a-gpu">Do I need a GPU?<a class="headerlink" href="#do-i-need-a-gpu" title="Permanent link">&para;</a></h2>
 <p>API generation and dataset downloads use the base package without PyTorch. Local inference requires the <code>local</code> extra and enough memory for the selected model; CPU inference is supported. Scoring uses the <code>eval</code> extra and may load classifiers or call external judge/embedding services. Start with a small generation smoke test.</p>
 <h2 id="which-apis-and-local-models-work">Which APIs and local models work?<a class="headerlink" href="#which-apis-and-local-models-work" title="Permanent link">&para;</a></h2>

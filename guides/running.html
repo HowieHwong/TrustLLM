@@ -430,6 +430,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Install the components you use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-a-release-without-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install a release without Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1017,6 +1034,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Install the components you use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-a-release-without-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install a release without Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1158,7 +1192,16 @@
 python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"trustllm[local,eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"</span>
 </code></pre></div>
 <p>Git must be installed for VCS installation. Python 3.10–3.12 is recommended for local inference; offline utilities are tested on 3.9–3.12. GPU users should install a PyTorch build appropriate for their hardware first. For a source checkout, use <code>python -m pip install -e './trustllm_pkg[dev,local,eval]'</code>.</p>
-<p>The PyPI release has not been changed by this source update. Pin a commit SHA instead of <code>main</code> and save your environment for published experiments.</p>
+<p>Install directly from GitHub using the commands above. Pin a commit SHA instead of <code>main</code> and save your environment for published experiments.</p>
+<h3 id="install-a-release-without-git">Install a release without Git<a class="headerlink" href="#install-a-release-without-git" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://github.com/HowieHwong/TrustLLM/releases">GitHub Releases</a> page provides
+versioned wheels and source distributions. To install the 0.4.0 wheel directly:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"https://github.com/HowieHwong/TrustLLM/releases/download/v0.4.0/trustllm-0.4.0-py3-none-any.whl"</span>
+<span class="c1"># Include local inference and scoring dependencies:</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"trustllm[local,eval] @ https://github.com/HowieHwong/TrustLLM/releases/download/v0.4.0/trustllm-0.4.0-py3-none-any.whl"</span>
+</code></pre></div>
+<p>This installs the code from that release. Use the GitHub source commands above
+for subsequent changes on <code>main</code>.</p>
 <h2 id="download-data">Download data<a class="headerlink" href="#download-data" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>trustllm<span class="w"> </span>download<span class="w"> </span>--output<span class="w"> </span>data
 trustllm<span class="w"> </span>tasks

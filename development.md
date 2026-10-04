@@ -26,7 +26,6 @@ python -m ruff check .
 python -m compileall -q trustllm_pkg/trustllm
 python -m pytest
 python -m build trustllm_pkg --outdir dist
-python -m twine check dist/*
 python -m mkdocs build --strict
 python scripts/check_docs.py
 ```
@@ -45,43 +44,33 @@ The initial lint gate checks syntax and a small set of correctness rules across 
 
 Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.
 
-The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. Release automation builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
+The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. CI builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
 
-## Package releases
+## GitHub releases
 
-The `python-publish.yml` workflow uses PyPI Trusted Publishing. A project owner
-must configure the following GitHub publisher on the existing `trustllm` project
-under **Manage → Publishing** on PyPI:
+TrustLLM is distributed through this repository and its GitHub Releases. The
+maintained installation commands use GitHub source URLs; users can also install
+a wheel from a release without cloning the repository or installing Git.
 
-| PyPI publisher field | Value |
-| --- | --- |
-| Owner | `HowieHwong` |
-| Repository | `TrustLLM` |
-| Workflow filename | `python-publish.yml` |
-| Environment | `pypi` |
+1. Update the package version, package README and migration notes, then pass CI
+   on the release commit.
+2. Build from `trustllm_pkg` with `python -m build trustllm_pkg --outdir dist`.
+   The default build creates a source distribution and builds the wheel from it.
+3. Install the wheel into a fresh environment outside the checkout and verify
+   `trustllm tasks` and `python -m trustllm generate --help`.
+4. Create a `v<version>` tag for the tested commit and a GitHub Release. Attach
+   the matching wheel and source distribution and document their installation.
+5. Include the tested platforms, migration notes and any model or scoring
+   limitations. Do not move an existing release tag or replace its artifacts
+   with a different build; use a new patch version for corrections.
 
-This grants that repository workflow permission to publish the package without
-storing a long-lived PyPI API token. Only the upload job requests an OIDC token;
-building and testing run in a separate job. Keep repository write access limited
-to maintainers and use GitHub's `pypi` environment protections as appropriate.
-See [PyPI's publisher setup guide](https://docs.pypi.org/trusted-publishers/adding-a-publisher/).
+For current source installation, use:
 
-1. Update the package version and PyPI-facing `trustllm_pkg/README.md`, record
-   migration notes, and pass CI on the release commit.
-2. Create a `v<version>` tag pointing to that commit. Run **Publish Python package**
-   manually with that tag and `publish` unchecked to validate the release first.
-3. Publish the GitHub release for that tag. The workflow checks the tag against
-   package metadata, runs offline tests, builds an sdist and a wheel from it,
-   checks metadata, and installs the wheel into a clean environment.
-4. The upload job sends those tested artifacts to PyPI. The final job installs
-   the exact version from PyPI and exercises both CLI entry points.
-5. Confirm the version and artifacts on PyPI before announcing availability or
-   replacing source-install instructions with commands for the new release.
+```
+python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+```
 
-For an authentication failure, correct the publisher configuration and rerun the
-failed jobs. Manual dispatch with `publish` checked can also publish an existing
-tag. PyPI versions are immutable: do not move a published tag, rebuild a changed
-package under the same version, or use a new version to hide an upload failure.
+Replace `main` with a reviewed commit SHA to pin an experiment environment.
 
 ## Documentation publishing
 

@@ -4,7 +4,7 @@
 
 Research toolkit for the ICML 2024 TrustLLM benchmark. The maintained source workflow supports Python and CLI orchestration, local Hugging Face causal models, and text-only OpenAI-compatible Chat Completions endpoints. An AI agent can call this workflow; TrustLLM does not evaluate agent trajectories or tool use.
 
-Use the installation guide for the current source version; the PyPI release can differ. Generation completion reports are not benchmark scores. Scoring can require classifier downloads and paid judge or embedding APIs.
+Use the installation guide to install the current source version from GitHub. Generation completion reports are not benchmark scores. Scoring can require classifier downloads and paid judge or embedding APIs.
 
 ---
 
@@ -60,7 +60,7 @@ python -m trustllm download --output data
 python -m trustllm tasks
 ```
 
-The source installation above provides the current **0.4 workflow**. The PyPI release may differ. API generation uses the lightweight base package; install the `local` extra for local inference and `eval` for scoring. The [first-run guide](https://howiehwong.github.io/TrustLLM/guides/running.md) covers credentials, examples and model requirements.
+The GitHub source installation above provides the current **0.4 workflow**. API generation uses the lightweight base package; install the `local` extra for local inference and `eval` for scoring. The [first-run guide](https://howiehwong.github.io/TrustLLM/guides/running.md) covers credentials, examples and model requirements.
 
 An AI agent can orchestrate this workflow through the CLI or Python, then read JSON artifacts. See the [agent integration guide](https://howiehwong.github.io/TrustLLM/guides/agents.md) for commands, exit codes and output contracts. The benchmark evaluates model responses; multi-step agent trajectories, tool-use correctness and agent memory are outside its current scope.
 
@@ -98,7 +98,21 @@ python -m pip install "trustllm[local,eval] @ git+https://github.com/HowieHwong/
 
 Git must be installed for VCS installation. Python 3.10–3.12 is recommended for local inference; offline utilities are tested on 3.9–3.12. GPU users should install a PyTorch build appropriate for their hardware first. For a source checkout, use `python -m pip install -e './trustllm_pkg[dev,local,eval]'`.
 
-The PyPI release has not been changed by this source update. Pin a commit SHA instead of `main` and save your environment for published experiments.
+Install directly from GitHub using the commands above. Pin a commit SHA instead of `main` and save your environment for published experiments.
+
+### Install a release without Git
+
+The [GitHub Releases](https://github.com/HowieHwong/TrustLLM/releases) page provides
+versioned wheels and source distributions. To install the 0.4.0 wheel directly:
+
+```
+python -m pip install "https://github.com/HowieHwong/TrustLLM/releases/download/v0.4.0/trustllm-0.4.0-py3-none-any.whl"
+# Include local inference and scoring dependencies:
+python -m pip install "trustllm[local,eval] @ https://github.com/HowieHwong/TrustLLM/releases/download/v0.4.0/trustllm-0.4.0-py3-none-any.whl"
+```
+
+This installs the code from that release. Use the GitHub source commands above
+for subsequent changes on `main`.
 
 ## Download data
 
@@ -298,7 +312,7 @@ python -m trustllm tasks
 python -m trustllm download --output data
 ```
 
-These commands install the maintained source workflow, not the older PyPI release. Replace `main` with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under `data/dataset`.
+These commands install the maintained workflow directly from GitHub. Replace `main` with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under `data/dataset`.
 
 The six task IDs are `truthfulness`, `safety`, `fairness`, `robustness`, `privacy` and `ethics`. `tasks` prints a human-readable list of their registered dataset files; it does not emit JSON.
 
@@ -550,9 +564,9 @@ Source: https://howiehwong.github.io/TrustLLM/faq.html
 
 # FAQ & troubleshooting
 
-## Why does pip install trustllm behave differently?
+## How do I install the current version?
 
-The source repository contains the 0.4 workflow; the older package on PyPI has not been updated by this source change. Follow the [source installation commands](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Use `python -m trustllm --help` to verify that your Python environment exposes `download`, `tasks`, `generate` and `evaluate`.
+Install the maintained 0.4 workflow directly from GitHub using the [source installation commands](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Git is required for source installation. You can also install a wheel from a [GitHub Release](https://github.com/HowieHwong/TrustLLM/releases) without Git. Use `python -m trustllm --help` to verify that your Python environment exposes `download`, `tasks`, `generate` and `evaluate`.
 
 ## Do I need a GPU?
 
@@ -655,7 +669,6 @@ python -m ruff check .
 python -m compileall -q trustllm_pkg/trustllm
 python -m pytest
 python -m build trustllm_pkg --outdir dist
-python -m twine check dist/*
 python -m mkdocs build --strict
 python scripts/check_docs.py
 ```
@@ -674,43 +687,33 @@ The initial lint gate checks syntax and a small set of correctness rules across 
 
 Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.
 
-The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. Release automation builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
+The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. CI builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
 
-## Package releases
+## GitHub releases
 
-The `python-publish.yml` workflow uses PyPI Trusted Publishing. A project owner
-must configure the following GitHub publisher on the existing `trustllm` project
-under **Manage → Publishing** on PyPI:
+TrustLLM is distributed through this repository and its GitHub Releases. The
+maintained installation commands use GitHub source URLs; users can also install
+a wheel from a release without cloning the repository or installing Git.
 
-| PyPI publisher field | Value |
-| --- | --- |
-| Owner | `HowieHwong` |
-| Repository | `TrustLLM` |
-| Workflow filename | `python-publish.yml` |
-| Environment | `pypi` |
+1. Update the package version, package README and migration notes, then pass CI
+   on the release commit.
+2. Build from `trustllm_pkg` with `python -m build trustllm_pkg --outdir dist`.
+   The default build creates a source distribution and builds the wheel from it.
+3. Install the wheel into a fresh environment outside the checkout and verify
+   `trustllm tasks` and `python -m trustllm generate --help`.
+4. Create a `v<version>` tag for the tested commit and a GitHub Release. Attach
+   the matching wheel and source distribution and document their installation.
+5. Include the tested platforms, migration notes and any model or scoring
+   limitations. Do not move an existing release tag or replace its artifacts
+   with a different build; use a new patch version for corrections.
 
-This grants that repository workflow permission to publish the package without
-storing a long-lived PyPI API token. Only the upload job requests an OIDC token;
-building and testing run in a separate job. Keep repository write access limited
-to maintainers and use GitHub's `pypi` environment protections as appropriate.
-See [PyPI's publisher setup guide](https://docs.pypi.org/trusted-publishers/adding-a-publisher/).
+For current source installation, use:
 
-1. Update the package version and PyPI-facing `trustllm_pkg/README.md`, record
-   migration notes, and pass CI on the release commit.
-2. Create a `v<version>` tag pointing to that commit. Run **Publish Python package**
-   manually with that tag and `publish` unchecked to validate the release first.
-3. Publish the GitHub release for that tag. The workflow checks the tag against
-   package metadata, runs offline tests, builds an sdist and a wheel from it,
-   checks metadata, and installs the wheel into a clean environment.
-4. The upload job sends those tested artifacts to PyPI. The final job installs
-   the exact version from PyPI and exercises both CLI entry points.
-5. Confirm the version and artifacts on PyPI before announcing availability or
-   replacing source-install instructions with commands for the new release.
+```
+python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+```
 
-For an authentication failure, correct the publisher configuration and rerun the
-failed jobs. Manual dispatch with `publish` checked can also publish an existing
-tag. PyPI versions are immutable: do not move a published tag, rebuild a changed
-package under the same version, or use a new version to hide an upload failure.
+Replace `main` with a reviewed commit SHA to pin an experiment environment.
 
 ## Documentation publishing
 
@@ -765,6 +768,7 @@ Changes to the maintained source repository are listed first. Historical package
 - Added canonical URLs, sitemap, page descriptions, social previews and repository metadata.
 - Added Markdown page exports, `llms.txt` and `llms-full.txt`, generated from the same content as the HTML documentation.
 - Expanded troubleshooting and linked the seven README languages.
+- Standardized installation on GitHub source URLs and GitHub Release wheels.
 
 ## Source update: 0.4.0
 
@@ -775,7 +779,7 @@ Changes to the maintained source repository are listed first. Historical package
 - Separate local/evaluation dependencies; original generation engine archived.
 - Multilingual READMEs and CPU/HTTP integration tests.
 
-This source update does not by itself publish a PyPI release. Install from source using the [current instructions](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Existing users should read the [migration guide](https://howiehwong.github.io/TrustLLM/guides/running.html#migration-from-03).
+Install from GitHub using the [current instructions](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Existing users should read the [migration guide](https://howiehwong.github.io/TrustLLM/guides/running.html#migration-from-03).
 
 ## Historical releases
 

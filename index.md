@@ -50,7 +50,7 @@ python -m trustllm download --output data
 python -m trustllm tasks
 ```
 
-The source installation above provides the current **0.4 workflow**. The PyPI release may differ. API generation uses the lightweight base package; install the `local` extra for local inference and `eval` for scoring. The [first-run guide](https://howiehwong.github.io/TrustLLM/guides/running.md) covers credentials, examples and model requirements.
+The GitHub source installation above provides the current **0.4 workflow**. API generation uses the lightweight base package; install the `local` extra for local inference and `eval` for scoring. The [first-run guide](https://howiehwong.github.io/TrustLLM/guides/running.md) covers credentials, examples and model requirements.
 
 An AI agent can orchestrate this workflow through the CLI or Python, then read JSON artifacts. See the [agent integration guide](https://howiehwong.github.io/TrustLLM/guides/agents.md) for commands, exit codes and output contracts. The benchmark evaluates model responses; multi-step agent trajectories, tool-use correctness and agent memory are outside its current scope.
 

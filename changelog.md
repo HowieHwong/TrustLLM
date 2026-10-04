@@ -12,6 +12,7 @@ Changes to the maintained source repository are listed first. Historical package
 - Added canonical URLs, sitemap, page descriptions, social previews and repository metadata.
 - Added Markdown page exports, `llms.txt` and `llms-full.txt`, generated from the same content as the HTML documentation.
 - Expanded troubleshooting and linked the seven README languages.
+- Standardized installation on GitHub source URLs and GitHub Release wheels.
 
 ## Source update: 0.4.0
 
@@ -22,7 +23,7 @@ Changes to the maintained source repository are listed first. Historical package
 - Separate local/evaluation dependencies; original generation engine archived.
 - Multilingual READMEs and CPU/HTTP integration tests.
 
-This source update does not by itself publish a PyPI release. Install from source using the [current instructions](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Existing users should read the [migration guide](https://howiehwong.github.io/TrustLLM/guides/running.html#migration-from-03).
+Install from GitHub using the [current instructions](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Existing users should read the [migration guide](https://howiehwong.github.io/TrustLLM/guides/running.html#migration-from-03).
 
 ## Historical releases
 

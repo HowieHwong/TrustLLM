@@ -1130,7 +1130,7 @@ python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w">
 python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>tasks
 python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>download<span class="w"> </span>--output<span class="w"> </span>data
 </code></pre></div>
-<p>These commands install the maintained source workflow, not the older PyPI release. Replace <code>main</code> with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under <code>data/dataset</code>.</p>
+<p>These commands install the maintained workflow directly from GitHub. Replace <code>main</code> with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under <code>data/dataset</code>.</p>
 <p>The six task IDs are <code>truthfulness</code>, <code>safety</code>, <code>fairness</code>, <code>robustness</code>, <code>privacy</code> and <code>ethics</code>. <code>tasks</code> prints a human-readable list of their registered dataset files; it does not emit JSON.</p>
 <h2 id="run-a-bounded-smoke-test">Run a bounded smoke test<a class="headerlink" href="#run-a-bounded-smoke-test" title="Permanent link">&para;</a></h2>
 <p>Configure <code>OPENAI_API_KEY</code> and <code>OPENAI_BASE_URL</code> in the environment, then replace <code>your-served-model</code> with the actual model ID:</p>
