@@ -1,6 +1,6 @@
 Source: https://howiehwong.github.io/TrustLLM/index.html
 
-![TrustLLM — Trustworthiness in Large Language Models](https://howiehwong.github.io/TrustLLM/assets/logo.png)
+![TrustLLM — Trustworthiness in Large Language Models](https://howiehwong.github.io/TrustLLM/assets/logo-transparent.png)
 
 OPEN RESEARCH · ICML 2024
 
