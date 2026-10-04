@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Install the TrustLLM Python source package, download benchmark data and run local or API models with checkpoints, configuration files and scoring.">
+        <meta name="description" content="Let an AI agent run TrustLLM through Python or the CLI. Discover tasks, generate local or API responses, resume runs and read JSON results.">
       
       
       
-        <link rel="canonical" href="https://howiehwong.github.io/TrustLLM/guides/running.html">
+        <link rel="canonical" href="https://howiehwong.github.io/TrustLLM/guides/agents.html">
       
       
-        <link rel="prev" href="../index.html">
+        <link rel="prev" href="generation_details.html">
       
       
-        <link rel="next" href="generation_details.html">
+        <link rel="next" href="evaluation.html">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Install TrustLLM and run an evaluation - TrustLLM</title>
+        <title>AI agent integration for LLM evaluation - TrustLLM</title>
       
     
     
@@ -61,16 +61,16 @@
     
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TrustLLM">
-    <meta property="og:title" content="Install TrustLLM and run an evaluation — TrustLLM">
-    <meta property="og:description" content="Install the TrustLLM Python source package, download benchmark data and run local or API models with checkpoints, configuration files and scoring.">
-    <meta property="og:url" content="https://howiehwong.github.io/TrustLLM/guides/running.html">
+    <meta property="og:title" content="AI agent integration for LLM evaluation — TrustLLM">
+    <meta property="og:description" content="Let an AI agent run TrustLLM through Python or the CLI. Discover tasks, generate local or API responses, resume runs and read JSON results.">
+    <meta property="og:url" content="https://howiehwong.github.io/TrustLLM/guides/agents.html">
     <meta property="og:image" content="https://howiehwong.github.io/TrustLLM/assets/logo.png">
     <meta property="og:image:alt" content="TrustLLM — Trustworthiness in Large Language Models">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Install TrustLLM and run an evaluation — TrustLLM">
-    <meta name="twitter:description" content="Install the TrustLLM Python source package, download benchmark data and run local or API models with checkpoints, configuration files and scoring.">
+    <meta name="twitter:title" content="AI agent integration for LLM evaluation — TrustLLM">
+    <meta name="twitter:description" content="Let an AI agent run TrustLLM through Python or the CLI. Discover tasks, generate local or API responses, resume runs and read JSON results.">
     <meta name="twitter:image" content="https://howiehwong.github.io/TrustLLM/assets/icon.png">
-    <link rel="alternate" type="text/markdown" href="https://howiehwong.github.io/TrustLLM/guides/running.md" title="Markdown version">
+    <link rel="alternate" type="text/markdown" href="https://howiehwong.github.io/TrustLLM/guides/agents.md" title="Markdown version">
     <link rel="describedby" href="https://howiehwong.github.io/TrustLLM/llms.txt" type="text/plain">
     
   
@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-trustllm" class="md-skip">
+        <a href="#use-trustllm-from-an-ai-agent" class="md-skip">
           Skip to content
         </a>
       
@@ -129,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Install TrustLLM and run an evaluation
+              AI agent integration for LLM evaluation
             
           </span>
         </div>
@@ -359,37 +359,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Installation & first run
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="running.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="running.html" class="md-nav__link">
         
   
   
@@ -405,114 +378,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#install-the-components-you-use" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install the components you use
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API models
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Local models
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JSON configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inputs-checkpoints-and-output-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inputs, checkpoints and output files
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#score-a-full-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Score a full run
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#migration-from-03" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Migration from 0.3
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -550,10 +415,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="agents.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI agent integration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="agents.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -569,6 +461,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#give-an-agent-the-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Give an agent the documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discover-and-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discover and install
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-a-bounded-smoke-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run a bounded smoke test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run a bounded smoke test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-the-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read the artifacts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recover-then-score-a-complete-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recover, then score a complete run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record-evidence-for-a-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Record evidence for a report
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1009,10 +1004,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-components-you-use" class="md-nav__link">
+  <a href="#give-an-agent-the-documentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the components you use
+        Give an agent the documentation
       
     </span>
   </a>
@@ -1020,10 +1015,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#download-data" class="md-nav__link">
+  <a href="#discover-and-install" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Download data
+        Discover and install
       
     </span>
   </a>
@@ -1031,10 +1026,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api-models" class="md-nav__link">
+  <a href="#run-a-bounded-smoke-test" class="md-nav__link">
     <span class="md-ellipsis">
       
-        API models
+        Run a bounded smoke test
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run a bounded smoke test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-the-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read the artifacts
       
     </span>
   </a>
@@ -1042,10 +1065,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#local-models" class="md-nav__link">
+  <a href="#recover-then-score-a-complete-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Local models
+        Recover, then score a complete run
       
     </span>
   </a>
@@ -1053,43 +1076,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#json-configuration" class="md-nav__link">
+  <a href="#record-evidence-for-a-report" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JSON configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inputs-checkpoints-and-output-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inputs, checkpoints and output files
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#score-a-full-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Score a full run
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#migration-from-03" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Migration from 0.3
+        Record evidence for a report
       
     </span>
   </a>
@@ -1111,7 +1101,7 @@
                 
   
   <nav class="doc-tools" aria-label="Document formats">
-    <a href="https://howiehwong.github.io/TrustLLM/guides/running.md">View as Markdown</a>
+    <a href="https://howiehwong.github.io/TrustLLM/guides/agents.md">View as Markdown</a>
     <span aria-hidden="true">/</span>
     <a href="https://howiehwong.github.io/TrustLLM/llms.txt">Agent index</a>
   </nav>
@@ -1124,109 +1114,121 @@
   
 
 
-<h1 id="run-trustllm">Run TrustLLM<a class="headerlink" href="#run-trustllm" title="Permanent link">&para;</a></h1>
-<h2 id="install-the-components-you-use">Install the components you use<a class="headerlink" href="#install-the-components-you-use" title="Permanent link">&para;</a></h2>
-<p>The 0.4 source distribution has four installation modes:</p>
+<h1 id="use-trustllm-from-an-ai-agent">Use TrustLLM from an AI agent<a class="headerlink" href="#use-trustllm-from-an-ai-agent" title="Permanent link">&para;</a></h1>
+<p>An AI coding or research agent can use TrustLLM to <strong>evaluate an underlying language model</strong>: download data, generate responses, inspect failures and invoke the original scorers. The same commands work from a terminal, a subprocess or an orchestration tool.</p>
+<p>TrustLLM does not currently measure multi-step agent trajectories, tool-use correctness, memory, browser actions or end-to-end agent task success. This guide describes integration with an agent, not a new agent benchmark or MCP server.</p>
+<h2 id="give-an-agent-the-documentation">Give an agent the documentation<a class="headerlink" href="#give-an-agent-the-documentation" title="Permanent link">&para;</a></h2>
+<p>Start from the <a href="https://howiehwong.github.io/TrustLLM/llms.txt">documentation index</a>. It links to a Markdown version of each page. <a href="https://howiehwong.github.io/TrustLLM/llms-full.txt">Complete documentation</a> is also available when a client needs one file.</p>
+<p>Each HTML page advertises its Markdown alternative and the agent index through HTML link elements. These files are generated from the rendered documentation on every build, including code examples and tables.</p>
+<p>A useful task to give your agent:</p>
+<blockquote>
+<p>Read https://howiehwong.github.io/TrustLLM/llms.txt and the agent integration guide. Set up a TrustLLM safety smoke test for the model and endpoint I provide. Use five samples per dataset file and a new output directory. Read credentials from the environment. Report the command, exit status and completion counts from run.json. Explain failures before retrying. Treat report.html as a generation report. Only run a full benchmark or paid scoring when those costs are authorized.</p>
+</blockquote>
+<h2 id="discover-and-install">Discover and install<a class="headerlink" href="#discover-and-install" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"</span>
+python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>--help
+python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>tasks
+python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>download<span class="w"> </span>--output<span class="w"> </span>data
+</code></pre></div>
+<p>These commands install the maintained source workflow, not the older PyPI release. Replace <code>main</code> with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under <code>data/dataset</code>.</p>
+<p>The six task IDs are <code>truthfulness</code>, <code>safety</code>, <code>fairness</code>, <code>robustness</code>, <code>privacy</code> and <code>ethics</code>. <code>tasks</code> prints a human-readable list of their registered dataset files; it does not emit JSON.</p>
+<h2 id="run-a-bounded-smoke-test">Run a bounded smoke test<a class="headerlink" href="#run-a-bounded-smoke-test" title="Permanent link">&para;</a></h2>
+<p>Configure <code>OPENAI_API_KEY</code> and <code>OPENAI_BASE_URL</code> in the environment, then replace <code>your-served-model</code> with the actual model ID:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>generate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--backend<span class="w"> </span>api<span class="w"> </span>--model<span class="w"> </span>your-served-model<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--task<span class="w"> </span>safety<span class="w"> </span>--data<span class="w"> </span>data/dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--limit<span class="w"> </span><span class="m">5</span><span class="w"> </span>--concurrency<span class="w"> </span><span class="m">2</span><span class="w"> </span>--max-new-tokens<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>runs/agent-safety-smoke
+</code></pre></div>
+<p><code>--limit 5</code> means five records <strong>per file</strong>, not five requests for the entire task. Retries can add requests. API generation uses text-only Chat Completions; the endpoint must implement that protocol. For local generation, install the <code>local</code> extra, use <code>--backend local</code>, supply a Hugging Face model ID or local checkpoint path, and set <code>--concurrency 1</code>. See <a href="generation_details.html">model backends</a>.</p>
+<h3 id="python-orchestration">Python orchestration<a class="headerlink" href="#python-orchestration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"your-served-model"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"api"</span><span class="p">,</span>
+    <span class="n">task</span><span class="o">=</span><span class="s2">"safety"</span><span class="p">,</span>
+    <span class="n">data_path</span><span class="o">=</span><span class="s2">"data/dataset"</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="o">=</span><span class="s2">"runs/agent-python-smoke"</span><span class="p">,</span>
+    <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">concurrency</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">run</span><span class="p">[</span><span class="s2">"status"</span><span class="p">],</span> <span class="n">run</span><span class="p">[</span><span class="s2">"successful"</span><span class="p">],</span> <span class="n">run</span><span class="p">[</span><span class="s2">"total"</span><span class="p">])</span>
+</code></pre></div>
+<p>Python generation returns the run summary on success and raises on failure. Use a unique output directory for each configuration. Keep secrets in environment variables; saved JSON configs reject <code>api_key</code>.</p>
+<h2 id="read-the-artifacts">Read the artifacts<a class="headerlink" href="#read-the-artifacts" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Extra</th>
-<th>Purpose</th>
+<th style="text-align: left;">Artifact</th>
+<th style="text-align: left;">Agent usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Base install</td>
-<td>Dataset download, CLI, compatible API generation, checkpoints, HTML reports</td>
+<td style="text-align: left;"><code>run.json</code></td>
+<td style="text-align: left;">Read <code>status</code>, aggregate <code>successful</code>, <code>failed</code> and <code>total</code> counts, plus per-file <code>pending</code> counts under <code>files</code>, settings, versions and input hashes.</td>
 </tr>
 <tr>
-<td><code>local</code></td>
-<td>PyTorch, Transformers 4.x, Accelerate, SentencePiece</td>
+<td style="text-align: left;"><code>samples.jsonl</code></td>
+<td style="text-align: left;">Inspect per-sample <code>success</code> or <code>error</code> events. Repeated attempts can produce more than one event for a sample.</td>
 </tr>
 <tr>
-<td><code>eval</code></td>
-<td>Original scoring pipelines, classifier dependencies, API judge SDK and metrics</td>
+<td style="text-align: left;">Dataset-named <code>.json</code> files</td>
+<td style="text-align: left;">Original input records plus <code>res</code>. Failed or pending responses are <code>null</code>.</td>
 </tr>
 <tr>
-<td><code>legacy</code></td>
-<td>Archived generation engine and historical provider SDKs</td>
+<td style="text-align: left;"><code>report.html</code></td>
+<td style="text-align: left;">Human-readable generation completion report. It contains no benchmark scores.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scores.json</code></td>
+<td style="text-align: left;">After scoring: <code>task</code>, <code>scores</code>, input hashes, dependency versions and judge model. Preserve each metric's meaning.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scores.html</code></td>
+<td style="text-align: left;">Human-readable score table generated alongside <code>scores.json</code>.</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"</span>
-<span class="c1"># For local generation and scoring together:</span>
-python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"trustllm[local,eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"</span>
+<p>Read JSON files instead of scraping terminal progress. Generation states are <code>running</code>, <code>completed</code>, <code>failed</code> and <code>interrupted</code>. Counts and per-file summaries are written when generation finishes or unwinds; a process killed before finalization may leave only the initial <code>running</code> manifest and journal. <code>pending</code> samples have not produced a successful response or recorded failure at the last saved update.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">CLI exit code</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">The command completed successfully.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">A handled setup, input, generation or scoring error; inspect stderr and available artifacts.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;">Argument parsing failed.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>130</code></td>
+<td style="text-align: left;">Keyboard interruption; completed samples can be resumed.</td>
+</tr>
+</tbody>
+</table>
+<p>Other nonzero exits may come from an unexpected exception or process termination. A setup failure can occur before artifacts exist; inspect the exit code first.</p>
+<h2 id="recover-then-score-a-complete-run">Recover, then score a complete run<a class="headerlink" href="#recover-then-score-a-complete-run" title="Permanent link">&para;</a></h2>
+<p>For a failed or interrupted generation run, repeat the <strong>same</strong> command with <code>--resume</code>. Successful checkpoints are reused and failed samples are retried. Changing input hashes, generation settings or dependency versions requires a new output directory. Never write to the same output directory from two processes. See <a href="running.html#inputs-checkpoints-and-output-files">resume details</a>.</p>
+<p>For a benchmark result, generate again <strong>without <code>--limit</code> into a new directory</strong>, then install the <code>eval</code> extra and score the complete response set:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"trustllm[eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"</span>
+python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>evaluate<span class="w"> </span>--task<span class="w"> </span>safety<span class="w"> </span>--data<span class="w"> </span>runs/agent-safety-full
 </code></pre></div>
-<p>Git must be installed for VCS installation. Python 3.10–3.12 is recommended for local inference; offline utilities are tested on 3.9–3.12. GPU users should install a PyTorch build appropriate for their hardware first. For a source checkout, use <code>python -m pip install -e './trustllm_pkg[dev,local,eval]'</code>.</p>
-<p>The PyPI release has not been changed by this source update. Pin a commit SHA instead of <code>main</code> and save your environment for published experiments.</p>
-<h2 id="download-data">Download data<a class="headerlink" href="#download-data" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>trustllm<span class="w"> </span>download<span class="w"> </span>--output<span class="w"> </span>data
-trustllm<span class="w"> </span>tasks
-</code></pre></div>
-<p>Or:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_dataset</span>
-
-<span class="n">download_dataset</span><span class="p">(</span><span class="s2">"data"</span><span class="p">)</span>
-</code></pre></div>
-<p>Data is extracted under <code>data/dataset</code>. Downloading again overwrites matching files. The helper raises on download or archive errors. No model libraries are imported by this command.</p>
-<h2 id="api-models">API models<a class="headerlink" href="#api-models" title="Permanent link">&para;</a></h2>
-<p>Set <code>OPENAI_API_KEY</code> and <code>OPENAI_BASE_URL</code> in the environment. The default endpoint is <code>https://api.openai.com/v1</code>. Keys are optional for compatible local servers with authentication disabled.</p>
-<div class="highlight"><pre><span></span><code>trustllm<span class="w"> </span>generate<span class="w"> </span>--backend<span class="w"> </span>api<span class="w"> </span>--model<span class="w"> </span>your-served-model<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--base-url<span class="w"> </span>http://localhost:8000/v1<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--task<span class="w"> </span>safety<span class="w"> </span>--data<span class="w"> </span>data/dataset<span class="w"> </span>--limit<span class="w"> </span><span class="m">5</span><span class="w"> </span>--output<span class="w"> </span>runs/api-smoke
-</code></pre></div>
-<p>The transport sends text-only, non-streaming <code>POST /chat/completions</code> requests. Model IDs are passed through unchanged. Use an endpoint that implements this protocol (for example a vLLM-served model); this is not a native Anthropic Messages, Gemini, Azure deployment, or Responses API adapter.</p>
-<ul>
-<li><code>--concurrency 4</code>: maximum simultaneous sample requests.</li>
-<li><code>--timeout 120</code>: timeout in seconds per HTTP request.</li>
-<li><code>--retries 3</code>: retries after the first attempt for connection errors, timeouts, HTTP 408/429/500/502/503/504. Other HTTP errors fail immediately.</li>
-<li><code>--token-parameter max_completion_tokens</code>: use this instead of the default <code>max_tokens</code> if required by your endpoint.</li>
-<li><code>--omit-temperature</code>: omit temperature entirely for models that do not accept it.</li>
-</ul>
-<p>Retries may cause duplicate inference or billing if a provider completed a request before a connection failed. The client cannot guarantee provider-side idempotency.</p>
-<h2 id="local-models">Local models<a class="headerlink" href="#local-models" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>trustllm<span class="w"> </span>generate<span class="w"> </span>--backend<span class="w"> </span><span class="nb">local</span><span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen2.5-0.5B-Instruct<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--device<span class="w"> </span>auto<span class="w"> </span>--task<span class="w"> </span>safety<span class="w"> </span>--data<span class="w"> </span>data/dataset<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--limit<span class="w"> </span><span class="m">5</span><span class="w"> </span>--output<span class="w"> </span>runs/local-smoke
-</code></pre></div>
-<p>A Hugging Face model ID downloads weights using the normal HF cache. A filesystem path loads saved weights. <code>HF_TOKEN</code> and the normal Hugging Face authentication setup apply to gated models.</p>
-<p><code>AutoModelForCausalLM</code> and <code>AutoTokenizer</code> handle loading. A tokenizer chat template is applied when present; otherwise the prompt is used directly. The response excludes the input tokens.</p>
-<ul>
-<li><code>--device cpu</code>, <code>cuda:0</code>, or <code>mps</code>: select one device.</li>
-<li><code>--device auto</code>: use Accelerate model placement, potentially across devices.</li>
-<li><code>--dtype auto|float32|float16|bfloat16</code>: model precision.</li>
-<li><code>--revision &lt;commit&gt;</code>: pin a model revision.</li>
-<li><code>--seed 42</code>: initialize local generation randomness.</li>
-<li><code>--trust-remote-code</code>: opt in only when your chosen model requires custom code.</li>
-</ul>
-<p>Local generation is sequential (<code>concurrency=1</code>). Use a serving API for concurrent requests. This implementation is text-only causal-LM inference; it does not implement multimodal, log-likelihood, tensor-parallel or GGUF loading itself. Reproducibility still depends on hardware, library versions and sampling; resumed stochastic local runs are not guaranteed to be bit-identical to an uninterrupted run.</p>
-<h2 id="json-configuration">JSON configuration<a class="headerlink" href="#json-configuration" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>trustllm<span class="w"> </span>generate<span class="w"> </span>--config<span class="w"> </span>examples/api-safety.json<span class="w"> </span>--model<span class="w"> </span>your-model-id
-trustllm<span class="w"> </span>generate<span class="w"> </span>--config<span class="w"> </span>examples/local-safety.json
-</code></pre></div>
-<p>The example files are in the repository. Config keys match <code>trustllm.generate</code> keyword arguments, and explicit CLI flags override the JSON config. Keep secrets in environment variables; saved CLI configs reject <code>api_key</code>. Python callers can supply it directly.</p>
-<h2 id="inputs-checkpoints-and-output-files">Inputs, checkpoints and output files<a class="headerlink" href="#inputs-checkpoints-and-output-files" title="Permanent link">&para;</a></h2>
-<p><code>--data</code> accepts a benchmark root, a dimension directory, or a single JSON file. A custom file must be a nonempty array of objects containing a nonempty <code>prompt</code> string (or the field selected by <code>--prompt-key</code>). All other input fields are preserved; existing <code>res</code> values in input data are regenerated. Dataset default temperatures match the original task registry unless overridden by <code>--temperature</code>.</p>
-<p><code>--limit</code> takes the first N samples of each file. It is a debugging aid, not a statistically representative subset, and some original scorers need complete groups or paired records.</p>
-<div class="highlight"><pre><span></span><code>runs/api-safety/
-├── run.json                # Settings, input SHA-256, versions, completion counts
-├── samples.jsonl           # Append-only sample successes and errors
-├── report.html             # Self-contained generation report
-├── jailbreak.json          # Original fields + res
-├── misuse.json
-└── exaggerated_safety.json
-</code></pre></div>
-<p>Outputs are ordered like the input, regardless of request completion order. Failed/pending responses are <code>null</code> and are rejected by the scoring entry point. A failed run produces artifacts and exits nonzero. Unexpected local failures are recorded by exception type to avoid persisting sensitive library error details.</p>
-<p>To resume, repeat the original command and add <code>--resume</code>. Successful checkpoints are reused; failed samples are retried. Resume checks dataset hashes, model/backend configuration, generation settings and dependency versions. A changed run needs a new output directory. Do not run two processes into the same output directory. For existing local checkpoint directories, keep the files immutable: model-file contents are not hashed automatically.</p>
-<h2 id="score-a-full-run">Score a full run<a class="headerlink" href="#score-a-full-run" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>trustllm<span class="w"> </span>evaluate<span class="w"> </span>--task<span class="w"> </span>safety<span class="w"> </span>--data<span class="w"> </span>runs/api-safety-full
-</code></pre></div>
-<p>This calls the existing TrustLLM scorer after checking that all required response files exist and all responses are nonempty. It writes <code>scores.json</code> and a readable <code>scores.html</code> table. Metric directions and scales are preserved; no overall trust score is invented. The default ethics pipeline does not include the optional awareness scorer; safety toxicity remains an opt-in feature of the original Python pipeline. See the <a href="evaluation.html">scoring guide</a> for individual tasks.</p>
-<p>Judge model selection is configurable with <code>OPENAI_JUDGE_MODEL</code>. The original judge default is retained for compatibility, but historical IDs may no longer be served by your provider. Embedding and classifier choices remain in the original scoring code. Generation transport flexibility does not guarantee all scoring dependencies use the same provider.</p>
-<h2 id="migration-from-03">Migration from 0.3<a class="headerlink" href="#migration-from-03" title="Permanent link">&para;</a></h2>
-<p><code>from trustllm.generation.generation import LLMGeneration</code> remains available and delegates to the new runner. <code>online_model=True</code> selects the API backend. Prefer explicit <code>backend='api'</code> or <code>backend='local'</code>; use actual model IDs, not historical aliases. <code>generation_results()</code> returns <code>"OK"</code> on success, and its summary is available as <code>.result</code>. It now raises on failure instead of silently printing an error and returning <code>None</code>.</p>
-<p>Default outputs move from <code>generation_results/&lt;alias&gt;/&lt;dimension&gt;</code> to <code>runs/&lt;sanitized-model&gt;/&lt;dimension&gt;</code>. Specify <code>output_dir</code> to control this. <code>num_gpus</code> values other than 1 are rejected; use <code>device='auto'</code> for placement. The old fixed retry interval is replaced by bounded per-request backoff. Model chat templates can change prompt formatting relative to FastChat, so these are new experiment settings rather than exact reproductions of the paper.</p>
-<p>For archived provider-specific integrations, import from <code>trustllm.generation.legacy</code> and install the <code>legacy</code> extra. Those providers are not modernized or covered by the new adapter tests.</p>
+<p>The directory above must already contain the full run. A smoke test cannot establish benchmark performance. Scoring validates required files and nonempty responses, but cannot prove you ran the full benchmark; preserve the data and manifest. Some scoring pipelines download classifiers or call paid judge/embedding services. Set <code>OPENAI_JUDGE_MODEL</code> to an available judge where needed and review the <a href="evaluation.html">scoring guide</a>.</p>
+<h2 id="record-evidence-for-a-report">Record evidence for a report<a class="headerlink" href="#record-evidence-for-a-report" title="Permanent link">&para;</a></h2>
+<p>Include the source commit, model ID/revision, dataset hashes, full configuration, dependency versions, sample counts, failures, judge settings and the per-task score files. Label partial runs clearly. Generation completion rate is not a trustworthiness metric; TrustLLM does not define a single overall trust score.</p>
 
 
 
@@ -1266,7 +1268,7 @@ trustllm<span class="w"> </span>generate<span class="w"> </span>--config<span cl
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+          <a href="generation_details.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Local &amp; API models">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1276,20 +1278,20 @@ trustllm<span class="w"> </span>generate<span class="w"> </span>--config<span cl
                 Previous
               </span>
               <div class="md-ellipsis">
-                Overview
+                Local & API models
               </div>
             </div>
           </a>
         
         
           
-          <a href="generation_details.html" class="md-footer__link md-footer__link--next" aria-label="Next: Local &amp; API models">
+          <a href="evaluation.html" class="md-footer__link md-footer__link--next" aria-label="Next: Scoring &amp; results">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Local & API models
+                Scoring & results
               </div>
             </div>
             <div class="md-footer__button md-icon">

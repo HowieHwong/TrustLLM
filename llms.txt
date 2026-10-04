@@ -1,0 +1,27 @@
+# TrustLLM
+
+> Evaluate LLM trustworthiness across truthfulness, safety, fairness, robustness, privacy and ethics with local models or compatible APIs.
+
+Research toolkit for the ICML 2024 TrustLLM benchmark. The maintained source workflow supports Python and CLI orchestration, local Hugging Face causal models, and text-only OpenAI-compatible Chat Completions endpoints. An AI agent can call this workflow; TrustLLM does not evaluate agent trajectories or tool use.
+
+Use the installation guide for the current source version; the PyPI release can differ. Generation completion reports are not benchmark scores. Scoring can require classifier downloads and paid judge or embedding APIs.
+
+## Documentation
+
+- [Overview](https://howiehwong.github.io/TrustLLM/index.md): Run the ICML 2024 TrustLLM benchmark with local models or compatible APIs. Evaluate truthfulness, safety, fairness, robustness, privacy and ethics.
+- [Installation & first run](https://howiehwong.github.io/TrustLLM/guides/running.md): Install the TrustLLM Python source package, download benchmark data and run local or API models with checkpoints, configuration files and scoring.
+- [Local & API models](https://howiehwong.github.io/TrustLLM/guides/generation_details.md): Choose a TrustLLM generation backend for Hugging Face local weights or a text-only Chat Completions API, including vLLM-compatible endpoints.
+- [AI agent integration](https://howiehwong.github.io/TrustLLM/guides/agents.md): Let an AI agent run TrustLLM through Python or the CLI. Discover tasks, generate local or API responses, resume runs and read JSON results.
+- [Scoring & results](https://howiehwong.github.io/TrustLLM/guides/evaluation.md): Evaluate complete TrustLLM response sets, configure scoring dependencies and judges, and interpret per-task JSON and HTML benchmark results.
+- [Datasets & metrics](https://howiehwong.github.io/TrustLLM/benchmark.md): Explore the original TrustLLM benchmark datasets and metric definitions for truthfulness, safety, fairness, robustness, privacy and machine ethics.
+- [FAQ & troubleshooting](https://howiehwong.github.io/TrustLLM/faq.md): Troubleshoot TrustLLM installation, model endpoints, resumed runs, incomplete scores and language limitations. Understand what the benchmark supports.
+- [Design & validation](https://howiehwong.github.io/TrustLLM/design.md): Understand TrustLLM backend design, reproducibility records, integration tests and the limits of validation against external models and original scoring methods.
+- [Contributing](https://howiehwong.github.io/TrustLLM/development.md): Set up a TrustLLM development environment, run offline and integration checks, and contribute reproducible fixes, documentation and model adapters.
+- [Changelog](https://howiehwong.github.io/TrustLLM/changelog.md): Track the TrustLLM 0.4 source workflow, documentation updates and historical releases. Find migration guidance and distinguish source changes from PyPI releases.
+
+## Optional
+
+- [Original scoring APIs](https://howiehwong.github.io/TrustLLM/reference/scoring.md): Reference for TrustLLM's original truthfulness, safety, fairness, robustness, privacy and ethics Python scorers and their task-specific options.
+- [Archived generation](https://howiehwong.github.io/TrustLLM/guides/legacy_generation.md): Historical TrustLLM generation interfaces, provider SDKs and model aliases. Use the maintained local or compatible API backend for new experiments.
+- [Complete documentation](https://howiehwong.github.io/TrustLLM/llms-full.txt): All indexed pages in one file.
+- [Source repository](https://github.com/HowieHwong/TrustLLM): Code, issues, examples and multilingual READMEs.

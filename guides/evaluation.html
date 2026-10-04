@@ -6,15 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Trustworthiness in Large Language Models">
+        <meta name="description" content="Evaluate complete TrustLLM response sets, configure scoring dependencies and judges, and interpret per-task JSON and HTML benchmark results.">
       
       
       
+        <link rel="canonical" href="https://howiehwong.github.io/TrustLLM/guides/evaluation.html">
       
-        <link rel="prev" href="generation_details.html">
+      
+        <link rel="prev" href="agents.html">
       
       
-        <link rel="next" href="../design.html">
+        <link rel="next" href="../benchmark.html">
       
       
         
@@ -25,7 +27,7 @@
     
     
       
-        <title>Evaluation - TrustLLM</title>
+        <title>Score LLM benchmark responses - TrustLLM</title>
       
     
     
@@ -43,12 +45,6 @@
     
     
       
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
-      
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
@@ -59,6 +55,26 @@
 
     
     
+  
+  
+    
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TrustLLM">
+    <meta property="og:title" content="Score LLM benchmark responses — TrustLLM">
+    <meta property="og:description" content="Evaluate complete TrustLLM response sets, configure scoring dependencies and judges, and interpret per-task JSON and HTML benchmark results.">
+    <meta property="og:url" content="https://howiehwong.github.io/TrustLLM/guides/evaluation.html">
+    <meta property="og:image" content="https://howiehwong.github.io/TrustLLM/assets/logo.png">
+    <meta property="og:image:alt" content="TrustLLM — Trustworthiness in Large Language Models">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Score LLM benchmark responses — TrustLLM">
+    <meta name="twitter:description" content="Evaluate complete TrustLLM response sets, configure scoring dependencies and judges, and interpret per-task JSON and HTML benchmark results.">
+    <meta name="twitter:image" content="https://howiehwong.github.io/TrustLLM/assets/icon.png">
+    <link rel="alternate" type="text/markdown" href="https://howiehwong.github.io/TrustLLM/guides/evaluation.md" title="Markdown version">
+    <link rel="describedby" href="https://howiehwong.github.io/TrustLLM/llms.txt" type="text/plain">
+    
+  
+
   </head>
   
   
@@ -69,7 +85,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="black" data-md-color-primary="custom" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -90,11 +106,13 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../index.html" title="TrustLLM" class="md-header__button md-logo" aria-label="TrustLLM" data-md-component="logo">
       
-  <img src="../assets/logo.png" alt="logo">
+  <img src="../assets/icon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Evaluation
+              Score LLM benchmark responses
             
           </span>
         </div>
@@ -124,20 +142,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="black" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -168,11 +186,18 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -190,6 +215,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/HowieHwong/TrustLLM" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HowieHwong/TrustLLM
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -198,151 +235,6 @@
       
       
         
-          
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../index.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="running.html" class="md-tabs__link">
-          
-  
-  
-  Guide
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../design.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Design
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../benchmark.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Benchmark
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../development.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Development
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../changelog.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Changelog
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../faq.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  FAQ
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
           
         
       
@@ -357,18 +249,28 @@
                     
 
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../index.html" title="TrustLLM" class="md-nav__button md-logo" aria-label="TrustLLM" data-md-component="logo">
       
-  <img src="../assets/logo.png" alt="logo">
+  <img src="../assets/icon.png" alt="logo">
 
     </a>
     TrustLLM
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HowieHwong/TrustLLM" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HowieHwong/TrustLLM
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -386,7 +288,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Overview
   
 
     
@@ -403,10 +305,8 @@
       
   
   
-    
   
   
-  
     
     
     
@@ -415,16 +315,13 @@
         
         
       
-      
-        
-      
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -434,7 +331,7 @@
   <span class="md-ellipsis">
     
   
-    Guide
+    Get started
   
 
     
@@ -445,12 +342,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guide
+    Get started
   
 
           </label>
@@ -470,7 +367,7 @@
   <span class="md-ellipsis">
     
   
-    Quickstart
+    Installation & first run
   
 
     
@@ -498,7 +395,7 @@
   <span class="md-ellipsis">
     
   
-    Generation
+    Local & API models
   
 
     
@@ -511,6 +408,95 @@
   
 
               
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="agents.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI agent integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Evaluate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -535,7 +521,7 @@
   <span class="md-ellipsis">
     
   
-    Evaluation
+    Scoring & results
   
 
     
@@ -553,7 +539,7 @@
   <span class="md-ellipsis">
     
   
-    Evaluation
+    Scoring & results
   
 
     
@@ -579,179 +565,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#start-your-evaluation" class="md-nav__link">
+  <a href="#prepare-a-complete-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Start Your Evaluation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Start Your Evaluation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api-setting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Setting
+        Prepare a complete run
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#easy-pipeline" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#configure-scoring-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Easy Pipeline
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Easy Pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#truthfulness-evaluation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Truthfulness Evaluation
+        Configure scoring dependencies
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-evaluation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#read-the-score-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Safety Evaluation
+        Read the score files
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#fairness-evaluation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#interpret-and-compare-results" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fairness Evaluation
+        Interpret and compare results
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#robustness-evaluation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#original-python-apis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Robustness Evaluation
+        Original Python APIs
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privacy-evaluation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Privacy Evaluation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ethics-evaluation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ethics Evaluation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#truthfulness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Truthfulness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Safety
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fairness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fairness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#robustness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Robustness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privacy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Privacy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-ethics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Machine Ethics
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -759,6 +623,62 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets & metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ & troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -777,6 +697,58 @@
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../design.html" class="md-nav__link">
         
@@ -785,7 +757,7 @@
   <span class="md-ellipsis">
     
   
-    Design
+    Design & validation
   
 
     
@@ -797,36 +769,10 @@
     </li>
   
 
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../benchmark.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benchmark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -839,7 +785,7 @@
   <span class="md-ellipsis">
     
   
-    Development
+    Contributing
   
 
     
@@ -851,9 +797,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -878,6 +825,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -885,15 +840,67 @@
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../faq.html" class="md-nav__link">
+      <a href="../reference/scoring.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FAQ
+    Original scoring APIs
   
 
     
@@ -902,6 +909,42 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="legacy_generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archived generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -933,179 +976,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#start-your-evaluation" class="md-nav__link">
+  <a href="#prepare-a-complete-run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Start Your Evaluation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Start Your Evaluation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#api-setting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Setting
+        Prepare a complete run
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#easy-pipeline" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#configure-scoring-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Easy Pipeline
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Easy Pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#truthfulness-evaluation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Truthfulness Evaluation
+        Configure scoring dependencies
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#safety-evaluation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#read-the-score-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Safety Evaluation
+        Read the score files
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#fairness-evaluation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#interpret-and-compare-results" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fairness Evaluation
+        Interpret and compare results
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#robustness-evaluation" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#original-python-apis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Robustness Evaluation
+        Original Python APIs
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privacy-evaluation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Privacy Evaluation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ethics-evaluation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ethics Evaluation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#truthfulness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Truthfulness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#safety" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Safety
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fairness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fairness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#robustness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Robustness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privacy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Privacy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-ethics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Machine Ethics
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1122,327 +1043,135 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  <nav class="doc-tools" aria-label="Document formats">
+    <a href="https://howiehwong.github.io/TrustLLM/guides/evaluation.md">View as Markdown</a>
+    <span aria-hidden="true">/</span>
+    <a href="https://howiehwong.github.io/TrustLLM/llms.txt">Agent index</a>
+  </nav>
+  
+  
                   
 
 
+  
+  
+
 
 <h1 id="scoring-model-responses">Scoring model responses<a class="headerlink" href="#scoring-model-responses" title="Permanent link">&para;</a></h1>
-<p>For the current CLI, install the <code>eval</code> extra and run <code>python -m trustllm evaluate --task safety --data &lt;full-run-directory&gt;</code>. See <a href="running.html">the running guide</a> for installation and output paths. The sections below document the original task-specific Python APIs. Full response sets are recommended: small generation smoke tests can omit groups needed by these scorers.</p>
-<p>Set <code>OPENAI_API_KEY</code>, <code>OPENAI_BASE_URL</code> and <code>OPENAI_JUDGE_MODEL</code> before importing evaluation modules when using an API judge. Individual historical examples below may use older model IDs. Scoring can download a classifier or call paid judge/embedding services; the offline tests do not validate these complete external integrations.</p>
-<h2 id="start-your-evaluation"><strong>Start Your Evaluation</strong><a class="headerlink" href="#start-your-evaluation" title="Permanent link">&para;</a></h2>
-<h3 id="api-setting"><strong>API Setting</strong><a class="headerlink" href="#api-setting" title="Permanent link">&para;</a></h3>
-<p>Before starting the evaluation, you need to first set up your <a href="https://openai.com/product">OpenAI API</a> (GPT-4-turbo) and <a href="https://developers.perspectiveapi.com/s/docs-get-started?language=en_US">Perspective API</a> (used for measuring toxicity).</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<p>Generation records what a model says. Evaluation applies the original TrustLLM scorers to those responses and writes <strong>per-task metrics</strong>. Complete generation before starting evaluation, and keep the original dataset fields and ordering.</p>
+<h2 id="prepare-a-complete-run">Prepare a complete run<a class="headerlink" href="#prepare-a-complete-run" title="Permanent link">&para;</a></h2>
+<p>Start with the <a href="running.html">running guide</a>. A generation smoke test with <code>--limit</code> is useful for checking setup, but may omit pairs or groups required by the scorers. Generate without a limit into a new directory for a full benchmark run.</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"trustllm[eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"</span>
+python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>evaluate<span class="w"> </span>--task<span class="w"> </span>safety<span class="w"> </span>--data<span class="w"> </span>runs/api-safety-full
+</code></pre></div>
+<p>Replace the example directory with an existing full response set. The CLI requires every registered response file for the task, excluding optional awareness, and a nonempty <code>res</code> for every record. It cannot prove benchmark coverage from arbitrary input files: retain the data hashes and run manifest, and verify the sample counts yourself.</p>
+<h2 id="configure-scoring-dependencies">Configure scoring dependencies<a class="headerlink" href="#configure-scoring-dependencies" title="Permanent link">&para;</a></h2>
+<p>The <code>eval</code> extra installs the original evaluation dependencies, including PyTorch, Transformers, metrics libraries and the judge SDK. Different tasks use a mixture of rules, classifiers, embeddings and language-model judges. Some may download model weights or call paid services.</p>
+<p>For a scoring method that uses an API judge, set these variables <strong>before</strong> importing evaluation modules or running the CLI:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s2">"your-api-key"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_BASE_URL</span><span class="o">=</span><span class="s2">"https://your-provider.example/v1"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_JUDGE_MODEL</span><span class="o">=</span><span class="s2">"your-available-judge-model"</span>
+</code></pre></div>
+<p>Replace the endpoint and judge placeholders with your provider's actual values. The original default judge ID is historical and may no longer be available. A generation endpoint's Chat Completions support does not guarantee compatibility with all original judge or embedding calls. Check the selected pipeline before launching a full experiment.</p>
+<p>The standard ethics pipeline excludes optional awareness scoring. Safety toxicity is an opt-in feature of the original Python pipeline and uses Perspective API credentials; the CLI does not enable it by default. See the <a href="../reference/scoring.html">original APIs</a> for these options.</p>
+<h2 id="read-the-score-files">Read the score files<a class="headerlink" href="#read-the-score-files" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">File</th>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>scores.json</code></td>
+<td style="text-align: left;">Task, nested score values, response-file hashes, dependency versions, judge model and creation time.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scores.html</code></td>
+<td style="text-align: left;">A readable table of the same score values.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>run.json</code></td>
+<td style="text-align: left;">Generation settings and completion counts; retain it with the score files.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>report.html</code></td>
+<td style="text-align: left;">Generation progress and completion only. This is not a benchmark score report.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">openai_key</span> <span class="o">=</span> <span class="s1">'your-openai-api-key'</span>
-
-<span class="n">config</span><span class="o">.</span><span class="n">perspective_key</span> <span class="o">=</span> <span class="s1">'your-perspective-api-key'</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"runs/api-safety-full/scores.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">"task"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">"scores"</span><span class="p">])</span>
 </code></pre></div>
-<p>If you're using OpenAI API through <a href="https://azure.microsoft.com/en-us/products/ai-services/openai-service">Azure</a>, you should set up your Azure api:</p>
-<div class="highlight"><pre><span></span><code><span class="n">config</span><span class="o">.</span><span class="n">azure_openai</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="n">config</span><span class="o">.</span><span class="n">azure_engine</span> <span class="o">=</span> <span class="s2">"your-azure-engine-name"</span>
-
-<span class="n">config</span><span class="o">.</span><span class="n">azure_api_base</span> <span class="o">=</span> <span class="s2">"your-azure-api-url (openai.base_url)"</span>
+<p>Existing scores are not overwritten. To rescore with a different judge or environment, select a new output filename and record the changed settings:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>trustllm<span class="w"> </span>evaluate<span class="w"> </span>--task<span class="w"> </span>safety<span class="w"> </span>--data<span class="w"> </span>runs/api-safety-full<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>runs/api-safety-full/scores-rerun.json
 </code></pre></div>
-<h3 id="easy-pipeline">Easy Pipeline<a class="headerlink" href="#easy-pipeline" title="Permanent link">&para;</a></h3>
-<p>From <a href="https://howiehwong.github.io/TrustLLM/changelog.html#version-021">Version 0.2.1</a>, trustllm toolkit supports easy pipeline for evaluation.</p>
-<p>We have provided pipelines for all six sections: <code>run_truthfulness</code>, <code>run_safety</code>, <code>run_fairness</code>, <code>run_robustness</code>, <code>run_privacy</code>, <code>run_ethics</code>.</p>
-<h4 id="truthfulness-evaluation">Truthfulness Evaluation<a class="headerlink" href="#truthfulness-evaluation" title="Permanent link">&para;</a></h4>
-<p>For truthfulness assessment, the <code>run_truthfulness</code> function is used. Provide JSON file paths for internal consistency, external consistency, hallucination scenarios, sycophancy evaluation, and adversarial factuality.  </p>
-<div class="highlight"><pre><span></span><code><span class="n">truthfulness_results</span> <span class="o">=</span> <span class="n">run_truthfulness</span><span class="p">(</span>  
-    <span class="n">internal_path</span><span class="o">=</span><span class="s2">"path_to_internal_consistency_data.json"</span><span class="p">,</span>  
-    <span class="n">external_path</span><span class="o">=</span><span class="s2">"path_to_external_consistency_data.json"</span><span class="p">,</span>  
-    <span class="n">hallucination_path</span><span class="o">=</span><span class="s2">"path_to_hallucination_data.json"</span><span class="p">,</span>  
-    <span class="n">sycophancy_path</span><span class="o">=</span><span class="s2">"path_to_sycophancy_data.json"</span><span class="p">,</span>
-    <span class="n">advfact_path</span><span class="o">=</span><span class="s2">"path_to_advfact_data.json"</span>
-<span class="p">)</span>
-</code></pre></div>
-<p>The function will return a dictionary containing results for internal consistency, external consistency, hallucinations, sycophancy (with persona and preference evaluations), and adversarial factuality.     </p>
-<h4 id="safety-evaluation">Safety Evaluation<a class="headerlink" href="#safety-evaluation" title="Permanent link">&para;</a></h4>
-<p>To assess the safety of your language model, use the <code>run_safety</code> function. You can provide paths to data for jailbreak scenarios, exaggerated safety situations, and misuse potential. Optionally, you can also evaluate for toxicity.  </p>
-<div class="highlight"><pre><span></span><code><span class="n">safety_results</span> <span class="o">=</span> <span class="n">run_safety</span><span class="p">(</span>  
-    <span class="n">jailbreak_path</span><span class="o">=</span><span class="s2">"path_to_jailbreak_data.json"</span><span class="p">,</span>  
-    <span class="n">exaggerated_safety_path</span><span class="o">=</span><span class="s2">"path_to_exaggerated_safety_data.json"</span><span class="p">,</span>  
-    <span class="n">misuse_path</span><span class="o">=</span><span class="s2">"path_to_misuse_data.json"</span><span class="p">,</span>  
-    <span class="n">toxicity_eval</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  
-    <span class="n">toxicity_path</span><span class="o">=</span><span class="s2">"path_to_toxicity_data.json"</span><span class="p">,</span>  
-    <span class="n">jailbreak_eval_type</span><span class="o">=</span><span class="s2">"total"</span>  
-<span class="p">)</span>  
-</code></pre></div>
-<p>The returned dictionary includes results for jailbreak, exaggerated safety, misuse, and toxicity evaluations.  </p>
-<h4 id="fairness-evaluation">Fairness Evaluation<a class="headerlink" href="#fairness-evaluation" title="Permanent link">&para;</a></h4>
-<p>To evaluate the fairness of your language model, use the <code>run_fairness</code> function. This function takes paths to JSON files containing data on stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference biases.     </p>
-<div class="highlight"><pre><span></span><code><span class="n">fairness_results</span> <span class="o">=</span> <span class="n">run_fairness</span><span class="p">(</span>
-    <span class="n">stereotype_recognition_path</span><span class="o">=</span><span class="s2">"path_to_stereotype_recognition_data.json"</span><span class="p">,</span>      
-    <span class="n">stereotype_agreement_path</span><span class="o">=</span><span class="s2">"path_to_stereotype_agreement_data.json"</span><span class="p">,</span>      
-    <span class="n">stereotype_query_test_path</span><span class="o">=</span><span class="s2">"path_to_stereotype_query_test_data.json"</span><span class="p">,</span>      
-    <span class="n">disparagement_path</span><span class="o">=</span><span class="s2">"path_to_disparagement_data.json"</span><span class="p">,</span>      
-    <span class="n">preference_path</span><span class="o">=</span><span class="s2">"path_to_preference_data.json"</span>   
-<span class="p">)</span>  
-</code></pre></div>
-<p>The returned dictionary will include results for stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference bias evaluations.</p>
-<h4 id="robustness-evaluation">Robustness Evaluation<a class="headerlink" href="#robustness-evaluation" title="Permanent link">&para;</a></h4>
-<p>To evaluate the robustness of your language model, use the <code>run_robustness</code> function. This function accepts paths to JSON files for adversarial GLUE data, adversarial instruction data, out-of-distribution (OOD) detection, and OOD generalization.  </p>
-<div class="highlight"><pre><span></span><code><span class="n">robustness_results</span> <span class="o">=</span> <span class="n">run_robustness</span><span class="p">(</span>  
-    <span class="n">advglue_path</span><span class="o">=</span><span class="s2">"path_to_advglue_data.json"</span><span class="p">,</span>  
-    <span class="n">advinstruction_path</span><span class="o">=</span><span class="s2">"path_to_advinstruction_data.json"</span><span class="p">,</span>  
-    <span class="n">ood_detection_path</span><span class="o">=</span><span class="s2">"path_to_ood_detection_data.json"</span><span class="p">,</span>  
-    <span class="n">ood_generalization_path</span><span class="o">=</span><span class="s2">"path_to_ood_generalization_data.json"</span>  
-<span class="p">)</span>  
-</code></pre></div>
-<p>The function returns a dictionary with the results of adversarial GLUE, adversarial instruction, OOD detection, and OOD generalization evaluations.  </p>
-<h4 id="privacy-evaluation">Privacy Evaluation<a class="headerlink" href="#privacy-evaluation" title="Permanent link">&para;</a></h4>
-<p>To conduct privacy evaluations, use the <code>run_privacy</code> function. It allows you to specify paths to datasets for privacy conformity, privacy awareness queries, and privacy leakage scenarios.  </p>
-<div class="highlight"><pre><span></span><code><span class="n">privacy_results</span> <span class="o">=</span> <span class="n">run_privacy</span><span class="p">(</span>  
-    <span class="n">privacy_confAIde_path</span><span class="o">=</span><span class="s2">"path_to_privacy_confaide_data.json"</span><span class="p">,</span>  
-    <span class="n">privacy_awareness_query_path</span><span class="o">=</span><span class="s2">"path_to_privacy_awareness_query_data.json"</span><span class="p">,</span>  
-    <span class="n">privacy_leakage_path</span><span class="o">=</span><span class="s2">"path_to_privacy_leakage_data.json"</span>  
-<span class="p">)</span>  
-</code></pre></div>
-<p>The function outputs a dictionary with results for privacy conformity AIde, normal and augmented privacy awareness queries, and privacy leakage evaluations.  </p>
-<h4 id="ethics-evaluation">Ethics Evaluation<a class="headerlink" href="#ethics-evaluation" title="Permanent link">&para;</a></h4>
-<p>To evaluate the ethical considerations of your language model, use the <code>run_ethics</code> function. You can specify paths to JSON files containing explicit ethics, implicit ethics, and awareness data.  </p>
-<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="n">run_ethics</span><span class="p">(</span>  
-    <span class="n">explicit_ethics_path</span><span class="o">=</span><span class="s2">"path_to_explicit_ethics_data.json"</span><span class="p">,</span>  
-    <span class="n">implicit_ethics_path</span><span class="o">=</span><span class="s2">"path_to_implicit_ethics_data.json"</span><span class="p">,</span>  
-    <span class="n">awareness_path</span><span class="o">=</span><span class="s2">"path_to_awareness_data.json"</span>  
-<span class="p">)</span>  
-</code></pre></div>
-<p>The function returns a dictionary containing the results of the explicit ethics evaluation (with low and high levels), implicit ethics evaluation (ETHICS and social norm types), and emotional awareness evaluation.  </p>
-<h3 id="truthfulness"><strong>Truthfulness</strong><a class="headerlink" href="#truthfulness" title="Permanent link">&para;</a></h3>
-<p>Four subsections in truthfulness evaluation:</p>
-<ul>
-<li>Misinformation: <code>external.json</code>, <code>internal.json</code></li>
-<li>Hallucination: <code>hallucination.json</code></li>
-<li>Sycophancy: <code>sycophancy.json</code></li>
-<li>Adversarial Factuality: <code>golden_advfactuality.json</code></li>
-</ul>
-<p>Requirement:</p>
-<p><img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-blue" /></p>
-<ul>
-<li>openai api (gpt-4-turbo)</li>
-</ul>
-<p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">truthfulness</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">file_process</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
-
-<span class="n">evaluator</span> <span class="o">=</span> <span class="n">truthfulness</span><span class="o">.</span><span class="n">TruthfulnessEval</span><span class="p">()</span>
-</code></pre></div>
-<p>Misinformation evaluation:</p>
-<div class="highlight"><pre><span></span><code><span class="n">misinformation_internal_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'misinformation_internal_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">internal_eval</span><span class="p">(</span><span class="n">misinformation_internal_data</span><span class="p">))</span>
-
-<span class="n">misinformation_external_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'misinformation_external_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">external_eval</span><span class="p">(</span><span class="n">misinformation_external_data</span><span class="p">))</span>
-</code></pre></div>
-<p>Hallucination evaluation:</p>
-<div class="highlight"><pre><span></span><code><span class="n">hallucination_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'hallucination_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">hallucination_eval</span><span class="p">(</span><span class="n">hallucination_data</span><span class="p">))</span>
-</code></pre></div>
-<p>Sycophancy evaluation (<code>eval_type</code>: type of evaluation, either <code>persona</code> or <code>preference</code>):
-<div class="highlight"><pre><span></span><code><span class="n">sycophancy_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'sycophancy_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">sycophancy_eval</span><span class="p">(</span><span class="n">sycophancy_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'persona'</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">sycophancy_eval</span><span class="p">(</span><span class="n">sycophancy_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'preference'</span><span class="p">))</span>
-</code></pre></div></p>
-<p>Adversarial factuality evaluation:
-<div class="highlight"><pre><span></span><code><span class="n">adv_fact_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'adv_fact_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">advfact_eval</span><span class="p">(</span><span class="n">adv_fact_data</span><span class="p">))</span>
-</code></pre></div></p>
-<h3 id="safety"><strong>Safety</strong><a class="headerlink" href="#safety" title="Permanent link">&para;</a></h3>
-<p>Four subsections in safety evaluation:</p>
-<ul>
-<li>Jailbreak: <code>jailbreak.json</code></li>
-<li>Exaggerated Safety: <code>exaggerated_safety.json</code></li>
-<li>Toxicity: <code>jailbreak.json</code></li>
-<li>Misuse: <code>misuse.json</code></li>
-</ul>
-<p>Requirement:</p>
-<p><img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-blue" />
-<img alt="Perspective" src="https://img.shields.io/badge/Perspective-purple" />
-<img alt="HuggingFace" src="https://img.shields.io/badge/HuggingFace-yellow" /> </p>
-<ul>
-<li>openai api (gpt-4-turbo)</li>
-<li>perspective api</li>
-<li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
-</ul>
-<p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">safety</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">file_process</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
-
-<span class="n">evaluator</span> <span class="o">=</span> <span class="n">safety</span><span class="o">.</span><span class="n">SafetyEval</span><span class="p">()</span>
-</code></pre></div>
-<p>Jailbreak evaluation (<code>eval_type</code>: type of evaluation, either <code>total</code> or <code>single</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="n">jailbreak_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'jailbreak_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">jailbreak_eval</span><span class="p">(</span><span class="n">jailbreak_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'total'</span><span class="p">))</span> <span class="c1"># return overall RtA</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">jailbreak_eval</span><span class="p">(</span><span class="n">jailbreak_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'single'</span><span class="p">))</span> <span class="c1"># return RtA dict for each kind of jailbreak ways</span>
-</code></pre></div>
-<p>Exaggerated evaluation:</p>
-<div class="highlight"><pre><span></span><code><span class="n">exaggerated_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'exaggerated_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">exaggerated_eval</span><span class="p">(</span><span class="n">exaggerated_data</span><span class="p">))</span>
-</code></pre></div>
-<p>Toxicity evaluation:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Toxicity data for evaluation is based on the evaluated results of jailbreak data. You should first evaluate jailbreak data and then use evaluated results to conduct toxicity evaluation.</p>
-</div>
-<div class="highlight"><pre><span></span><code><span class="c1"># If you have not saved evaluated jailbreak results</span>
-<span class="n">jailbreak_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'jailbreak_data_json_path'</span><span class="p">)</span>
-<span class="n">eval_data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">jailbreak_eval</span><span class="p">(</span><span class="n">jailbreak_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'total/single'</span><span class="p">,</span> <span class="n">return_data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">toxicity_eval</span><span class="p">(</span><span class="n">eval_data</span><span class="p">))</span>
-
-<span class="c1"># If you have saved evaluated jailbreak results</span>
-<span class="n">toxicity_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'evaluated_jailbreak_results_json_path'</span><span class="p">)</span> <span class="c1"># load eval data for toxicity evaluation</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">toxicity_eval</span><span class="p">(</span><span class="n">toxicity_data</span><span class="p">))</span>
-</code></pre></div>
-<p>Misuse evaluation:</p>
-<div class="highlight"><pre><span></span><code><span class="n">misuse_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'misuse_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">misuse_eval</span><span class="p">(</span><span class="n">misuse_data</span><span class="p">))</span>
-</code></pre></div>
-<h3 id="fairness"><strong>Fairness</strong><a class="headerlink" href="#fairness" title="Permanent link">&para;</a></h3>
-<p>Three subsections in fairness evaluation:</p>
-<ul>
-<li>Stereotype: <code>stereotype_agreement.json</code>, <code>stereotype_recognition.json</code>, <code>stereotype_query_test.json</code></li>
-<li>Disparagement: <code>disparagement.json</code></li>
-<li>Preference: <code>preference_force.json</code></li>
-</ul>
-<p>Requirement:</p>
-<p><img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-blue" />
-<img alt="HuggingFace" src="https://img.shields.io/badge/HuggingFace-yellow" /> </p>
-<ul>
-<li>openai api (gpt-4-turbo)</li>
-<li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
-</ul>
-<p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">fairness</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">file_process</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
-
-<span class="n">evaluator</span> <span class="o">=</span> <span class="n">fairness</span><span class="o">.</span><span class="n">FairnessEval</span><span class="p">()</span>
-</code></pre></div>
-<p>Stereotype evaluation:</p>
-<div class="highlight"><pre><span></span><code><span class="n">stereotype_recognition_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'stereotype_recognition_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">stereotype_recognition_eval</span><span class="p">(</span><span class="n">stereotype_recognition_data</span><span class="p">))</span>
-
-<span class="n">stereotype_agreement_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'stereotype_agreement_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">stereotype_agreement_eval</span><span class="p">(</span><span class="n">stereotype_agreement_data</span><span class="p">))</span>
-
-<span class="n">stereotype_query_test_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'stereotype_query_test_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">stereotype_query_eval</span><span class="p">(</span><span class="n">stereotype_query_test_data</span><span class="p">))</span>
-</code></pre></div>
-<p>Disparagement evaluation:
-<div class="highlight"><pre><span></span><code><span class="n">disparagement_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'disparagement_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">disparagement_eval</span><span class="p">(</span><span class="n">disparagement_data</span><span class="p">))</span>
-</code></pre></div></p>
-<p>Preference evaluation:
-<div class="highlight"><pre><span></span><code><span class="n">preference_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'preference_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">preference_eval</span><span class="p">(</span><span class="n">preference_data</span><span class="p">))</span>
-</code></pre></div></p>
-<h3 id="robustness"><strong>Robustness</strong><a class="headerlink" href="#robustness" title="Permanent link">&para;</a></h3>
-<p>Two subsections in robustness evaluation:</p>
-<ul>
-<li>Natural noise: <code>advglue.json</code>, <code>advinstruction.json</code></li>
-<li>Out of distribution: <code>ood_generalization.json</code>, <code>ood_detection.json</code></li>
-</ul>
-<p>Requirement:</p>
-<p><img alt="HuggingFace" src="https://img.shields.io/badge/HuggingFace-yellow" /> </p>
-<ul>
-<li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
-</ul>
-<p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">robustness</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">file_process</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
-
-<span class="n">evaluator</span> <span class="o">=</span> <span class="n">robustness</span><span class="o">.</span><span class="n">RobustnessEval</span><span class="p">()</span>
-</code></pre></div>
-<p>Natural noise evaluation:</p>
-<div class="highlight"><pre><span></span><code><span class="n">advglue_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'advglue_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">advglue_eval</span><span class="p">(</span><span class="n">advglue_data</span><span class="p">))</span>
-
-<span class="n">advinstruction_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'advinstruction_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">advglue_eval</span><span class="p">(</span><span class="n">advinstruction_data</span><span class="p">))</span>
-</code></pre></div>
-<p>OOD evaluation:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ood_detection_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'ood_detection_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">ood_detection</span><span class="p">(</span><span class="n">ood_detection_data</span><span class="p">))</span>
-
-<span class="n">ood_generalization_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'ood_generalization_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">ood_generalization</span><span class="p">(</span><span class="n">ood_generalization_data</span><span class="p">))</span>
-</code></pre></div>
-<h3 id="privacy"><strong>Privacy</strong><a class="headerlink" href="#privacy" title="Permanent link">&para;</a></h3>
-<p>Two subsections in privacy evaluation:</p>
-<ul>
-<li>Privacy awareness: <code>privacy_awareness_confAIde.json</code>, <code>privacy_awareness_query.json</code></li>
-<li>Privacy leakage: <code>privacy_leakage.json</code></li>
-</ul>
-<p>Requirement:</p>
-<p><img alt="HuggingFace" src="https://img.shields.io/badge/HuggingFace-yellow" /> </p>
-<ul>
-<li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
-</ul>
-<p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">privacy</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">file_process</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
-
-<span class="n">evaluator</span> <span class="o">=</span> <span class="n">privacy</span><span class="o">.</span><span class="n">PrivacyEval</span><span class="p">()</span>
-</code></pre></div>
-<p>Privacy awareness:</p>
-<div class="highlight"><pre><span></span><code><span class="n">privacy_confAIde_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'privacy_confAIde_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">ConfAIDe_eval</span><span class="p">(</span><span class="n">privacy_confAIde_data</span><span class="p">))</span>
-
-<span class="n">privacy_awareness_query_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'privacy_awareness_query_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">awareness_query_eval</span><span class="p">(</span><span class="n">privacy_awareness_query_data</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">'normal'</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">awareness_query_eval</span><span class="p">(</span><span class="n">privacy_awareness_query_data</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">'aug'</span><span class="p">))</span>
-</code></pre></div>
-<p>Privacy leakage:</p>
-<div class="highlight"><pre><span></span><code><span class="n">privacy_leakage_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'privacy_leakage_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">leakage_eval</span><span class="p">(</span><span class="n">privacy_leakage_data</span><span class="p">))</span>
-</code></pre></div>
-<h3 id="machine-ethics"><strong>Machine Ethics</strong><a class="headerlink" href="#machine-ethics" title="Permanent link">&para;</a></h3>
-<p>Three subsections in machine ethics evaluation:</p>
-<p>Implicit ethics: <code>implicit_ETHICS.json</code>, <code>implicit_SocialChemistry101.json</code><br />
-Explicit ethics: <code>explicit_moralchoice.json</code><br />
-Awareness: <code>awareness.json</code>  </p>
-<p>Requirement:</p>
-<p><img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-blue" />
-<img alt="HuggingFace" src="https://img.shields.io/badge/HuggingFace-yellow" /> </p>
-<ul>
-<li>openai api (gpt-4-turbo)</li>
-<li>huggingface evaluator: LibrAI/longformer-harmful-ro</li>
-</ul>
-<p>Preliminary:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ethics</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">file_process</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">trustllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
-
-<span class="n">evaluator</span> <span class="o">=</span> <span class="n">ethics</span><span class="o">.</span><span class="n">EthicsEval</span><span class="p">()</span>
-</code></pre></div>
-<p>Explicit ethics:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">explicit_ethics_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'explicit_ethics_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">explicit_ethics_eval</span><span class="p">(</span><span class="n">explicit_ethics_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'low'</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">explicit_ethics_eval</span><span class="p">(</span><span class="n">explicit_ethics_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'high'</span><span class="p">))</span>
-</code></pre></div>
-Implicit ethics:</p>
-<div class="highlight"><pre><span></span><code><span class="n">implicit_ethics_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'implicit_ethics_data_json_path'</span><span class="p">)</span>
-<span class="c1"># evaluate ETHICS dataset</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">implicit_ethics_eval</span><span class="p">(</span><span class="n">implicit_ethics_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'ETHICS'</span><span class="p">))</span>
-<span class="c1"># evaluate social_norm dataset</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">implicit_ethics_eval</span><span class="p">(</span><span class="n">implicit_ethics_data</span><span class="p">,</span> <span class="n">eval_type</span><span class="o">=</span><span class="s1">'social_norm'</span><span class="p">))</span>
-</code></pre></div>
-<p>Awareness:</p>
-<div class="highlight"><pre><span></span><code><span class="n">awareness_data</span> <span class="o">=</span> <span class="n">file_process</span><span class="o">.</span><span class="n">load_json</span><span class="p">(</span><span class="s1">'awareness_data_json_path'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="o">.</span><span class="n">awareness_eval</span><span class="p">(</span><span class="n">awareness_data</span><span class="p">))</span>
-</code></pre></div>
+<p>Both the chosen JSON and its corresponding HTML filename must be unused. A failed or incomplete evaluation does not produce a successful score artifact; inspect the error and the relevant pipeline dependencies.</p>
+<h2 id="interpret-and-compare-results">Interpret and compare results<a class="headerlink" href="#interpret-and-compare-results" title="Permanent link">&para;</a></h2>
+<p>Metric directions and scales differ. For example, higher refusal-to-answer rates can be desirable on harmful prompts and undesirable on harmless prompts in exaggerated-safety evaluation. Use the <a href="../benchmark.html#task-overview">original metric reference</a>, and preserve its definitions when reporting results. TrustLLM does not define a single overall trust score.</p>
+<p>Record the dataset and response hashes, sample counts, source commit, model revision, prompt formatting, generation settings, dependencies and judge configuration. Treat new chat templates or judge versions as experimental changes. A 100% generation completion rate says nothing about a model's trustworthiness.</p>
+<p>Review <a href="../faq.html#language-bias">language limitations</a> and the <a href="../design.html">validation scope</a> before comparing with the published leaderboard. Current tests do not reproduce all paper results or validate every hosted provider.</p>
+<h2 id="original-python-apis">Original Python APIs<a class="headerlink" href="#original-python-apis" title="Permanent link">&para;</a></h2>
+<p>The detailed <a href="../reference/scoring.html">scoring reference</a> retains the research APIs. These links also preserve bookmarks from earlier documentation.</p>
+<p><span id="start-your-evaluation"></span><span id="api-setting"></span><span id="easy-pipeline"></span>
+<a href="../reference/scoring.html#start-your-evaluation">Configuration and pipeline setup</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Dimension</th>
+<th style="text-align: left;">Pipeline</th>
+<th style="text-align: left;">Task API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Truthfulness</td>
+<td style="text-align: left;"><span id="truthfulness-evaluation"></span><a href="../reference/scoring.html#truthfulness-evaluation">Pipeline</a></td>
+<td style="text-align: left;"><span id="truthfulness"></span><a href="../reference/scoring.html#truthfulness">Task methods</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Safety</td>
+<td style="text-align: left;"><span id="safety-evaluation"></span><a href="../reference/scoring.html#safety-evaluation">Pipeline</a></td>
+<td style="text-align: left;"><span id="safety"></span><a href="../reference/scoring.html#safety">Task methods</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Fairness</td>
+<td style="text-align: left;"><span id="fairness-evaluation"></span><a href="../reference/scoring.html#fairness-evaluation">Pipeline</a></td>
+<td style="text-align: left;"><span id="fairness"></span><a href="../reference/scoring.html#fairness">Task methods</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Robustness</td>
+<td style="text-align: left;"><span id="robustness-evaluation"></span><a href="../reference/scoring.html#robustness-evaluation">Pipeline</a></td>
+<td style="text-align: left;"><span id="robustness"></span><a href="../reference/scoring.html#robustness">Task methods</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Privacy</td>
+<td style="text-align: left;"><span id="privacy-evaluation"></span><a href="../reference/scoring.html#privacy-evaluation">Pipeline</a></td>
+<td style="text-align: left;"><span id="privacy"></span><a href="../reference/scoring.html#privacy">Task methods</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Ethics</td>
+<td style="text-align: left;"><span id="ethics-evaluation"></span><a href="../reference/scoring.html#ethics-evaluation">Pipeline</a></td>
+<td style="text-align: left;"><span id="machine-ethics"></span><a href="../reference/scoring.html#machine-ethics">Task methods</a></td>
+</tr>
+</tbody>
+</table>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1450,6 +1179,7 @@ Implicit ethics:</p>
 
 
                 
+
               </article>
             </div>
           
@@ -1467,12 +1197,52 @@ Implicit ethics:</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="agents.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: AI agent integration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                AI agent integration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../benchmark.html" class="md-footer__link md-footer__link--next" aria-label="Next: Datasets &amp; metrics">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Datasets & metrics
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 TrustLLM
+      TrustLLM · ICML 2024 · MIT-licensed toolkit
     </div>
   
   
@@ -1496,7 +1266,7 @@ Implicit ethics:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>

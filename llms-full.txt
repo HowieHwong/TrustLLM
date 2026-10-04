@@ -1,0 +1,1464 @@
+# TrustLLM
+
+> Evaluate LLM trustworthiness across truthfulness, safety, fairness, robustness, privacy and ethics with local models or compatible APIs.
+
+Research toolkit for the ICML 2024 TrustLLM benchmark. The maintained source workflow supports Python and CLI orchestration, local Hugging Face causal models, and text-only OpenAI-compatible Chat Completions endpoints. An AI agent can call this workflow; TrustLLM does not evaluate agent trajectories or tool use.
+
+Use the installation guide for the current source version; the PyPI release can differ. Generation completion reports are not benchmark scores. Scoring can require classifier downloads and paid judge or embedding APIs.
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/index.html
+
+![TrustLLM — Trustworthiness in Large Language Models](https://howiehwong.github.io/TrustLLM/assets/logo.png)
+
+OPEN RESEARCH · ICML 2024
+
+# LLM trustworthiness, measured.
+
+Evaluate the models behind your applications across six dimensions. TrustLLM brings benchmark data, local and API generation, and the original research scorers into one Python workflow.
+
+[Run your first evaluation](https://howiehwong.github.io/TrustLLM/guides/running.md)
+[Integrate with an AI agent](https://howiehwong.github.io/TrustLLM/guides/agents.md)
+
+## 01 / Set up
+
+Install only the components you need. Download benchmark data from Python or the CLI.
+
+[Installation & data →](https://howiehwong.github.io/TrustLLM/guides/running.md)
+
+## 02 / Run a model
+
+Use local Hugging Face weights or a compatible API. Keep checkpoints and resume interrupted runs.
+
+[Model backends →](https://howiehwong.github.io/TrustLLM/guides/generation_details.md)
+
+## 03 / Read the evidence
+
+Score full response sets, inspect each metric, and keep the experiment settings alongside the results.
+
+[Scoring & results →](https://howiehwong.github.io/TrustLLM/guides/evaluation.md)
+
+## What does TrustLLM evaluate?
+
+| Dimension | Questions the benchmark explores |
+| --- | --- |
+| **Truthfulness** | Does the model produce misinformation, hallucinate, or agree with a user's false premise? |
+| **Safety** | How does it respond to jailbreaks, misuse requests, and harmless prompts that trigger excessive refusal? |
+| **Fairness** | Does it express stereotypes, demographic preferences, or disparaging judgments? |
+| **Robustness** | How do perturbations and out-of-distribution inputs affect its responses? |
+| **Privacy** | Does it recognize privacy concerns or disclose sensitive information? |
+| **Ethics** | How does it reason about moral judgments and choices? |
+
+[Explore the datasets and original metrics](https://howiehwong.github.io/TrustLLM/benchmark.md). TrustLLM reports individual metrics with their original directions and scales; it does not collapse them into an overall trust score.
+
+## One workflow, two model backends
+
+```
+python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+python -m trustllm download --output data
+python -m trustllm tasks
+```
+
+The source installation above provides the current **0.4 workflow**. The PyPI release may differ. API generation uses the lightweight base package; install the `local` extra for local inference and `eval` for scoring. The [first-run guide](https://howiehwong.github.io/TrustLLM/guides/running.md) covers credentials, examples and model requirements.
+
+An AI agent can orchestrate this workflow through the CLI or Python, then read JSON artifacts. See the [agent integration guide](https://howiehwong.github.io/TrustLLM/guides/agents.md) for commands, exit codes and output contracts. The benchmark evaluates model responses; multi-step agent trajectories, tool-use correctness and agent memory are outside its current scope.
+
+## Research and reproducibility
+
+TrustLLM accompanies **TrustLLM: Trustworthiness in Large Language Models**, published at ICML 2024. Prompts and original scoring methods remain part of the research benchmark. New backends, model versions and judge settings can change results; record them when comparing experiments.
+
+[Paper](https://arxiv.org/abs/2401.05561) · [Dataset](https://huggingface.co/datasets/TrustLLM/TrustLLM-dataset) · [Published leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html) · [Validation scope](https://howiehwong.github.io/TrustLLM/design.md)
+
+Documentation is in English. The repository also offers introductions in [简体中文](https://github.com/HowieHwong/TrustLLM/blob/main/README.zh-CN.md), [繁體中文](https://github.com/HowieHwong/TrustLLM/blob/main/README.zh-TW.md), [日本語](https://github.com/HowieHwong/TrustLLM/blob/main/README.ja.md), [한국어](https://github.com/HowieHwong/TrustLLM/blob/main/README.ko.md), [Español](https://github.com/HowieHwong/TrustLLM/blob/main/README.es.md) and [Français](https://github.com/HowieHwong/TrustLLM/blob/main/README.fr.md). README translations do not translate the benchmark data.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/guides/running.html
+
+# Run TrustLLM
+
+## Install the components you use
+
+The 0.4 source distribution has four installation modes:
+
+| Extra | Purpose |
+| --- | --- |
+| Base install | Dataset download, CLI, compatible API generation, checkpoints, HTML reports |
+| `local` | PyTorch, Transformers 4.x, Accelerate, SentencePiece |
+| `eval` | Original scoring pipelines, classifier dependencies, API judge SDK and metrics |
+| `legacy` | Archived generation engine and historical provider SDKs |
+
+```
+python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+# For local generation and scoring together:
+python -m pip install "trustllm[local,eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+```
+
+Git must be installed for VCS installation. Python 3.10–3.12 is recommended for local inference; offline utilities are tested on 3.9–3.12. GPU users should install a PyTorch build appropriate for their hardware first. For a source checkout, use `python -m pip install -e './trustllm_pkg[dev,local,eval]'`.
+
+The PyPI release has not been changed by this source update. Pin a commit SHA instead of `main` and save your environment for published experiments.
+
+## Download data
+
+```
+trustllm download --output data
+trustllm tasks
+```
+
+Or:
+
+```
+from trustllm import download_dataset
+
+download_dataset("data")
+```
+
+Data is extracted under `data/dataset`. Downloading again overwrites matching files. The helper raises on download or archive errors. No model libraries are imported by this command.
+
+## API models
+
+Set `OPENAI_API_KEY` and `OPENAI_BASE_URL` in the environment. The default endpoint is `https://api.openai.com/v1`. Keys are optional for compatible local servers with authentication disabled.
+
+```
+trustllm generate --backend api --model your-served-model \
+  --base-url http://localhost:8000/v1 \
+  --task safety --data data/dataset --limit 5 --output runs/api-smoke
+```
+
+The transport sends text-only, non-streaming `POST /chat/completions` requests. Model IDs are passed through unchanged. Use an endpoint that implements this protocol (for example a vLLM-served model); this is not a native Anthropic Messages, Gemini, Azure deployment, or Responses API adapter.
+
+- `--concurrency 4`: maximum simultaneous sample requests.
+- `--timeout 120`: timeout in seconds per HTTP request.
+- `--retries 3`: retries after the first attempt for connection errors, timeouts, HTTP 408/429/500/502/503/504. Other HTTP errors fail immediately.
+- `--token-parameter max_completion_tokens`: use this instead of the default `max_tokens` if required by your endpoint.
+- `--omit-temperature`: omit temperature entirely for models that do not accept it.
+
+Retries may cause duplicate inference or billing if a provider completed a request before a connection failed. The client cannot guarantee provider-side idempotency.
+
+## Local models
+
+```
+trustllm generate --backend local --model Qwen/Qwen2.5-0.5B-Instruct \
+  --device auto --task safety --data data/dataset \
+  --limit 5 --output runs/local-smoke
+```
+
+A Hugging Face model ID downloads weights using the normal HF cache. A filesystem path loads saved weights. `HF_TOKEN` and the normal Hugging Face authentication setup apply to gated models.
+
+`AutoModelForCausalLM` and `AutoTokenizer` handle loading. A tokenizer chat template is applied when present; otherwise the prompt is used directly. The response excludes the input tokens.
+
+- `--device cpu`, `cuda:0`, or `mps`: select one device.
+- `--device auto`: use Accelerate model placement, potentially across devices.
+- `--dtype auto|float32|float16|bfloat16`: model precision.
+- `--revision <commit>`: pin a model revision.
+- `--seed 42`: initialize local generation randomness.
+- `--trust-remote-code`: opt in only when your chosen model requires custom code.
+
+Local generation is sequential (`concurrency=1`). Use a serving API for concurrent requests. This implementation is text-only causal-LM inference; it does not implement multimodal, log-likelihood, tensor-parallel or GGUF loading itself. Reproducibility still depends on hardware, library versions and sampling; resumed stochastic local runs are not guaranteed to be bit-identical to an uninterrupted run.
+
+## JSON configuration
+
+```
+trustllm generate --config examples/api-safety.json --model your-model-id
+trustllm generate --config examples/local-safety.json
+```
+
+The example files are in the repository. Config keys match `trustllm.generate` keyword arguments, and explicit CLI flags override the JSON config. Keep secrets in environment variables; saved CLI configs reject `api_key`. Python callers can supply it directly.
+
+## Inputs, checkpoints and output files
+
+`--data` accepts a benchmark root, a dimension directory, or a single JSON file. A custom file must be a nonempty array of objects containing a nonempty `prompt` string (or the field selected by `--prompt-key`). All other input fields are preserved; existing `res` values in input data are regenerated. Dataset default temperatures match the original task registry unless overridden by `--temperature`.
+
+`--limit` takes the first N samples of each file. It is a debugging aid, not a statistically representative subset, and some original scorers need complete groups or paired records.
+
+```
+runs/api-safety/
+├── run.json                # Settings, input SHA-256, versions, completion counts
+├── samples.jsonl           # Append-only sample successes and errors
+├── report.html             # Self-contained generation report
+├── jailbreak.json          # Original fields + res
+├── misuse.json
+└── exaggerated_safety.json
+```
+
+Outputs are ordered like the input, regardless of request completion order. Failed/pending responses are `null` and are rejected by the scoring entry point. A failed run produces artifacts and exits nonzero. Unexpected local failures are recorded by exception type to avoid persisting sensitive library error details.
+
+To resume, repeat the original command and add `--resume`. Successful checkpoints are reused; failed samples are retried. Resume checks dataset hashes, model/backend configuration, generation settings and dependency versions. A changed run needs a new output directory. Do not run two processes into the same output directory. For existing local checkpoint directories, keep the files immutable: model-file contents are not hashed automatically.
+
+## Score a full run
+
+```
+trustllm evaluate --task safety --data runs/api-safety-full
+```
+
+This calls the existing TrustLLM scorer after checking that all required response files exist and all responses are nonempty. It writes `scores.json` and a readable `scores.html` table. Metric directions and scales are preserved; no overall trust score is invented. The default ethics pipeline does not include the optional awareness scorer; safety toxicity remains an opt-in feature of the original Python pipeline. See the [scoring guide](https://howiehwong.github.io/TrustLLM/guides/evaluation.md) for individual tasks.
+
+Judge model selection is configurable with `OPENAI_JUDGE_MODEL`. The original judge default is retained for compatibility, but historical IDs may no longer be served by your provider. Embedding and classifier choices remain in the original scoring code. Generation transport flexibility does not guarantee all scoring dependencies use the same provider.
+
+## Migration from 0.3
+
+`from trustllm.generation.generation import LLMGeneration` remains available and delegates to the new runner. `online_model=True` selects the API backend. Prefer explicit `backend='api'` or `backend='local'`; use actual model IDs, not historical aliases. `generation_results()` returns `"OK"` on success, and its summary is available as `.result`. It now raises on failure instead of silently printing an error and returning `None`.
+
+Default outputs move from `generation_results/<alias>/<dimension>` to `runs/<sanitized-model>/<dimension>`. Specify `output_dir` to control this. `num_gpus` values other than 1 are rejected; use `device='auto'` for placement. The old fixed retry interval is replaced by bounded per-request backoff. Model chat templates can change prompt formatting relative to FastChat, so these are new experiment settings rather than exact reproductions of the paper.
+
+For archived provider-specific integrations, import from `trustllm.generation.legacy` and install the `legacy` extra. Those providers are not modernized or covered by the new adapter tests.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/guides/generation_details.html
+
+# Local models & API endpoints
+
+Both backends use the same task registry, response format, checkpoint journal and generation reports. Choose a backend based on where inference runs.
+
+|  | API backend | Local backend |
+| --- | --- | --- |
+| Installation | Base package | `local` extra |
+| Model | Served model ID | Hugging Face causal-LM ID or local checkpoint path |
+| Inference | Text-only `POST /chat/completions` | Transformers `AutoModelForCausalLM` |
+| Hardware | Managed by the endpoint | Your CPU, CUDA GPU or Apple MPS device |
+| Parallel samples | `--concurrency N` | Sequential; `--concurrency 1` |
+| Authentication | `OPENAI_API_KEY` if required | Hugging Face authentication for gated weights |
+
+## API generation
+
+Set the endpoint and credentials in your environment. This example assumes a local server that implements the OpenAI-compatible Chat Completions protocol:
+
+```
+python -m trustllm generate \
+  --backend api --model your-served-model \
+  --base-url http://localhost:8000/v1 \
+  --task safety --data data/dataset \
+  --limit 5 --concurrency 4 --output runs/api-smoke
+```
+
+The model ID must match your server. For a hosted service, set `OPENAI_BASE_URL` and `OPENAI_API_KEY` or use `--base-url` for the endpoint. The default API root is `https://api.openai.com/v1`.
+
+A vLLM server can expose this protocol; TrustLLM does not launch or manage the server itself. Compatible text responses are required. There are no native Anthropic Messages, Gemini, Azure deployment or Responses API adapters in the maintained runner. Support for generation through an endpoint does not establish compatibility with the original judge or embedding integrations.
+
+Some endpoints require `--token-parameter max_completion_tokens` or `--omit-temperature`. Request timeouts and bounded retries are configurable; see [API options](https://howiehwong.github.io/TrustLLM/guides/running.html#api-models).
+
+## Local inference
+
+Install `local` using the [source installation instructions](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use), then run:
+
+```
+python -m trustllm generate \
+  --backend local --model Qwen/Qwen2.5-0.5B-Instruct \
+  --device auto --task safety --data data/dataset \
+  --limit 5 --output runs/local-smoke
+```
+
+Weights download through the Hugging Face cache on first use. Replace the model ID with a saved checkpoint directory to load existing weights. Tokenizers with a chat template use that template; otherwise the prompt is passed directly.
+
+Use `--device cpu`, `cuda:0` or `mps` to choose one device. `auto` delegates placement to Accelerate. Use `--revision <commit>` to pin hosted model weights and `--seed 42` to initialize randomness. Hardware capacity and Transformers architecture compatibility still apply. GGUF, multimodal inference and log-likelihood evaluation are outside this backend.
+
+## Inspect and resume
+
+`--limit` is per dataset file. A smoke test checks the setup; it does not establish a benchmark score.
+
+Open `report.html` in the output directory and inspect `run.json` for counts and settings. Repeat the original command with `--resume` to reuse successful checkpoints. A changed configuration or input requires a new output directory. Read the [artifact and resume contract](https://howiehwong.github.io/TrustLLM/guides/running.html#inputs-checkpoints-and-output-files) before automating runs.
+
+## Migrate an existing experiment
+
+The current compatibility class `trustllm.generation.generation.LLMGeneration` delegates to this runner. Use actual model IDs and explicit backends. See [migration from 0.3](https://howiehwong.github.io/TrustLLM/guides/running.html#migration-from-03).
+
+The [archived generation guide](https://howiehwong.github.io/TrustLLM/guides/legacy_generation.md) documents the old provider SDKs and model aliases. Those integrations are retained for reference and are not covered by the maintained backend tests.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/guides/agents.html
+
+# Use TrustLLM from an AI agent
+
+An AI coding or research agent can use TrustLLM to **evaluate an underlying language model**: download data, generate responses, inspect failures and invoke the original scorers. The same commands work from a terminal, a subprocess or an orchestration tool.
+
+TrustLLM does not currently measure multi-step agent trajectories, tool-use correctness, memory, browser actions or end-to-end agent task success. This guide describes integration with an agent, not a new agent benchmark or MCP server.
+
+## Give an agent the documentation
+
+Start from the [documentation index](https://howiehwong.github.io/TrustLLM/llms.txt). It links to a Markdown version of each page. [Complete documentation](https://howiehwong.github.io/TrustLLM/llms-full.txt) is also available when a client needs one file.
+
+Each HTML page advertises its Markdown alternative and the agent index through HTML link elements. These files are generated from the rendered documentation on every build, including code examples and tables.
+
+A useful task to give your agent:
+
+> Read https://howiehwong.github.io/TrustLLM/llms.txt and the agent integration guide. Set up a TrustLLM safety smoke test for the model and endpoint I provide. Use five samples per dataset file and a new output directory. Read credentials from the environment. Report the command, exit status and completion counts from run.json. Explain failures before retrying. Treat report.html as a generation report. Only run a full benchmark or paid scoring when those costs are authorized.
+
+## Discover and install
+
+```
+python -m pip install "trustllm @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+python -m trustllm --help
+python -m trustllm tasks
+python -m trustllm download --output data
+```
+
+These commands install the maintained source workflow, not the older PyPI release. Replace `main` with a reviewed commit SHA for a reproducible environment. Downloading again overwrites matching dataset files under `data/dataset`.
+
+The six task IDs are `truthfulness`, `safety`, `fairness`, `robustness`, `privacy` and `ethics`. `tasks` prints a human-readable list of their registered dataset files; it does not emit JSON.
+
+## Run a bounded smoke test
+
+Configure `OPENAI_API_KEY` and `OPENAI_BASE_URL` in the environment, then replace `your-served-model` with the actual model ID:
+
+```
+python -m trustllm generate \
+  --backend api --model your-served-model \
+  --task safety --data data/dataset \
+  --limit 5 --concurrency 2 --max-new-tokens 128 \
+  --output runs/agent-safety-smoke
+```
+
+`--limit 5` means five records **per file**, not five requests for the entire task. Retries can add requests. API generation uses text-only Chat Completions; the endpoint must implement that protocol. For local generation, install the `local` extra, use `--backend local`, supply a Hugging Face model ID or local checkpoint path, and set `--concurrency 1`. See [model backends](https://howiehwong.github.io/TrustLLM/guides/generation_details.md).
+
+### Python orchestration
+
+```
+from trustllm import generate
+
+run = generate(
+    model="your-served-model",
+    backend="api",
+    task="safety",
+    data_path="data/dataset",
+    output_dir="runs/agent-python-smoke",
+    limit=5,
+    concurrency=2,
+    max_new_tokens=128,
+)
+print(run["status"], run["successful"], run["total"])
+```
+
+Python generation returns the run summary on success and raises on failure. Use a unique output directory for each configuration. Keep secrets in environment variables; saved JSON configs reject `api_key`.
+
+## Read the artifacts
+
+| Artifact | Agent usage |
+| --- | --- |
+| `run.json` | Read `status`, aggregate `successful`, `failed` and `total` counts, plus per-file `pending` counts under `files`, settings, versions and input hashes. |
+| `samples.jsonl` | Inspect per-sample `success` or `error` events. Repeated attempts can produce more than one event for a sample. |
+| Dataset-named `.json` files | Original input records plus `res`. Failed or pending responses are `null`. |
+| `report.html` | Human-readable generation completion report. It contains no benchmark scores. |
+| `scores.json` | After scoring: `task`, `scores`, input hashes, dependency versions and judge model. Preserve each metric's meaning. |
+| `scores.html` | Human-readable score table generated alongside `scores.json`. |
+
+Read JSON files instead of scraping terminal progress. Generation states are `running`, `completed`, `failed` and `interrupted`. Counts and per-file summaries are written when generation finishes or unwinds; a process killed before finalization may leave only the initial `running` manifest and journal. `pending` samples have not produced a successful response or recorded failure at the last saved update.
+
+| CLI exit code | Meaning |
+| --- | --- |
+| `0` | The command completed successfully. |
+| `1` | A handled setup, input, generation or scoring error; inspect stderr and available artifacts. |
+| `2` | Argument parsing failed. |
+| `130` | Keyboard interruption; completed samples can be resumed. |
+
+Other nonzero exits may come from an unexpected exception or process termination. A setup failure can occur before artifacts exist; inspect the exit code first.
+
+## Recover, then score a complete run
+
+For a failed or interrupted generation run, repeat the **same** command with `--resume`. Successful checkpoints are reused and failed samples are retried. Changing input hashes, generation settings or dependency versions requires a new output directory. Never write to the same output directory from two processes. See [resume details](https://howiehwong.github.io/TrustLLM/guides/running.html#inputs-checkpoints-and-output-files).
+
+For a benchmark result, generate again **without `--limit` into a new directory**, then install the `eval` extra and score the complete response set:
+
+```
+python -m pip install "trustllm[eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+python -m trustllm evaluate --task safety --data runs/agent-safety-full
+```
+
+The directory above must already contain the full run. A smoke test cannot establish benchmark performance. Scoring validates required files and nonempty responses, but cannot prove you ran the full benchmark; preserve the data and manifest. Some scoring pipelines download classifiers or call paid judge/embedding services. Set `OPENAI_JUDGE_MODEL` to an available judge where needed and review the [scoring guide](https://howiehwong.github.io/TrustLLM/guides/evaluation.md).
+
+## Record evidence for a report
+
+Include the source commit, model ID/revision, dataset hashes, full configuration, dependency versions, sample counts, failures, judge settings and the per-task score files. Label partial runs clearly. Generation completion rate is not a trustworthiness metric; TrustLLM does not define a single overall trust score.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/guides/evaluation.html
+
+# Scoring model responses
+
+Generation records what a model says. Evaluation applies the original TrustLLM scorers to those responses and writes **per-task metrics**. Complete generation before starting evaluation, and keep the original dataset fields and ordering.
+
+## Prepare a complete run
+
+Start with the [running guide](https://howiehwong.github.io/TrustLLM/guides/running.md). A generation smoke test with `--limit` is useful for checking setup, but may omit pairs or groups required by the scorers. Generate without a limit into a new directory for a full benchmark run.
+
+```
+python -m pip install "trustllm[eval] @ git+https://github.com/HowieHwong/TrustLLM.git@main#subdirectory=trustllm_pkg"
+python -m trustllm evaluate --task safety --data runs/api-safety-full
+```
+
+Replace the example directory with an existing full response set. The CLI requires every registered response file for the task, excluding optional awareness, and a nonempty `res` for every record. It cannot prove benchmark coverage from arbitrary input files: retain the data hashes and run manifest, and verify the sample counts yourself.
+
+## Configure scoring dependencies
+
+The `eval` extra installs the original evaluation dependencies, including PyTorch, Transformers, metrics libraries and the judge SDK. Different tasks use a mixture of rules, classifiers, embeddings and language-model judges. Some may download model weights or call paid services.
+
+For a scoring method that uses an API judge, set these variables **before** importing evaluation modules or running the CLI:
+
+```
+export OPENAI_API_KEY="your-api-key"
+export OPENAI_BASE_URL="https://your-provider.example/v1"
+export OPENAI_JUDGE_MODEL="your-available-judge-model"
+```
+
+Replace the endpoint and judge placeholders with your provider's actual values. The original default judge ID is historical and may no longer be available. A generation endpoint's Chat Completions support does not guarantee compatibility with all original judge or embedding calls. Check the selected pipeline before launching a full experiment.
+
+The standard ethics pipeline excludes optional awareness scoring. Safety toxicity is an opt-in feature of the original Python pipeline and uses Perspective API credentials; the CLI does not enable it by default. See the [original APIs](https://howiehwong.github.io/TrustLLM/reference/scoring.md) for these options.
+
+## Read the score files
+
+| File | Contents |
+| --- | --- |
+| `scores.json` | Task, nested score values, response-file hashes, dependency versions, judge model and creation time. |
+| `scores.html` | A readable table of the same score values. |
+| `run.json` | Generation settings and completion counts; retain it with the score files. |
+| `report.html` | Generation progress and completion only. This is not a benchmark score report. |
+
+```
+import json
+from pathlib import Path
+
+result = json.loads(Path("runs/api-safety-full/scores.json").read_text())
+print(result["task"])
+print(result["scores"])
+```
+
+Existing scores are not overwritten. To rescore with a different judge or environment, select a new output filename and record the changed settings:
+
+```
+python -m trustllm evaluate --task safety --data runs/api-safety-full \
+  --output runs/api-safety-full/scores-rerun.json
+```
+
+Both the chosen JSON and its corresponding HTML filename must be unused. A failed or incomplete evaluation does not produce a successful score artifact; inspect the error and the relevant pipeline dependencies.
+
+## Interpret and compare results
+
+Metric directions and scales differ. For example, higher refusal-to-answer rates can be desirable on harmful prompts and undesirable on harmless prompts in exaggerated-safety evaluation. Use the [original metric reference](https://howiehwong.github.io/TrustLLM/benchmark.html#task-overview), and preserve its definitions when reporting results. TrustLLM does not define a single overall trust score.
+
+Record the dataset and response hashes, sample counts, source commit, model revision, prompt formatting, generation settings, dependencies and judge configuration. Treat new chat templates or judge versions as experimental changes. A 100% generation completion rate says nothing about a model's trustworthiness.
+
+Review [language limitations](https://howiehwong.github.io/TrustLLM/faq.html#language-bias) and the [validation scope](https://howiehwong.github.io/TrustLLM/design.md) before comparing with the published leaderboard. Current tests do not reproduce all paper results or validate every hosted provider.
+
+## Original Python APIs
+
+The detailed [scoring reference](https://howiehwong.github.io/TrustLLM/reference/scoring.md) retains the research APIs. These links also preserve bookmarks from earlier documentation.
+
+[Configuration and pipeline setup](https://howiehwong.github.io/TrustLLM/reference/scoring.html#start-your-evaluation)
+
+| Dimension | Pipeline | Task API |
+| --- | --- | --- |
+| Truthfulness | [Pipeline](https://howiehwong.github.io/TrustLLM/reference/scoring.html#truthfulness-evaluation) | [Task methods](https://howiehwong.github.io/TrustLLM/reference/scoring.html#truthfulness) |
+| Safety | [Pipeline](https://howiehwong.github.io/TrustLLM/reference/scoring.html#safety-evaluation) | [Task methods](https://howiehwong.github.io/TrustLLM/reference/scoring.html#safety) |
+| Fairness | [Pipeline](https://howiehwong.github.io/TrustLLM/reference/scoring.html#fairness-evaluation) | [Task methods](https://howiehwong.github.io/TrustLLM/reference/scoring.html#fairness) |
+| Robustness | [Pipeline](https://howiehwong.github.io/TrustLLM/reference/scoring.html#robustness-evaluation) | [Task methods](https://howiehwong.github.io/TrustLLM/reference/scoring.html#robustness) |
+| Privacy | [Pipeline](https://howiehwong.github.io/TrustLLM/reference/scoring.html#privacy-evaluation) | [Task methods](https://howiehwong.github.io/TrustLLM/reference/scoring.html#privacy) |
+| Ethics | [Pipeline](https://howiehwong.github.io/TrustLLM/reference/scoring.html#ethics-evaluation) | [Task methods](https://howiehwong.github.io/TrustLLM/reference/scoring.html#machine-ethics) |
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/benchmark.html
+
+# Benchmark reference
+
+This reference records the original research benchmark. Counts and metrics below describe that benchmark, not a live inventory of every downloaded file. Use `python -m trustllm tasks` to inspect the current task registry and record dataset hashes for your experiment. See the [paper](https://arxiv.org/abs/2401.05561) for methodology and the [scoring guide](https://howiehwong.github.io/TrustLLM/guides/evaluation.md) for the maintained workflow.
+
+## Dataset overview
+
+*✓ the dataset is from prior work, and ✗ means the dataset is first proposed in our benchmark.*
+
+| Dataset | Description | Num. | Exist? | Section |
+| --- | --- | --- | --- | --- |
+| SQuAD2.0 | It combines questions in SQuAD1.1 with over 50,000 unanswerable questions. | 100 | ✓ | Misinformation |
+| CODAH | It contains 28,000 commonsense questions. | 100 | ✓ | Misinformation |
+| HotpotQA | It contains 113k Wikipedia-based question-answer pairs for complex multi-hop reasoning. | 100 | ✓ | Misinformation |
+| AdversarialQA | It contains 30,000 adversarial reading comprehension question-answer pairs. | 100 | ✓ | Misinformation |
+| Climate-FEVER | It contains 7,675 climate change-related claims manually curated by human fact-checkers. | 100 | ✓ | Misinformation |
+| SciFact | It contains 1,400 expert-written scientific claims pairs with evidence abstracts. | 100 | ✓ | Misinformation |
+| COVID-Fact | It contains 4,086 real-world COVID claims. | 100 | ✓ | Misinformation |
+| HealthVer | It contains 14,330 health-related claims against scientific articles. | 100 | ✓ | Misinformation |
+| TruthfulQA | The multiple-choice questions to evaluate whether a language model is truthful in generating answers to questions. | 352 | ✓ | Hallucination |
+| HaluEval | It contains 35,000 generated and human-annotated hallucinated samples. | 300 | ✓ | Hallucination |
+| LM-exp-sycophancy | A dataset consists of human questions with one sycophancy response example and one non-sycophancy response example. | 179 | ✓ | Sycophancy |
+| Opinion pairs | It contains 120 pairs of opposite opinions. | 240, 120 | ✗ | Sycophancy, Preference |
+| WinoBias | It contains 3,160 sentences, split for development and testing, created by researchers familiar with the project. | 734 | ✓ | Stereotype |
+| StereoSet | It contains the sentences that measure model preferences across gender, race, religion, and profession. | 734 | ✓ | Stereotype |
+| Adult | The dataset, containing attributes like sex, race, age, education, work hours, and work type, is utilized to predict salary levels for individuals. | 810 | ✓ | Disparagement |
+| Jailbreak Trigger | The dataset contains the prompts based on 13 jailbreak attacks. | 1300 | ✗ | Jailbreak, Toxicity |
+| Misuse (additional) | This dataset contains prompts crafted to assess how LLMs react when confronted by attackers or malicious users seeking to exploit the model for harmful purposes. | 261 | ✗ | Misuse |
+| Do-Not-Answer | It is curated and filtered to consist only of prompts to which responsible LLMs do not answer. | 344 + 95 | ✓ | Misuse, Stereotype |
+| AdvGLUE | A multi-task dataset with different adversarial attacks. | 912 | ✓ | Natural Noise |
+| AdvInstruction | 600 instructions generated by 11 perturbation methods. | 600 | ✗ | Natural Noise |
+| ToolE | A dataset with the users' queries which may trigger LLMs to use external tools. | 241 | ✓ | Out of Domain (OOD) |
+| Flipkart | A product review dataset, collected starting from December 2022. | 400 | ✓ | Out of Domain (OOD) |
+| DDXPlus | A 2022 medical diagnosis dataset comprising synthetic data representing about 1.3 million patient cases. | 100 | ✓ | Out of Domain (OOD) |
+| ETHICS | It contains numerous morally relevant scenarios descriptions and their moral correctness. | 500 | ✓ | Implicit Ethics |
+| Social Chemistry 101 | It contains various social norms, each consisting of an action and its label. | 500 | ✓ | Implicit Ethics |
+| MoralChoice | It consists of different contexts with morally correct and wrong actions. | 668 | ✓ | Explicit Ethics |
+| ConfAIde | It contains the description of how information is used. | 196 | ✓ | Privacy Awareness |
+| Privacy Awareness | It includes different privacy information queries about various scenarios. | 280 | ✗ | Privacy Awareness |
+| Enron Email | It contains approximately 500,000 emails generated by employees of the Enron Corporation. | 400 | ✓ | Privacy Leakage |
+| Xstest | It's a test suite for identifying exaggerated safety behaviors in LLMs. | 200 | ✓ | Exaggerated Safety |
+
+## Task overview
+
+*○ means evaluation through the automatic scripts (e.g., keywords matching), ● means the automatic evaluation by ChatGPT, GPT-4 or longformer, and ◐ means the mixture evaluation.*
+
+*More trustworthy LLMs are expected to have a higher value of the metrics with ↑ and a lower value with ↓.*
+
+| Task Name | Metrics | Type | Eval | Section |
+| --- | --- | --- | --- | --- |
+| Closed-book QA | Accuracy (↑) | Generation | ○ | Misinformation(Internal) |
+| Fact-Checking | Macro F-1 (↑) | Classification | ● | Misinformation(External) |
+| Multiple Choice QA | Accuracy (↑) | Classification | ● | Hallucination |
+| Hallucination Classification | Accuracy (↑) | Classification | ● | Hallucination |
+| Persona Sycophancy | Embedding similarity (↑) | Generation | ◐ | Sycophancy |
+| Opinion Sycophancy | Percentage change (↓) | Generation | ○ | Sycophancy |
+| Factuality Correction | Percentage change (↑) | Generation | ○ | Adversarial Factuality |
+| Jailbreak Attack Evaluation | RtA (↑) | Generation | ○ | Jailbreak |
+| Toxicity Measurement | Toxicity Value (↓) | Generation | ● | Toxicity |
+| Misuse Evaluation | RtA (↑) | Generation | ○ | Misuse |
+| Exaggerated Safety Evaluation | RtA (↓) | Generation | ○ | Exaggerated Safety |
+| Agreement on Stereotypes | Accuracy (↑) | Generation | ◐ | Stereotype |
+| Recognition of Stereotypes | Agreement Percentage (↓) | Classification | ◐ | Stereotype |
+| Stereotype Query Test | RtA (↑) | Generation | ○ | Stereotype |
+| Preference Selection | RtA (↑) | Generation | ○ | Preference |
+| Salary Prediction | p-value (↑) | Generation | ● | Disparagement |
+| Adversarial Perturbation in Downstream Tasks | ASR (↓), RS (↑) | Generation | ◐ | Natural Noise |
+| Adversarial Perturbation in Open-Ended Tasks | Embedding similarity (↑) | Generation | ◐ | Natural Noise |
+| OOD Detection | RtA (↑) | Generation | ○ | Out of Domain (OOD) |
+| OOD Generalization | Micro F1 (↑) | Classification | ○ | Out of Domain (OOD) |
+| Agreement on Privacy Information | Pearson's correlation (↑) | Classification | ● | Privacy Awareness |
+| Privacy Scenario Test | RtA (↑) | Generation | ○ | Privacy Awareness |
+| Probing Privacy Information Usage | RtA (↑), Accuracy (↓) | Generation | ◐ | Privacy Leakage |
+| Moral Action Judgement | Accuracy (↑) | Classification | ◐ | Implicit Ethics |
+| Moral Reaction Selection (Low-Ambiguity) | Accuracy (↑) | Classification | ◐ | Explicit Ethics |
+| Moral Reaction Selection (High-Ambiguity) | RtA (↑) | Generation | ○ | Explicit Ethics |
+| Emotion Classification | Accuracy (↑) | Classification | ● | Emotional Awareness |
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/faq.html
+
+# FAQ & troubleshooting
+
+## Why does pip install trustllm behave differently?
+
+The source repository contains the 0.4 workflow; the older package on PyPI has not been updated by this source change. Follow the [source installation commands](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Use `python -m trustllm --help` to verify that your Python environment exposes `download`, `tasks`, `generate` and `evaluate`.
+
+## Do I need a GPU?
+
+API generation and dataset downloads use the base package without PyTorch. Local inference requires the `local` extra and enough memory for the selected model; CPU inference is supported. Scoring uses the `eval` extra and may load classifiers or call external judge/embedding services. Start with a small generation smoke test.
+
+## Which APIs and local models work?
+
+The maintained API backend implements text-only, non-streaming OpenAI-compatible Chat Completions. The local backend loads Transformers causal language models. Model IDs pass through to the chosen backend. Native Anthropic Messages, Gemini, Azure deployment endpoints and OpenAI Responses require a separate compatible bridge or adapter. See the [backend comparison](https://howiehwong.github.io/TrustLLM/guides/generation_details.md).
+
+## Can I use this with an AI agent?
+
+Yes. An agent can call the Python API or CLI and read JSON artifacts. Start with the [AI agent integration guide](https://howiehwong.github.io/TrustLLM/guides/agents.md) or the [agent documentation index](https://howiehwong.github.io/TrustLLM/llms.txt). The current benchmark scores model responses, not multi-step agent trajectories or tool-use correctness.
+
+## Where did the dataset go?
+
+`python -m trustllm download --output data` extracts the benchmark to `data/dataset`. Pass that directory to `--data`. The download helper also works through Python. Repeating the download overwrites matching files.
+
+## Why did five samples produce more than five requests?
+
+`--limit 5` selects the first five records of **each** dataset file in the selected task. Retries can add requests. A small prefix is a debugging aid; it is not a representative or paired benchmark subset.
+
+## Can I resume after an API failure?
+
+Repeat the exact generation command with `--resume`. Successful samples are reused and failed samples are retried. Dataset hashes, backend/model settings, generation options and dependency versions must match. Choose a new output directory if they change. Never share one output directory between simultaneous runs. Retry details are in the [running guide](https://howiehwong.github.io/TrustLLM/guides/running.html#api-models).
+
+## Why is scoring rejecting my responses?
+
+The CLI requires every registered response file for the selected dimension, excluding optional awareness, and a nonempty `res` for every record. Inspect `run.json` and `samples.jsonl`, resolve failed/pending responses, then resume. A limited smoke test can still miss groups required by an original scorer. Generate a full response set before reporting benchmark scores.
+
+Existing score files are not overwritten. Use `--output runs/my-run/scores-rerun.json` when rescoring; the paired HTML filename must also be unused.
+
+## Is a 100% completion report a perfect benchmark score?
+
+No. `report.html` reports generation completion. `scores.json` and `scores.html` are produced separately by evaluation and contain per-task metrics. Their scales and directions differ; TrustLLM defines no overall trust score.
+
+## Which judge model should I use?
+
+Select a model available to your account with `OPENAI_JUDGE_MODEL` before starting evaluation. The original default is historical and may be unavailable. Record the model, endpoint and prompts when comparing results. Judge and embedding compatibility must be checked separately from generation compatibility. Consult the [scoring guide](https://howiehwong.github.io/TrustLLM/guides/evaluation.md).
+
+## Language bias
+
+Translated READMEs explain installation; they do not translate or validate the benchmark. As discussed in the paper, response language can affect evaluation. The original [Longformer refusal classifier](https://huggingface.co/LibrAI/longformer-harmful-ro) performs poorly on Chinese responses. The historical refusal-to-answer calculation excludes responses above a Chinese-character ratio threshold, with a default of 0.3. Do not interpret cross-language score differences without reviewing this filtering and the task assumptions.
+
+## How should I report a bug?
+
+Include the source commit or installed version, Python version, backend, sanitized command, task, traceback and a minimal example. Remove API keys and private responses. The [contribution guide](https://howiehwong.github.io/TrustLLM/development.md) explains how to run checks and submit focused fixes.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/design.html
+
+# Workflow design and references
+
+Reviewed on 2026-10-03. These references inform the workflow; TrustLLM does not claim feature parity with these larger frameworks or copy their benchmark definitions.
+
+| Reference | Practice adopted in this update |
+| --- | --- |
+| [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) | Separate model-backend dependencies, explicit task discovery, CLI and Python entry points |
+| [Inspect logs](https://inspect.aisi.org.uk/eval-logs.html) and [parallelism](https://inspect.aisi.org.uk/parallelism.html) | Per-sample records, explicit run status, configurable concurrency and recoverable runs |
+| [EvalScope quickstart](https://evalscope.readthedocs.io/en/latest/get_started/basic_usage.html) | Side-by-side API/local examples, small-sample trials and reusable configuration |
+| [Transformers chat templates](https://huggingface.co/docs/transformers/v4.57.1/chat_templating) | Format local-model inputs with the tokenizer's native chat template |
+
+## What this update validates
+
+Offline tests cover download errors, configuration, API transport, bounded retries, model-independent input/output handling, resume compatibility, incomplete-response rejection and report escaping. A real loopback HTTP server exercises the CLI request path. A tiny locally constructed causal model exercises CPU inference and saved-checkpoint loading without downloading external weights.
+
+## What remains separate
+
+The original six-dimension scoring methods and prompts remain. This update does not claim to reproduce every published benchmark score or validate every hosted model provider. Full GPU runs, paid judge/embedding integrations, multi-node inference, multimodal tasks and a live dashboard are outside these checks. A generation report's completion rate must never be interpreted as a trustworthiness score.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/development.html
+
+# Contributing to TrustLLM
+
+Contributions that make the benchmark easier to reproduce are welcome: bug reports, documentation, regression tests, and focused changes to model or evaluation adapters.
+
+## Set up a development environment
+
+From the repository root:
+
+```
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e './trustllm_pkg[dev,docs]'
+```
+
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`.
+Add `local` for local generation or `eval` for scoring dependencies.
+The base install and offline tests need neither API credentials nor a GPU. API integration tests use a loopback HTTP server. The optional CPU integration test constructs a tiny local model, runs real inference, and skips when local dependencies are absent.
+
+## Validate a change
+
+```
+python -m ruff check .
+python -m compileall -q trustllm_pkg/trustllm
+python -m pytest
+python -m build trustllm_pkg --outdir dist
+python -m twine check dist/*
+python -m mkdocs build --strict
+python scripts/check_docs.py
+```
+
+The initial lint gate checks syntax and a small set of correctness rules across the repository. It does not claim the legacy code is fully lint-clean or reformat research code wholesale. New code should use four-space indentation, clear names, and docstrings for public behavior; `.editorconfig` captures the shared text conventions.
+
+## Scope and testing
+
+- Keep changes focused; preserve public function signatures and output keys unless a migration is documented.
+- Add a regression test for a behavior change. Mock network requests and use temporary paths so default tests remain offline and do not spend API credits.
+- Changes to prompts, labels, datasets, aggregation, or metric definitions can change benchmark scores. Explain the impact and compare against fixed fixtures.
+- State exactly which live provider or GPU tests you ran, including model ID and environment. Offline CI alone is not evidence that these integrations work.
+- Never commit credentials, downloaded models, private evaluation data, or generated output. Use `.env.example` as the configuration template.
+
+## Submit a contribution
+
+Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.
+
+The Python package lives in `trustllm_pkg`; its `pyproject.toml` is the source of package metadata. The root `pyproject.toml` configures development tools. Release automation builds from `trustllm_pkg`, and documentation deployment runs separately from pull-request checks.
+
+## Documentation publishing
+
+Write a unique `title` and `description` in each documentation page's frontmatter.
+Use clear headings and accurate capability descriptions. Keep the original logo
+and icon files unchanged. Retain existing page URLs or provide a useful page at
+the old URL when reorganizing a guide.
+
+`hooks/discovery.py` generates per-page Markdown, `llms.txt` and `llms-full.txt`
+from the built articles. Edit the source pages, not generated files in `site/`.
+Pages marked `archived: true` appear in the optional index section; pages marked
+`agent_index: false` are omitted from the index. The build check validates local
+links and anchors, canonical URLs, metadata, exports and example preservation.
+
+The site uses static HTML, a sitemap and page descriptions for search discovery.
+Agent exports are a convenience for clients that support them; they are not a
+ranking guarantee. See [Google's AI search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide),
+the [llms.txt proposal](https://llmstxt.org/), and
+[Mintlify's documentation export approach](https://www.mintlify.com/docs/ai/llmstxt).
+
+GitHub Pages publishes this project under `/TrustLLM/`. Keep that prefix in
+canonical and discovery URLs. A project-level `robots.txt` would not control
+crawling for the host; do not add one as a substitute for root-host configuration.
+
+## README translations
+
+The English `README.md` is the reference for translated READMEs in the repository root:
+`README.zh-CN.md`, `README.zh-TW.md`, `README.ja.md`, `README.ko.md`,
+`README.es.md`, and `README.fr.md`.
+
+When changing installation commands, supported backends, output paths, version notes,
+or limitations, update every language edition in the same change. Preserve command
+flags, environment variable names, model IDs, links, and executable examples. Keep
+the language switcher and original `images/logo.png` consistent across editions.
+Translate explanatory prose and headings; a README translation does not imply
+translated benchmark data or support for evaluating that language.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/changelog.html
+
+# Changelog
+
+Changes to the maintained source repository are listed first. Historical package releases remain below for research reproducibility.
+
+## Documentation update · October 2026
+
+- Reorganized installation, backend selection, scoring and original API references.
+- Refreshed the documentation layout, typography, search and mobile navigation while preserving the original TrustLLM logo and icon.
+- Added AI agent integration instructions covering CLI/Python orchestration, exit codes, artifacts and benchmark scope.
+- Added canonical URLs, sitemap, page descriptions, social previews and repository metadata.
+- Added Markdown page exports, `llms.txt` and `llms-full.txt`, generated from the same content as the HTML documentation.
+- Expanded troubleshooting and linked the seven README languages.
+
+## Source update: 0.4.0
+
+- Shared local/API generation runner, CLI and Python API.
+- Dataset download without cloning, task discovery and JSON configurations.
+- Per-sample checkpoints, guarded resume, bounded API retries and explicit failures.
+- Input hashes, environment versions, response exports and HTML generation reports.
+- Separate local/evaluation dependencies; original generation engine archived.
+- Multilingual READMEs and CPU/HTTP integration tests.
+
+This source update does not by itself publish a PyPI release. Install from source using the [current instructions](https://howiehwong.github.io/TrustLLM/guides/running.html#install-the-components-you-use). Existing users should read the [migration guide](https://howiehwong.github.io/TrustLLM/guides/running.html#migration-from-03).
+
+## Historical releases
+
+Provider and model support below describes the release at that time. It does not establish current availability or coverage by the maintained backend tests.
+
+### Version 0.3.0
+
+April 23, 2024
+
+- Parallel embedding retrieval for AdvInstruction evaluation.
+- Exception handling for partial evaluations and bug fixes.
+- Added published results for ChatGLM3, GLM-4, Mixtral and Llama 3 models. See the [research leaderboard](https://trustllmbenchmark.github.io/TrustLLM-Website/leaderboard.html).
+
+### Version 0.2.3 & 0.2.4
+
+March 2024
+
+- Bug fixes and Gemini API support in the historical generation engine.
+
+### Version 0.2.2
+
+February 1, 2024
+
+- Awareness evaluation from [related research](https://arxiv.org/abs/2401.17882).
+- Zhipu API support for GLM-4 and GLM-3-turbo.
+
+### Version 0.2.1
+
+January 26, 2024
+
+- Historical Replicate, DeepInfra and Azure OpenAI integrations.
+- Simplified evaluation pipelines.
+
+### Version 0.2.0
+
+January 20, 2024
+
+- Added model generation and concurrent automatic evaluation.
+
+### Version 0.1.0
+
+January 10, 2024
+
+- First release of the TrustLLM assessment toolkit, covering the evaluation methods from the initial paper.
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/reference/scoring.html
+
+# Original scoring Python APIs
+
+These research APIs preserve the original task-specific methods. For a new experiment, use the [validated CLI scoring workflow](https://howiehwong.github.io/TrustLLM/guides/evaluation.md), which checks required response files before invoking them. Historical provider settings and complete external integrations are not covered by the offline tests. Review the [validation scope](https://howiehwong.github.io/TrustLLM/design.md).
+
+## Start Your Evaluation
+
+### API Setting
+
+Set credentials before importing evaluation modules. API judges use `OPENAI_API_KEY`, `OPENAI_BASE_URL` and `OPENAI_JUDGE_MODEL`. The optional toxicity scorer uses the [Perspective API](https://developers.perspectiveapi.com/s/docs-get-started?language=en_US). The historical configuration interface below is retained for reference; use a judge model currently served by your provider.
+
+```
+from trustllm import config
+
+config.openai_key = 'your-openai-api-key'
+
+config.perspective_key = 'your-perspective-api-key'
+```
+
+If you're using OpenAI API through [Azure](https://azure.microsoft.com/en-us/products/ai-services/openai-service), you should set up your Azure api:
+
+```
+config.azure_openai = True
+
+config.azure_engine = "your-azure-engine-name"
+
+config.azure_api_base = "your-azure-api-url (openai.base_url)"
+```
+
+### Easy Pipeline
+
+From [Version 0.2.1](https://howiehwong.github.io/TrustLLM/changelog.html#version-021), trustllm toolkit supports easy pipeline for evaluation.
+
+Import these functions from `trustllm.task.pipeline`. We have provided pipelines for all six sections: `run_truthfulness`, `run_safety`, `run_fairness`, `run_robustness`, `run_privacy`, `run_ethics`.
+
+#### Truthfulness Evaluation
+
+For truthfulness assessment, the `run_truthfulness` function is used. Provide JSON file paths for internal consistency, external consistency, hallucination scenarios, sycophancy evaluation, and adversarial factuality.
+
+```
+truthfulness_results = run_truthfulness(
+    internal_path="path_to_internal_consistency_data.json",
+    external_path="path_to_external_consistency_data.json",
+    hallucination_path="path_to_hallucination_data.json",
+    sycophancy_path="path_to_sycophancy_data.json",
+    advfact_path="path_to_advfact_data.json"
+)
+```
+
+The function will return a dictionary containing results for internal consistency, external consistency, hallucinations, sycophancy (with persona and preference evaluations), and adversarial factuality.
+
+#### Safety Evaluation
+
+To assess the safety of your language model, use the `run_safety` function. You can provide paths to data for jailbreak scenarios, exaggerated safety situations, and misuse potential. Optionally, you can also evaluate for toxicity.
+
+```
+safety_results = run_safety(
+    jailbreak_path="path_to_jailbreak_data.json",
+    exaggerated_safety_path="path_to_exaggerated_safety_data.json",
+    misuse_path="path_to_misuse_data.json",
+    toxicity_eval=True,
+    toxicity_path="path_to_toxicity_data.json",
+    jailbreak_eval_type="total"
+)
+```
+
+The returned dictionary includes results for jailbreak, exaggerated safety, misuse, and toxicity evaluations.
+
+#### Fairness Evaluation
+
+To evaluate the fairness of your language model, use the `run_fairness` function. This function takes paths to JSON files containing data on stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference biases.
+
+```
+fairness_results = run_fairness(
+    stereotype_recognition_path="path_to_stereotype_recognition_data.json",
+    stereotype_agreement_path="path_to_stereotype_agreement_data.json",
+    stereotype_query_test_path="path_to_stereotype_query_test_data.json",
+    disparagement_path="path_to_disparagement_data.json",
+    preference_path="path_to_preference_data.json"
+)
+```
+
+The returned dictionary will include results for stereotype recognition, stereotype agreement, stereotype queries, disparagement, and preference bias evaluations.
+
+#### Robustness Evaluation
+
+To evaluate the robustness of your language model, use the `run_robustness` function. This function accepts paths to JSON files for adversarial GLUE data, adversarial instruction data, out-of-distribution (OOD) detection, and OOD generalization.
+
+```
+robustness_results = run_robustness(
+    advglue_path="path_to_advglue_data.json",
+    advinstruction_path="path_to_advinstruction_data.json",
+    ood_detection_path="path_to_ood_detection_data.json",
+    ood_generalization_path="path_to_ood_generalization_data.json"
+)
+```
+
+The function returns a dictionary with the results of adversarial GLUE, adversarial instruction, OOD detection, and OOD generalization evaluations.
+
+#### Privacy Evaluation
+
+To conduct privacy evaluations, use the `run_privacy` function. It allows you to specify paths to datasets for privacy conformity, privacy awareness queries, and privacy leakage scenarios.
+
+```
+privacy_results = run_privacy(
+    privacy_confAIde_path="path_to_privacy_confaide_data.json",
+    privacy_awareness_query_path="path_to_privacy_awareness_query_data.json",
+    privacy_leakage_path="path_to_privacy_leakage_data.json"
+)
+```
+
+The function outputs a dictionary with results for privacy conformity AIde, normal and augmented privacy awareness queries, and privacy leakage evaluations.
+
+#### Ethics Evaluation
+
+To evaluate the ethical considerations of your language model, use the `run_ethics` function. You can specify paths to JSON files containing explicit ethics, implicit ethics, and awareness data.
+
+```
+results = run_ethics(
+    explicit_ethics_path="path_to_explicit_ethics_data.json",
+    implicit_ethics_path_social_norm="path_to_social_norm_data.json",
+    implicit_ethics_path_ETHICS="path_to_ETHICS_data.json",
+    awareness_path="path_to_awareness_data.json"
+)
+```
+
+The function returns a dictionary containing the results of the explicit ethics evaluation (with low and high levels), implicit ethics evaluation (ETHICS and social norm types), and emotional awareness evaluation.
+
+### Truthfulness
+
+Four subsections in truthfulness evaluation:
+
+- Misinformation: `external.json`, `internal.json`
+- Hallucination: `hallucination.json`
+- Sycophancy: `sycophancy.json`
+- Adversarial Factuality: `golden_advfactuality.json`
+
+Requirement:
+
+- openai api (gpt-4-turbo)
+
+Preliminary:
+
+```
+from trustllm import truthfulness
+from trustllm import file_process
+from trustllm import config
+
+evaluator = truthfulness.TruthfulnessEval()
+```
+
+Misinformation evaluation:
+
+```
+misinformation_internal_data = file_process.load_json('misinformation_internal_data_json_path')
+print(evaluator.internal_eval(misinformation_internal_data))
+
+misinformation_external_data = file_process.load_json('misinformation_external_data_json_path')
+print(evaluator.external_eval(misinformation_external_data))
+```
+
+Hallucination evaluation:
+
+```
+hallucination_data = file_process.load_json('hallucination_data_json_path')
+print(evaluator.hallucination_eval(hallucination_data))
+```
+
+Sycophancy evaluation (`eval_type`: type of evaluation, either `persona` or `preference`):
+
+```
+sycophancy_data = file_process.load_json('sycophancy_data_json_path')
+print(evaluator.sycophancy_eval(sycophancy_data, eval_type='persona'))
+print(evaluator.sycophancy_eval(sycophancy_data, eval_type='preference'))
+```
+
+Adversarial factuality evaluation:
+
+```
+adv_fact_data = file_process.load_json('adv_fact_data_json_path')
+print(evaluator.advfact_eval(adv_fact_data))
+```
+
+### Safety
+
+Four subsections in safety evaluation:
+
+- Jailbreak: `jailbreak.json`
+- Exaggerated Safety: `exaggerated_safety.json`
+- Toxicity: `jailbreak.json`
+- Misuse: `misuse.json`
+
+Requirement:
+
+- openai api (gpt-4-turbo)
+- perspective api
+- huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```
+from trustllm import safety
+from trustllm import file_process
+from trustllm import config
+
+evaluator = safety.SafetyEval()
+```
+
+Jailbreak evaluation (`eval_type`: type of evaluation, either `total` or `single`):
+
+```
+jailbreak_data = file_process.load_json('jailbreak_data_json_path')
+print(evaluator.jailbreak_eval(jailbreak_data, eval_type='total')) # return overall RtA
+print(evaluator.jailbreak_eval(jailbreak_data, eval_type='single')) # return RtA dict for each kind of jailbreak ways
+```
+
+Exaggerated evaluation:
+
+```
+exaggerated_data = file_process.load_json('exaggerated_data_json_path')
+print(evaluator.exaggerated_eval(exaggerated_data))
+```
+
+Toxicity evaluation:
+
+Note
+
+Toxicity data for evaluation is based on the evaluated results of jailbreak data. You should first evaluate jailbreak data and then use evaluated results to conduct toxicity evaluation.
+
+```
+# If you have not saved evaluated jailbreak results
+jailbreak_data = file_process.load_json('jailbreak_data_json_path')
+eval_data, _ = evaluator.jailbreak_eval(jailbreak_data, eval_type='total/single', return_data=True)
+print(evaluator.toxicity_eval(eval_data))
+
+# If you have saved evaluated jailbreak results
+toxicity_data = file_process.load_json('evaluated_jailbreak_results_json_path') # load eval data for toxicity evaluation
+print(evaluator.toxicity_eval(toxicity_data))
+```
+
+Misuse evaluation:
+
+```
+misuse_data = file_process.load_json('misuse_data_json_path')
+print(evaluator.misuse_eval(misuse_data))
+```
+
+### Fairness
+
+Three subsections in fairness evaluation:
+
+- Stereotype: `stereotype_agreement.json`, `stereotype_recognition.json`, `stereotype_query_test.json`
+- Disparagement: `disparagement.json`
+- Preference: `preference_force.json`
+
+Requirement:
+
+- openai api (gpt-4-turbo)
+- huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```
+from trustllm import fairness
+from trustllm import file_process
+from trustllm import config
+
+evaluator = fairness.FairnessEval()
+```
+
+Stereotype evaluation:
+
+```
+stereotype_recognition_data = file_process.load_json('stereotype_recognition_data_json_path')
+print(evaluator.stereotype_recognition_eval(stereotype_recognition_data))
+
+stereotype_agreement_data = file_process.load_json('stereotype_agreement_data_json_path')
+print(evaluator.stereotype_agreement_eval(stereotype_agreement_data))
+
+stereotype_query_test_data = file_process.load_json('stereotype_query_test_data_json_path')
+print(evaluator.stereotype_query_eval(stereotype_query_test_data))
+```
+
+Disparagement evaluation:
+
+```
+disparagement_data = file_process.load_json('disparagement_data_json_path')
+print(evaluator.disparagement_eval(disparagement_data))
+```
+
+Preference evaluation:
+
+```
+preference_data = file_process.load_json('preference_data_json_path')
+print(evaluator.preference_eval(preference_data))
+```
+
+### Robustness
+
+Two subsections in robustness evaluation:
+
+- Natural noise: `advglue.json`, `advinstruction.json`
+- Out of distribution: `ood_generalization.json`, `ood_detection.json`
+
+Requirement:
+
+- huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```
+from trustllm import robustness
+from trustllm import file_process
+from trustllm import config
+
+evaluator = robustness.RobustnessEval()
+```
+
+Natural noise evaluation:
+
+```
+advglue_data = file_process.load_json('advglue_data_json_path')
+print(evaluator.advglue_eval(advglue_data))
+
+advinstruction_data = file_process.load_json('advinstruction_data_json_path')
+print(evaluator.advglue_eval(advinstruction_data))
+```
+
+OOD evaluation:
+
+```
+ood_detection_data = file_process.load_json('ood_detection_data_json_path')
+print(evaluator.ood_detection(ood_detection_data))
+
+ood_generalization_data = file_process.load_json('ood_generalization_data_json_path')
+print(evaluator.ood_generalization(ood_generalization_data))
+```
+
+### Privacy
+
+Two subsections in privacy evaluation:
+
+- Privacy awareness: `privacy_awareness_confAIde.json`, `privacy_awareness_query.json`
+- Privacy leakage: `privacy_leakage.json`
+
+Requirement:
+
+- huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```
+from trustllm import privacy
+from trustllm import file_process
+from trustllm import config
+
+evaluator = privacy.PrivacyEval()
+```
+
+Privacy awareness:
+
+```
+privacy_confAIde_data = file_process.load_json('privacy_confAIde_data_json_path')
+print(evaluator.ConfAIDe_eval(privacy_confAIde_data))
+
+privacy_awareness_query_data = file_process.load_json('privacy_awareness_query_data_json_path')
+print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='normal'))
+print(evaluator.awareness_query_eval(privacy_awareness_query_data, type='aug'))
+```
+
+Privacy leakage:
+
+```
+privacy_leakage_data = file_process.load_json('privacy_leakage_data_json_path')
+print(evaluator.leakage_eval(privacy_leakage_data))
+```
+
+### Machine Ethics
+
+Three subsections in machine ethics evaluation:
+
+Implicit ethics: `implicit_ETHICS.json`, `implicit_SocialChemistry101.json`
+Explicit ethics: `explicit_moralchoice.json`
+Awareness: `awareness.json`
+
+Requirement:
+
+- openai api (gpt-4-turbo)
+- huggingface evaluator: LibrAI/longformer-harmful-ro
+
+Preliminary:
+
+```
+from trustllm import ethics
+from trustllm import file_process
+from trustllm import config
+
+evaluator = ethics.EthicsEval()
+```
+
+Explicit ethics:
+
+```
+explicit_ethics_data = file_process.load_json('explicit_ethics_data_json_path')
+print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='low'))
+print(evaluator.explicit_ethics_eval(explicit_ethics_data, eval_type='high'))
+```
+
+Implicit ethics:
+
+```
+implicit_ethics_data = file_process.load_json('implicit_ethics_data_json_path')
+# evaluate ETHICS dataset
+print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='ETHICS'))
+# evaluate social_norm dataset
+print(evaluator.implicit_ethics_eval(implicit_ethics_data, eval_type='social_norm'))
+```
+
+Awareness:
+
+```
+awareness_data = file_process.load_json('awareness_data_json_path')
+print(evaluator.awareness_eval(awareness_data))
+```
+
+
+---
+
+Source: https://howiehwong.github.io/TrustLLM/guides/legacy_generation.html
+
+# Archived generation APIs
+
+> Archived 0.3 interface. Requires the `legacy` extra; historical provider availability is unverified. Use the [current running guide](https://howiehwong.github.io/TrustLLM/guides/running.md) for new experiments.
+
+## Generation Results
+
+The historical generation engine documented here supported the generation of over a dozen models.
+You can use the trustllm toolkit to generate output results for specified models on the trustllm benchmark.
+
+### Supported LLMs
+
+- `Baichuan-13b`
+- `Baichuan2-13b`
+- `Yi-34b`
+- `ChatGLM2 - 6B`
+- `ChatGLM3 -6B`
+- `Vicuna-13b`
+- `Vicuna-7b`
+- `Vicuna-33b`
+- `Llama2-7b`
+- `Llama2-13b`
+- `Llama2-70b`
+- `Koala-13b`
+- `Oasst-12b`
+- `Wizardlm-13b`
+- `Mixtral-8x7B`
+- `Mistral-7b`
+- `Dolly-12b`
+- `bison-001-text`
+- `ERNIE`
+- `ChatGPT (gpt-3.5-turbo)`
+- `GPT-4`
+- `Claude-2`
+- `Gemini-pro`
+- ***other LLMs in huggingface***
+
+### Start Your Generation
+
+The `LLMGeneration` class is designed for result generation, supporting the use of both ***local*** and ***online*** models. It is used for evaluating the performance of models in different tasks such as ethics, privacy, fairness, truthfulness, robustness, and safety.
+
+**Dataset**
+
+You should firstly download TrustLLM dataset ([details](https://howiehwong.github.io/TrustLLM/guides/running.html#download-data)) and the downloaded dataset dict has the following structure:
+
+```
+|-TrustLLM
+    |-Safety
+        |-Json_File_A
+        |-Json_File_B
+        ...
+    |-Truthfulness
+        |-Json_File_A
+        |-Json_File_B
+        ...
+    ...
+```
+
+**API setting:**
+
+If you need to evaluate an API LLM, please set the following API according to your requirements.
+
+```
+from trustllm import config
+
+config.deepinfra_api = "deepinfra api"
+
+config.claude_api = "claude api"
+
+config.openai_key = "openai api"
+
+config.palm_api = "palm api"
+
+config.ernie_client_id = "ernie client id"
+
+config.ernie_client_secret = "ernie client secret"
+
+config.ernie_api = "ernie api"
+```
+
+**Generation template:**
+
+```
+from trustllm.generation.legacy import LLMGeneration
+
+llm_gen = LLMGeneration(
+    model_path="your model name",
+    test_type="test section",
+    data_path="your dataset file path",
+    online_model=False,
+    use_deepinfra=False,
+    use_replicate=False,
+    repetition_penalty=1.0,
+    num_gpus=1,
+    max_new_tokens=512,
+    debug=False
+)
+
+llm_gen.generation_results()
+```
+
+**Args:**
+
+- `model_path` (`Required`, `str`): Path to the local model. LLM list:
+- If you're using *locally public model (huggingface) or use [deepinfra](https://deepinfra.com/) online models*:
+
+  ```
+  'baichuan-inc/Baichuan-13B-Chat',
+  'baichuan-inc/Baichuan2-13B-chat',
+  '01-ai/Yi-34B-Chat',
+  'THUDM/chatglm2-6b',
+  'THUDM/chatglm3-6b',
+  'lmsys/vicuna-13b-v1.3',
+  'lmsys/vicuna-7b-v1.3',
+  'lmsys/vicuna-33b-v1.3',
+  'meta-llama/Llama-2-7b-chat-hf',
+  'meta-llama/Llama-2-13b-chat-hf',
+  'TheBloke/koala-13B-HF',
+  'OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5',
+  'WizardLM/WizardLM-13B-V1.2',
+  'mistralai/Mixtral-8x7B-Instruct-v0.1',
+  'meta-llama/Llama-2-70b-chat-hf',
+  'mistralai/Mistral-7B-Instruct-v0.1',
+  'databricks/dolly-v2-12b',
+  'bison-001',
+  'ernie',
+  'chatgpt',
+  'gpt-4',
+  'claude-2'
+  ... (other LLMs in huggingface)
+  ```
+- If you're using use *online models in [replicate](https://replicate.com/)*, You can find model\_path in [this link](https://replicate.com/explore):
+
+  ```
+  'meta/llama-2-70b-chat',
+  'meta/llama-2-13b-chat',
+  'meta/llama-2-7b-chat',
+  'mistralai/mistral-7b-instruct-v0.1',
+  'replicate/vicuna-13b',
+  ... (other LLMs in replicate)
+  ```
+- `test_type` (`Required`, `str`): Type of evaluation task, including `'robustness'`, `'truthfulness'`, `'fairness'`, `'ethics'`, `'safety'`, `'privacy'`.
+- `data_path` (`Required`, `str`): Path to the root dataset, default is 'TrustLLM'.
+- `online_model` (`Optional`, `bool`): Whether to use an online model, default is False.
+- `use_deepinfra` (`Optional`, `bool`): Whether to use an online model in `deepinfra`, default is False. (Only work when `oneline_model=True`)
+- `usr_replicate` (`Optional`, `bool`): Whether to use an online model in `replicate`, default is False. (Only work when `oneline_model=True`)
+- `repetition_penalty` (`Optional`, `float`): Repetition penalty setting, default is 1.0.
+- `num_gpus` (`Optional`, `int`): Number of GPUs to use, default is 1.
+- `max_new_tokens` (`Optional`, `int`): Maximum number of new tokens in generated text, default is 512.
+- `device` (`Optional`, `str`): Specify the device to use, default is 'cuda:0'.
+
+Here is a usage example:
+
+```
+from trustllm.generation.legacy import LLMGeneration
+
+llm_gen = LLMGeneration(
+    model_path="meta-llama/Llama-2-7b-chat-hf",
+    test_type="safety",
+    data_path="TrustLLM"
+)
+
+llm_gen.generation_results()
+```
+
+### Don't have enough computing resource?
+
+If you don't have sufficient computing resources to run HuggingFace models locally, we recommend using online models.
+We provide an online model interface through [deepinfra](https://deepinfra.com/) or [replicate](https://replicate.com/).
+
+Currently supported online models in [deepinfra](https://deepinfra.com/) include:
+
+- `llama2-70b`
+- `mistral-7b`
+- `dolly-12b`
+- `llama2-13b`
+- `mixtral-8x7B`
+- `yi-34b`
+
+Currently supported online models in [replicate](https://replicate.com/) can be found in [this link](https://replicate.com/explore).
+
+Before using online model to generate your results, you should set your `deepinfra` API or `replicate` API:
+
+```
+from trustllm import config
+
+config.deepinfra_api = "deepinfra api"
+
+config.replicate_api = "replicate api"
+```
+
+Then, you should set `oneline_model=True`:
+
+```
+from trustllm.generation.legacy import LLMGeneration
+
+llm_gen = LLMGeneration(
+    model_path="meta-llama/Llama-2-7b-chat-hf",
+    test_type="safety",
+    data_path="TrustLLM",
+    online_model=True
+)
+
+llm_gen.generation_results()
+```
+
+## Temperature Setting
+
+We categorize the tasks in the benchmark into two main groups: *Generation* and *Classification*.
+
+We employ a temperature setting of **0** for classification tasks to ensure more precise outputs. Conversely, for generation tasks, we set the temperature to **1**, fostering a more diverse range of results and exploring potential worst-case scenarios.
+
+The temperature setting of each dataset file is as follows:
+
+```
+file_config = {
+        "disparagement.json": 1.0,
+        "preference_force.json": 1.0,
+        "preference_plain.json": 1.0,
+        "stereotype_agreement.json": 1.0,
+        "stereotype_stereoset_classification.json": 0.0,
+        "stereotype_query_test.json":1.0,
+        "stereotype_recognition.json":0.0,
+        "external.json": 0.0,
+        "hallucination.json": 0.0,
+        "golden_advfactuality.json": 1.0,
+        "internal.json": 1.0,
+        "sycophancy.json": 1.0,
+        "ood_detection.json":1.0,
+        "ood_generalization.json":0.0,
+        "AdvGLUE.json":0.0,
+        "AdvInstruction.json":1.0,
+        "jailbreak.json":1.0,
+        "exaggerated_safety.json": 1.0,
+        "misuse.json":1.0,
+        "privacy_awareness_confAIde.json":0.0,
+        "privacy_awareness_query.json": 1.0,
+        "privacy_leakage.json": 1.0,
+        "awareness.json": 0.0,
+        "implicit_ETHICS.json": 0.0,
+        "implicit_SocialChemistry101.json": 0.0
+    }
+```
+

@@ -6,12 +6,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Trustworthiness in Large Language Models">
+        <meta name="description" content="Set up a TrustLLM development environment, run offline and integration checks, and contribute reproducible fixes, documentation and model adapters.">
       
       
       
+        <link rel="canonical" href="https://howiehwong.github.io/TrustLLM/development.html">
       
-        <link rel="prev" href="benchmark.html">
+      
+        <link rel="prev" href="design.html">
       
       
         <link rel="next" href="changelog.html">
@@ -25,7 +27,7 @@
     
     
       
-        <title>Development - TrustLLM</title>
+        <title>Contribute to TrustLLM - TrustLLM</title>
       
     
     
@@ -43,12 +45,6 @@
     
     
       
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
-      
     
     
       <link rel="stylesheet" href="stylesheets/extra.css">
@@ -59,6 +55,26 @@
 
     
     
+  
+  
+    
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TrustLLM">
+    <meta property="og:title" content="Contribute to TrustLLM — TrustLLM">
+    <meta property="og:description" content="Set up a TrustLLM development environment, run offline and integration checks, and contribute reproducible fixes, documentation and model adapters.">
+    <meta property="og:url" content="https://howiehwong.github.io/TrustLLM/development.html">
+    <meta property="og:image" content="https://howiehwong.github.io/TrustLLM/assets/logo.png">
+    <meta property="og:image:alt" content="TrustLLM — Trustworthiness in Large Language Models">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Contribute to TrustLLM — TrustLLM">
+    <meta name="twitter:description" content="Set up a TrustLLM development environment, run offline and integration checks, and contribute reproducible fixes, documentation and model adapters.">
+    <meta name="twitter:image" content="https://howiehwong.github.io/TrustLLM/assets/icon.png">
+    <link rel="alternate" type="text/markdown" href="https://howiehwong.github.io/TrustLLM/development.md" title="Markdown version">
+    <link rel="describedby" href="https://howiehwong.github.io/TrustLLM/llms.txt" type="text/plain">
+    
+  
+
   </head>
   
   
@@ -69,7 +85,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="black" data-md-color-primary="custom" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#development" class="md-skip">
+        <a href="#contributing-to-trustllm" class="md-skip">
           Skip to content
         </a>
       
@@ -90,11 +106,13 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="index.html" title="TrustLLM" class="md-header__button md-logo" aria-label="TrustLLM" data-md-component="logo">
       
-  <img src="assets/logo.png" alt="logo">
+  <img src="assets/icon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Development
+              Contribute to TrustLLM
             
           </span>
         </div>
@@ -124,20 +142,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="black" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -168,11 +186,18 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -190,6 +215,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/HowieHwong/TrustLLM" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HowieHwong/TrustLLM
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -198,151 +235,6 @@
       
       
         
-          
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="index.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="guides/running.html" class="md-tabs__link">
-          
-  
-  
-  Guide
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="design.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Design
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="benchmark.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Benchmark
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="development.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Development
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="changelog.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Changelog
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="faq.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  FAQ
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
           
         
       
@@ -357,18 +249,28 @@
                     
 
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="index.html" title="TrustLLM" class="md-nav__button md-logo" aria-label="TrustLLM" data-md-component="logo">
       
-  <img src="assets/logo.png" alt="logo">
+  <img src="assets/icon.png" alt="logo">
 
     </a>
     TrustLLM
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HowieHwong/TrustLLM" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HowieHwong/TrustLLM
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -386,7 +288,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Overview
   
 
     
@@ -410,26 +312,26 @@
     
     
       
-      
+        
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Guide
+    Get started
   
 
     
@@ -445,7 +347,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guide
+    Get started
   
 
           </label>
@@ -465,7 +367,7 @@
   <span class="md-ellipsis">
     
   
-    Quickstart
+    Installation & first run
   
 
     
@@ -493,7 +395,7 @@
   <span class="md-ellipsis">
     
   
-    Generation
+    Local & API models
   
 
     
@@ -514,14 +416,14 @@
   
   
     <li class="md-nav__item">
-      <a href="guides/evaluation.html" class="md-nav__link">
+      <a href="guides/agents.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Evaluation
+    AI agent integration
   
 
     
@@ -548,15 +450,67 @@
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Evaluate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="design.html" class="md-nav__link">
+      <a href="guides/evaluation.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Design
+    Scoring & results
   
 
     
@@ -568,9 +522,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -583,7 +538,7 @@
   <span class="md-ellipsis">
     
   
-    Benchmark
+    Datasets & metrics
   
 
     
@@ -595,9 +550,127 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ & troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design & validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
     
@@ -612,6 +685,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="development.html" class="md-nav__link md-nav__link--active">
         
   
@@ -619,7 +710,7 @@
   <span class="md-ellipsis">
     
   
-    Development
+    Contributing
   
 
     
@@ -629,12 +720,98 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-a-development-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up a development environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-a-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validate a change
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submit-a-contribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submit a contribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation publishing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme-translations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README translations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -659,6 +836,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -666,15 +851,67 @@
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="faq.html" class="md-nav__link">
+      <a href="reference/scoring.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FAQ
+    Original scoring APIs
   
 
     
@@ -683,6 +920,42 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="guides/legacy_generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archived generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -707,6 +980,80 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-a-development-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up a development environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-a-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validate a change
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submit-a-contribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submit a contribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation publishing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme-translations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        README translations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -718,11 +1065,21 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  <nav class="doc-tools" aria-label="Document formats">
+    <a href="https://howiehwong.github.io/TrustLLM/development.md">View as Markdown</a>
+    <span aria-hidden="true">/</span>
+    <a href="https://howiehwong.github.io/TrustLLM/llms.txt">Agent index</a>
+  </nav>
+  
+  
                   
 
 
+  
+  
 
-<h1 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h1>
+
 <h1 id="contributing-to-trustllm">Contributing to TrustLLM<a class="headerlink" href="#contributing-to-trustllm" title="Permanent link">&para;</a></h1>
 <p>Contributions that make the benchmark easier to reproduce are welcome: bug reports, documentation, regression tests, and focused changes to model or evaluation adapters.</p>
 <h2 id="set-up-a-development-environment">Set up a development environment<a class="headerlink" href="#set-up-a-development-environment" title="Permanent link">&para;</a></h2>
@@ -742,6 +1099,7 @@ python<span class="w"> </span>-m<span class="w"> </span>pytest
 python<span class="w"> </span>-m<span class="w"> </span>build<span class="w"> </span>trustllm_pkg<span class="w"> </span>--outdir<span class="w"> </span>dist
 python<span class="w"> </span>-m<span class="w"> </span>twine<span class="w"> </span>check<span class="w"> </span>dist/*
 python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>build<span class="w"> </span>--strict
+python<span class="w"> </span>scripts/check_docs.py
 </code></pre></div>
 <p>The initial lint gate checks syntax and a small set of correctness rules across the repository. It does not claim the legacy code is fully lint-clean or reformat research code wholesale. New code should use four-space indentation, clear names, and docstrings for public behavior; <code>.editorconfig</code> captures the shared text conventions.</p>
 <h2 id="scope-and-testing">Scope and testing<a class="headerlink" href="#scope-and-testing" title="Permanent link">&para;</a></h2>
@@ -755,12 +1113,43 @@ python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> <
 <h2 id="submit-a-contribution">Submit a contribution<a class="headerlink" href="#submit-a-contribution" title="Permanent link">&para;</a></h2>
 <p>Open a focused pull request with the problem, resulting behavior, and validation. For bug reports, include the commit, Python version, relevant dependency versions, a minimal input, and the full traceback with credentials removed.</p>
 <p>The Python package lives in <code>trustllm_pkg</code>; its <code>pyproject.toml</code> is the source of package metadata. The root <code>pyproject.toml</code> configures development tools. Release automation builds from <code>trustllm_pkg</code>, and documentation deployment runs separately from pull-request checks.</p>
+<h2 id="documentation-publishing">Documentation publishing<a class="headerlink" href="#documentation-publishing" title="Permanent link">&para;</a></h2>
+<p>Write a unique <code>title</code> and <code>description</code> in each documentation page's frontmatter.
+Use clear headings and accurate capability descriptions. Keep the original logo
+and icon files unchanged. Retain existing page URLs or provide a useful page at
+the old URL when reorganizing a guide.</p>
+<p><code>hooks/discovery.py</code> generates per-page Markdown, <code>llms.txt</code> and <code>llms-full.txt</code>
+from the built articles. Edit the source pages, not generated files in <code>site/</code>.
+Pages marked <code>archived: true</code> appear in the optional index section; pages marked
+<code>agent_index: false</code> are omitted from the index. The build check validates local
+links and anchors, canonical URLs, metadata, exports and example preservation.</p>
+<p>The site uses static HTML, a sitemap and page descriptions for search discovery.
+Agent exports are a convenience for clients that support them; they are not a
+ranking guarantee. See <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide">Google's AI search guidance</a>,
+the <a href="https://llmstxt.org/">llms.txt proposal</a>, and
+<a href="https://www.mintlify.com/docs/ai/llmstxt">Mintlify's documentation export approach</a>.</p>
+<p>GitHub Pages publishes this project under <code>/TrustLLM/</code>. Keep that prefix in
+canonical and discovery URLs. A project-level <code>robots.txt</code> would not control
+crawling for the host; do not add one as a substitute for root-host configuration.</p>
+<h2 id="readme-translations">README translations<a class="headerlink" href="#readme-translations" title="Permanent link">&para;</a></h2>
+<p>The English <code>README.md</code> is the reference for translated READMEs in the repository root:
+<code>README.zh-CN.md</code>, <code>README.zh-TW.md</code>, <code>README.ja.md</code>, <code>README.ko.md</code>,
+<code>README.es.md</code>, and <code>README.fr.md</code>.</p>
+<p>When changing installation commands, supported backends, output paths, version notes,
+or limitations, update every language edition in the same change. Preserve command
+flags, environment variable names, model IDs, links, and executable examples. Keep
+the language switcher and original <code>images/logo.png</code> consistent across editions.
+Translate explanatory prose and headings; a README translation does not imply
+translated benchmark data or support for evaluating that language.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -768,6 +1157,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> <
 
 
                 
+
               </article>
             </div>
           
@@ -785,12 +1175,52 @@ python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> <
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="design.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Design &amp; validation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Design & validation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="changelog.html" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Changelog
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 TrustLLM
+      TrustLLM · ICML 2024 · MIT-licensed toolkit
     </div>
   
   
@@ -814,7 +1244,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> <
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "navigation.tracking", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.d7400e89.min.js"></script>

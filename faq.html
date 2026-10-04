@@ -6,13 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Trustworthiness in Large Language Models">
+        <meta name="description" content="Troubleshoot TrustLLM installation, model endpoints, resumed runs, incomplete scores and language limitations. Understand what the benchmark supports.">
       
       
       
+        <link rel="canonical" href="https://howiehwong.github.io/TrustLLM/faq.html">
       
-        <link rel="prev" href="changelog.html">
       
+        <link rel="prev" href="benchmark.html">
+      
+      
+        <link rel="next" href="design.html">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>FAQ - TrustLLM</title>
+        <title>FAQ and troubleshooting - TrustLLM</title>
       
     
     
@@ -41,12 +45,6 @@
     
     
       
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
-      
     
     
       <link rel="stylesheet" href="stylesheets/extra.css">
@@ -57,6 +55,26 @@
 
     
     
+  
+  
+    
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TrustLLM">
+    <meta property="og:title" content="FAQ and troubleshooting — TrustLLM">
+    <meta property="og:description" content="Troubleshoot TrustLLM installation, model endpoints, resumed runs, incomplete scores and language limitations. Understand what the benchmark supports.">
+    <meta property="og:url" content="https://howiehwong.github.io/TrustLLM/faq.html">
+    <meta property="og:image" content="https://howiehwong.github.io/TrustLLM/assets/logo.png">
+    <meta property="og:image:alt" content="TrustLLM — Trustworthiness in Large Language Models">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FAQ and troubleshooting — TrustLLM">
+    <meta name="twitter:description" content="Troubleshoot TrustLLM installation, model endpoints, resumed runs, incomplete scores and language limitations. Understand what the benchmark supports.">
+    <meta name="twitter:image" content="https://howiehwong.github.io/TrustLLM/assets/icon.png">
+    <link rel="alternate" type="text/markdown" href="https://howiehwong.github.io/TrustLLM/faq.md" title="Markdown version">
+    <link rel="describedby" href="https://howiehwong.github.io/TrustLLM/llms.txt" type="text/plain">
+    
+  
+
   </head>
   
   
@@ -67,7 +85,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="black" data-md-color-primary="custom" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -76,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#language-bias" class="md-skip">
+        <a href="#faq-troubleshooting" class="md-skip">
           Skip to content
         </a>
       
@@ -88,11 +106,13 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="index.html" title="TrustLLM" class="md-header__button md-logo" aria-label="TrustLLM" data-md-component="logo">
       
-  <img src="assets/logo.png" alt="logo">
+  <img src="assets/icon.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -109,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FAQ
+              FAQ and troubleshooting
             
           </span>
         </div>
@@ -122,20 +142,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="black" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -166,11 +186,18 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -188,6 +215,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/HowieHwong/TrustLLM" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HowieHwong/TrustLLM
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -197,151 +236,6 @@
       
         
           
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="index.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="guides/running.html" class="md-tabs__link">
-          
-  
-  
-  Guide
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="design.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Design
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="benchmark.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Benchmark
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="development.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Development
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="changelog.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Changelog
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="faq.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  FAQ
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -349,26 +243,34 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="index.html" title="TrustLLM" class="md-nav__button md-logo" aria-label="TrustLLM" data-md-component="logo">
       
-  <img src="assets/logo.png" alt="logo">
+  <img src="assets/icon.png" alt="logo">
 
     </a>
     TrustLLM
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HowieHwong/TrustLLM" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HowieHwong/TrustLLM
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -386,7 +288,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Overview
   
 
     
@@ -410,26 +312,26 @@
     
     
       
-      
+        
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Guide
+    Get started
   
 
     
@@ -445,7 +347,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guide
+    Get started
   
 
           </label>
@@ -465,7 +367,7 @@
   <span class="md-ellipsis">
     
   
-    Quickstart
+    Installation & first run
   
 
     
@@ -493,7 +395,7 @@
   <span class="md-ellipsis">
     
   
-    Generation
+    Local & API models
   
 
     
@@ -514,6 +416,95 @@
   
   
     <li class="md-nav__item">
+      <a href="guides/agents.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI agent integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluate
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Evaluate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="guides/evaluation.html" class="md-nav__link">
         
   
@@ -521,7 +512,385 @@
   <span class="md-ellipsis">
     
   
-    Evaluation
+    Scoring & results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="benchmark.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets & metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ & troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="faq.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ & troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-does-pip-install-trustllm-behave-differently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why does pip install trustllm behave differently?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-i-need-a-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do I need a GPU?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-apis-and-local-models-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which APIs and local models work?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-use-this-with-an-ai-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use this with an AI agent?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-did-the-dataset-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where did the dataset go?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-did-five-samples-produce-more-than-five-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why did five samples produce more than five requests?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-resume-after-an-api-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I resume after an API failure?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-scoring-rejecting-my-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why is scoring rejecting my responses?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-a-100-completion-report-a-perfect-benchmark-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is a 100% completion report a perfect benchmark score?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-judge-model-should-i-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which judge model should I use?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language bias
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-should-i-report-a-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How should I report a bug?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design & validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="development.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
   
 
     
@@ -548,130 +917,31 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="design.html" class="md-nav__link">
+    
+    
+    
+    
+      
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="benchmark.html" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benchmark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
       
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="development.html" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Development
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="changelog.html" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Changelog
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
           
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
     
   
-    FAQ
+    Reference
   
 
     
@@ -679,17 +949,35 @@
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="faq.html" class="md-nav__link md-nav__link--active">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/scoring.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FAQ
+    Original scoring APIs
   
 
     
@@ -698,34 +986,41 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#language-bias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Language Bias
-      
-    </span>
-  </a>
+    <li class="md-nav__item">
+      <a href="guides/legacy_generation.html" class="md-nav__link">
+        
   
-</li>
-      
-    </ul>
   
-</nav>
+  <span class="md-ellipsis">
+    
+  
+    Archived generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -739,8 +1034,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -750,6 +1043,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -758,10 +1053,131 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-does-pip-install-trustllm-behave-differently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why does pip install trustllm behave differently?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-i-need-a-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do I need a GPU?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-apis-and-local-models-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which APIs and local models work?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-use-this-with-an-ai-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use this with an AI agent?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-did-the-dataset-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where did the dataset go?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-did-five-samples-produce-more-than-five-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why did five samples produce more than five requests?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-resume-after-an-api-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I resume after an API failure?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-scoring-rejecting-my-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why is scoring rejecting my responses?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-a-100-completion-report-a-perfect-benchmark-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is a 100% completion report a perfect benchmark score?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-judge-model-should-i-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which judge model should I use?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#language-bias" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Language Bias
+        Language bias
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-should-i-report-a-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How should I report a bug?
       
     </span>
   </a>
@@ -781,34 +1197,64 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  <nav class="doc-tools" aria-label="Document formats">
+    <a href="https://howiehwong.github.io/TrustLLM/faq.md">View as Markdown</a>
+    <span aria-hidden="true">/</span>
+    <a href="https://howiehwong.github.io/TrustLLM/llms.txt">Agent index</a>
+  </nav>
+  
+  
                   
-  
-
-
-
-
-  <h1>FAQ</h1>
-
-<h2 id="language-bias">Language Bias<a class="headerlink" href="#language-bias" title="Permanent link">&para;</a></h2>
-<p>As we mentioned in our paper, the language output of the model will to some extent affect our evaluation results. For the <a href="https://huggingface.co/LibrAI/longformer-harmful-ro">longformer model</a>, its performance in Chinese is relatively poor. Therefore, when calculating RtA, we consider responses with a Chinese character ratio greater than <span class="arithmatex">\(\alpha\)</span> as invalid sample (the default setting of <span class="arithmatex">\(\alpha\)</span> is 0.3)</p>
-
-
-
-
-
 
 
   
   
 
 
+<h1 id="faq-troubleshooting">FAQ &amp; troubleshooting<a class="headerlink" href="#faq-troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="why-does-pip-install-trustllm-behave-differently">Why does pip install trustllm behave differently?<a class="headerlink" href="#why-does-pip-install-trustllm-behave-differently" title="Permanent link">&para;</a></h2>
+<p>The source repository contains the 0.4 workflow; the older package on PyPI has not been updated by this source change. Follow the <a href="guides/running.html#install-the-components-you-use">source installation commands</a>. Use <code>python -m trustllm --help</code> to verify that your Python environment exposes <code>download</code>, <code>tasks</code>, <code>generate</code> and <code>evaluate</code>.</p>
+<h2 id="do-i-need-a-gpu">Do I need a GPU?<a class="headerlink" href="#do-i-need-a-gpu" title="Permanent link">&para;</a></h2>
+<p>API generation and dataset downloads use the base package without PyTorch. Local inference requires the <code>local</code> extra and enough memory for the selected model; CPU inference is supported. Scoring uses the <code>eval</code> extra and may load classifiers or call external judge/embedding services. Start with a small generation smoke test.</p>
+<h2 id="which-apis-and-local-models-work">Which APIs and local models work?<a class="headerlink" href="#which-apis-and-local-models-work" title="Permanent link">&para;</a></h2>
+<p>The maintained API backend implements text-only, non-streaming OpenAI-compatible Chat Completions. The local backend loads Transformers causal language models. Model IDs pass through to the chosen backend. Native Anthropic Messages, Gemini, Azure deployment endpoints and OpenAI Responses require a separate compatible bridge or adapter. See the <a href="guides/generation_details.html">backend comparison</a>.</p>
+<h2 id="can-i-use-this-with-an-ai-agent">Can I use this with an AI agent?<a class="headerlink" href="#can-i-use-this-with-an-ai-agent" title="Permanent link">&para;</a></h2>
+<p>Yes. An agent can call the Python API or CLI and read JSON artifacts. Start with the <a href="guides/agents.html">AI agent integration guide</a> or the <a href="https://howiehwong.github.io/TrustLLM/llms.txt">agent documentation index</a>. The current benchmark scores model responses, not multi-step agent trajectories or tool-use correctness.</p>
+<h2 id="where-did-the-dataset-go">Where did the dataset go?<a class="headerlink" href="#where-did-the-dataset-go" title="Permanent link">&para;</a></h2>
+<p><code>python -m trustllm download --output data</code> extracts the benchmark to <code>data/dataset</code>. Pass that directory to <code>--data</code>. The download helper also works through Python. Repeating the download overwrites matching files.</p>
+<h2 id="why-did-five-samples-produce-more-than-five-requests">Why did five samples produce more than five requests?<a class="headerlink" href="#why-did-five-samples-produce-more-than-five-requests" title="Permanent link">&para;</a></h2>
+<p><code>--limit 5</code> selects the first five records of <strong>each</strong> dataset file in the selected task. Retries can add requests. A small prefix is a debugging aid; it is not a representative or paired benchmark subset.</p>
+<h2 id="can-i-resume-after-an-api-failure">Can I resume after an API failure?<a class="headerlink" href="#can-i-resume-after-an-api-failure" title="Permanent link">&para;</a></h2>
+<p>Repeat the exact generation command with <code>--resume</code>. Successful samples are reused and failed samples are retried. Dataset hashes, backend/model settings, generation options and dependency versions must match. Choose a new output directory if they change. Never share one output directory between simultaneous runs. Retry details are in the <a href="guides/running.html#api-models">running guide</a>.</p>
+<h2 id="why-is-scoring-rejecting-my-responses">Why is scoring rejecting my responses?<a class="headerlink" href="#why-is-scoring-rejecting-my-responses" title="Permanent link">&para;</a></h2>
+<p>The CLI requires every registered response file for the selected dimension, excluding optional awareness, and a nonempty <code>res</code> for every record. Inspect <code>run.json</code> and <code>samples.jsonl</code>, resolve failed/pending responses, then resume. A limited smoke test can still miss groups required by an original scorer. Generate a full response set before reporting benchmark scores.</p>
+<p>Existing score files are not overwritten. Use <code>--output runs/my-run/scores-rerun.json</code> when rescoring; the paired HTML filename must also be unused.</p>
+<h2 id="is-a-100-completion-report-a-perfect-benchmark-score">Is a 100% completion report a perfect benchmark score?<a class="headerlink" href="#is-a-100-completion-report-a-perfect-benchmark-score" title="Permanent link">&para;</a></h2>
+<p>No. <code>report.html</code> reports generation completion. <code>scores.json</code> and <code>scores.html</code> are produced separately by evaluation and contain per-task metrics. Their scales and directions differ; TrustLLM defines no overall trust score.</p>
+<h2 id="which-judge-model-should-i-use">Which judge model should I use?<a class="headerlink" href="#which-judge-model-should-i-use" title="Permanent link">&para;</a></h2>
+<p>Select a model available to your account with <code>OPENAI_JUDGE_MODEL</code> before starting evaluation. The original default is historical and may be unavailable. Record the model, endpoint and prompts when comparing results. Judge and embedding compatibility must be checked separately from generation compatibility. Consult the <a href="guides/evaluation.html">scoring guide</a>.</p>
+<h2 id="language-bias">Language bias<a class="headerlink" href="#language-bias" title="Permanent link">&para;</a></h2>
+<p>Translated READMEs explain installation; they do not translate or validate the benchmark. As discussed in the paper, response language can affect evaluation. The original <a href="https://huggingface.co/LibrAI/longformer-harmful-ro">Longformer refusal classifier</a> performs poorly on Chinese responses. The historical refusal-to-answer calculation excludes responses above a Chinese-character ratio threshold, with a default of 0.3. Do not interpret cross-language score differences without reviewing this filtering and the task assumptions.</p>
+<h2 id="how-should-i-report-a-bug">How should I report a bug?<a class="headerlink" href="#how-should-i-report-a-bug" title="Permanent link">&para;</a></h2>
+<p>Include the source commit or installed version, Python version, backend, sanitized command, task, traceback and a minimal example. Remove API keys and private responses. The <a href="development.html">contribution guide</a> explains how to run checks and submit focused fixes.</p>
+
+
+
+
+
 
 
   
+  
+
+
+
 
 
 
                 
+
               </article>
             </div>
           
@@ -826,12 +1272,52 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="benchmark.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Datasets &amp; metrics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Datasets & metrics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="design.html" class="md-footer__link md-footer__link--next" aria-label="Next: Design &amp; validation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Design & validation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 TrustLLM
+      TrustLLM · ICML 2024 · MIT-licensed toolkit
     </div>
   
   
@@ -855,7 +1341,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "navigation.tracking", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
