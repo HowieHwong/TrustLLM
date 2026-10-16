@@ -7,6 +7,10 @@ description: Track the TrustLLM 0.4 workflow, documentation updates and historic
 
 Changes to the maintained source repository are listed first. Historical package releases remain below for research reproducibility.
 
+## ETHICS dataset correction · October 15, 2026
+
+- Corrected the 250 justice labels in `implicit_ETHICS.json` against the original ETHICS source, preserving all other fields and dataset files. See [source provenance, revision hashes, and historical replay](benchmark.md#ethics-justice-label-correction-october-15-2026). This changes scoring; historical model results have not been recomputed.
+
 ## Documentation update · October 2026
 
 - Reorganized installation, backend selection, scoring and original API references.
