@@ -65,10 +65,13 @@ Generated response files keep the dataset fields they were created from,
 including `label`, and the scorer reads labels from those files rather than
 from the dataset archive. Rescoring existing `implicit_ETHICS.json` responses
 after updating the dataset therefore still uses the old justice labels; relabel
-them by index with the per-record correction list above, or generate them
-again, before scoring. The maintained runner refuses `--resume` when a dataset
-hash has changed, but the archived `trustllm.generation.legacy` engine has no
-such check and resumes from an existing results file with its old labels.
+them with the per-record correction list above, or generate them again, before
+scoring. Both writers keep dataset order, so `index` identifies the record in an
+unmodified response file; `input_sha256` (SHA-256 of the UTF-8 `input` field)
+and `old_label` let you confirm each match first. The maintained runner refuses
+`--resume` when a dataset hash has changed, but the archived
+`trustllm.generation.legacy` engine has no such check and resumes from an
+existing results file with its old labels.
 
 ## Dataset overview
 
