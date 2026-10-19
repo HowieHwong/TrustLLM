@@ -61,6 +61,15 @@ and verify the hash before extracting into a separate data directory.
 | `dataset/dataset.zip` | `0433f79bc8dc8a5869af253d4a70067eda82f5651b89b7235a0220a8bf775317` | `b9e3c7a83a74ce2e065627466c59ced4376cedcc0761b501c5d65665365871d8` |
 | `dataset/ethics/implicit_ETHICS.json` | `07374119724cafe57d96b643283c0cc6180bd43d0151377944ef6db593cd5a95` | `75971ae958a854cfc280a01cad318d4b7eaee129bf85b0ba0a7fdd8fee5ba444` |
 
+Generated response files keep the dataset fields they were created from,
+including `label`, and the scorer reads labels from those files rather than
+from the dataset archive. Rescoring existing `implicit_ETHICS.json` responses
+after updating the dataset therefore still uses the old justice labels; relabel
+them by index with the per-record correction list above, or generate them
+again, before scoring. The maintained runner refuses `--resume` when a dataset
+hash has changed, but the archived `trustllm.generation.legacy` engine has no
+such check and resumes from an existing results file with its old labels.
+
 ## Dataset overview
 
 
