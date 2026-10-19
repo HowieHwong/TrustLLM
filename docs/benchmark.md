@@ -7,6 +7,72 @@ description: Explore the original TrustLLM benchmark datasets and metric definit
 
 This reference records the original research benchmark. Counts and metrics below describe that benchmark, not a live inventory of every downloaded file. Use `python -m trustllm tasks` to inspect the current task registry and record dataset hashes for your experiment. See the [paper](https://arxiv.org/abs/2401.05561) for methodology and the [scoring guide](guides/evaluation.md) for the maintained workflow.
 
+## ETHICS justice label correction · October 15, 2026
+
+The bundled `dataset/ethics/implicit_ETHICS.json` now maps the original ETHICS
+justice labels as `1 → not wrong` and `0 → wrong`. Its commonsense subset uses
+the opposite numeric mapping, `1 → wrong` and `0 → not wrong`. Previously the
+commonsense mapping had also been applied to justice.
+
+The direction follows the [original ETHICS task definition and Figure 2](https://arxiv.org/html/2008.02275v6#S2.F2):
+the figure's reasonable/unreasonable examples correspond to labels 1/0 in the
+official CSV. The original [reader](https://github.com/hendrycks/ethics/blob/fa022dbc62dc6736c2f3780ced6412cae97efb90/utils.py#L83-L88)
+and [training code](https://github.com/hendrycks/ethics/blob/fa022dbc62dc6736c2f3780ced6412cae97efb90/justice/tune.py#L54-L103)
+use those labels without inversion.
+
+All 500 bundled samples were checked against the official train, test, and
+test-hard splits. Each matched one source record without conflicting labels:
+100 train and 150 test records per topic. Exactly 250 justice labels changed;
+all 250 commonsense records, prompts, input text, record order, and the other
+30 ZIP members' contents are unchanged. The
+[per-record correction list](https://github.com/HowieHwong/TrustLLM/blob/main/dataset/ethics_justice_corrections.tsv)
+records zero-based JSON indices, source CSV record numbers (including the header),
+source labels, and SHA256 hashes of the unchanged UTF-8 input strings.
+
+There were 497 exact text matches. For indices 340, 341, and 419, source identity
+was established by reversing UTF-8 bytes misdecoded as GBK:
+`original.encode("gbk").decode("utf-8")`. Each recovered text matched one source
+record, and converting it back reproduced the original string exactly. This was
+used only for matching; the existing `boy鈥檚` and `toup茅e` text remains unchanged.
+
+The [official ETHICS archive](https://people.eecs.berkeley.edu/~hendrycks/ethics.tar)
+used for this check is 35,585,024 bytes, with SHA256
+`40acbf1ac0da79a2aabef394d58889136b8d38b05be09482006de2453fb06333`.
+Its source CSV hashes are:
+
+| Source file | SHA256 |
+| --- | --- |
+| `justice/justice_train.csv` | `175c8255f5ee3d99ad381cd716473367274dc24b3832d5e3357f37f1779a7d3f` |
+| `justice/justice_test.csv` | `d7cc506a1055915d455a9244b26de573c75a760d416a8508a9420d41cbf40250` |
+| `commonsense/cm_train.csv` | `286cb4098a66b71819493f964cf2afe62cdbb6c6b41983b9c0b8fc484650c752` |
+| `commonsense/cm_test.csv` | `a004f51b8f863d85eb5575d86e8723897f850fcb7fc8de38c1f30105dfb13c4d` |
+
+### Reproducing an earlier dataset revision
+
+This correction changes scoring. Historical published results have not been
+recomputed, and scores using the two revisions are not interchangeable. The
+downloader fetches the archive from `main`, so pinning the Python package alone
+does not pin the dataset. For the previous revision, use the
+[archive at the fixed pre-correction commit](https://raw.githubusercontent.com/HowieHwong/TrustLLM/c3edca246f39f778f666366c1e30cfdb95b2e43e/dataset/dataset.zip)
+and verify the hash before extracting into a separate data directory.
+
+| Artifact | Previous SHA256 | Corrected SHA256 |
+| --- | --- | --- |
+| `dataset/dataset.zip` | `0433f79bc8dc8a5869af253d4a70067eda82f5651b89b7235a0220a8bf775317` | `b9e3c7a83a74ce2e065627466c59ced4376cedcc0761b501c5d65665365871d8` |
+| `dataset/ethics/implicit_ETHICS.json` | `07374119724cafe57d96b643283c0cc6180bd43d0151377944ef6db593cd5a95` | `75971ae958a854cfc280a01cad318d4b7eaee129bf85b0ba0a7fdd8fee5ba444` |
+
+Generated response files keep the dataset fields they were created from,
+including `label`, and the scorer reads labels from those files rather than
+from the dataset archive. Rescoring existing `implicit_ETHICS.json` responses
+after updating the dataset therefore still uses the old justice labels; relabel
+them with the per-record correction list above, or generate them again, before
+scoring. Both writers keep dataset order, so `index` identifies the record in an
+unmodified response file; `input_sha256` (SHA-256 of the UTF-8 `input` field)
+and `old_label` let you confirm each match first. The maintained runner refuses
+`--resume` when a dataset hash has changed, but the archived
+`trustllm.generation.legacy` engine has no such check and resumes from an
+existing results file with its old labels.
+
 ## Dataset overview
 
 
