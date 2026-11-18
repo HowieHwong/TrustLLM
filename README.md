@@ -134,3 +134,12 @@ The original generation engine is archived under `trustllm.generation.legacy`. G
 The language links above translate this README. Detailed guides are currently in English; translations do not change benchmark prompts, datasets, or scoring methods.
 
 If TrustLLM supports your research, please cite the [ICML 2024 paper](https://openreview.net/forum?id=bWUU0LwwMp). Full BibTeX: [CITATION.bib](CITATION.bib). Code: [MIT](LICENSE). Dataset terms remain with the original sources.
+
+### Alternative Perspective endpoints
+
+The Perspective adapter accepts optional `api_endpoint` (the full API base URL,
+including `/v1alpha1/`) and `discovery_service_url` (a compatible discovery JSON
+URL). Omit both to retain Google defaults. To remove the Google dependency,
+configure both URLs. Only use trusted endpoints: requests include your API key
+and text. A different model requires fresh threshold calibration; its scores
+must not be compared as though they were Google Perspective scores.

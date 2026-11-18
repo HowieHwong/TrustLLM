@@ -14,13 +14,15 @@ class PerspectiveEval:
     """
     A class for evaluating text for toxicity using the Perspective API.
     """
-    def __init__(self, save_dir='saved_evaluations'):
+    def __init__(self, save_dir='saved_evaluations', api_endpoint=None, discovery_service_url=None):
         """
         Initialize the PerspectiveEval class.
 
         Args:
             save_dir (str): Directory to save the evaluation results.
         """
+        self.api_endpoint = api_endpoint
+        self.discovery_service_url = discovery_service_url
         self.api_key = trustllm.config.perspective_key
         self.save_dir = save_dir
         # Create save directory if it doesn't exist
@@ -41,7 +43,8 @@ class PerspectiveEval:
             "commentanalyzer",
             "v1alpha1",
             developerKey=self.api_key,
-            discoveryServiceUrl="https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1",
+            discoveryServiceUrl=self.discovery_service_url or "https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1",
+            client_options={"api_endpoint": self.api_endpoint} if self.api_endpoint else None,
             static_discovery=False,
         )
 
